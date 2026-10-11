@@ -12,7 +12,6 @@ außer einem PDF-Betrachter erforderlich.
 | Thema | Folien | Quellen und Abbildungen |
 | --- | --- | --- |
 | 0 · Formalia | [PDF](0-Formalia/0-Formalia.pdf) | [Ordner](0-Formalia/) |
-| 1 · Psychologische Tests | [PDF](1-Psychologische-Tests/1-Psychologische-Tests.pdf) · [Revidierte Fassung](1-Psychologische-Tests/1-Psychologische-Tests-revidiert.pdf) | [Ordner](1-Psychologische-Tests/) |
 
 Ein begleitendes Vorlesungsskript wird später im Ordner `Skript` ergänzt.
 
