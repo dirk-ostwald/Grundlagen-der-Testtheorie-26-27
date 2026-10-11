@@ -1,0 +1,222 @@
+---
+fontsize: 8pt
+format:
+    beamer:
+        include-in-header: "0-Header.tex"
+        colorlinks: true
+        urlcolor: darkblue
+        linkcolor: darkblue
+        citecolor: darkblue
+bibliography: 0-Referenzen.bib
+---
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("0-Abbildungen/gdt-0-otto.png")
+```
+
+\vspace{2mm}
+
+\Huge
+Grundlagen der Testtheorie
+\vspace{6mm}
+
+\large
+BSc Psychologie WiSe 2026/27
+
+\normalsize
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+
+\vfill
+\center
+\Huge
+\textcolor{red}{Aufnahme läuft!}
+\vfill
+
+#  {.plain}
+```{=latex}
+\vfill
+\begin{center}
+\huge
+(0) Formalia
+\end{center}
+\vfill
+```
+
+# Formalia 
+\vfill
+\large
+$\,$ Prof. Dr. Dirk Ostwald (dirk.ostwald@ovgu.de)
+\vspace{2mm}
+
+\normalsize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{ll}
+Seit 2021 	& W2-Professur Methodenlehre  				                        \\
+2014 - 2020 & W1-Professur Freie Universität Berlin 	                        \\
+2010 - 2014 & Postdoc BCCN \& MPIB Berlin				                        \\
+2007 - 2010 & PhD Psychologie Birmingham				                        \\
+2004 - 2006 & MSc Neurowissenschaften Tübingen			                        \\
+2005 - 2012 & BSc Mathematik Hagen						                        \\
+2000 - 2003 & BSc Medizin Hamburg						                        \\
+\end{tabular}
+\vspace{2mm}
+
+\large
+\begin{tabular}{ll}
+Forschung 	    & Komputationale kognitive Neurowissenschaften	\\
+Lehre 		    & Datenwissenschaft
+\end{tabular}
+\vfill
+
+# Formalia
+\small
+BSc Psychologie
+
+* Vorkurs: Mathematische Grundlagen
+* A2 Einführung in die Forschungsmethoden der Psychologie
+* B1 Statistik I (Wahrscheinlichkeitstheorie und frequentistische Inferenz)
+* B2 Statistik II (Das allgemeine lineare Modell)
+* C  Einführung in empirisch-wissenschaftliches Arbeiten (Programmierung)
+* E1 Grundlagen der Testtheorie (Fragebogendatenanalyse)
+
+MSc Klinische Psychologie und Psychotherapie
+
+* A1 Vertiefung allgemeiner Forschungsmethoden (Multivariate Verfahren)
+* A2 Vertiefung allgemeiner Forschungsmethoden (Interventionsforschung)
+* B2 Testtheorie und Testkonstruktion (Psychometrische Diagnostik)
+
+MSc Psychologie und MSc Umweltpsychologie/Mensch-Technik-Interaktion
+
+* Vorkurs: Programmieren für Psychologie
+* A1 Multivariate Verfahren 
+* A3 Computergestützte Erhebung, Modellierung und Datenanalyse
+
+# Formalia
+\setstretch{2}
+
+Diagnostiklehre im BSc Psychologie
+
+Modul E: Grundlagen der Diagnostik
+
+* Vorlesung Grundlagen der Testtheorie (2 SWS) 
+* Vorlesung Grundlagen der Diagnostik (2 SWS)
+
+*Die Modulnote setzt sich aus der gemittelten Note der beiden Einzelklausuren zusammen*
+
+Modul F: Diagnostische Verfahren
+
+* Seminar Leistungs- und Persönlichkeitsmessung (2 SWS) 
+* Seminar Interview und Beobachtung (2 SWS) 
+* Seminar Psychologische Gesprächsführung (2 SWS) 
+
+
+# Formalia 
+\vspace{1mm}
+E1. Grundlagen der Testtheorie
+
+\small
+\center
+\footnotesize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{lll}
+Datum & Einheit & Thema \\\hline
+16.10.2026 & Einführung & (0) Formalia \\
+23.10.2026 & Einführung & (1) Psychologische Tests \\
+30.10.2026 & Klassische Testtheorie & (2) Modellformulierung \\
+06.11.2026 & Klassische Testtheorie & (3) Modelleigenschaften \\
+13.11.2026 & Klassische Testtheorie & (4) Reliabilität \\
+20.11.2026 & Klassische Testtheorie & (5) Interne Konsistenz \\
+27.11.2026 & Exploratorische Faktorenanalyse & (6) Eigenanalyse \\
+04.12.2026 & Exploratorische Faktorenanalyse & (7) Modellformulierung \\
+11.12.2026 & Exploratorische Faktorenanalyse & (8) Modellschätzung \\
+18.12.2026 & Exploratorische Faktorenanalyse & (9) Rotation \\
+ & \textcolor{black!50}{Weihnachtspause} & \\
+08.01.2027 & Item-Response-Theorie & (10) Modellformulierung \\
+15.01.2027 & Item-Response-Theorie & (11) Modellschätzung \\
+22.01.2027 & Item-Response-Theorie & (12) Modellevaluation \\
+29.01.2027 & Item-Response-Theorie & (13) Anwendungsbeispiel \\\hline
+März 2027 (vorläufig) & Klausurtermin & Termin wird bekannt gegeben \\
+September 2027 (vorläufig)  & Klausurwiederholungstermin            &
+\end{tabular} 
+
+# Formalia
+E1. Grundlagen der Testtheorie
+\setstretch{2.3}
+
+* Freitag 11.00 - 13.00 Uhr in Raum G22A-112
+* Kursmaterialien (Folien und Videos) auf der [Kurswebseite](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre/Lehre/Wintersemester+2027/Grundlagen+der+Testtheorie.html)
+* Ankündigungen und weiterführende Literatur auf der [Moodleseite](https://elearning.ovgu.de/course/view.php?id=22167)
+* Mathematisches Vorwissen deckt der Vorkurs [Mathematische Grundlagen](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre/Lehre/Wintersemester+2027/Mathematische+Grundlagen.html) ab.
+* Materialien der [vorherigen Iteration](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre+I/Lehre/Wintersemester+2025/Grundlagen+der+Testtheorie.html) finden Sie auf der damaligen Kurswebseite.
+* [Zentrale Evaluation WiSe 2025/26](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre/Wintersemester+2026/Grundlagen+der+Testtheorie/Testtheorie_260325_Klausurreport_und_Musterl%C3%B6sung-p-14289.pdf)
+
+# Formalia
+Literatur
+
+\footnotesize
+
+Krauth, Joachim (1995) Testkonstruktion und Testtheorie. Weinheim: Beltz, Psychologie Verl.-Union 
+
+Rencher, Alvin C., and William F. Christensen (2012) Methods of Multivariate Analysis. Third Edition. Wiley Series in Probability and Statistics. Hoboken, New Jersey: Wiley 
+
+Lord, Frederic M., and Melvin R. Novick (1968) Statistical Theories of Mental Test Scores. The Addison-Wesley Series in Behavioral Science: Quantitative Methods. Charlotte 
+
+Rost, Jürgen (2004) Lehrbuch Testtheorie, Testkonstruktion. Aus dem Programm Huber. Bern: H. Huber 
+
+Pospeschill, Markus (2022) Testtheorie, Testkonstruktion, Testevaluation. München: Ernst Reinhardt Verlag 
+
+Bühner, Markus (2010) Einführung in die Test- und Fragebogenkonstruktion. Pearson Studium Psychologie. München: Pearson Studium 
+
+Moosbrugger, Helfried, and Augustin Kelava (2021) Testtheorie und Fragebogenkonstruktion. Springer-Lehrbuch. Berlin Heidelberg: Springer 
+
+Ostwald, Dirk (2025) Theorie psychometrischer Verfahren
+
+# Formalia
+E1. Grundlagen der Testtheorie
+\setstretch{2}
+
+* Vorlesungsfolien inklusive Selbstkontrollfragen sind klausurrelevant
+* Selbstkontrollfragen fokussieren den Kursinhalt 
+* Selbstkontrollfragen sind Grundlage für Prüfungsfragen
+* Benotete digitale Multiple Choice Klausur (30 Fragen) im Universitätstestzentrum 
+* Klausurwiederholungstermin im September 2027 (vorläufig)
+* Altklausuren finden sich auf den Kurswebseiten vorheriger Iterationen.
+* [Altklausur - Was wissen Sie schon?](https://elearning.ovgu.de/mod/quiz/view.php?id=696481)
+
+
+# Studium und Diskussion
+\large
+Zur wöchentlichen Mitarbeit im Kurs
+\normalsize
+\setstretch{2.7}
+
+* Bereiten Sie sich durch Lesen der Folien auf die Vorlesung vor.
+* Fragen Sie bitte, wenn nach der Lektüre oder Vorlesung Unklarheiten bestehen.
+* Fragen in der Vorlesung helfen Ihnen und Ihren Kommiliton:innen.
+* Fragen helfen der Weiterentwicklung des Kurses.
+* Bearbeiten Sie bitte die Selbstkontrollfragen.
+
+# Studium und Diskussion
+\large
+Zur Arbeit mit den Selbstkontrollfragen und Klausurvorbereitung
+\normalsize
+\setstretch{2.3}
+
+* Die Selbstkontrollfragen fokussieren den Vorlesungsstoff.
+* „Geben Sie ... wieder“ verlangt die wortwörtliche Wiedergabe. 
+* „Erläutern Sie ...“ verlangt eine Darstellung in eigenen Worten.
+* Die Selbstkontrollfragen bilden die Grundlage für Klausurfragen.
+* Die Lösungen finden Sie auf den Folien.
+
+# Formalia
+\Huge
+\vfill
+\center
+Q \& A
+\vfill
+

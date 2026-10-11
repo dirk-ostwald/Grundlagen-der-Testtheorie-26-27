@@ -1,0 +1,2316 @@
+---
+fontsize: 8pt
+format:
+    beamer:
+        include-in-header: "1-Header.tex"
+bibliography: 1-Referenzen.bib
+---
+
+```{r, include = FALSE}
+# Unicode-Zeichen beim Rendern unter Windows unverändert ausgeben.
+if (.Platform$OS.type == "windows") {
+  invisible(Sys.setlocale("LC_CTYPE", ".UTF-8"))
+}
+```
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("1-Abbildungen/gdt-1-otto.png")
+```
+
+\vspace{2mm}
+
+\huge
+Grundlagen der Testtheorie
+\vspace{6mm}
+
+\Large
+BSc Psychologie WiSe 2026/27
+
+\large
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+\vfill
+\center
+\huge
+\textcolor{black}{(1) Psychologische Tests}
+\vfill
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+Konstrukt und Items
+
+Antwortformate
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+**Definition**
+
+Testarten
+
+Konstrukt und Items
+
+Antwortformate
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Definition
+\vspace{1mm}
+\textcolor{darkblue}{Test (engl.) \textit{Probe, Prüfung, Kontrolle}}
+
+\small
+\setstretch{1.7}
+
+Der Begriff bezeichnet unterschiedliche Dinge
+
+* Ein Verfahren zur Untersuchung psychologischer Merkmale
+* Den Vorgang einer solchen Untersuchung
+* Die Materialien, mit denen eine Untersuchung durchgeführt wird
+
+\vspace{3mm}
+In dieser Veranstaltung
+
+* Psychologische Tests als planmäßig entwickelte Untersuchungsverfahren
+* Aufgaben, Fragen oder andere Reize lösen beobachtbare Reaktionen aus
+* Festgelegte Regeln ermöglichen Aussagen über psychologische Merkmale
+
+\vfill
+\flushright
+\footnotesize
+@lienert1998; @streiner2024
+
+# Definition
+
+\large
+\textcolor{darkblue}{Test (engl.) \textit{Probe, Prüfung, Kontrolle}}
+
+\vfill
+```{r, echo = FALSE, out.width = "60%", fig.align="center"}
+knitr::include_graphics("1-Abbildungen/gdt-1-test.png")
+```
+
+\flushright
+\footnotesize
+@warren1934 
+\vfill
+
+# Definition
+\vspace{1mm}
+\textcolor{darkblue}{Vom beobachtbaren Verhalten zum psychologischen Merkmal}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Konstrukt}
+
+Ein theoretisch bestimmtes Merkmal, das sich nicht unmittelbar beobachten lässt,
+zum Beispiel Konzentrationsfähigkeit oder depressive Symptomatik.
+
+\textcolor{darkblue}{Indikator}
+
+Eine beobachtbare Reaktion, die Hinweise auf das Konstrukt geben soll,
+zum Beispiel eine Aufgabenbearbeitung oder eine Antwort im Fragebogen.
+
+\textcolor{darkblue}{Interpretation}
+
+Der Schluss vom beobachteten Verhalten auf das Konstrukt braucht eine Begründung.
+Eine Antwort kann auch durch Sprache, Situation oder Antwortbereitschaft entstehen.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 1 und 2
+
+# Definition
+\vspace{1mm}
+\textcolor{darkblue}{Reichweite des Testbegriffs}
+
+\small
+\setstretch{1.45}
+
+Psychologische Tests können unterschiedliche Merkmale erfassen
+
+* Relativ überdauernde Eigenschaften, etwa eine typische Verhaltenstendenz (*trait*)
+* Veränderliche Zustände, etwa die gegenwärtige Symptomatik (*state*)
+* Fähigkeiten, Kenntnisse oder Interessen
+
+\vspace{2mm}
+Tests im weiteren Sinn umfassen auch Fragebögen, standardisierte Interviews und
+standardisierte Beobachtungen.
+
+Bei Leistungstests steht typischerweise das bestmögliche Verhalten im Vordergrund.
+Selbstberichte fragen häufig nach typischem Verhalten oder subjektivem Erleben.
+
+Die Bezeichnung eines Verfahrens allein sagt noch nichts über seine Qualität aus.
+
+\vfill
+\flushright
+\footnotesize
+@rost2004; @streiner2024
+
+# Definition
+\setstretch{1.8}
+\large
+\textcolor{darkblue}{Testbestandteile}
+
+\normalsize
+Materialbestandteile
+
+* Testmanual
+* Testmaterial (Items)
+* Auswertungshilfen
+
+Durchführungsbestandteile
+
+* Testanweisung
+* Testdurchführung
+* Testauswertung
+
+\flushright
+\footnotesize
+@lienert1998
+
+# Definition
+\vspace{1mm}
+\textcolor{darkblue}{Item}
+
+\small
+\setstretch{1.25}
+
+Ein Item ist eine einzelne Aufgabe, Frage oder Aussage eines Tests.
+
+\textcolor{darkblue}{Itemstamm}
+
+Der Reiz, auf den eine Reaktion erwartet wird, etwa eine Frage, ein Bild oder eine Aufgabe.
+
+\textcolor{darkblue}{Antwortformat}
+
+Die vorgesehene Form der Antwort, etwa freier Text, eine Auswahl oder eine Beurteilung.
+
+\textcolor{darkblue}{Beispiel}
+
+„Wie häufig schweiften Ihre Gedanken beim Lernen in der vergangenen Woche ab?“
+
+$\Box$ nie \quad $\Box$ selten \quad $\Box$ manchmal \quad $\Box$ häufig \quad $\Box$ sehr häufig
+
+Mehrere Items können einen Untertest oder eine Skala bilden. Auch Verfahren mit einem
+einzelnen Item benötigen eine begründete Interpretation.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 1 und 4
+
+# Definition
+\vspace{1mm}
+\textcolor{darkblue}{Psychologischer Test und Experiment}
+
+\small
+\setstretch{1.6}
+
+\textcolor{darkblue}{Psychologischer Test}
+
+* Erfasst Merkmale anhand ausgewählter Verhaltensweisen oder Selbstberichte
+* Vereinheitlicht Aufgabenstellung, Durchführung und Auswertung
+
+\textcolor{darkblue}{Experiment}
+
+* Verändert Bedingungen gezielt, um Wirkungen zu untersuchen
+* Benötigt eine geeignete Kontrolle alternativer Erklärungen
+
+\vspace{2mm}
+Tests können innerhalb eines Experiments eingesetzt werden. Eine standardisierte
+Testdurchführung allein erlaubt noch keine Aussage über Ursachen.
+
+\vfill
+\flushright
+\footnotesize
+@rost2004; @streiner2024
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+**Testarten**
+
+Konstrukt und Items
+
+Antwortformate
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Testarten
+\vspace{1mm}
+\textcolor{darkblue}{Klassifikation}
+
+\small
+Psychometrische Persönlichkeitstests
+\vspace{-1mm}
+
+* Klinische Tests
+* Einstellungstests
+* Persönlichkeitsstrukturtests
+* Interessentests
+
+Leistungstests
+\vspace{-1mm}
+
+* Entwicklungstests
+* Intelligenztests
+* Allgemeine Leistungstests
+* Schultests
+* Spezielle Funktionsprüfungs- und Eignungstests
+
+Persönlichkeitsentfaltungsverfahren
+\vspace{-1mm}
+
+* Formdeuteverfahren
+* Verbal-thematische Verfahren
+* Zeichnerische und Gestaltungsverfahren
+
+# Testarten
+\vspace{1mm}
+\textcolor{darkblue}{Charakteristika}
+
+\small
+\setstretch{1.25}
+
+\textcolor{darkblue}{Psychometrische Persönlichkeitstests}
+
+* Erfassen unter anderem Symptome, Eigenschaften, Einstellungen und Interessen
+* Bei Selbstberichten meist keine sachlich richtigen oder falschen Antworten
+* Antworten setzen Verständnis, Selbsteinschätzung und Auskunftsbereitschaft voraus
+
+\textcolor{darkblue}{Leistungstests}
+
+* Vorgegebene Aufgaben mit Kriterien für die Qualität der Bearbeitung
+* Je nach Test stehen Genauigkeit, Schwierigkeit oder Bearbeitungstempo im Vordergrund
+* Sprachverständnis und Motivation können das beobachtete Verhalten mitbestimmen
+
+\textcolor{darkblue}{Persönlichkeitsentfaltungsverfahren}
+
+* Reaktionen auf mehrdeutige oder wenig strukturierte Materialien
+* Die Deutung und ihr wissenschaftlicher Nachweis sind gesondert zu prüfen
+
+\vfill
+\flushright
+\footnotesize
+@moosbrugger2012; @streiner2024
+
+# Testarten
+\vspace{1mm}
+\textcolor{darkblue}{Klinische Tests}
+
+\small
+\setstretch{1.4}
+
+Klinische Tests unterstützen die Beschreibung psychischer Beschwerden und die Diagnostik.
+
+\textcolor{darkblue}{Beispiel: Beck-Depressionsinventar (BDI-II)}
+
+* Selbstbeurteilungsinstrument zur Schwere depressiver Symptomatik
+* Entwicklung durch Beck und Mitarbeitende als Überarbeitung des BDI
+* Deutschsprachige Fassung nach Hautzinger und Mitarbeitenden
+* Erfasst unterschiedliche Beschwerden mit 21 Items
+* Bezugszeitraum: die vergangenen zwei Wochen einschließlich des heutigen Tages
+* Auswahl unter abgestuften Beschreibungen des eigenen Erlebens
+
+\vspace{2mm}
+Die Antworten ergänzen die klinische Beurteilung. Ein Fragebogenergebnis allein
+begründet noch keine Diagnose einer depressiven Störung.
+
+\vfill
+\flushright
+\footnotesize
+@beck1961; @beck1996; @hautzinger2006
+
+# Testarten
+\vspace{2mm}
+\textcolor{darkblue}{Klinische Tests}
+
+\small
+\textcolor{darkblue}{Beispiel: Beck-Depressionsinventar (BDI-II)} 
+
+\setstretch{2.2}
+\vspace{2mm}
+
+Beispielitem Traurigkeit
+
+(0) Ich bin nicht traurig
+(1) Ich bin oft traurig
+(2) Ich bin ständig traurig
+(3) Ich bin so traurig oder unglücklich, dass ich es nicht aushalte
+
+
+# Testarten
+\vspace{1mm}
+\textcolor{darkblue}{Klinische Tests}
+
+\small
+\textcolor{darkblue}{Beispiel: Beck-Depressionsinventar (BDI-II)} 
+
+Items
+\footnotesize
+\vspace{-1mm}
+
+\setstretch{1.1}
+1.	Traurigkeit
+2.	Pessimismus
+3.	Versagensgefühle
+4.	Verlust an Freude
+5.	Schuldgefühle
+6.	Bestrafungsgefühle
+7.	Selbstablehnung
+8.	Selbstkritik
+9.	Suizidgedanken
+10.	Weinen
+11.	Unruhe
+12.	Interessensverlust
+13.	Entschlussunfähigkeit
+14.	Wertlosigkeit
+15.	Energieverlust
+16.	Veränderungen der Schlafgewohnheiten
+17.	Reizbarkeit
+18.	Appetitveränderung
+19.	Konzentrations­schwierigkeiten
+20.	Müdigkeit
+21.	Verlust an sexuellem Interesse
+
+# Testarten
+\vspace{1mm}
+\textcolor{darkblue}{Einstellungstests}
+
+\small
+\setstretch{1.2}
+
+Einstellungen sind Bewertungen von Objekten, Personen oder Sachverhalten.
+Sie können sich im Denken, Erleben und Handeln ausdrücken.
+
+\textcolor{darkblue}{Beispiel: General Ecological Behavior (GEB) Scale}
+
+* Erfragt selbstberichtetes umweltschützendes Verhalten
+* Deutet Verhaltensweisen im Rahmen des Campbell-Paradigmas als Ausdruck einer Umwelteinstellung
+* Berücksichtigt, dass Verhalten unterschiedlichen Aufwand erfordert
+
+\vspace{2mm}
+Beispiel aus dem Verfahren
+
+„Ich kaufe Lebensmittel aus kontrolliert biologischem Anbau.“
+
+\footnotesize
+$\Box$ nie \quad $\Box$ selten \quad $\Box$ gelegentlich \quad $\Box$ oft \quad $\Box$ sehr oft \quad $\Box$ keine Angabe
+
+\small
+Die Verbindung zwischen berichteter Handlung und Einstellung ist eine theoretische Annahme.
+
+\vfill
+\flushright
+\footnotesize
+@kaiser1998; @kaiser2010
+
+# Testarten
+\vspace{1mm}
+\textcolor{darkblue}{Leistungstests}
+
+\small
+\setstretch{1.4}
+
+\textcolor{darkblue}{Beispiel: Konzentrationstest für Kinder (KoKi)}
+
+* Kinder markieren Hunde, die in Richtung einer Wurst blicken
+* Andere Bilder dienen als Ablenkreize (Distraktoren)
+* Auffällige „verzauberte“ Pferde erschweren das Übergehen von Ablenkreizen
+* Die Bearbeitung gibt Hinweise auf Konzentration, Tempo und Genauigkeit
+
+\vspace{3mm}
+```{r, echo = FALSE, out.width = "95%", fig.align="center"}
+knitr::include_graphics("1-Abbildungen/gdt-1-koki-item.png")
+```
+
+\vfill
+\flushright
+\footnotesize
+@schmidt-atzert2023
+
+# Testarten 
+
+\vspace{2mm}
+\textcolor{darkblue}{Projektive Verfahren}
+
+```{r, echo = FALSE, out.width = "90%", fig.align="center"}
+knitr::include_graphics("1-Abbildungen/gdt-1-projektive-verfahren.png")
+```
+
+\vspace{1mm}
+\flushright
+\footnotesize
+@rorschach1921, @revers1968
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+**Konstrukt und Items**
+
+Antwortformate
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Konstrukt und Items
+\vspace{1mm}
+\textcolor{darkblue}{Verwendungszweck und Zielgruppe}
+
+\small
+\setstretch{1.45}
+
+Vor dem Schreiben von Items stehen Entscheidungen über das Verfahren.
+
+* **Was** soll erfasst werden?
+* **Bei wem** soll das Verfahren eingesetzt werden?
+* **In welcher Situation** sollen die Antworten entstehen?
+* **Wozu** sollen die Ergebnisse verwendet werden?
+
+\textcolor{darkblue}{Durchgehendes Lehrbeispiel: Konzentration beim Lernen}
+
+Selbstbericht von Studierenden über Schwierigkeiten, ihre Aufmerksamkeit beim
+selbstständigen Lernen in der vergangenen Woche aufrechtzuerhalten.
+
+Die folgenden selbst entworfenen Items illustrieren Entwicklungsentscheidungen.
+Sie bilden kein geprüftes Testverfahren.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 1 bis 3
+
+# Konstrukt und Items
+\vspace{1mm}
+\textcolor{darkblue}{Vorhandene Verfahren prüfen}
+
+\small
+\setstretch{1.45}
+
+Eine Neuentwicklung beginnt mit der Suche nach vorhandenen Instrumenten.
+
+* Passt die Konstruktdefinition zur eigenen Fragestellung?
+* Stimmen Zielgruppe, Sprache und Anwendungssituation überein?
+* Eignen sich Inhalt und Bezugszeitraum für den vorgesehenen Zweck?
+* Sind Manual, Anwendungsvoraussetzungen und Nutzungsbedingungen zugänglich?
+* Welche Belege stützen die beabsichtigte Interpretation?
+
+\vspace{3mm}
+Ein bekannter Testname genügt als Begründung nicht. Auch bei gleichem Namen können
+Verfahren unterschiedliche Aspekte eines Merkmals erfassen.
+
+Die Entscheidung für Übernahme, Anpassung oder Neuentwicklung wird dokumentiert.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 1 und 2
+
+# Konstrukt und Items
+\vspace{1mm}
+\textcolor{darkblue}{Ein Konstrukt inhaltlich abgrenzen}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Arbeitsdefinition}
+
+Was gehört zu „Konzentration beim Lernen“, was gehört zu benachbarten Merkmalen?
+
+\begin{tabularx}{\textwidth}{@{}p{30mm}X@{}}
+\textbf{Einbeziehen} & Bei einer Lernaufgabe bleiben, Abschweifen bemerken, zur Aufgabe zurückfinden \\[2mm]
+\textbf{Abgrenzen} & Lernmotivation, Interesse am Fach, Vorwissen, Müdigkeit \\[2mm]
+\textbf{Kontext festlegen} & Selbstständiges Lernen in der vergangenen Woche
+\end{tabularx}
+
+\vspace{3mm}
+Benachbarte Merkmale können zusammenwirken, ohne dass sie dasselbe bedeuten.
+Eine breite Definition deckt mehr Aspekte ab, verlangt aber auch breitere Inhalte.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 1 und 3
+
+# Konstrukt und Items
+\vspace{1mm}
+\textcolor{darkblue}{Inhaltsbereiche vor einzelnen Formulierungen}
+
+\small
+\setstretch{1.45}
+
+Ein Inhaltsplan hält fest, welche Aspekte durch Items vertreten sein sollen.
+
+\vspace{2mm}
+\begin{tabularx}{\textwidth}{@{}p{30mm}X@{}}
+\textbf{Inhaltsbereich} & \textbf{Mögliche Beobachtung oder Itemidee} \\[2mm]
+Aufmerksamkeit halten & Gedanken schweifen während einer Lernaufgabe ab \\[2mm]
+Ablenkungen widerstehen & Umgebungsgeräusche lenken von der Lernaufgabe ab \\[2mm]
+Zur Aufgabe zurückfinden & Nach einer Unterbrechung fällt die Wiederaufnahme schwer
+\end{tabularx}
+
+\vspace{3mm}
+Der Plan hilft, Lücken und einseitige Schwerpunkte zu erkennen.
+Er bleibt während der Entwicklung überprüfbar und veränderbar.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 3
+
+# Konstrukt und Items
+\vspace{1mm}
+\textcolor{darkblue}{Quellen für einen ersten Itempool}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Theorie und vorhandene Forschung}
+
+Definitionen, Modelle und bestehende Verfahren zeigen mögliche Inhaltsbereiche.
+
+\textcolor{darkblue}{Beobachtung und fachliche Erfahrung}
+
+Konkrete Situationen machen typische Schwierigkeiten und Verhaltensweisen sichtbar.
+
+\textcolor{darkblue}{Gespräche mit der Zielgruppe}
+
+Interviews oder Gruppengespräche erschließen deren Sprache, Erfahrungen und Prioritäten.
+
+\vspace{2mm}
+Zunächst mehrere Formulierungen und unterschiedliche Aspekte sammeln. Anschließend
+prüfen Fachpersonen und Angehörige der Zielgruppe Relevanz, Verständlichkeit und Lücken.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 3
+
+# Konstrukt und Items
+\vspace{1mm}
+\textcolor{darkblue}{Verständliche Items formulieren}
+
+\small
+\setstretch{1.25}
+
+\textcolor{darkblue}{Problematische Formulierung}
+
+„Ich bin beim Lernen konzentriert und motiviert.“
+
+Die Aussage verbindet unterschiedliche Merkmale. Eine Person kann motiviert sein
+und sich trotzdem schlecht konzentrieren.
+
+\textcolor{darkblue}{Gezieltere Formulierung}
+
+„Wie häufig schweiften Ihre Gedanken beim Lernen in der vergangenen Woche ab?“
+
+\vspace{2mm}
+* Pro Item möglichst eine Frage stellen
+* Geläufige Wörter und einen passenden Bezugszeitraum verwenden
+* Mehrdeutigkeit, doppelte Verneinungen und wertende Vorgaben vermeiden
+* Die Antwortmöglichkeiten zusammen mit dem Itemstamm entwickeln
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 5
+
+# Konstrukt und Items
+\vspace{1mm}
+\textcolor{darkblue}{Übersetzung und kulturelle Anpassung}
+
+\small
+\setstretch{1.45}
+
+Eine wörtlich ähnliche Formulierung kann in einer anderen Sprache etwas anderes auslösen.
+
+* Bedeutet das Konstrukt im Anwendungskontext dasselbe?
+* Sind die beschriebenen Situationen in der Zielgruppe vertraut und relevant?
+* Haben Wörter und Antwortkategorien eine vergleichbare Bedeutung?
+* Verändert eine Anpassung den Inhalt des Items?
+
+\vspace{2mm}
+Übersetzungen vergleichen, Abweichungen gemeinsam klären und die Fassung mit der
+Zielgruppe erproben. Eine Rückübersetzung kann Unterschiede sichtbar machen,
+ersetzt aber keine Prüfung des tatsächlichen Verständnisses.
+
+Alle Anpassungen und ihre Begründungen werden dokumentiert.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 3
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+Konstrukt und Items
+
+**Antwortformate**
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Freie und gebundene Antworten}
+
+\small
+\setstretch{1.35}
+
+\textcolor{darkblue}{Freie Antwortformate}
+
+Die Person formuliert oder gestaltet ihre Antwort selbst.
+
+* Kurze Ergänzung, ausführliche Antwort, Zeichnung oder Handlung
+
+\textcolor{darkblue}{Gebundene Antwortformate}
+
+Die Person reagiert innerhalb vorgegebener Möglichkeiten.
+
+* **Ordnen:** Elemente zuordnen oder in eine Reihenfolge bringen
+* **Auswählen:** Eine oder mehrere Alternativen ankreuzen
+* **Beurteilen:** Die Ausprägung eines Merkmals einschätzen
+
+Itemstamm, Antwortformat und Instruktion bestimmen gemeinsam die Aufgabe.
+
+\vfill
+\flushright
+\footnotesize
+@pospeschill2022; @streiner2024
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Freie Antworten}
+
+\small
+\setstretch{1.3}
+
+\textcolor{darkblue}{Lehrbeispiel: Wissen über Tests}
+
+„Erläutern Sie an einem Beispiel, wodurch eine Testanweisung missverständlich werden kann.“
+
+\vspace{2mm}
+Antwort: \dotfill
+
+\vspace{3mm}
+\dotfill
+
+\vspace{3mm}
+* Eigene Formulierungen machen Gedankengänge sichtbar
+* Sprachliche Ausdrucksfähigkeit beeinflusst die Antwort
+* Die Auswertung braucht vorab festgelegte Kriterien und Beispielantworten
+
+Mögliches Auswertungskriterium: Die Antwort nennt eine Mehrdeutigkeit und erklärt,
+wie sie zu unterschiedlichen Bearbeitungen führt.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Ordnungsaufgaben}
+
+\small
+\setstretch{1.15}
+
+\textcolor{darkblue}{Zuordnen}
+
+Ordnen Sie jedem Beispiel das passende Verfahren zu:
+
+\begin{tabularx}{\textwidth}{@{}Xp{43mm}@{}}
+Bericht über die eigene Stimmung & Selbstbeurteilung \\[1mm]
+Markieren bestimmter Bilder & Leistungstest \\[1mm]
+Beurteilung durch eine Lehrperson & Fremdbeurteilung
+\end{tabularx}
+
+\footnotesize
+Hier bereits mit den zugehörigen Lösungen dargestellt.
+
+\small
+\textcolor{darkblue}{Rangordnen}
+
+„Ordnen Sie Ruhe, Interesse und Zeitdruck danach, wie stark sie Ihr Lernen beeinflussen.“
+
+Eine Rangfolge zeigt relative Prioritäten innerhalb dieser Auswahl. Sie verrät nicht,
+wie stark ein einzelner Einfluss insgesamt erlebt wird.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Auswahlaufgaben}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Einfachauswahl im Leistungstest}
+
+Welche Aussage beschreibt einen standardisierten Test am besten? Kreuzen Sie eine Antwort an.
+
+$\Box$ Jede Person erhält eine frei gewählte Instruktion.
+
+$\Box$ Durchführung und Auswertung folgen festgelegten Regeln.
+
+$\Box$ Jede Antwort wird ausschließlich intuitiv beurteilt.
+
+\vspace{3mm}
+Die zweite Alternative ist hier die richtige Antwort. Die übrigen Alternativen
+sind **Distraktoren** und sollen plausible Fehlvorstellungen aufgreifen.
+
+Bei einer Mehrfachauswahl muss die Instruktion ausdrücklich erklären, dass mehrere
+Alternativen zutreffen können.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Eindeutige und vollständige Antwortkategorien}
+
+\small
+\setstretch{1.2}
+
+\textcolor{darkblue}{Lehrbeispiel: Ort des Lernens}
+
+„Wo haben Sie gestern zuletzt gelernt?“
+
+$\Box$ zu Hause \quad $\Box$ Bibliothek \quad $\Box$ Universität
+
+\vspace{2mm}
+Probleme: Eine Universitätsbibliothek passt zu zwei Kategorien. Andere Lernorte
+und Tage ohne Lernen sind nicht berücksichtigt.
+
+\textcolor{darkblue}{Überarbeitete Möglichkeiten}
+
+$\Box$ zu Hause \quad $\Box$ in einer Bibliothek
+
+$\Box$ an einem anderen Ort \quad $\Box$ ich habe gestern nicht gelernt
+
+\vspace{2mm}
+**Disjunkt:** Die Kategorien überschneiden sich nicht.
+
+**Exhaustiv:** Die Kategorien decken die relevanten Antwortmöglichkeiten ab.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4 und 5
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Forced Choice bei Auswahlaufgaben}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Lehrbeispiel: Relative Präferenz}
+
+„Welche Aussage beschreibt Sie eher? Bitte wählen Sie eine der beiden Aussagen.“
+
+$\Box$ Beim Lernen suche ich gern den Austausch mit anderen.
+
+$\Box$ Beim Lernen arbeite ich gern für mich allein.
+
+\vspace{3mm}
+* Die Person muss zwischen vorgegebenen Alternativen wählen
+* Die Auswahl beschreibt eine relative Präferenz innerhalb dieses Paares
+* Beide Aussagen könnten auch zutreffen oder beide wenig passen
+
+Forced Choice ist kein allgemeiner Schutz vor absichtlicher Verfälschung.
+Ein Rating ohne Mittelkategorie ist eine andere Gestaltungsentscheidung.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Beurteilungsaufgaben: Was wird beurteilt?}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Häufigkeit}
+
+„Wie häufig schweiften Ihre Gedanken beim Lernen in der vergangenen Woche ab?“
+
+$\Box$ nie \quad $\Box$ selten \quad $\Box$ manchmal \quad $\Box$ häufig \quad $\Box$ sehr häufig
+
+\textcolor{darkblue}{Intensität}
+
+„Wie stark beeinträchtigten Umgebungsgeräusche heute Ihre Konzentration beim Lernen?“
+
+$\Box$ gar nicht \quad $\Box$ wenig \quad $\Box$ mäßig \quad $\Box$ stark \quad $\Box$ sehr stark
+
+\vspace{3mm}
+Häufigkeit und Intensität sind unterschiedliche Fragen. Die Beschriftung muss zur
+beabsichtigten Beurteilung passen.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Ratings mit und ohne Mittelkategorie}
+
+\small
+\setstretch{1.2}
+
+„Wie beurteilen Sie gemeinsames Lernen?“
+
+\textcolor{darkblue}{Mit inhaltlicher Mittelkategorie}
+
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}*{5}{>{\centering\arraybackslash}X}@{}}
+$\Box$ & $\Box$ & $\Box$ & $\Box$ & $\Box$ \\
+sehr negativ & eher negativ & weder negativ noch positiv & eher positiv & sehr positiv
+\end{tabularx}
+
+\small
+\textcolor{darkblue}{Ohne inhaltliche Mittelkategorie}
+
+\footnotesize
+$\Box$ sehr negativ \quad $\Box$ eher negativ \quad $\Box$ eher positiv \quad $\Box$ sehr positiv
+
+\small
+\vspace{2mm}
+Ohne Mitte wird eine Richtung verlangt („forciertes Rating“). Mit Mitte kann eine
+inhaltlich neutrale Position angegeben werden („unforciertes Rating“).
+
+Ob eine Mitte sinnvoll ist, hängt vom Inhalt ab. „Manchmal“ auf einer Häufigkeitsskala
+bezeichnet beispielsweise keine neutrale Einstellung.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Neutrale Antwort, Unwissen und Nichtanwendbarkeit}
+
+\small
+\setstretch{1.45}
+
+Unterschiedliche Gründe für eine Antwort brauchen unterscheidbare Möglichkeiten.
+
+\begin{tabularx}{\textwidth}{@{}p{36mm}X@{}}
+\textbf{Inhaltliche Mitte} & „Ich beurteile gemeinsames Lernen weder negativ noch positiv.“ \\[3mm]
+\textbf{Weiß nicht} & „Ich kann gemeinsames Lernen noch nicht beurteilen.“ \\[3mm]
+\textbf{Nicht anwendbar} & „Ich habe im erfragten Zeitraum nicht gelernt.“ \\[3mm]
+\textbf{Keine Angabe} & „Ich möchte diese Frage nicht beantworten.“
+\end{tabularx}
+
+\vspace{3mm}
+Zusätzliche Kategorien werden außerhalb der inhaltlichen Abstufung angeboten,
+wenn sie für die Frage benötigt werden. Ihre Bedeutung muss eindeutig sein.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4 und 7
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Polarität}
+
+\small
+\setstretch{1.15}
+
+\textcolor{darkblue}{Unipolare Antwortskala}
+
+Abstufungen von der Abwesenheit bis zur starken Ausprägung eines Merkmals.
+
+„Wie stark waren Sie beim Lernen angespannt?“
+
+$\Box$ gar nicht \quad $\Box$ wenig \quad $\Box$ mäßig \quad $\Box$ stark \quad $\Box$ sehr stark
+
+\textcolor{darkblue}{Bipolare Antwortskala}
+
+Abstufungen zwischen zwei inhaltlich entgegengesetzten Polen.
+
+„Wie beurteilen Sie die heutige Lernsitzung?“
+
+\footnotesize
+$\Box$ sehr negativ \quad $\Box$ eher negativ \quad $\Box$ neutral \quad $\Box$ eher positiv \quad $\Box$ sehr positiv
+
+\small
+Die Abwesenheit eines Merkmals ist nicht automatisch die Ausprägung seines Gegenteils.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Balance}
+
+\small
+\setstretch{1.3}
+
+„Wie beurteilen Sie die Lernbedingungen in der Bibliothek?“
+
+\textcolor{darkblue}{Einseitig abgestufte Bewertung}
+
+$\Box$ schlecht \quad $\Box$ gut \quad $\Box$ sehr gut \quad $\Box$ ausgezeichnet
+
+Positive Urteile lassen sich stärker differenzieren als negative Urteile.
+
+\textcolor{darkblue}{Symmetrisch abgestufte Bewertung}
+
+$\Box$ sehr schlecht \quad $\Box$ eher schlecht \quad $\Box$ eher gut \quad $\Box$ sehr gut
+
+\vspace{3mm}
+Die angebotenen Abstufungen beeinflussen, welche Unterschiede ausgedrückt werden können.
+Eine symmetrische Gestaltung passt zu einer beidseitigen Bewertung.
+
+Eine unipolare Intensitätsskala braucht dagegen keinen negativen Gegenpol.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Verankerung der Antwortkategorien}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Verbale Verankerung}
+
+Beschriftungen erklären, welche Bedeutung die einzelnen Kategorien haben.
+
+$\Box$ nie \quad $\Box$ selten \quad $\Box$ manchmal \quad $\Box$ häufig \quad $\Box$ sehr häufig
+
+\vspace{2mm}
+* Alle Kategorien beschriften, wenn dies ihre Unterscheidung erleichtert
+* Begriffe wie „häufig“ können zwischen Personen unterschiedlich verstanden werden
+* Der Itemstamm muss deutlich machen, auf welche Situationen sich die Antwort bezieht
+* Kategorien müssen zur Sprache und Erfahrung der Zielgruppe passen
+
+\vspace{2mm}
+Im BDI-II tragen ausformulierte Aussagen die Abstufung. Die Wahl der Anker gehört
+zur inhaltlichen Entwicklung des Instruments.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Visuelle Analogskala}
+
+\small
+\setstretch{1.3}
+
+„Wie schwer fiel es Ihnen heute, beim Lernen aufmerksam zu bleiben?“
+
+Markieren Sie die Stelle auf der Linie, die Ihre Einschätzung am besten beschreibt.
+
+\vspace{7mm}
+\noindent\makebox[\textwidth][s]{überhaupt nicht schwer\hfill äußerst schwer}
+
+\vspace{1mm}
+\noindent\rule{\textwidth}{0.5pt}
+
+\vspace{6mm}
+* Die Antwort erfolgt als Markierung zwischen beschrifteten Endpunkten
+* Die Bedeutung der Endpunkte muss verständlich sein
+* Bedienbarkeit und Darstellung sind auf Papier und am Bildschirm zu prüfen
+
+Auch Bildsymbole benötigen eine Verständnisprüfung. Ein Gesichtsausdruck kann etwa
+Stimmung ausdrücken, obwohl nach Schmerzen oder Anstrengung gefragt wird.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Ein passendes Antwortformat auswählen}
+
+\small
+\setstretch{1.45}
+
+Die Entscheidung richtet sich nach Inhalt, Zielgruppe und Anwendungssituation.
+
+* Können Personen die geforderte Abstufung sinnvoll unterscheiden?
+* Hilft eine freie Antwort dabei, unerwartete Erfahrungen sichtbar zu machen?
+* Erleichtern vorgegebene Möglichkeiten die Bearbeitung oder engen sie den Inhalt ein?
+* Können alle Personen die Darstellung sehen, lesen und bedienen?
+* Bleibt die Aufgabe bei einer mündlichen Durchführung verständlich?
+
+\vspace{3mm}
+Mehr Antwortmöglichkeiten liefern nicht automatisch bessere Auskünfte.
+Wiederkehrende Formate erleichtern die Bearbeitung, sofern sie zum jeweiligen Inhalt passen.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 4
+
+# Antwortformate
+\vspace{1mm}
+\textcolor{darkblue}{Antwortformate im Überblick}
+
+\small
+\setstretch{1.2}
+
+\begin{tabularx}{\textwidth}{@{}p{22mm}p{35mm}X@{}}
+\textbf{Format} & \textbf{Reaktion} & \textbf{Wichtige Entscheidung} \\[3mm]
+Freie Antwort & Selbst formulieren & Welche Auswertungskriterien gelten? \\[3mm]
+Zuordnung & Elemente verbinden & Ist die Zuordnung eindeutig? \\[3mm]
+Rangordnung & Reihenfolge bilden & Welche relative Priorität ist gefragt? \\[3mm]
+Auswahl & Alternativen wählen & Sind Einfach- oder Mehrfachantworten erlaubt? \\[3mm]
+Beurteilung & Ausprägung einschätzen & Sind Anker und Kategorien passend?
+\end{tabularx}
+
+\vspace{3mm}
+Die Qualität eines Formats zeigt sich auch daran, wie die Zielgruppe es tatsächlich verwendet.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 4
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+Konstrukt und Items
+
+Antwortformate
+
+**Antwortprozesse**
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Antwortprozesse
+\vspace{1mm}
+\textcolor{darkblue}{Von der Frage zur angekreuzten Antwort}
+
+\small
+\setstretch{1.6}
+
+Eine einfache Frage kann eine anspruchsvolle Aufgabe auslösen.
+
+1. **Verstehen:** Was meint die Frage mit „beim Lernen“?
+1. **Erinnern:** Welche Situationen aus der vergangenen Woche fallen mir ein?
+1. **Urteilen:** Wie fasse ich diese unterschiedlichen Situationen zusammen?
+1. **Zuordnen:** Passt meine Einschätzung eher zu „manchmal“ oder „häufig“?
+1. **Antwort bearbeiten:** Möchte ich diese Einschätzung tatsächlich mitteilen?
+
+\vspace{3mm}
+Bei jedem Schritt kann die Antwort vom Verständnis der Testentwickelnden abweichen.
+Die sichtbare Antwort verrät den zugrunde liegenden Gedankengang zunächst nicht.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 6
+
+# Antwortprozesse
+\vspace{1mm}
+\textcolor{darkblue}{Erinnern und Bezugszeiträume}
+
+\small
+\setstretch{1.45}
+
+Selbstberichte beruhen häufig auf einer Rekonstruktion vergangener Erfahrungen.
+
+* Auffällige und kürzlich erlebte Situationen fallen leichter ein
+* Ähnliche Ereignisse können zu einem allgemeinen Eindruck verschmelzen
+* Ereignisse außerhalb des Zeitraums können irrtümlich einbezogen werden
+* Ein zu kurzer Zeitraum kann wichtige, seltene Erfahrungen verfehlen
+
+\textcolor{darkblue}{Folgerung für die Entwicklung}
+
+Den Zeitraum passend zum Inhalt wählen, eindeutig benennen und im Pretest prüfen,
+welche Erlebnisse die Befragten tatsächlich heranziehen.
+
+Beim BDI-II bildet der festgelegte Zeitraum einen Teil der standardisierten Instruktion.
+Eine Änderung verändert die Aufgabe.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 6
+
+# Antwortprozesse
+\vspace{1mm}
+\textcolor{darkblue}{Soziale Erwünschtheit und absichtliche Darstellung}
+
+\small
+\setstretch{1.45}
+
+Menschen können ihre Antworten daran ausrichten, wie sie wahrgenommen werden möchten.
+
+* Sozial erwünschte Antworten können bewusst oder ohne bewusste Täuschungsabsicht entstehen
+* Je nach Situation kann eine besonders günstige oder ungünstige Darstellung erwünscht sein
+* Bewertungsangst und befürchtete Folgen beeinflussen die Auskunftsbereitschaft
+
+\textcolor{darkblue}{Gestaltungsmöglichkeiten}
+
+Wertende Formulierungen vermeiden, Zweck und Verwendung der Angaben erklären und
+einen angemessenen Rahmen für vertrauliche Antworten schaffen.
+
+Eine Zusicherung von Vertraulichkeit muss den tatsächlichen Bedingungen entsprechen.
+Auch verständliche und sachlich formulierte Items bleiben kontextabhängig.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 6
+
+# Antwortprozesse
+\vspace{1mm}
+\textcolor{darkblue}{Antworttendenzen}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Zustimmungstendenz (Akquieszenz)}
+
+Zustimmen, obwohl der Inhalt der Aussage dafür nicht ausschlaggebend ist.
+
+\textcolor{darkblue}{Tendenz zur Mitte oder zu extremen Kategorien}
+
+Bestimmte Positionen bevorzugen, teilweise unabhängig vom jeweiligen Inhalt.
+
+\vspace{2mm}
+Solche Muster können Antworten mitprägen. Eine einzelne mittlere oder extreme Antwort
+belegt aber noch keinen Antwortstil.
+
+\textcolor{darkblue}{Problem vermeintlich einfacher Lösungen}
+
+Verneinte oder gegensinnig formulierte Items können zusätzliche Verständnisprobleme
+schaffen. Ihr Einsatz muss inhaltlich begründet und erprobt werden.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 5 und 6
+
+# Antwortprozesse
+\vspace{1mm}
+\textcolor{darkblue}{Nachlassende Sorgfalt und Satisficing}
+
+\small
+\setstretch{1.45}
+
+Satisficing bezeichnet eine vereinfachte Bearbeitung, bei der eine gerade noch
+hinreichend erscheinende Antwort gewählt wird.
+
+* Fragen nur oberflächlich lesen
+* Die erste plausibel erscheinende Alternative wählen
+* Dieselbe Position wiederholt ankreuzen
+* Erinnerung und Abwägung abkürzen
+
+\vspace{2mm}
+Lange, unübersichtliche oder schwierige Fragebögen begünstigen solche Strategien.
+
+Kurze verständliche Aufgaben, ein übersichtliches Layout und ein angemessener Umfang
+erleichtern eine sorgfältige Bearbeitung. Auffällige Muster sind zunächst Anlass zur
+Prüfung und kein sicherer Beleg für Unaufmerksamkeit.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 6
+
+# Antwortprozesse
+\vspace{1mm}
+\textcolor{darkblue}{Kontext, Reihenfolge und Erhebungssituation}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Lehrbeispiel}
+
+Eine Frage zu Schwierigkeiten beim Lernen kann anders verstanden werden, wenn direkt
+zuvor Prüfungsangst oder direkt zuvor störende Umgebungsgeräusche angesprochen wurden.
+
+\vspace{2mm}
+* Vorherige Fragen können Erinnerungen und Vergleichsmaßstäbe aktivieren
+* Reihenfolge und Formulierung der Antwortmöglichkeiten lenken die Aufmerksamkeit
+* Die Anwesenheit anderer Personen kann die Antwortbereitschaft verändern
+* Papier, Bildschirm und Interview stellen unterschiedliche Anforderungen
+
+\vspace{2mm}
+Deshalb wird der Fragebogen im Zusammenhang erprobt. Eine gut verständliche Einzelfrage
+kann sich in einer ungünstigen Reihenfolge anders verhalten.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 6
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+Konstrukt und Items
+
+Antwortformate
+
+Antwortprozesse
+
+**Qualitative Erprobung**
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Qualitative Erprobung
+\vspace{1mm}
+\textcolor{darkblue}{Die Zielgruppe in die Entwicklung einbeziehen}
+
+\small
+\setstretch{1.45}
+
+Ein Pretest prüft, wie die vorgesehenen Befragten die Items tatsächlich bearbeiten.
+
+* Personen mit unterschiedlichen relevanten Erfahrungen und Sprachvoraussetzungen einbeziehen
+* Verständlichkeit, Relevanz und mögliche Belastungen erfragen
+* Schwierigkeiten mit Instruktion, Layout und Antwortformat beobachten
+* Unterschiedliche Deutungen und fehlende Antwortmöglichkeiten dokumentieren
+
+\vspace{2mm}
+Fachkolleginnen und Fachkollegen allein ersetzen die Zielgruppe nicht.
+
+Überarbeiten und erneut erproben, bis wesentliche bekannte Probleme behoben sind und
+weitere Gespräche keine neuen wichtigen Schwierigkeiten erkennen lassen.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 3 und 6
+
+# Qualitative Erprobung
+\vspace{1mm}
+\textcolor{darkblue}{Kognitive Interviews}
+
+\small
+\setstretch{1.25}
+
+\textcolor{darkblue}{Paraphrasieren}
+
+„Können Sie die Frage mit eigenen Worten wiedergeben?“
+
+\textcolor{darkblue}{Lautes Denken}
+
+„Beschreiben Sie bitte, woran Sie beim Beantworten gerade denken.“
+
+\textcolor{darkblue}{Gezieltes Nachfragen (Probing)}
+
+„Was bedeutet für Sie hier ,häufig‘?“
+
+„An welche Situationen haben Sie bei Ihrer Antwort gedacht?“
+
+\vspace{2mm}
+Die Fragen sollen das Verständnis sichtbar machen, ohne die beabsichtigte Antwort
+vorzugeben. Nachfragen können selbst die Bearbeitung verändern.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 6
+
+# Qualitative Erprobung
+\vspace{1mm}
+\textcolor{darkblue}{Vom beobachteten Problem zur Revision}
+
+\small
+\setstretch{1.15}
+
+\textcolor{darkblue}{Ausgangsitem}
+
+„Ich lerne regelmäßig und ohne Ablenkung.“
+
+\textcolor{darkblue}{Fiktive Rückmeldung im Pretest}
+
+„Ich lerne fast jeden Tag, werde aber dauernd unterbrochen. Was soll ich ankreuzen?“
+
+\textcolor{darkblue}{Entwicklungsentscheidung}
+
+Die Aussage verbindet Regelmäßigkeit und Ablenkung. Für unser Konstrukt wird gezielt
+das Abschweifen während des Lernens erfragt. Regelmäßigkeit gehört nicht zum Inhaltsplan.
+
+\textcolor{darkblue}{Erneute Erprobung}
+
+„Wie häufig schweiften Ihre Gedanken beim Lernen in der vergangenen Woche ab?“
+
+Prüfen, ob „Abschweifen“ verstanden wird und welche Situationen als Lernen gelten.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 5 und 6
+
+# Qualitative Erprobung
+\vspace{1mm}
+\textcolor{darkblue}{Items qualitativ auswählen}
+
+\small
+\setstretch{1.2}
+
+\begin{tabularx}{\textwidth}{@{}p{28mm}X@{}}
+\textbf{Prüffrage} & \textbf{Mögliche Konsequenz} \\[3mm]
+Inhaltlich relevant? & Unpassende Inhalte streichen oder die Definition überprüfen \\[3mm]
+Verständlich? & Mehrdeutige Wörter ersetzen und erneut erproben \\[3mm]
+Beantwortbar? & Zeitraum, Voraussetzungen oder Antwortmöglichkeiten anpassen \\[3mm]
+Unverzichtbarer Aspekt? & Lücken im Inhaltsplan durch neue Items schließen \\[3mm]
+Nur Wiederholung? & Redundanz verringern, ohne wichtige Unterschiede zu verlieren
+\end{tabularx}
+
+\vspace{3mm}
+Entscheidungen mit Rückmeldungen und Inhaltsplan begründen. Qualitative Erprobung
+ist ein Entwicklungsschritt und noch kein vollständiger Gütenachweis.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 5 und 6
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+Konstrukt und Items
+
+Antwortformate
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+**Zusammenstellung einer Skala**
+
+Testgütekriterien
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Zusammenstellung einer Skala
+\vspace{1mm}
+\textcolor{darkblue}{Von einzelnen Items zu einer Skala}
+
+\small
+\setstretch{1.45}
+
+Eine Skala fasst mehrere aufeinander bezogene Items zur Beschreibung eines Merkmals zusammen.
+
+* Jedes Item soll einen begründeten Beitrag zum vorgesehenen Inhalt leisten
+* Verschiedene Formulierungen können unterschiedliche Aspekte erschließen
+* Sehr ähnliche Items verengen den erfassten Inhalt möglicherweise auf einen Ausschnitt
+* Inhaltlich unterscheidbare Bereiche können getrennte Subskalen erfordern
+
+\vspace{2mm}
+Beim BDI-II beziehen sich die Items auf unterschiedliche depressive Beschwerden.
+Ihre gemeinsame Interpretation benötigt eine inhaltliche und empirische Begründung.
+
+Eine Sammlung passend klingender Fragen bildet noch nicht automatisch eine sinnvolle Skala.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 5 und 7
+
+# Zusammenstellung einer Skala
+\vspace{1mm}
+\textcolor{darkblue}{Skala und Index: unterschiedliche inhaltliche Logik}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Anzeichen eines gemeinsamen Merkmals}
+
+Mehrere Items sollen verschiedene Ausdrucksformen eines zugrunde liegenden Merkmals
+erfassen, etwa unterschiedliche Hinweise auf Konzentrationsprobleme.
+
+\textcolor{darkblue}{Zusammenstellung unterschiedlicher Einflüsse}
+
+Ein Index belastender Lebensereignisse sammelt beispielsweise Arbeitsplatzverlust,
+Trennung oder Umzug. Die Ereignisse können unabhängig voneinander auftreten und
+jeweils zur Belastung beitragen.
+
+\vspace{3mm}
+Die Auswahlregeln richten sich nach dieser inhaltlichen Logik. Ein eigenständiger,
+wichtiger Einfluss darf nicht allein deshalb fehlen, weil er anders ist als die übrigen Inhalte.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 5 und 7
+
+# Zusammenstellung einer Skala
+\vspace{1mm}
+\textcolor{darkblue}{Instruktion, Reihenfolge und Bearbeitungsaufwand}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Instruktion}
+
+Zweck, Bezugszeitraum und Vorgehen erklären. Angeben, ob eine oder mehrere Antworten
+zulässig sind und wie nicht anwendbare Fragen behandelt werden.
+
+\textcolor{darkblue}{Reihenfolge und Gestaltung}
+
+Verwandte Inhalte nachvollziehbar anordnen. Veränderungen des Antwortformats deutlich
+markieren und unbeabsichtigte Hinweise durch benachbarte Fragen prüfen.
+
+\textcolor{darkblue}{Belastung}
+
+Lesbarkeit, Länge, Wiederholungen und sensible Inhalte aus Sicht der Zielgruppe beurteilen.
+
+\vspace{2mm}
+Die endgültige Fassung einschließlich Instruktion und Layout nochmals als Ganzes erproben.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 6 und 7
+
+# Zusammenstellung einer Skala
+\vspace{1mm}
+\textcolor{darkblue}{Inhaltliche Gewichtung durch die Itemauswahl}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Lehrbeispiel}
+
+Ein Fragebogen enthält viele Varianten zum Abschweifen der Gedanken, aber nur eine
+Frage zur Wiederaufnahme nach einer Unterbrechung.
+
+Der erste Bereich prägt die Gesamtbeschreibung stärker, wenn alle Antworten in
+gleicher Weise berücksichtigt werden.
+
+\vspace{3mm}
+* Schon die Zusammenstellung legt inhaltliche Schwerpunkte fest
+* Ähnliche Items sind deshalb nicht beliebig austauschbare Ergänzungen
+* Die Verteilung der Inhalte sollte zum Konstrukt und zum Verwendungszweck passen
+* Entscheidungen über Subskalen und Auswertung müssen dazu stimmig sein
+
+Der Inhaltsplan hilft, unbeabsichtigte Schwerpunktsetzungen zu erkennen.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. Vgl. @streiner2024, Kap. 7
+
+# Zusammenstellung einer Skala
+\vspace{1mm}
+\textcolor{darkblue}{Fehlende Angaben und Grenzen der Interpretation}
+
+\small
+\setstretch{1.45}
+
+Eine unbeantwortete Frage kann unterschiedliche Gründe haben.
+
+* Übersehen oder nicht verstanden
+* Für die Person oder den Zeitraum nicht anwendbar
+* Nicht erinnerbar oder zu schwierig einzuschätzen
+* Bewusst nicht beantwortet
+
+\vspace{2mm}
+Fehlende Angaben dürfen nicht stillschweigend als Abwesenheit eines Merkmals gedeutet werden.
+Der Umgang damit wird vorab festgelegt und im Manual beschrieben.
+
+Für etablierte Verfahren wie den BDI-II gelten die Vorgaben des jeweiligen Manuals.
+Eigenmächtige Änderungen an Items, Antwortformaten oder Auswertungsregeln erfordern
+eine erneute Prüfung der Interpretation.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 7
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+Konstrukt und Items
+
+Antwortformate
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+**Testgütekriterien**
+
+Testtheorien
+
+Selbstkontrollfragen
+\vfill
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Qualität für eine bestimmte Anwendung}
+
+\small
+\setstretch{1.45}
+
+Gütekriterien begründen, ob die vorgesehenen Aussagen und Anwendungen tragfähig sind.
+
+\textcolor{darkblue}{Hauptgütekriterien}
+
+* **Objektivität:** Wie unabhängig ist das Ergebnis von den Untersuchenden?
+* **Reliabilität:** Wie zuverlässig wird das Merkmal erfasst?
+* **Validität:** Wie gut ist die beabsichtigte Interpretation begründet?
+
+\textcolor{darkblue}{Weitere Anforderungen}
+
+Normierung, Skalierung, Testökonomie, Nützlichkeit, Zumutbarkeit,
+Unverfälschbarkeit und Fairness.
+
+\vspace{2mm}
+Die Anforderungen beziehen sich auf eine Zielgruppe, einen Verwendungszweck und
+bestimmte Bedingungen. Ein Testname allein garantiert keine Qualität.
+
+\vfill
+\flushright
+\footnotesize
+@moosbrugger2012; @streiner2024
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Objektivität}
+
+\small
+\setstretch{1.3}
+
+Objektivität betrifft die Unabhängigkeit von durchführenden, auswertenden und
+interpretierenden Personen.
+
+\textcolor{darkblue}{Durchführungsobjektivität}
+
+Gleiche Instruktionen und festgelegte Rahmenbedingungen begrenzen den Einfluss der Testleitung.
+
+\textcolor{darkblue}{Auswertungsobjektivität}
+
+Eindeutige Regeln sollen bei derselben Bearbeitung zur selben Auswertung führen.
+Auch freie Antworten benötigen nachvollziehbare Beurteilungskriterien.
+
+\textcolor{darkblue}{Interpretationsobjektivität}
+
+Dokumentierte Interpretationsregeln begrenzen willkürliche Schlussfolgerungen.
+Sie müssen zum Anwendungsfall passen.
+
+\vfill
+\flushright
+\footnotesize
+@moosbrugger2012; @streiner2024
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Objektivität am Beispiel des BDI-II}
+
+\small
+\setstretch{1.25}
+
+\textcolor{darkblue}{Durchführung}
+
+Die standardisierte Instruktion einschließlich des Bezugszeitraums verwenden.
+Die Bedeutung der Aussagen nicht durch spontane Umformulierungen verändern.
+
+\textcolor{darkblue}{Auswertung}
+
+Die gewählten Antworten und Sonderfälle nach den Regeln des Manuals behandeln.
+Unklare Markierungen und fehlende Antworten nicht frei deuten.
+
+\textcolor{darkblue}{Interpretation}
+
+Die vorgesehenen Anwendungsmöglichkeiten und Grenzen berücksichtigen.
+Den Befund zusammen mit weiteren klinischen Informationen beurteilen.
+
+\vspace{2mm}
+Festgelegte Regeln erleichtern ein einheitliches Vorgehen. Sie ersetzen keine fachlich
+begründete Interpretation.
+
+\vfill
+\flushright
+\footnotesize
+@hautzinger2006; @moosbrugger2012
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Reliabilität}
+
+\small
+\setstretch{1.45}
+
+Reliabilität bezeichnet die Zuverlässigkeit einer Messung unter bestimmten Bedingungen.
+
+\textcolor{darkblue}{Leitfrage}
+
+Wie beständig ist die Erfassung, wenn das Merkmal und die relevanten Bedingungen gleich bleiben?
+
+\vspace{2mm}
+* Unklare Instruktionen können uneinheitliche Bearbeitungen hervorrufen
+* Zufällige Störungen können die Aufgabenleistung beeinflussen
+* Uneindeutige Auswertungsregeln können Unterschiede zwischen Beurteilenden erzeugen
+
+\vspace{2mm}
+Zuverlässigkeit ist graduell und situationsbezogen. Ein zuverlässig erfasstes Merkmal
+kann trotzdem am beabsichtigten Konstrukt vorbeigehen.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 2
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Zuverlässigkeit und tatsächliche Veränderung}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Beispiel: Wiederholte Anwendung des BDI-II}
+
+Eine Person berichtet zu zwei Zeitpunkten unterschiedliche Beschwerden.
+
+* Ihre Symptomatik kann sich tatsächlich verändert haben
+* Sie kann den Bezugszeitraum unterschiedlich verstanden haben
+* Die Erhebungssituation kann ihre Auskunftsbereitschaft beeinflusst haben
+
+\vspace{3mm}
+Eine veränderte Antwort ist deshalb nicht automatisch ein Zeichen unzuverlässiger Messung.
+
+Bei der Beurteilung der Zuverlässigkeit muss klar sein, welche Merkmale und Bedingungen
+als stabil vorausgesetzt werden dürfen. Bei aktuellen Zuständen kann echte Veränderung
+gerade der Gegenstand der Untersuchung sein.
+
+\vfill
+\flushright
+\footnotesize
+@hautzinger2006; @streiner2024
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Validität}
+
+\small
+\setstretch{1.45}
+
+Validität betrifft die Begründung einer bestimmten Interpretation der Testergebnisse
+für eine vorgesehene Verwendung.
+
+\textcolor{darkblue}{Leitfragen}
+
+* Welche Aussage über eine Person soll aus den Antworten folgen?
+* Welche theoretischen Annahmen und Befunde stützen diese Aussage?
+* Welche alternativen Erklärungen der Antworten müssen berücksichtigt werden?
+* Für welche Zielgruppen und Situationen liegen passende Belege vor?
+
+\vspace{3mm}
+Validierung ist eine fortlaufende Prüfung. Die Übertragung auf einen neuen Zweck,
+eine andere Sprache oder eine neue Zielgruppe braucht eine eigene Begründung.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 2
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Inhalt und Antwortprozesse als Evidenz}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Inhaltliche Angemessenheit (Inhaltsvalidität)}
+
+Passen die Items zur Definition? Sind wichtige Bereiche vertreten? Enthält der Test
+inhaltlich fremde oder für die Zielgruppe irrelevante Aufgaben?
+
+\textcolor{darkblue}{Tatsächliche Antwortprozesse}
+
+Verstehen die Personen die Fragen wie beabsichtigt? Ziehen sie passende Erfahrungen
+heran? Können sie ihre Einschätzung mit den Kategorien ausdrücken?
+
+\vspace{3mm}
+Inhaltspläne, fachliche Beurteilungen und kognitive Interviews liefern dafür wichtige Hinweise.
+
+Dass ein Test auf den ersten Blick passend wirkt (**Augenschein**), ersetzt diese
+Prüfungen und weitere Validitätsbelege nicht.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 2, 3 und 6
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Bezüge zu anderen Beobachtungen}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Theoriebezogene Erwartungen (Konstruktvalidität)}
+
+Die Konstruktdefinition legt nahe, mit welchen anderen Beobachtungen ein Ergebnis
+inhaltlich zusammenpassen sollte und von welchen Merkmalen es unterscheidbar sein muss.
+
+\textcolor{darkblue}{Außenkriterien (Kriteriumsvalidität)}
+
+Bei einer konkreten Anwendung wird zusätzlich geprüft, ob die Ergebnisse zu einem
+relevanten Außenkriterium passen, etwa einer unabhängig vorgenommenen fachlichen Beurteilung.
+
+\vspace{3mm}
+Auch das Außenkriterium kann unvollständig oder fehlerhaft sein. Es ist nicht automatisch
+ein unfehlbarer Maßstab.
+
+Verschiedene Belege tragen gemeinsam zur Validitätsargumentation bei.
+
+\vfill
+\flushright
+\footnotesize
+Vgl. @streiner2024, Kap. 2
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Validitätsargumentation am Beispiel des BDI-II}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Beabsichtigte Aussage}
+
+Die Antworten geben Hinweise auf die Schwere depressiver Symptomatik im festgelegten Zeitraum.
+
+\textcolor{darkblue}{Zu prüfende Begründungen}
+
+* Bilden die Items die relevanten Beschwerden angemessen ab?
+* Versteht die Zielgruppe die Aussagen und den Bezugszeitraum?
+* Passen die Antworten zu weiteren Informationen über die depressive Symptomatik?
+* Lassen sich depressive Beschwerden von anderen möglichen Ursachen einzelner Symptome abgrenzen?
+
+\vspace{2mm}
+Schlafprobleme und Müdigkeit können unterschiedliche Ursachen haben. Eine einzelne
+Antwort begründet daher noch keine Diagnose.
+
+\vfill
+\flushright
+\footnotesize
+@hautzinger2006; @streiner2024
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Zusammenspiel der Hauptgütekriterien}
+
+\small
+\setstretch{1.45}
+
+\textcolor{darkblue}{Standardisiert, aber am Ziel vorbei}
+
+Ein sehr einheitlich durchgeführter Wissenstest kann vor allem Fachsprache verlangen,
+obwohl eigentlich fachliches Verständnis erfasst werden soll.
+
+\textcolor{darkblue}{Zuverlässig, aber inhaltlich zu eng}
+
+Viele sehr ähnliche Fragen zu Müdigkeit können einen stabilen Eindruck liefern,
+ohne das gesamte Spektrum depressiver Beschwerden abzudecken.
+
+\vspace{3mm}
+Objektivität unterstützt eine verlässliche Untersuchung. Sie garantiert weder
+Reliabilität noch Validität.
+
+Zuverlässigkeit unterstützt begründete Aussagen. Welche Aussage zulässig ist, muss
+zusätzlich inhaltlich und empirisch geprüft werden.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. @moosbrugger2012; @streiner2024
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Weitere Anforderungen: Vergleich und praktischer Nutzen}
+
+\small
+\setstretch{1.15}
+
+\textcolor{darkblue}{Normierung}
+
+Geeignete Vergleichsdaten helfen, ein Ergebnis einzuordnen. Die Bezugsgruppe muss
+zur getesteten Person und zum Zweck der Einordnung passen.
+
+\textcolor{darkblue}{Skalierung}
+
+Die Auswertungsregeln sollen die inhaltlich gemeinten Unterschiede angemessen abbilden.
+
+\textcolor{darkblue}{Testökonomie}
+
+Der Erkenntnisgewinn soll in einem angemessenen Verhältnis zu Zeit, Aufwand und Kosten stehen.
+
+\textcolor{darkblue}{Nützlichkeit}
+
+Die Informationen sollen für die vorgesehene Entscheidung relevant sein und eine
+Anwendung mit günstigem Verhältnis von Nutzen und Schaden ermöglichen.
+
+\vfill
+\flushright
+\footnotesize
+@moosbrugger2012; @streiner2024
+
+# Testgütekriterien
+\vspace{1mm}
+\textcolor{darkblue}{Weitere Anforderungen: Die Perspektive der Testpersonen}
+
+\small
+\setstretch{1.3}
+
+\textcolor{darkblue}{Zumutbarkeit}
+
+Zeitliche, psychische und körperliche Belastungen sollen dem Zweck angemessen sein.
+
+\textcolor{darkblue}{Unverfälschbarkeit}
+
+Gezielte Selbstdarstellung soll die beabsichtigte Aussage möglichst wenig beeinträchtigen.
+Vollständige Unverfälschbarkeit lässt sich bei Selbstberichten kaum voraussetzen.
+
+\textcolor{darkblue}{Fairness}
+
+Sprachliche, kulturelle oder andere für das Zielmerkmal irrelevante Anforderungen
+sollen keine systematische Benachteiligung erzeugen.
+
+\vspace{2mm}
+Beispiel: Ein Konzentrationstest soll nicht vor allem das Verständnis einer unnötig
+komplizierten Instruktion erfassen. Gleiche Bedingungen allein gewährleisten noch keine Fairness.
+
+\vfill
+\flushright
+\footnotesize
+Eigene Lehrbeispiele. @moosbrugger2012; @streiner2024
+
+# 
+\vfill
+\setstretch{2.2}
+\large
+Definition
+
+Testarten
+
+Antwortformate
+
+Testgütekriterien
+
+**Testtheorien**
+
+Selbstkontrollfragen
+\vfill
+
+
+# Testtheorien
+\setstretch{1.8}
+\vspace{1mm}
+\textcolor{darkblue}{Testtheorien}
+\small
+
+* Probabilistische Modelle zum Zusammenhang von zu erfassendem Konstrukt und Testverhalten
+* Grundlage der Fragebogendatenanalyse
+
+\normalsize
+\textcolor{darkblue}{Hauptrichtungen}
+\small
+
+* Klassische Testtheorie
+* Faktoranalyse 
+* Item-Response-Theorien
+
+\normalsize
+\textcolor{darkblue}{Besonderheiten}
+\small
+
+* Klassische Testtheorie und Faktoranalyse sind Modelle mit latenten Zufallsvariablen
+* Item-Response-Theorien können latente Zufallsvariablen enthalten
+
+# Testtheorien
+\vspace{2mm}
+\textcolor{darkblue}{Standarddatenstruktur der Testtheorie und Fragebogendatenanalyse}
+
+\small
+Beobachtung von Werten von $m$ Items von $n$ Testpersonen
+
+\tiny 
+\setstretch{0.9}
+```{r, echo = F}
+set.seed(1)                                                                     # Reproduzierbarkeit
+n               = 20                                                            # Anzahl Testpersonen
+m               = 10                                                            # Anzahl Items
+Y               = matrix(sample(1:5, n*m, replace = TRUE), nrow = n, ncol = m)  # Daten
+D               = as.data.frame(Y)                                              # Dataframe
+items           = paste0("Item ", 1:m)                                          # Itemlabel
+colnames(D)     = items                                                         # Itemlabels    
+D               = cbind(Testperson = paste0(1:n), D)                            # Testpersonenlabel    
+knitr::kable(                                                                   # Table    
+D,                                                                              # Daten    
+align           = "c",                                                          # Orientierung    
+row.names       = FALSE,                                                        # keine Zeilennamen
+caption         = "20 Testpersonen × 10 Items (Antwortskala 1–5)")              # Caption    
+``` 
+\normalsize
+
+# Testtheorien
+\vspace{2mm}
+\textcolor{darkblue}{Standardproblem der Testtheorie und Fragebogendatenanalyse}
+
+\small
+\vspace{1mm}
+Erklärung der beobachteten Itemkorrelationsstruktur durch latente Variablen 
+\vspace{2mm}
+
+```{r, echo = F, eval = F}
+library(plot.matrix)                                                            # Visualisierung
+set.seed(42)                                                                    # Reproduzierbarkeit
+n           = 200                                                               # Anzahl Datenpunkte
+x1          = rnorm(n)                                                          # Item 1 
+x2          = 0.5*x1 + rnorm(n, sd = 0.8)                                       # Item 2
+x3          = -0.3*x1 + 0.6*x2 + rnorm(n, sd = 0.7)                             # Item 3 
+x4          = 0.4*x2 - 0.2*x3 + rnorm(n, sd = 0.9)                              # Item 4        
+D           = data.frame(x1, x2, x3, x4)                                        # Dataframe
+R           = round(cor(D), 2)                                                  # Korrelationsmatrix
+colnames(R) = paste("Item", 1:4)                                                # Columnnames
+rownames(R) = paste("Item", 1:4)                                                # Rownames
+
+library(plot.matrix)
+pdf(
+file        ="1-Abbildungen/gdt-1-kovarianzmatrix.pdf",
+width       = 5,
+height      = 5)
+
+par(
+family      = "sans",
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 1)
+
+# use gray.colors for grayscale
+plot(
+R,
+col         = gray.colors,  
+key         = NULL,
+cex         = 0.8,
+polygon.key = NULL,
+axis.key    = NULL,
+xlab        = "",
+ylab        = "",
+main        = "")
+dev.off()
+```
+```{r, echo = FALSE, out.width = "100%", fig.align="center"}
+knitr::include_graphics("1-Abbildungen/gdt-1-standardproblem-der-testtheorie.pdf")
+```
+
+# Testtheorien
+\vspace{1mm}
+\textcolor{darkblue}{Klassische Testtheorie}
+\setstretch{1.8}
+\small
+
+* Probabilistisches Modell von Item- und Summenwerten eines Tests
+* Zentrale Beiträge von @gulliksen1950 und @lord1968
+* Latentes Variablenmodell der Form
+\begin{equation}
+\mbox{Beobachteter Wert} = \mbox{Wahrer Wert} + \mbox{Fehler}
+\end{equation}
+* Meist als "Messfehlermodell" beschrieben
+* Erklärung von Antwortmustern durch einen nicht direkt observierbaren True Score
+* Modellierung von intra- und interindividueller Variabilität
+* Grundlage der quantitativen Reliabilitätsbeurteilung 
+
+\flushright
+$\Rightarrow$ Paralleltest-Reliabilität, Cronbach's $\alpha$, Spearman-Brown-Formel
+
+
+# Testtheorien
+\vspace{1mm}
+\textcolor{darkblue}{Faktoranalysen}
+\setstretch{2}
+\small
+
+* Probabilistisches Modell der Kovarianzeigenschaften von Items eines Tests
+* Zentrale Beiträge von @spearman1904, @hotelling1933, @lawley1940
+* Latentes Variablenmodell der Form
+\begin{align}
+\begin{split}
+\mbox{Latente Faktorwerte}  & = \mbox{Latenter Fehler}                                             \\
+\mbox{Beobachtete Werte}    & = \mbox{Ladungen} \cdot \mbox{Latente Faktorwerte} + \mbox{Fehler}  \\
+\end{split}
+\end{align}
+* Erklärung von Antwortmustern durch wenige nicht direkt observierbare Faktoren
+* Exploratorische und konfirmatorische Varianten
+
+\flushright
+$\Rightarrow$ Bestimmung der faktoriellen Validität 
+
+# Testtheorien
+\vspace{1mm}
+\textcolor{darkblue}{Item-Response-Theorien}
+\setstretch{2}
+\small
+
+* Probabilistisches Modell von Itemantworten als Funktion latenter Zustände
+* Zentrale Beiträge von @rasch1960, @novick1966, @lord1980 
+* Verschiedene mathematische Formen der logistischen Regression
+\begin{equation}
+\mathbb{P}\left(\mbox{Itemantwort}\right) = f\left(\mbox{Testparameter, Personenparameter}\right)                                      
+\end{equation}
+* Einsatz und Entwicklung insbesondere bei Leistungstests 
+* Zur Bedeutung im klinischen Kontext, siehe @reise2009
+
+\flushright
+$\Rightarrow$ Anwendung insbesondere im Bereich des adaptiven Leistungstestens
+
+# 
+\vfill
+\setstretch{1.25}
+\normalsize
+Definition
+
+Testarten
+
+Konstrukt und Items
+
+Antwortformate
+
+Antwortprozesse
+
+Qualitative Erprobung
+
+Zusammenstellung einer Skala
+
+Testgütekriterien
+
+Testtheorien
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen
+\vspace{1mm}
+\textcolor{darkblue}{Grundlagen, Testarten und Itementwicklung}
+
+\footnotesize
+\setstretch{1.25}
+
+1. Wie unterscheiden sich ein Konstrukt und ein beobachtbarer Indikator?
+1. Nennen Sie die typischen Material- und Durchführungsbestandteile eines Tests.
+1. Erläutern Sie die Begriffe Item, Itemstamm und Antwortformat.
+1. Wie unterscheiden sich ein psychologischer Test und ein Experiment?
+1. Vergleichen Sie Selbstbericht, Leistungstest und projektives Verfahren.
+1. Was soll der BDI-II erfassen und auf welchen Zeitraum beziehen sich die Antworten?
+1. Warum begründet ein BDI-II-Ergebnis allein noch keine klinische Diagnose?
+1. Erläutern Sie am GEB den Unterschied zwischen beobachtetem Indikator und theoretischer Interpretation.
+1. Welche Entscheidungen zu Zweck und Zielgruppe stehen vor der Itementwicklung?
+1. Nach welchen Kriterien würden Sie ein vorhandenes Verfahren für eine Anwendung auswählen?
+1. Wie grenzen Sie Konzentration beim Lernen von Motivation und Vorwissen ab?
+1. Welche Funktion hat ein Inhaltsplan bei der Entwicklung eines Itempools?
+1. Nennen Sie unterschiedliche Quellen für Items und den Beitrag der Zielgruppe.
+1. Überarbeiten Sie ein Item, das zwei verschiedene Merkmale zugleich anspricht.
+1. Warum reicht eine wörtliche Übersetzung für die Übertragung eines Tests nicht aus?
+
+\vfill
+\flushright
+\footnotesize
+
+
+# Selbstkontrollfragen
+\vspace{1mm}
+\textcolor{darkblue}{Antwortformate, Antwortprozesse und Erprobung}
+
+\footnotesize
+\setstretch{1.25}
+
+1. Vergleichen Sie freie Antworten, Zuordnungen, Rangordnungen, Auswahl- und Beurteilungsaufgaben.
+1. Welche Regeln brauchen die Auswertung freier Antworten und die Gestaltung von Auswahlaufgaben?
+1. Erläutern Sie Distraktoren, Disjunktheit und Exhaustivität an eigenen Beispielen.
+1. Worin unterscheiden sich eine Forced-Choice-Auswahl und ein Rating ohne Mittelkategorie?
+1. Unterscheiden Sie inhaltliche Mitte, „weiß nicht“, „nicht anwendbar“ und „keine Angabe“.
+1. Erläutern Sie Polarität, Balance und Verankerung einer Antwortskala.
+1. Welche Überlegungen bestimmen die Wahl eines Antwortformats?
+1. Beschreiben Sie die Schritte von der gelesenen Frage bis zur mitgeteilten Antwort.
+1. Wie können Erinnerungsprozesse und der Bezugszeitraum einen Selbstbericht beeinflussen?
+1. Erläutern Sie soziale Erwünschtheit, Akquieszenz und Satisficing.
+1. Warum lösen verneinte Items das Problem von Antworttendenzen nicht automatisch?
+1. Wie können Reihenfolge und Erhebungssituation das Beantworten beeinflussen?
+1. Erläutern Sie Paraphrasieren, lautes Denken und Probing.
+1. Wie gelangen Sie von einer Rückmeldung im Pretest zu einer begründeten Revision?
+1. Nach welchen inhaltlichen Kriterien behalten, überarbeiten oder streichen Sie ein Item?
+
+\vfill
+\flushright
+\footnotesize
+
+
+# Selbstkontrollfragen
+\vspace{1mm}
+\textcolor{darkblue}{Skalen, Gütekriterien und Testtheorien}
+
+\footnotesize
+\setstretch{1.25}
+
+1. Wie unterscheiden sich eine Skala mit Anzeichen eines Merkmals und ein Index verschiedener Einflüsse?
+1. Wie kann die Itemauswahl unbeabsichtigt inhaltliche Schwerpunkte setzen?
+1. Warum erproben Sie die vollständige Skala nochmals einschließlich Instruktion und Layout?
+1. Welche Gründe können fehlende Antworten haben und warum brauchen sie vorab festgelegte Regeln?
+1. Erläutern Sie Objektivität, Reliabilität und Validität anhand des BDI-II.
+1. Warum ist tatsächliche Veränderung von unzuverlässiger Messung zu unterscheiden?
+1. Welche Belege stützen eine Validitätsargumentation und warum genügt der Augenschein nicht?
+1. Nennen und erläutern Sie die sieben weiteren Gütekriterien dieser Veranstaltung.
+1. Nennen Sie die drei Hauptrichtungen der Testtheorie.
+1. Erläutern Sie die Standarddatenstruktur der Testtheorie und Fragebogendatenanalyse.
+1. Erläutern Sie das Standardproblem der Testtheorie und Fragebogendatenanalyse.
+1. Erläutern Sie den Begriff der Klassischen Testtheorie.
+1. Erläutern Sie den Begriff der Faktoranalyse.
+1. Erläutern Sie den Begriff der Item-Response-Theorien.
+
+\vfill
+\flushright
+\footnotesize
+
+
+# Referenzen {.allowframebreaks}
+\footnotesize   
