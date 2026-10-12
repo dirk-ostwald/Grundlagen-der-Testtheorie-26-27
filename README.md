@@ -12,9 +12,12 @@ außer einem PDF-Betrachter erforderlich.
 | Thema | Folien | Quellen und Abbildungen |
 | --- | --- | --- |
 | 0 · Formalia | [PDF](0-Formalia/0-Formalia.pdf) | [Ordner](0-Formalia/) |
+| 1 · Psychologische Tests | [PDF](1-Psychologische-Tests/1-Psychologische-Tests.pdf) | [Ordner](1-Psychologische-Tests/) |
 
-Das begleitende [Vorlesungsskript](Skript/README.md) bindet die PDWP-Kapitel
-900–905 ein. Einrichtung und PDF-Erzeugung sind im Skriptordner beschrieben.
+Das begleitende [Vorlesungsskript als PDF](Skript/_book/Skript-Grundlagen-der-Testtheorie.pdf)
+enthält aktuell das Kapitel **Psychologische Tests**, Vorbemerkungen und
+Referenzen. Hinweise zu Quellen, Einrichtung und PDF-Erzeugung stehen in der
+[Skript-README](Skript/README.md).
 
 Weitere Informationen zur Veranstaltung stehen auf der
 [Kurswebseite](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre/Lehre/Wintersemester+2027/Grundlagen+der+Testtheorie.html).

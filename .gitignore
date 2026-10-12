@@ -43,8 +43,5 @@ inspect.json
 # Kein Bestandteil der veröffentlichten Lehrmaterialien
 /1-Naturwissenschaft/
 
-# Bis zur Veröffentlichung nur lokal vorhalten
-/1-Psychologische-Tests/
-
 /.quarto/
 **/*.quarto_ipynb

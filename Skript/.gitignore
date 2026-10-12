@@ -4,6 +4,7 @@ _book/*
 .quarto/
 *.tex
 !_titelseite.tex
+!_abbildungen.tex
 **/*.quarto_ipynb
 *.log
 tmp/

@@ -5,15 +5,9 @@ Otto-von-Guericke-Universität Magdeburg im Wintersemester 2026/2027.
 
 ## Inhalte und Quellen
 
-Enthalten sind Vorbemerkungen, die Originalkapitel 900–905 aus dem PDWP-Lehrbuch
-in aufsteigender Reihenfolge und die Referenzen:
-
-- 900: Psychometrische Verfahren
-- 901: Psychologische Tests
-- 902: Repräsentationstheorie
-- 903: Klassische Testtheorie
-- 904: Faktorenanalyse
-- 905: Item-Response-Theorie
+Die aktuelle [PDF-Ausgabe](_book/Skript-Grundlagen-der-Testtheorie.pdf) enthält
+Vorbemerkungen, das Kapitel **Psychologische Tests** (PDWP-Kapitel 901) und die
+Referenzen. Weitere Kapitel werden im Verlauf der Veranstaltung ergänzt.
 
 Die Verzeichnis-Junction `_src` bindet das Quellprojekt unter
 `C:\Home\Home\pdwp-online\dirk-ostwald.github.io` direkt ein. Kapitel,
@@ -28,7 +22,7 @@ oder `quarto render --to pdf` im Skriptordner erzeugt die PDF unter
 XeLaTeX. Die `.Rprofile` verwendet die R-Paketumgebung des PDWP-Quellprojekts.
 
 `_quarto.yml` bestimmt Titel und Kapitelreihenfolge. `_titelseite.tex` passt
-Cover und Fußzeile an. Logo und Gestaltung entsprechen den anderen
+Cover und Fußzeile an. `_abbildungen.tex` steuert die Abbildungsplatzierung. Logo und Gestaltung entsprechen den anderen
 Vorlesungsskripten. Die Lizenz ist CC BY 4.0.
 
 `_verweise.lua` leitet Verweise auf Inhalte außerhalb der Kapitelauswahl zu den

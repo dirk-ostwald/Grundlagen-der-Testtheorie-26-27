@@ -1,0 +1,152 @@
+Traurigkeit
+A. Ich bin nicht traurig
+B. Ich bin oft traurig
+C. Ich bin ständig traurig
+D. Ich bin so traurig oder unglücklich, dass ich es nicht aushalte
+ANSWER: A
+
+Pessimismus
+A. Ich sehe nicht mutlos in die Zukunft
+B. Ich sehe mutloser in die Zukunft als sonst
+C. Ich bin mutlos und erwarte nicht, dass meine Situation besser wird
+D. Ich glaube, dass meine Zukunft hoffnungslos ist und nur noch schlechter wird
+ANSWER: A
+
+Versagensgefühle
+A. Ich fühle mich nicht als Versager
+B. Ich habe häufiger Versagensgefühle als sonst
+C. Wenn ich zurückblicke, sehe ich viele Fehlschläge
+D. Ich habe das Gefühl, als Mensch ein völliger Versager zu sein
+ANSWER: A
+
+Verlust von Freude
+A. Ich kann die Dinge genauso gut genießen wie früher
+B. Ich kann die Dinge nicht mehr so genießen wie früher
+C. Dinge, die mir früher Freude gemacht haben, kann ich kaum mehr genießen
+D. Dinge, die mir früher Freude gemacht haben, kann ich überhaupt nicht mehr genießen
+ANSWER: A
+
+Schuldgefühle
+A. Ich habe keine besonderen Schuldgefühle
+B. Ich habe oft Schuldgefühle wegen Dingen, die ich getan habe oder hätte tun sollen
+C. Ich habe die meiste Zeit Schuldgefühle
+D. Ich habe ständig Schuldgefühle
+ANSWER: A
+
+Bestrafungsgefühle
+A. Ich habe nicht das Gefühl, für etwas bestraft zu sein
+B. Ich habe das Gefühl, vielleicht bestraft zu werden
+C. Ich erwarte, bestraft zu werden
+D. Ich habe das Gefühl, bestraft zu sein
+ANSWER: A
+
+Selbstablehnung
+A. Ich halte von mir genauso viel wie immer
+B. Ich habe Vertrauen in mich verloren
+C. Ich bin von mir enttäuscht
+D. Ich lehne mich völlig ab
+ANSWER: A
+
+Selbstvorwürfe
+A. Ich kritisiere oder tadle mich nicht mehr als sonst
+B. Ich bin mir gegenüber kritischer als sonst
+C. Ich kritisiere mich für all meine Mängel
+D. Ich gebe mir die Schuld für alles Schlimme, was passiert
+ANSWER: A
+
+Selbstmordgedanken
+A. Ich denke nicht daran, mir etwas anzutun
+B. Ich denke manchmal an Selbstmord, aber ich würde es nicht tun
+C. Ich möchte mich am liebsten umbringen
+D. Ich würde mich umbringen, wenn ich die Gelegenheit dazu hätte
+ANSWER: A
+
+Weinen
+A. Ich weine nicht öfter als früher
+B. Ich weine jetzt mehr als früher
+C. Ich weine beim geringsten Anlass
+D. Ich möchte gern weinen, aber ich kann nicht
+ANSWER: A
+
+Unruhe
+A. Ich bin nicht unruhiger als sonst
+B. Ich bin unruhiger als sonst
+C. Ich bin so unruhig, dass es mir schwer fällt, stillzusitzen
+D. Ich bin so unruhig, dass ich mich ständig bewegen oder etwas tun muss
+ANSWER: A
+
+Interessenverlust
+A. Ich habe das Interesse an anderen Menschen oder an Tätigkeiten nicht verloren
+B. Ich habe weniger Interesse an anderen Menschen oder an Dingen als sonst
+C. Ich habe das Interesse an anderen Menschen oder an Dingen zum größten Teil verloren
+D. Es fällt mir schwer, mich überhaupt für irgendetwas zu interessieren
+ANSWER: A
+
+Entschlussunfähigkeit
+A. Ich bin so entschlussfreudig wie immer
+B. Es fällt mir schwerer als sonst, Entscheidungen zu treffen
+C. Es fällt mir sehr viel schwerer als sonst, Entscheidungen zu treffen
+D. Ich habe Mühe, überhaupt Entscheidungen zu treffen
+ANSWER: A
+
+Wertlosigkeit
+A. Ich fühle mich nicht wertlos
+B. Ich halte mich für weniger wertvoll und nützlich als sonst
+C. Verglichen mit anderen Menschen fühle ich mich viel weniger wert
+D. Ich fühle mich völlig wertlos
+ANSWER: A
+
+Energieverlust
+A. Ich habe so viel Energie wie immer
+B. Ich habe weniger Energie als sonst
+C. Ich habe so wenig Energie, dass ich kaum noch etwas schaffe
+D. Ich habe keine Energie mehr, um überhaupt noch etwas zu tun
+ANSWER: A
+
+Reizbarkeit
+A. Ich bin nicht reizbarer als sonst
+B. Ich bin reizbarer als sonst
+C. Ich bin viel reizbarer als sonst
+D. Ich fühle mich dauernd gereizt
+ANSWER: A
+
+Veränderungen des Appetits
+A. Mein Appetit hat sich nicht verändert
+B. Mein Appetit ist etwas schlechter als sonst
+C. Mein Appetit ist etwas größer als sonst
+D. Mein Appetit ist viel schlechter als sonst
+E. Mein Appetit ist viel größer als sonst
+F. Ich habe überhaupt keinen Appetit
+G. Ich habe ständig Heißhunger
+ANSWER: A
+
+Konzentrationsschwierigkeiten
+A. Ich kann mich so gut konzentrieren wie immer
+B. Ich kann mich nicht mehr so gut konzentrieren wie sonst
+C. Es fällt mir schwer, mich längere Zeit auf irgendetwas zu konzentrieren
+D. Ich kann mich überhaupt nicht mehr konzentrieren
+ANSWER: A
+
+Ermüdung oder Erschöpfung
+A. Ich fühle mich nicht müder oder erschöpfter als sonst
+B. Ich werde schneller müde oder erschöpft als sonst
+C. Für viele Dinge, die ich üblicherweise tue, bin ich zu müde oder erschöpft
+D. Ich bin so müde oder erschöpft, dass ich fast nichts mehr tun kann
+ANSWER: A
+
+Verlust an sexuellem Interesse
+A. Mein Interesse an Sexualität hat sich in letzter Zeit nicht verändert
+B. Ich interessiere mich weniger für Sexualität als früher
+C. Ich interessiere mich jetzt viel weniger für Sexualität
+D. Ich habe das Interesse an Sexualität völlig verloren
+ANSWER: A
+
+Veränderungen der Schlafgewohnheiten
+A. Meine Schlafgewohnheiten haben sich nicht verändert
+B. Ich schlafe etwas mehr als sonst
+C. Ich schlafe etwas weniger als sonst
+D. Ich schlafe viel mehr als sonst
+E. Ich schlafe viel weniger als sonst
+F. Ich schlafe fast den ganzen Tag
+G. Ich wache 1-2 Stunden früher auf als gewöhnlich und kann nicht mehr einschlafen
+ANSWER: A
