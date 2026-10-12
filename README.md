@@ -18,15 +18,6 @@ Ein begleitendes Vorlesungsskript wird später im Ordner `Skript` ergänzt.
 Weitere Informationen zur Veranstaltung stehen auf der
 [Kurswebseite](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre/Lehre/Wintersemester+2027/Grundlagen+der+Testtheorie.html).
 
-## Materialien bearbeiten
-
-Die Folienquellen sind Quarto-Dokumente (`.qmd`) mit R-Code und Beamer-Ausgabe.
-Zum Rendern werden Quarto, R mit den verwendeten Paketen und eine
-LaTeX-Installation benötigt. Aus dem jeweiligen Themenordner beispielsweise:
-
-```sh
-quarto render 0-Formalia.qmd
-```
 
 ## Korrekturen und Beiträge
 
