@@ -1,0 +1,38 @@
+project:
+  type: book
+  output-dir: _book
+
+lang: de
+csl: https://www.zotero.org/styles/apa
+bibliography: _src/Referenzen.bib
+filters:
+  - _verweise.lua
+  - quarto
+
+book:
+  title: "Grundlagen der Testtheorie"
+  subtitle: "Vorlesungsskript"
+  author:
+    - name: Dirk Ostwald
+      affiliation: Otto-von-Guericke-Universität Magdeburg
+  date: today
+  output-file: Skript-Grundlagen-der-Testtheorie
+  chapters:
+    - index.qmd
+    - _src/_part_9/901-Psychologische-Tests.qmd
+    - _src/Referenzen.qmd
+
+format:
+  pdf:
+    pdf-engine: xelatex
+    documentclass: scrreprt
+    toc-depth: 2
+    # Verknüpfte Quelldateien beim Aufräumen erhalten.
+    keep-tex: true
+    latex-clean: false
+    code-line-numbers: false
+    latex-tinytex: false
+    include-in-header:
+      - _src/_texheader.tex
+      - _titelseite.tex
+      - _abbildungen.tex

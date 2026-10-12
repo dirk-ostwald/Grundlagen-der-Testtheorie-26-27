@@ -27,7 +27,8 @@ Neue Fremdinhalte benötigen nachvollziehbare Quellen- und Lizenzangaben.
 
 ## Skript
 
-Der Ordner `Skript` wird später ergänzt. Die Ignore-Regel für `Skript/_src/`
-ist für externe Skriptquellen bereits vorbereitet; andere Skriptdateien bleiben
-versionierbar. Der Ordner `1-Naturwissenschaft` bleibt außerhalb der
-Versionsverwaltung.
+Der Ordner `Skript` enthält ein Quarto-Buchprojekt für die PDWP-Kapitel 900–905.
+Die Junction `Skript/_src/` verweist auf das externe PDWP-Quellprojekt und ist
+von der Versionsverwaltung ausgeschlossen. Änderungen an den verknüpften
+Kapiteln erfolgen unmittelbar im Quellprojekt. Einrichtung und Rendern sind in
+[Skript/README.md](Skript/README.md) beschrieben.

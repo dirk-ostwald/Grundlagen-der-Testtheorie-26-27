@@ -13,7 +13,8 @@ außer einem PDF-Betrachter erforderlich.
 | --- | --- | --- |
 | 0 · Formalia | [PDF](0-Formalia/0-Formalia.pdf) | [Ordner](0-Formalia/) |
 
-Ein begleitendes Vorlesungsskript wird später im Ordner `Skript` ergänzt.
+Das begleitende [Vorlesungsskript](Skript/README.md) bindet die PDWP-Kapitel
+900–905 ein. Einrichtung und PDF-Erzeugung sind im Skriptordner beschrieben.
 
 Weitere Informationen zur Veranstaltung stehen auf der
 [Kurswebseite](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre/Lehre/Wintersemester+2027/Grundlagen+der+Testtheorie.html).
