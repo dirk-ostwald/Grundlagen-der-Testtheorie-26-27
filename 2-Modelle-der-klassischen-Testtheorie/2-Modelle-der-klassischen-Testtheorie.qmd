@@ -1,0 +1,2662 @@
+---
+fontsize: 8pt
+format:
+    beamer:
+        include-in-header: "2-Header.tex"
+        colorlinks: true
+        urlcolor: darkblue
+        linkcolor: darkblue
+        citecolor: darkblue
+bibliography: 2-Referenzen.bib
+---
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("2-Abbildungen/gdt-2-otto.png")
+```
+
+\vspace{2mm}
+
+\Huge
+Grundlagen der Testtheorie
+\vspace{6mm}
+
+\large
+BSc Psychologie WiSe 2026/27
+
+\normalsize
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+
+#  {.plain}
+```{=latex}
+\vfill
+\begin{center}
+\huge
+(2) Modelle der klassischen Testtheorie
+\end{center}
+\vfill
+```
+
+#
+\vfill
+\setstretch{2.6}
+\large
+Grundlagen
+
+Das Modell multipler Testmessungen
+
+Das Modell paralleler Testmessungen
+
+Modelle kongenerischer Testmessungen
+
+Selbstkontrollfragen
+\vfill
+
+#
+\vfill
+\setstretch{2.6}
+\large
+**Grundlagen**
+
+Das Modell multipler Testmessungen
+
+Das Modell paralleler Testmessungen
+
+Modelle kongenerischer Testmessungen
+
+Selbstkontrollfragen
+\vfill
+
+
+
+# Grundlagen
+
+\vspace{1mm}
+Klassische Testtheorie
+\vspace{-1mm}
+\small
+\setstretch{1.6}
+
+* Probabilistisches Modell von Item- und Summenwerten eines psychologischen
+  Tests
+* Zentrale Beiträge von @gulliksen1950 und @lord1968
+* Modell der Form
+\begin{equation}
+\mbox{Beobachteter Wert} = \mbox{Wahrer Wert} + \mbox{Messfehler}
+\end{equation}
+* Häufig als \glqq Messfehlertheorie\grqq{} beschrieben
+* Erklärung von Antwortmustern durch einen nicht-direkt observierbaren \glqq
+  wahren Wert\grqq{}
+* Im Gegensatz zum ALM wird auch der \glqq wahre Wert\grqq{} als Zufallsvariable
+  modelliert
+* Meist verteilungsfrei und mit einem Fokus auf Erwartungswerten und
+  (Ko)Varianzen formuliert
+* Modellierung von intra- und interindividueller Variabilität
+* Spezialfall des faktoranalytischen Modells, enger Bezug zu
+  Linear-Mixed-Effects-Modellen
+* Grundlage der Schätzung von Reliabilität und interner Konsistenz
+  psychologischer Tests
+
+\flushright
+$\Rightarrow$ Retest-Reliabilität, Cronbach's $\alpha$, Spearman-Brown-Formel
+
+
+# Grundlagen
+
+\vspace{2mm}
+Standarddatenstruktur der Testtheorie und Fragebogendatenanalyse
+
+\small
+Beobachtung von Werten von $m$ Testmessungen von $n$ Testpersonen
+
+\tiny
+\setstretch{0.9}
+```{r, echo = F}
+set.seed(1)                                                                     # Reproduzierbarkeit
+n               = 20                                                            # Anzahl Testpersonen
+m               = 4                                                             # Anzahl Items
+Y               = matrix(sample(10:50, n*m, replace = TRUE), nrow = n, ncol = m)# Daten
+D               = as.data.frame(Y)                                              # Dataframe
+items           = paste0("Testmessung ", 1:m)                                   # Itemlabel
+colnames(D)     = items                                                         # Itemlabels
+D               = cbind(Testperson = paste0(1:n), D)                            # Testpersonenlabel
+knitr::kable(                                                                   # Table
+D,                                                                              # Daten
+align           = "c",                                                          # Orientierung
+row.names       = FALSE,                                                        # keine Zeilennamen
+caption         = "20 Testpersonen × 4 Testmessungen")                          # Caption
+```
+\normalsize
+
+# Grundlagen
+
+\footnotesize
+\begin{definition}[Wahrer Wert, beobachteter Wert und Messfehler]
+\justifying
+Für $i = 1,...,n$ und $j = 1,...,m$ ist der \textit{wahre Wert (True score)}
+einer Testperson $i$ für eine Testmessung $j$ als Zufallsvariable $\tau_{ij}$
+modelliert.
+Der \textit{beobachtete Wert (observed score)} wird durch die Zufallsvariable
+$y_{ij}$ modelliert. Die gemeinsame Verteilung des wahren Werts und des
+beobachteten Werts erfülle $\mbb{E}(y_{ij}|\tau_{ij}) = \tau_{ij}$.
+Bedingt auf $\tau_{ij} = t_{ij}$ gilt damit
+\begin{equation}
+\mbb{E}(y_{ij}|\tau_{ij} = t_{ij}) = t_{ij}.
+\end{equation}
+Der \textit{Messfehler} einer Testperson für diese Testmessung ist definiert als
+die Zufallsvariable
+\begin{equation}
+\eps_{ij} := y_{ij} - \tau_{ij}.
+\end{equation}
+\end{definition}
+
+Bemerkungen
+
+* Modellformulierung in Anlehnung an  @novick1966 und @lord1968.
+* Eine *Testmessung* mag aus einem Item oder der Summe mehrerer Items bestehen.
+* Erst im $m$-Komponentenmodell werden wir *Itemscores* und *Summenscores*
+  unterscheiden.
+* Man beachte, dass $\tau_{ij}, y_{ij}$ und $\eps_{ij}$ Zufallsvariablen sind
+* Man beachte, dass $t_{ij} \in \mbb{R}$ eine Konstante ist.
+* Die implizit vorhandene bedingte Verteilung $\mbb{P}(y_{ij}|\tau_{ij} =
+  t_{ij})$ wird *Propensitätsverteilung* genannt.
+* Die Propensitätsverteilung modelliert intraindividuelle Variabilität
+  beobachteter Werte bei festem wahren Wert.
+* Die klassische Ausgangsdefinition findet sich weiterhin in vielen Lehrbüchern
+  zur Testtheorie
+
+# Grundlagen
+\footnotesize
+\begin{definition}[Bedingter Erwartungswert]
+\justifying
+Gegeben sei ein Zufallsvektor $x := (x_1,x_2)$ mit Ergebnisraum
+$X := X_1 \times X_2$, WMF oder WDF $p(\mrm{x}_1,\mrm{x}_2)$
+und bedingter WMF oder WDF $p(\mrm{x}_1|\mrm{x}_2)$ für alle
+$\mrm{x}_2 \in X_2$ mit $p_{x_2}(\mrm{x}_2)>0$.
+Dann ist der \textit{bedingte Erwartungswert} von $x_1$ gegeben $x_2 =
+\mrm{x}_2$ definiert als
+\begin{itemize}
+\item  $\mbb{E}(x_1|x_2 = \mrm{x}_2) := \sum_{\mrm{x}_1 \in X_1}\mrm{x}_1p(\mrm{x}_1|\mrm{x}_2)$, wenn $x$ ein diskreter Zufallsvektor ist.
+\item  $\mbb{E}(x_1|x_2 = \mrm{x}_2) := \int_{X_1}\mrm{x}_1p(\mrm{x}_1|\mrm{x}_2)\,d\mrm{x}_1$, wenn $x$ ein kontinuierlicher Zufallsvektor ist.
+\end{itemize}
+\end{definition}
+
+Bemerkungen
+\vspace{-1mm}
+
+* Dabei bezeichnet $p_{x_2}$ die marginale WMF beziehungsweise WDF von $x_2$.
+* Man vergegenwärtige sich die Definitionen von bedingter Verteilung und
+  Erwartungswert.
+* Der bedingte Erwartungswert ist der Erwartungswert einer Zufallsvariablen in
+  einer bedingten Verteilung.
+* Obige Definition definiert den bedingten Erwartungswert für einen festen Wert
+  $\mrm{x}_2$ von $x_2$.
+* Bei einem festen Wert $\mrm{x}_2$ von $x_2$ ist
+  $\mbb{E}(x_1|x_2 = \mrm{x}_2)$ damit ein fester Wert.
+* Allgemein ist $\mbb{E}(x_1|x_2)$ allerdings eine Zufallsvariable, da $x_2$
+  eine Zufallsvariable ist.
+* Analog definiert man bedingte Varianzen, bedingte Kovarianzen und bedingte
+  Korrelationen.
+* Bedingte Kovarianzen und bedingte Korrelationen waren im Kontext partieller
+  Korrelationen Thema.
+
+# Grundlagen
+
+\small
+Bedingter Erwartungswert - Beispiel
+\footnotesize
+
+Für einen zweidimensionalen Zufallsvektor $x:= (x_1,x_2)$, der Werte in
+$X := X_1 \times X_2$ mit $X_1 := \{1,2,3,4\}$
+und $X_2 = \{1,2,3\}$ annehme, seien bedingte WMFen für $p(\mrm{x}_1|\mrm{x}_2)$
+wie folgt gegeben:
+
+\begin{table}
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{c|ccc}
+$p(\mrm{x}_1|\mrm{x}_2)$       & $\mrm{x}_2 = 1$      & $\mrm{x}_2 = 2$     & $\mrm{x}_2 = 3$     \\\hline
+$p(\mrm{x}_1 = 1|\mrm{x}_2)$   & $\frac{1}{4}$  & $\frac{1}{3}$ & $0$           \\
+$p(\mrm{x}_1 = 2|\mrm{x}_2)$   & $0$            & $\frac{2}{3}$ & $\frac{1}{3}$ \\
+$p(\mrm{x}_1 = 3|\mrm{x}_2)$   & $\frac{1}{2}$  & $0$           & $\frac{1}{3}$ \\
+$p(\mrm{x}_1 = 4|\mrm{x}_2)$   & $\frac{1}{4}$  & $0$           & $\frac{1}{3}$ \\
+\end{tabular}
+\end{center}
+\end{table}
+
+
+Dann ergeben sich die bedingten Erwartungswerte
+\begin{align}
+\begin{split}
+\mbb{E}(x_1|x_2 = 1)
+&
+= \sum_{\mrm{x}_1 \in X_1}\mrm{x}_1p(\mrm{x}_1|\mrm{x}_2 = 1)
+= 1 \cdot \frac{1}{4} + 2 \cdot 0 + 3 \cdot \frac{1}{2} + 4 \cdot \frac{1}{4}
+= \frac{11}{4}
+\\
+\mbb{E}(x_1|x_2 = 2)
+&
+= \sum_{\mrm{x}_1 \in X_1}\mrm{x}_1p(\mrm{x}_1|\mrm{x}_2 = 2)
+= 1 \cdot \frac{1}{3} + 2 \cdot \frac{2}{3} + 3 \cdot 0 + 4 \cdot 0
+= \frac{5}{3}
+\\
+\mbb{E}(x_1|x_2 = 3)
+&
+= \sum_{\mrm{x}_1 \in X_1}\mrm{x}_1p(\mrm{x}_1|\mrm{x}_2 = 3)
+= 1 \cdot 0 + 2 \cdot \frac{1}{3} + 3 \cdot \frac{1}{3} + 4 \cdot \frac{1}{3}
+= \frac{9}{3}.
+\end{split}
+\end{align}
+
+# Grundlagen
+\footnotesize
+Motivation der klassischen Ausgangsdefinition nach @novick1966 und @lord1968
+
+* @novick1966 und @lord1968 wollten sich einer Diskussion zur Interpretation des
+  wahren Werts entziehen.
+Hätten sie den wahren Wert einer Testperson als Realisierung einer latenten
+Zufallsvariablen definiert,
+so hätten sie sich der Frage stellen müssen, wie diese latente Variable zu
+interpretieren sei.
+Anstelle einer Diskussion zur metaphysischen Bedeutung der Zufallsvariable
+$\tau_{ij}$ haben sie eine
+operationalistische Definition des wahren Werts versucht, die auf beobachtbaren
+Größen basiert.
+Dabei ist die Kernidee, dass der wahre Wert einer Testperson für eine
+Testmessung der
+\glqq Durchschnitt der beobachteten Werte\grqq{} einer Testperson über \glqq wiederholte Testmessungen unter identischen Bedingungen\grqq{} ist.
+
+Zur Bedeutung des wahren Werts zitieren @lord1968, S. 29 - 30 @lazarsfeld1959:
+
+* \glqq Angenommen, wir fragen eine Testperson, Herrn Brown, wiederholt, ob er
+  die Vereinten Nationen befürwortet. Nehmen wir weiter an, dass wir ihm nach
+  jeder Frage \glq das Gehirn waschen\grq{} und ihm dann dieselbe Frage erneut
+  stellen. Da Herr Brown unsicher ist, wie er zu den Vereinten Nationen steht,
+  wird er manchmal eine befürwortende und manchmal eine ablehnende Antwort
+  geben. Nachdem wir dieses Verfahren viele Male durchgeführt haben, berechnen
+  wir anschließend den Anteil der Male, in denen Herr Brown die Vereinten
+  Nationen befürwortet hat.\grqq{}
+
+Diese Proportion wollen @novick1966 und @lord1968 dann als wahren Wert
+verstehen.
+
+# Grundlagen
+
+\footnotesize
+Probleme der klassischen Ausgangsdefinition nach @novick1966 und @lord1968
+
+* Eine anti-metaphysische Grundhaltung ist nicht durchhaltbar: zum einen handelt
+es sich bei der \glqq wiederholten Testmessung unter identischen
+Bedingungen\grqq{} um ein
+idealisiertes, in der Realität nicht durchführbares Gedankenexperiment. Zum
+anderen definieren @novick1966 und @lord1968 den wahren Wert auch gerade nicht
+als (endlichen) Mittelwert einer Messreihe, sondern als idealisierten
+Erwartungswert
+einer Zufallsvariablen. Als operationalistische Definition überzeugt die
+klassische
+Ausgangsdefinition nicht.
+
+* Die klassische Ausgangsdefinition hat die Entwicklung einer
+  Standardmessfehlertheorie,
+wie sie beispielsweise das allgemeine lineare Modell für die Analyse von Tests
+und Fragebögen darstellt, aber beträchtlich erschwert. Es werden keine Fehler
+angenommen, sondern diese
+ergeben sich als Differenz wahrer und beobachteter Werte. Diese, gegenüber den
+Standardtheorien \glqq umgekehrt\grqq{} aufgezogene Theorie mag einer der Gründe
+sein, warum
+die klassische Testtheorie bis heute lediglich in der Psychologie und wenig
+darüber hinaus von Bedeutung ist.
+
+* In der Benennung der impliziten Verteilung $\mbb{P}(y_{ij}|\tau_{ij} =
+  t_{ij})$
+als *Propensitätsverteilung* klingt die Propensitätsinterpretation von
+Wahrscheinlichkeiten
+als kausal bedingte \glqq Verwirklichungstendenzen\grqq{}, die, im Gegensatz zur
+frequentistischen Interpretation, auch im Einzelfall Sinn ergeben, an.
+Allerdings unterstellen
+Propensitätsverteilungen kausale Prozesse, die in der Regel nicht spezifiziert
+und damit auch nicht beobachtbar sind, und führen damit letztlich auch wieder
+auf
+metaphysische Aussagen (vgl. @borsboom2009).
+
+# Grundlagen
+\footnotesize
+\setstretch{1.6}
+
+Charakter der im Folgenden gewählten Formalisierung der klassischen Testtheorie
+
+* Ansatz des modell-basierten Realismus zur Modellierung eines $n \times m$
+  Datensatzes.
+* Moderne Formulierung als Modell mit latenten (nicht-direkt beobachteten)
+  Zufallsvariablen
+* Explizite Nutzung von $\mbb{E}(y_{ij}|\tau_{ij} = t_{ij}) = t_{ij}$ in
+  Beweisen.
+* Ähnliche Darstellung z.B. in @foster2020
+* Wir setzen durchgängig voraus, dass die  wahren und beobachteten Werte endliche zweite Momente besitzen
+* Damit existieren auch die Erwartungswerte, Varianzen und Kovarianzen der Messfehler.
+
+\vspace{-1mm}
+Überblick
+\vspace{-1mm}
+
+(1) Formulierung des *Modells multipler Testmessungen*
+(2) Formulierung des *Vereinfachten Modells der klassischen Testtheorie*
+(3) Eigenschaften des Modells multipler Testmessungen *bezüglich einer
+Testmessung*
+(4) Eigenschaften des Modells multipler Testmessungen *bezüglich zweier
+Testmessungen*
+(5) Formulierung des *Modells paralleler Testmessungen*
+(6) Formulierung des *Modells kongenerischer Testmessungen*
+
+
+#
+\vfill
+\setstretch{2.6}
+\large
+Grundlagen
+
+**Das Modell multipler Testmessungen**
+
+Das Modell paralleler Testmessungen
+
+Modelle kongenerischer Testmessungen
+
+Selbstkontrollfragen
+\vfill
+
+
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\begin{definition}[Modell multipler Testmessungen]
+\justifying
+Für $i = 1,...,n$ und $j = 1,...,m$ seien $\tau_{ij}$ eine Zufallsvariable, die
+den \textit{wahren Wert} der $i$ten Testperson in der $j$ten Testmessung
+modelliere,
+und $y_{ij}$ eine Zufallsvariable, die den \textit{beobachteten Wert} der $i$ten
+Testperson
+in der $j$ten Testmessung modelliere. Dann nennen wir die gemeinsame Verteilung
+der
+$\tau_{ij}$ und $y_{ij}$ mit der Faktorisierungseigenschaft
+\begin{equation}
+\mbb{P}\left(\tau_{11},y_{11},...,\tau_{nm},y_{nm}\right)
+:= \prod_{i=1}^n \left(
+\mbb{P}(\tau_{i1},...,\tau_{im})
+\prod_{j=1}^m \mbb{P}(y_{ij}|\tau_{ij})
+\right)
+\end{equation}
+das \textit{Modell multipler Testmessungen}, wenn gilt, dass
+\begin{equation}
+\mbb{P}(\tau_{11},...,\tau_{1m})\prod_{j=1}^m \mbb{P}(y_{1j}|\tau_{1j}) = \cdots =
+\mbb{P}(\tau_{n1},...,\tau_{nm})\prod_{j=1}^m \mbb{P}(y_{nj}|\tau_{nj}).
+\end{equation}
+Außerdem gelte $\mbb{E}(y_{ij}|\tau_{ij}) = \tau_{ij}$ für alle
+$i = 1,...,n$ und $j = 1,...,m$.
+\end{definition}
+
+
+# Das Modell multipler Testmessungen
+\vspace{2mm}
+\footnotesize
+Bemerkungen
+\vspace{-1mm}
+\setstretch{1.15}
+
+* Das Modell macht keine speziellen parametrischen Verteilungsannahmen.
+* Die gemeinsame Verteilung der $\tau_{ij}, y_{ij}$ faktorisiert über
+  Testpersonen $i = 1,...,n$.
+* $\Leftrightarrow$ Unabhängkeitsannahme über Testpersonen hinsichtlich wahrer
+  und beobachteter Werte
+* Für $i = 1,...,n$ faktorisiert die gemeinsame Verteilung der
+  $\tau_{i1},...,\tau_{im}$ über  $j = 1,...,m$ nicht immer.
+* $\Leftrightarrow$ Die wahren Werte einer Testperson können zusammenhängen
+  (Parallelität, $\tau$-Äquivalenz, ...,)
+* Für jedes $i = 1,...,n$ sind die beobachteten Werte $y_{i1},...,y_{im}$
+  bedingt unabhängig gegeben den Vektor der wahren Werte
+  $(\tau_{i1},...,\tau_{im})$.
+* Die bedingte Verteilung von $y_{ij}$ gegeben alle wahren Werte hängt nur von
+  $\tau_{ij}$ ab.
+* Ohne diese Konditionierung können die beobachteten Werte verschiedener
+  Testmessungen statistisch zusammenhängen, weil ihre wahren Werte
+  zusammenhängen können.
+* Die Marginalverteilungen $\mbb{P}(\tau_{i1},...,\tau_{im})\prod_{j=1}^m
+  \mbb{P}(y_{ij}|\tau_{ij})$ sind identisch für $i = 1,...,n$.
+* $\Leftrightarrow$ Die Daten einer Testperson werden als unabhängig realisiert
+  aus einer \glqq Populationsverteilung\grqq{}
+\begin{equation}
+\mbb{P}(\tau_{\bullet 1},...,\tau_{\bullet m})\prod_{j=1}^m \mbb{P}(y_{\bullet j}|\tau_{\bullet j}).
+\end{equation}
+* Das $\bullet$ Subskript soll hier die Unspezifität bezüglich einer Testperson
+  symbolisieren.
+* Für \underline{eine} Testmessung, also für  $m := 1$, gilt nach Definition des
+  Modells multipler Testmessungen
+\begin{equation}
+\mbb{P}\left(\tau_{11},y_{11},...,\tau_{n1},y_{n1}\right)
+:= \prod_{i=1}^n \mbb{P}(\tau_{i1}, y_{i1})
+ = \prod_{i=1}^n \mbb{P}(\tau_{i1})\mbb{P}(y_{i1}|\tau_{i1}).
+\end{equation}
+* Dabei sind die gemeinsamen Marginalverteilungen $\mbb{P}(\tau_{i1}, y_{i1})$
+  nach Definition identisch.
+* Bei $m := 1$ entsprechen die wahren und beobachteten Werte also unabhängigen
+  Realisierungen aus
+\begin{equation}
+\mbb{P}(\tau_{\bullet 1})\mbb{P}(y_{\bullet 1}|\tau_{\bullet 1})
+\end{equation}
+* Verzichtet man auf die Subskripte $\bullet 1$, so gelangt man zum
+  *Vereinfachten Modell der klassischen Testtheorie*.
+
+# Das Modell multipler Testmessungen
+
+\footnotesize
+\begin{definition}[Vereinfachtes Modell der klassischen Testtheorie]
+\justifying
+$\tau$ sei eine Zufallsvariable, die die Verteilung der \textit{wahren Werte} zu
+einer Testmessung in einer Population beschreibe, und $y$ sei eine
+Zufallsvariable,
+die die Verteilung der \textit{beobachteten Werte} dieser Testmessung
+beschreibe.
+Dann heißt die gemeinsame Verteilung von $\tau$ und $y$,
+\begin{equation}
+\mbb{P}\left(\tau,y\right)
+= \mbb{P}(\tau)\mbb{P}(y|\tau)
+\end{equation}
+das \textit{vereinfachte Modell der klassischen Testtheorie}.
+Dabei gelte $\mbb{E}(y|\tau) = \tau$.
+\end{definition}
+
+\footnotesize
+Bemerkungen
+
+* Gegenüber dem Modell multipler Testmessungen treten weniger Zufallsvariablen
+  und Indizes auf.
+* Die Redundanz der Gleichheit vieler Verteilungen im Modell multipler
+  Testmessungen tritt nicht auf.
+* $n$ beobachtete Testwerte werden als Teilbeobachtungen von Ziehungen aus
+  $\mbb{P}\left(\tau,y\right)$ gedacht.
+* Für die Unabhängigkeit über Testpersonen mag man auch schreiben
+\begin{equation}
+(\tau_1,y_1), ...,(\tau_n,y_n) \sim \mbb{P}(\tau,y).
+\end{equation}
+* Die obige Notation ist analog zu beispielsweise der wohlbekannten Schreibweise
+\begin{equation}
+y_1,...,y_n \sim N(\mu,\sigma^2).
+\end{equation}
+
+
+# Das Modell multipler Testmessungen
+
+\footnotesize
+* Ein Beispieldatensatz für $n = 5$ Testpersonen bei einer Testmessung ist etwa
+
+\begin{center}
+\begin{tabular}{c|cc}
+$i$     & $\tau_i$ & $y_i$  \\\hline
+1       & 15        & 13    \\
+2       & 46        & 48    \\
+3       & 13        & 10    \\
+4       & 41        & 43    \\
+5       & 34        & 32    \\
+\end{tabular}
+\end{center}
+
+\setstretch{2.6}
+* Die $\tau_i$ Werte sind dabei \glqq virtuell\grqq{}, also im Modell
+  simulierbar, aber in der Anwendung nicht vorhanden.
+* Viele wichtige Eigenschaften des Modells multipler Testmessungen ergeben sich
+  schon basierend auf $\mbb{P}\left(\tau,y\right)$.
+* Das Modell sieht einfacher zu handhaben aus als das Modell multipler
+  Testmessungen
+* Man findet das Vereinfachte Modell der klassischen Testtheorie oft in
+  Lehrbüchern.
+* Aber: Wenn mehrere Personen und mehrere Testmessungen ins Spiel kommen, wird
+  unklar, wovon die Rede ist.
+* Aber: Schätzer der Modellparameter beruhen immer auf allen beobachteten Werten
+  $y_{1j}, ...y_{nj}$.
+* Wir werden nach Bedarf zwischen beiden Modellformulierungen hin und her
+  wechseln.
+* Die Modellformulierung im Sinne des Modells multipler Testmessungen ist unser
+  Standardfall.
+
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\begin{theorem}[Eigenschaften bezüglich einer Testmessung]\label{thm:eigenschaften-einer-Testmessung}
+\justifying
+\normalfont
+Gegeben sei das Modell multipler Testmessungen. Dann gelten für alle $i =
+1,...,n$ und alle $j = 1,...,m$
+\begin{itemize}
+\item[(1)] $\mbb{E}(\eps_{ij}|\tau_{ij} = t_{ij}) = 0$
+\item[(2)] $\mbb{E}(\eps_{ij}) = 0$
+\item[(3)] $\mbb{C}(\tau_{ij}, \eps_{ij}) = 0$
+\item[(4)] $\mbb{V}(y_{ij}) = \mbb{V}(\tau_{ij}) + \mbb{V}(\eps_{ij})$
+\item[(5)] $\mbb{C}(y_{ij},\tau_{ij}) = \mbb{V}(\tau_{ij})$
+\end{itemize}
+\end{theorem}
+
+Bemerkungen
+
+* Die Aussagen beziehen sich auf die Verteilung einer Testperson $i$ (und damit
+  auf alle Personen $i = 1,...,n$).
+* 1 bezieht sich auf die bedingte Verteilung von $\eps_{ij}$ bei einer
+  Testmessung $j$.
+* 2 - 5 beziehen sich auf Eigenschaften der Marginalverteilungen von
+  $\tau_{ij}$, $y_{ij},\eps_{ij}$ bei einer Testmessung $j$.
+* Im Sinne des Vereinfachten Modells der klassischen Testtheorie werden obige
+  Eigenschaften oft auch als
+\begin{equation}
+\mbb{E}(\eps|\tau = t) = 0, \quad
+\mbb{E}(\eps) = 0, \quad
+\mbb{C}(\tau, \eps) = 0, \quad
+\mbb{V}(y) = \mbb{V}(\tau) +\mbb{V}(\eps) \mbox{ und }
+\mbb{C}(y,\tau) = \mbb{V}(\tau)
+\end{equation}
+geschrieben.
+
+
+# Das Modell multipler Testmessungen
+\footnotesize
+
+Bemerkung zu $\mbb{E}(\eps|\tau = t) = 0$ und $\mbb{E}(\eps) = 0$
+
+* Die Tatsache, dass der bedingte Erwartungswert des Messfehlers $0$ ist, folgt
+aus der Definition des wahren Werts. Dies ist ein anderer Ansatz als anzunehmen,
+dass der bedingte Erwartungswert des Messfehlers $0$ ist. Weil der bedingte
+Erwartungswert des Messfehlers für jeden wahren Wert $0$ ist, ist auch sein
+(marginaler) Erwartungswert $0$.
+
+Bemerkung zu $\mbb{C}(\tau, \eps) = 0$
+
+* Sofern $\mbb{V}(\tau)>0$ und $\mbb{V}(\eps)>0$ gelten, folgt aus
+  $\mbb{C}(\tau,\eps)=0$ auch $\rho(\tau,\eps)=0$.
+Hohe oder niedrige wahre Werte sind also nicht systematisch mit hohen oder
+niedrigen
+Messfehlerwerten assoziiert.
+
+Bemerkung zu $\mbb{V}(y) = \mbb{V}(\tau) + \mbb{V}(\eps)$
+
+* Die Varianz beobachteter Werte kann additiv in Beiträge der Varianz des wahren
+Werts und des Messfehlers zerlegt werden. Diese Eigenschaft des Modells ist für
+eine Eigenschaft der Reliabilität essenziell.
+
+Bemerkung zu $\mbb{C}(y,\tau) = \mbb{V}(\tau)$
+
+* Die Kovarianz der beobachteten Werte und der wahren Werte einer Testmessung
+entspricht der Varianz der wahren Werte. Diese Eigenschaft des Modells ist für
+eine weitere Eigenschaft der Reliabilität essenziell.
+
+# Das Modell multipler Testmessungen
+\vspace{2mm}
+\footnotesize
+\underline{Beweis}
+
+Zum Beweis von (1) bis (5) setzen wir zur Vereinfachung der Notation im Sinne
+des Vereinfachten Modells der klassischen Testtheorie zunächst
+\begin{equation}
+y := y_{ij}, \tau := \tau_{ij}
+\mbox{ und analog }
+t := t_{ij}
+\mbox{ sowie } \mathcal{Y} := \mathcal{Y}_{ij}, \mathcal{T} := \mathcal{T}_{ij}
+\end{equation}
+für alle $i = 1,...,n$ und $j = 1,...,m$. Wir betrachten weiterhin (nur) den
+diskreten Fall, setzen also die Existenz einer Wahrscheinlichkeitsmassefunktion
+$p$ der Form
+\begin{equation}
+p(t,y) = p(y|t)p(t)
+\end{equation}
+voraus. Dabei schreiben wir Werte, die die Zufallsvariable $\tau$ annimmt, als
+$t$ und Werte, die die Zufallsvariable $y$ annimmt der Einfachheit halber
+ebenfalls
+als $y$.  Der kontinuierliche Fall folgt dann jeweils analog.
+
+\noindent (1) Es gilt
+\begin{align}
+\begin{split}
+\mbb{E}(\eps|\tau = t)
+& := \mbb{E}(y - \tau|\tau = t) \\
+& = \sum_{y \in \mathcal{Y}} \left(y - t\right)p(y|t) \\
+& = \sum_{y \in \mathcal{Y}} y p(y|t) - \sum_{y \in \mathcal{Y}} t p(y|t) \\
+& = \mbb{E}(y|\tau = t) - t  \sum_{y \in \mathcal{Y}} p(y|t)\\
+& = t - t\cdot 1  \\
+& = 0.
+\end{split}
+\end{align}
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) Es gilt
+\begin{align}
+\begin{split}
+\mbb{E}(\eps)
+& := \mbb{E}(y - \tau) \\
+& = \sum_{y \in \mathcal{Y}}\sum_{t \in \mathcal{T}} \left(y - t\right)p(t,y) \\
+& = \sum_{t \in \mathcal{T}}\sum_{y \in \mathcal{Y}} \left(y -
+t\right)p(y|t)p(t) \\
+& = \sum_{t \in \mathcal{T}}\sum_{y \in \mathcal{Y}}
+\left(yp(y|t)p(t) - t p(y|t)p(t)\right)
+\\
+& = \sum_{t \in \mathcal{T}}\sum_{y \in \mathcal{Y}} p(t)\left(yp(y|t)  - t
+p(y|t)\right)\\
+& = \sum_{t \in \mathcal{T}} p(t)\left(\sum_{y \in \mathcal{Y}} yp(y|t) - t
+\sum_{y \in \mathcal{Y}}p(y|t)\right)\\
+& = \sum_{t \in \mathcal{T}} p(t) \left(t - t \cdot 1\right)\\
+& = \sum_{t \in \mathcal{T}} p(t) \cdot 0\\
+& = 0.
+\end{split}
+\end{align}
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (3) Es gilt
+\begin{align}
+\begin{split}
+\mbb{C}(\tau, \eps)
+& = \mbb{E}\left((\tau -\mbb{E}(\tau))(\eps - \mbb{E}(\eps))\right) \\
+& = \mbb{E}\left((\tau -\mbb{E}(\tau))\eps \right) \\
+& = \mbb{E}\left((\tau -\mbb{E}(\tau))(y - \tau)\right) \\
+& = \sum_{y \in \mathcal{Y}}\sum_{t \in
+\mathcal{T}}\left((t-\mbb{E}(\tau))(y-t)\right)p(t,y) \\
+& = \sum_{t \in \mathcal{T}}\sum_{y\in\mathcal{Y}}
+(t-\mbb{E}(\tau))(y-t)p(y|t)p(t) \\
+& = \sum_{t \in \mathcal{T}}p(t)(t-\mbb{E}(\tau))\sum_{y\in\mathcal{Y}}
+\left(y-t\right)p(y|t) \\
+& = \sum_{t \in \mathcal{T}}p(t)(t-\mbb{E}(\tau))\sum_{y\in\mathcal{Y}}
+\left(yp(y|t) - t p(y|t) \right) \\
+& = \sum_{t \in \mathcal{T}}p(t)(t-\mbb{E}(\tau))
+\left(\sum_{y\in\mathcal{Y}}yp(y|t) - t \sum_{y\in\mathcal{Y}} p(y|t) \right) \\
+&  = \sum_{t \in \mathcal{T}}p(t)(t-\mbb{E}(\tau)) \left(t - t \cdot 1 \right)
+\\
+&  = \sum_{t \in \mathcal{T}}p(t)(t-\mbb{E}(\tau))  \cdot 0 \\
+&  = 0. \\
+\end{split}
+\end{align}
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (4) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Varianzen spezieller Linearkombinationen (Foliensatz A)} sowie Aussage (3) des Theorems gilt
+\begin{align}
+\begin{split}
+\mbb{V}(y)
+= \mbb{V}(\tau + \eps)
+= \mbb{V}(\tau) + \mbb{V}(\eps) + 2\mbb{C}(\tau,\eps)
+= \mbb{V}(\tau) + \mbb{V}(\eps) + 2\cdot 0
+= \mbb{V}(\tau) + \mbb{V}(\eps)
+\end{split}
+\end{align}
+\noindent (5) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Kovarianzverschiebungssatz (Foliensatz A)}, \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Erwartungswert bei linear-affiner Kombination (Foliensatz A)},
+Aussage (2)  des Theorems und der Tatsache, dass mit Aussage (3) des Theorems
+außerdem folgt, dass
+\begin{equation}
+\mbb{E}(\eps \tau)
+= \mbb{E}(\tau\eps)
+= \mbb{C}(\tau,\eps) + \mbb{E}(\tau)\mbb{E}(\eps)
+= 0 + \mbb{E}(\tau)\cdot 0
+= 0
+\end{equation}
+gilt
+\begin{align}
+\begin{split}
+\mbb{C}(y, \tau)
+& = \mbb{E}(y\tau) - \mbb{E}(y)\mbb{E}(\tau) \\
+& = \mbb{E}((\tau + \eps)\tau) - \mbb{E}(\tau + \eps)\mbb{E}(\tau) \\
+& = \mbb{E}(\tau^2 + \eps \tau) - \left(\mbb{E}(\tau) +
+\mbb{E}(\eps)\right)\mbb{E}(\tau) \\
+& = \mbb{E}(\tau^2) + \mbb{E}(\eps \tau) - \mbb{E}(\tau)^2 -
+\mbb{E}(\eps)\mbb{E}(\tau) \\
+& = \mbb{E}(\tau^2) + \mbb{E}(\eps \tau) - \mbb{E}(\tau)^2 - 0\cdot
+\mbb{E}(\tau) \\
+& = \mbb{E}(\tau^2) + 0 - \mbb{E}(\tau)^2 - 0\cdot \mbb{E}(\tau) \\
+& = \mbb{E}(\tau^2) - \mbb{E}(\tau)^2 \\
+& = \mbb{V}(\tau).
+\end{split}
+\end{align}
+
+\hfill $\Box$
+
+# Das Modell multipler Testmessungen
+
+\begin{theorem}[Normalverteilungsbeispiel]
+\justifying
+\normalfont
+\footnotesize
+Es sei $i = 1,...,n$, $m := 1$ mit
+\begin{equation}
+\mbb{P}(\tau_{i1}) :=  N(\mu,1) \mbox{ und } \mbb{P}(y_{i1}|\tau_{i1}) := N(\tau_{i1},1)
+\end{equation}
+Dann gelten
+\begin{enumerate}
+\item[(1)] $\mbb{P}(y_{i1}) = N(\mu,2)$
+\item[(2)] $\mbb{P}(\eps_{i1}|\tau_{i1}) = N(0,1)$
+\item[(3)] $\mbb{P}(\eps_{i1}) = N(0,1)$
+\item[(4)] $\mbb{C}(\tau_{i1},\eps_{i1}) = 0$
+\end{enumerate}
+\end{theorem}
+
+\footnotesize
+Bemerkungen
+
+* Das Beispiel entspricht Exercise 2.17 in @lord1968
+* Der Ansatz im Beispiel entspricht einer modernen Formulierung eines
+  probabilistischen Modells.
+* Die Beispieldefinitionen induzieren eine gemeinsame Normalverteilung von
+  $\tau_{i1}$ und $y_{i1}$.
+* Die Beispieldefinitionen und $\eps_{i1} := y_{i1} -\mbb{E}(y_{i1}|\tau_{i1})$
+  induzieren eine $\tau_{i1}$ bedingte Normalverteilung von $\eps_{i1}$.
+* Dies und die Beispieldefinitionen induzieren eine gemeinsame Normalverteilung
+  von $\tau_{i1}$ und $\eps_{i1}$.
+* Die Aussagen folgen dann mit den [\textcolor{darkblue}{Eigenschaften
+  gemeinsamer
+  Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf).
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis}
+
+Zur Vereinfachung der Notation setzen wir $\tau := \tau_{i1}, y := y_{i1}, \eps
+:= \eps_{i1}$.
+
+\noindent (1) Wir betrachten die durch
+\begin{equation}
+\mbb{P}(\tau) = N(\mu,1) \mbox{ und }
+\mbb{P}(y|\tau) = N(\tau,1)
+\end{equation}
+induzierte gemeinsame Verteilung von $\tau$ und $y$, wobei offenbar
+\begin{equation}
+\mbb{P}(y|\tau) = N(a\cdot \tau + b,1) \mbox{ mit } a:= 1 \mbox{ und } b := 0
+\end{equation}
+gilt. Aus dem [\textcolor{blue}{Theorem zu gemeinsamen
+Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+ergibt sich dann zunächst,
+dass
+\begin{equation}
+\begin{pmatrix}
+\tau \\ y
+\end{pmatrix}
+\sim
+N\left(
+\begin{pmatrix}
+\mu \\ 1 \cdot \mu + 0
+\end{pmatrix},
+\begin{pmatrix}
+1          & 1 \cdot 1 \\
+1 \cdot 1  & 1 + 1 \cdot 1 \cdot 1
+\end{pmatrix}
+\right)
+=
+N\left(
+\begin{pmatrix}
+\mu \\ \mu
+\end{pmatrix},
+\begin{pmatrix}
+1 & 1 \\
+1 & 2
+\end{pmatrix}
+\right)
+\end{equation}
+Aus dem [\textcolor{blue}{Theorem zu marginalen
+Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+ergibt sich
+dann durch Ablesen $y \sim N(\mu,2)$.
+
+\noindent (2) Wir betrachten $\mbb{P}(\eps|\tau = t)$
+für einen beliebigen Wert $t \in \mbb{R}$. Dann gilt
+\begin{equation}
+\eps := y - t \mbox{ mit } y \sim N(t,1)
+\end{equation}
+Mit dem [\textcolor{blue}{Theorem zur linear-affinen Transformation
+normalverteilter
+Zufallsvektoren}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+gilt dann
+\begin{equation}
+\eps \sim N\left(t - t, 1^2 \cdot 1\right) = N(0,1)
+\end{equation}
+Die Tatsache, dass dies für alle möglichen Werte von $\tau$ gilt, ist gerade
+Aussage (2).
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgesetzt)}
+
+\noindent (3) und (4) Wir betrachten die durch
+\begin{equation}
+\mbb{P}(\tau) = N(\mu,1) \mbox{ und }
+\mbb{P}(\eps|\tau) = N(0,1)
+\end{equation}
+induzierte gemeinsame Verteilung von $\tau$ und $\eps$, wobei offenbar
+\begin{equation}
+\mbb{P}(\eps|\tau) = N(a\cdot \tau + b,1) \mbox{ mit } a:= 0 \mbox{ und } b := 0
+\end{equation}
+gilt. Aus dem [\textcolor{blue}{Theorem zu gemeinsamen
+Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+ergibt sich dann zunächst,
+dass
+\begin{equation}
+\begin{pmatrix}
+\tau \\ \eps
+\end{pmatrix}
+\sim
+N\left(
+\begin{pmatrix}
+\mu \\ 0 \cdot \mu + 0
+\end{pmatrix},
+\begin{pmatrix}
+1         & 1 \cdot 0 \\
+0\cdot 1  & 1 + 0 \cdot 1 \cdot 0
+\end{pmatrix}
+\right)
+=
+N\left(
+\begin{pmatrix}
+\mu \\ 0
+\end{pmatrix},
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+\right)
+\end{equation}
+Aus dem [\textcolor{blue}{Theorem zu marginalen
+Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+ergeben sich dann durch Ablesen
+\begin{equation}
+\eps \sim N(0,1)
+\mbox{ und }
+\mbb{C}(\tau,\eps) = 0.
+\end{equation}
+
+
+# Das Modell multipler Testmessungen
+
+\small
+Simulation des Normalverteilungsbeispiels mit $\mu := 1$ für $n := 10^4$
+\vspace{2mm}
+
+\tiny
+```{r, echo = TRUE}
+n           = 1e4                                       # Personenanzahl
+m           = 1                                         # Testmessungsanzahl
+mu          = 1                                         # Erwartungswertparameter wahrer Wert
+Tau         = matrix(rep(NaN, n*m), nrow = n)           # Wahrer Wert Array
+Y           = matrix(rep(NaN, n*m), nrow = n)           # Beobachteter Wert Array
+E           = matrix(rep(NaN, n*m), nrow = n)           # Messfehler Array
+for(i in 1:n){                                          # Iteration über Testpersonen
+  for(j in 1:m){                                        # Iteration über Testmessungen
+    Tau[i,j]  = rnorm(1,mu,1)                           # Wahrer Wert Realisierung
+    Y[i,j]  = rnorm(1,Tau[i,j],1)                       # Beobachteter Wert Realisierung
+    E[i,j]  = Y[i,j] - Tau[i,j]}}                       # Messfehler Realisierung
+e_hat_es    = mean(E[,1])                               # Erwartungswertschätzung Messfehler
+c_hat_ts_es = cov(Tau[,1],E[,1])                        # Kovarianzschätzung wahrer Wert, Messfehler
+v_hat_os    = var(Y[,1])                                # Varianzschätzung beobachteter Wert
+v_hat_ts    = var(Tau[,1])                              # Varianzschätzung wahrer Wert
+v_hat_es    = var(E[,1])                                # Varianzschätzung Messfehler
+c_hat_os_ts = cov(Y[,1],Tau[,1])                        # Kovarianzschätzung beobachteter Wert, wahrer Wert
+```
+
+\footnotesize
+Panels der untenstehenden Abbildung der Simulation
+
+A) Analytische und simulierte marginale Verteilung von $y_{i1}$
+B) Analytische und simulierte marginale Verteilung von $\eps_{i1}$
+C) Analytische und simulierte gemeinsame Verteilung von $\tau_{i1}$ und
+$\eps_{i1}$.
+D) Simulationsbasierte Schätzer relevanter Erwartungswerte, Varianzen und
+Kovarianzen
+
+
+```{r, echo = F, eval = F}
+library(latex2exp)
+library(mvtnorm)
+if(capabilities("cairo")){
+  cairo_pdf(
+  filename    = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-1.pdf",
+  width       = 9,
+  height      = 9,
+  family      = "sans")
+} else {
+  pdf(
+  file        = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-1.pdf",
+  width       = 9,
+  height      = 9,
+  family      = "sans")
+}
+par(
+family     = "sans",
+mfcol      = c(2,2),
+pty        = "s",
+bty        = "l",
+lwd        = 1,
+las        = 1,
+mgp        = c(2,1,0),
+xaxs       = "i",
+yaxs       = "i",
+cex        = 1,
+font.main  = 1,
+cex.main   = 1)
+
+# outcome space of interest
+y_min       = -4
+y_max       = 6
+y_res       = 1e3
+y           = seq(y_min, y_max, len = y_res)
+
+# Marginalverteilung von y_{i1}
+p_ups   = dnorm(y, mu, sqrt(2))
+hist(
+Y[,1],
+breaks  = 50,
+col     = "gray90",
+prob    = TRUE,
+xlim    = c(y_min,y_max),
+ylim    = c(0,.6),
+xlab    = TeX("$y_{i1}$"),
+ylab    = "",
+main    = TeX("$y_{i1} \\sim N(\\mu,2)$"))
+lines(
+y,
+p_ups,
+lwd     = 2,
+col     = "darkorange")
+mtext(LETTERS[1], adj=1, line=2, cex = 1.5, at = -7)
+
+# Gemeinsame Verteilung von \tau_{i1} und \eps_{i1}
+mu_xe   = c(mu,0)
+Sigma   = matrix(c(1,0,0,1), nrow = 2)
+nsamp   = 300
+y_1     = seq(y_min, y_max, length.out = y_res)
+y_2     = seq(y_min, y_max, length.out = y_res)
+G       = expand.grid(y_1,y_2)
+p       = matrix(dmvnorm(as.matrix(G), mu_xe, Sigma), nrow = y_res)
+contour(
+y_1,
+y_2,
+p,
+xlim    = c(-2,4),
+ylim    = c(-3,3),
+xlab    = TeX("$\\tau_{i1}$"),
+ylab    = TeX("$\\epsilon_{i1}$"),
+nlevels = 8,
+main    = "")
+title(
+main    = expression("\u2119"*"("*tau[i1]*","~epsilon[i1]*")"),
+family  = "Cambria Math")
+points(
+Tau[1:nsamp,1],
+E[1:nsamp,1],
+pch     = 21,
+col     = "white",
+bg      = "gray60",
+cex     = .6)
+labs    = expression(
+  hat("\U0001D53C")*"("*epsilon*")",
+  hat("\u2102")*"("*tau*","~epsilon*")",
+  hat("\U0001D54D")*"("*y*")",
+  hat("\U0001D54D")*"("*tau*")",
+  hat("\U0001D54D")*"("*epsilon*")",
+  hat("\u2102")*"("*y*","~tau*")")
+mtext(LETTERS[3], adj=1, line=2, cex = 1.5, at = -4)
+
+
+# Marginalverteilung von \eps
+p_eps   = dnorm(y, 0, 1)
+hist(
+E[,1],
+breaks  = 50,
+col     = "gray90",
+prob    = TRUE,
+xlim    = c(y_min,y_max),
+ylim    = c(0,.6),
+xlab    = TeX("$\\epsilon_{i1}$"),
+ylab    = "",
+main    = TeX("$\\epsilon_{i1} \\sim N(0,1)$"))
+lines(
+y,
+p_eps,
+lwd     = 2,
+col     = "darkorange")
+mtext(LETTERS[2], adj=1, line=2, cex = 1.5, at = -7)
+
+
+# Erwartungswert, Varianz und Kovarianzschätzer
+plot(
+1:6,
+c(e_hat_es, c_hat_ts_es, v_hat_os, v_hat_ts, v_hat_es, c_hat_os_ts),
+type     = "p",
+ylim     = c(-1,3),
+xlim     = c(0.5,6.5),
+xaxt     = "n",
+xlab     = "",
+ylab     = "",
+pch      =  19,
+cex      =  1)
+axis(1, at = 1:6, labels = labs, cex.axis = 0.8, family = "Cambria Math")
+mtext(LETTERS[4], adj=1, line=2, cex = 1.5, at = -1)
+dev.off()
+```
+
+# Das Modell multipler Testmessungen
+\vspace{2mm}
+\small
+Simulation des Normalverteilungsbeispiels mit $\mu := 1$ für $n := 10^4$
+
+```{r, echo = FALSE, out.width = "65%", fig.align = "center"}
+knitr::include_graphics("2-Abbildungen/gdt-4-normalverteilungsbeispiel-1.pdf")
+```
+
+# Das Modell multipler Testmessungen
+\footnotesize
+Eine Linear Mixed Model Version des Normalverteilungsbeispiels
+
+Wir betrachten das obige Normalverteilungsbeispiel konkret für $n := 5$
+Testpersonen.
+Dann gilt für die gemeinsame WDF von $\tau_{11},y_{11}, ...,\tau_{51},y_{51}$
+nach Definition des Modells multipler Testmessungen
+\begin{equation}
+p\left(\tau_{11},\tau_{21},\tau_{31},\tau_{41},\tau_{51},y_{11},y_{21},y_{31},y_{41},y_{51}\right)
+= \prod_{i=1}^5 p\left(\tau_{i1}\right)\prod_{i=1}^5 p\left(y_{i1}|\tau_{i1}\right)
+\end{equation}
+Mit
+\begin{equation}
+\prod_{i=1}^5 p\left(\tau_{i1}\right)
+= N\left(\begin{pmatrix} \tau_{11} \\ \tau_{21} \\ \tau_{31} \\ \tau_{41} \\ \tau_{51} \end{pmatrix}; 1_5\mu, I_5\right)
+\Leftrightarrow \tau_{i1} = \mu + \eta_i \mbox{ mit } \eta_i \sim N(0,1) \mbox{ u.i.v. für } i = 1,...,5
+\end{equation}
+und
+\begin{equation}
+\prod_{i=1}^5 p\left(y_{i1}|\tau_{i1}\right)
+= N\left(\begin{pmatrix} y_{11} \\ y_{21} \\ y_{31} \\ y_{41} \\ y_{51} \end{pmatrix};
+         \begin{pmatrix} \tau_{11} \\ \tau_{21} \\ \tau_{31} \\ \tau_{41} \\ \tau_{51} \end{pmatrix}, I_5\right)
+\Leftrightarrow  y_{i1} = \tau_{i1} + \eps_{i1} \mbox{ mit } \eps_{i1} \sim N(0,1) \mbox{ u.i.v. für } i = 1,...,5
+\end{equation}
+ergibt sich eine hierarchische Linear Mixed Model Darstellung.
+
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\begin{theorem}[Eigenschaften bezüglich zweier Testmessungen]\label{thm:eigenschaften-zweier-Testmessungen}
+\justifying
+\normalfont
+Gegeben sei das Modell multipler Testmessungen. Dann gelten für alle
+Testpersonen $i = 1,...,n$
+und alle Testmessungen $j$ und $k$ mit $1 \le j,k \le m$ und $j \neq k$, dass
+\begin{itemize}
+\item[(1)] $\mbb{C}(y_{ij},y_{ik}|\tau_{ij} = t_{ij},\tau_{ik} = t_{ik}) = 0$,
+\item[(2)] $\mbb{C}(\eps_{ij},\eps_{ik}|\tau_{ij} = t_{ij},\tau_{ik} = t_{ik}) = 0$,
+\item[(3)] $\mbb{C}(\eps_{ij},\eps_{ik}) = 0$,
+\item[(4)] $\mbb{C}(\tau_{ij},\eps_{ik}) = 0$ und
+\item[(5)] $\mbb{C}(y_{ij},y_{ik}) = \mbb{C}(\tau_{ij},\tau_{ik})$.
+\end{itemize}
+\end{theorem}
+\vspace{-2mm}
+Bemerkungen
+
+* Aussage (1) bezieht sich auf die bedingte gemeinsame Verteilung von $y_{ij}$
+  und $y_{ik}$.
+* Aussage (2) bezieht sich auf die bedingte gemeinsame Verteilung von
+  $\eps_{ij}$ und $\eps_{ik}$.
+* Aussagen (3) bis (5) beziehen sich auf die jeweiligen Marginalverteilungen.
+* Im Sinne des einfachen Modells der klassischen Testtheorie werden obige
+  Eigenschaften oft auch als
+\begin{equation}
+\mbb{C}(y_{j},y_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0, \quad
+\mbb{C}(\eps_{j},\eps_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0,
+\end{equation}
+\begin{equation}
+\mbb{C}(\eps_{j},\eps_{k}) = 0,\quad
+\mbb{C}(\tau_{j},\eps_{k}) = 0,\quad
+\mbb{C}(y_{j},y_{k}) = \mbb{C}(\tau_{j},\tau_{k})
+\end{equation}
+geschrieben.
+* Aussagen (1) - (4) werden manchmal unter dem Begriff der *Lokalen
+  Unkorreliertheit* subsummiert.
+
+
+# Das Modell multipler Testmessungen
+\footnotesize
+Bemerkung zu $\mbb{C}(y_{j},y_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0$
+
+* Gegeben die wahren Werte kovariieren die beobachteten Werte zweier
+  Testmessungen nicht.
+* In der auf die wahren Werte bedingten Verteilung zweier beobachteter Werte
+  kovariieren diese nicht.
+
+Bemerkung zu $\mbb{C}(\eps_{j},\eps_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0$
+
+* Gegeben die wahren Werte kovariieren die Messfehler zweier Testmessungen
+  nicht.
+* In der auf die wahren Werte bedingten Verteilung zweier Messfehler kovariieren
+  diese nicht.
+
+Bemerkung zu $\mbb{C}(\eps_{j},\eps_{k}) = 0$
+
+* Über alle wahren Werte hinweg kovariieren die Messfehler zweier Testmessungen
+  nicht.
+* In der marginalen Verteilung zweier Messfehler kovariieren diese nicht.
+
+Bemerkung zu $\mbb{C}(\tau_{j},\eps_{k}) = 0$
+
+* Die wahren Werte einer Testmessung $j$ und der Messfehler einer Testmessung
+  $k$ kovariieren nicht.
+
+Bemerkung zu $\mbb{C}(y_{j},y_{k}) = \mbb{C}(\tau_{j},\tau_{k})$
+
+* Die (marginale) Kovarianz zweier Testmessungen entspricht der (marginalen)
+  Kovarianz der wahren Werte.
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis}
+
+Zur Vereinfachung der Notation verzichten wir in den Beweisen auf das $i$
+Subskript.
+Wir betrachten weiterhin nur den diskreten Fall und setzen die Existenz der
+marginalen
+Wahrscheinlichkeitsmassefunktion
+\begin{equation}
+p(t_j,y_j,t_k,y_k) = p(t_j,t_k)p(y_j|t_j)p(y_k|t_k)
+\end{equation}
+und folglich auch der bedingten Wahrscheinlichkeitsmassefunktion
+\begin{equation}
+p(y_j, y_k|t_j,t_k) = \frac{p(t_j,y_j,t_k,y_k)}{p(t_j,t_k)} = \frac{p(t_j,t_k)p(y_j|t_j)p(y_k|t_k)}{p(t_j,t_k)} = p(y_j|t_j)p(y_k|t_k)
+\end{equation}
+voraus. Dabei bezeichnen wir mit $t_j, t_k$ Werte, die die Zufallsvariablen
+$\tau_j, \tau_k$
+annehmen können und der Einfachheit halber mit $y_j, y_k$ Werte, die die
+Zufallsvariablen $y_j, y_k$
+annehmen können. Der kontinuierliche Fall folgt dann wieder analog.
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (1) Es gilt
+\begin{align}
+\begin{split}
+\mbb{C}(y_{j},y_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k})
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+\sum_{y_k \in \mathcal{Y}_k}
+(y_j - \mbb{E}(y_j|\tau_j = t_j))
+(y_k - \mbb{E}(y_k|\tau_k = t_k))
+p(y_j|t_j)p(y_k|t_k) \\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\sum_{y_k \in \mathcal{Y}_k}
+(y_k - t_k)
+p(y_k|t_k) \\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\left(
+\sum_{y_k \in \mathcal{Y}_k}
+y_k p(y_k|t_k) -
+t_k \sum_{y_k \in \mathcal{Y}_k} p(y_k|t_k)
+\right)
+\\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\left(
+t_k -
+t_k \cdot 1
+\right)
+\\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\cdot 0
+\\
+& = 0.
+\end{split}
+\end{align}
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) Wir bestimmen zunächst $\mbb{E}(\eps_j\eps_k|\tau_j = t_j, \tau_k = t_k)$. Es gilt
+\begin{align}
+\begin{split}
+\mbb{E}(\eps_j\eps_k|\tau_j = t_j, \tau_k = t_k)
+& = \mbb{E}((y_j - \tau_j)(y_k - \tau_k)|\tau_j = t_j, \tau_k = t_k)
+\\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+\sum_{y_k \in \mathcal{Y}_k}
+(y_j - t_j)(y_k - t_k)
+p(y_j|t_j)p(y_k|t_k)
+\\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\sum_{y_k \in \mathcal{Y}_k}
+(y_k - t_k)
+p(y_k|t_k)
+\\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\left(
+\sum_{y_k \in \mathcal{Y}_k}
+y_k
+p(y_k|t_k) -
+t_k
+\sum_{y_k \in \mathcal{Y}_k}
+p(y_k|t_k)
+\right)
+\\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\left(
+t_k -
+t_k \cdot 1
+\right)
+\\
+& =
+\sum_{y_j \in \mathcal{Y}_j}
+(y_j - t_j)
+p(y_j|t_j)
+\cdot 0
+\\
+& = 0
+\end{split}
+\end{align}
+Mit
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
+Verschiebungssatz der bedingten Kovarianz (Foliensatz A)} und Aussage
+(1) des \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
+\begin{equation}
+\mbb{C}(\eps_j,\eps_k|\tau_j = t_j, \tau_k = t_k)
+= \mbb{E}(\eps_j\eps_k|\tau_j = t_j, \tau_k = t_k) - \mbb{E}(\eps_j|\tau_j = t_j)\mbb{E}(\eps_k|\tau_k = t_k)
+= 0 - 0 \cdot 0
+= 0.
+\end{equation}
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (3) Wir bestimmen zunächst $\mbb{E}(\eps_j\eps_k)$. Mit
+dem Beweis von Aussage (2) ergibt sich
+\begin{align}
+\begin{split}
+\mbb{E}(\eps_{j}\eps_{k})
+& = \mbb{E}((y_j - \tau_j)(y_k - \tau_k)) \\
+& =
+\sum_{t_j \in \mathcal{T}_j}
+\sum_{t_k \in \mathcal{T}_k}
+\sum_{y_j \in \mathcal{Y}_j}
+\sum_{y_k \in \mathcal{Y}_k}
+(y_j - t_j)(y_k - t_k)
+p(y_j|t_j)p(y_k|t_k)
+p(t_j,t_k)
+\\
+& =
+\sum_{t_j \in \mathcal{T}_j}
+\sum_{t_k \in \mathcal{T}_k}
+\sum_{y_j \in \mathcal{Y}_j}
+\sum_{y_k \in \mathcal{Y}_k}
+(y_j - \mbb{E}(y_j |\tau_j = t_j))(y_k - \mbb{E}(y_k |\tau_k = t_k))
+p(y_j|t_j)p(y_k|t_k)
+p(t_j,t_k)
+\\
+& =
+\sum_{t_j \in \mathcal{T}_j}
+\sum_{t_k \in \mathcal{T}_k}
+\mbb{E}\left((y_j - \tau_j) (y_k - \tau_k)| \tau_j = t_j, \tau_k = t_k\right)
+p(t_j,t_k)
+\\
+& =
+\sum_{t_j \in \mathcal{T}_j}
+\sum_{t_k \in \mathcal{T}_k}
+\mbb{E}\left(\eps_j\eps_k | \tau_j = t_j, \tau_k = t_k\right)
+p(t_j,t_k)
+\\
+& =
+\sum_{t_j \in \mathcal{T}_j}
+\sum_{t_k \in \mathcal{T}_k}
+0 \cdot
+p(t_j,t_k)
+\\
+& =
+0
+\end{split}
+\end{align}
+Mit
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
+Kovarianzverschiebungssatz (Foliensatz A)} und Aussage (2) von
+\thmref{thm:eigenschaften-einer-Testmessung} ergibt sich dann
+\begin{equation}
+\mbb{C}(\eps_j,\eps_k)
+= \mbb{E}(\eps_j\eps_k) - \mbb{E}(\eps_j)\mbb{E}(\eps_k)
+= 0 - 0 \cdot 0
+= 0.
+\end{equation}
+
+
+# Das Modell multipler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (4) Mit dem
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
+Kovarianzverschiebungssatz (Foliensatz A)}
+und Aussage (2) von \thmref{thm:eigenschaften-einer-Testmessung} gilt
+\begin{align}
+\begin{split}
+\mbb{C}(\tau_j,\eps_k)
+& = \mbb{E}(\tau_j\eps_k)  - \mbb{E}(\tau_j)\mbb{E}(\eps_k) \\
+& = \mbb{E}(\tau_j\eps_k)  - \mbb{E}(\tau_j)\cdot 0 \\
+& = \mbb{E}(\tau_j(y_k - \tau_k)) \\
+& = \sum_{t_j \in \mathcal{T}_j}
+    \sum_{t_k \in \mathcal{T}_k}
+    \sum_{y_k \in\mathcal{Y}_k}
+    t_j(y_k - t_k)
+    p(y_k|t_k)
+    p(t_j,t_k) \\
+& = \sum_{t_j \in \mathcal{T}_j}
+    t_j
+    \sum_{t_k \in \mathcal{T}_k}
+    p(t_j, t_k)
+    \sum_{y_k \in\mathcal{Y}_k}
+    (y_k - t_k)
+    p(y_k|t_k)
+\\
+& = \sum_{t_j \in \mathcal{T}_j}
+    t_j
+    \sum_{t_k \in \mathcal{T}_k}
+    p(t_j,t_k)
+    \left(
+    \sum_{y_k \in\mathcal{Y}_k} y_k p(y_k|t_k)
+     -
+    t_k  \sum_{y_k \in\mathcal{Y}_k} p(y_k|t_k)
+    \right)\\
+& = \sum_{t_j \in \mathcal{T}_j}
+    t_j
+    \sum_{t_k \in \mathcal{T}_k}
+     p(t_j, t_k)
+    \left(t_k - t_k \cdot 1\right)\\
+& = \sum_{t_j \in \mathcal{T}_j}
+    t_j
+    \sum_{t_k \in \mathcal{T}_k}
+     p(t_j, t_k)
+    \cdot 0\\
+& = 0. \\
+\end{split}
+\end{align}
+
+# Das Modell multipler Testmessungen
+
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (5) Wir halten zunächst fest, dass mit Aussage (4) durch Vertauschen
+der Indizes und
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
+Symmetrie der Kovarianz (Foliensatz A)}  auch
+\begin{equation}
+\mbb{C}(\tau_k,\eps_j) = \mbb{C}(\eps_j, \tau_k) = 0
+\end{equation}
+gilt. Mit
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
+Kovarianz bei paarweiser Addition (Foliensatz A)} und Aussage (3) gilt dann
+\begin{align}
+\begin{split}
+\mbb{C}(y_j,y_k)
+& = \mbb{C}(\tau_j + \eps_j,\tau_k + \eps_k) \\
+& = \mbb{C}(\tau_j,\tau_k)          +
+    \mbb{C}(\tau_j,\eps_k)   +
+    \mbb{C}(\eps_j,\tau_k)   +
+    \mbb{C}(\eps_j,\eps_k) \\
+& = \mbb{C}(\tau_j,\tau_k) + 0 + 0 + 0 \\
+& = \mbb{C}(\tau_j,\tau_k).
+\end{split}
+\end{align}
+
+\hfill $\Box$
+
+
+# Das Modell multipler Testmessungen
+\small
+Normalverteilungsbeispiel
+
+\footnotesize
+Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Modell multipler
+Testmessungen.
+
+Für  $i = 1,...,n$ seien
+\begin{equation}
+\mbb{P}(\tau_{i1}, \tau_{i2}) = \mbb{P}(\tau_{i2}|\tau_{i1})\mbb{P}(\tau_{i1})
+\end{equation}
+mit
+\begin{equation}
+\mbb{P}(\tau_{i1}) := N(1,1) \mbox{ und }
+\mbb{P}(\tau_{i2}|\tau_{i1}) := N(\tau_{i1} + 1,0.25)
+\end{equation}
+Die Verteilung des wahren Werts von Testperson $i$ in Testmessung $j = 2$ hängt
+also
+explizit von der Verteilung des wahren Werts von Testperson $i$ in Testmessung
+$j = 1$ ab.
+
+Weiterhin seien
+\begin{equation}
+\mbb{P}(y_{i1}|\tau_{i1}) := N(\tau_{i1},1) \mbox{ und }
+\mbb{P}(y_{i2}|\tau_{i2}) := N(\tau_{i2},0.25)
+\end{equation}
+Die Propensitätsverteilung von Testperson $i$ in Testmessung $j = 1$
+unterscheidet sich also von der von Testperson $i$ in Testmessung $j = 2$.
+
+# Das Modell multipler Testmessungen
+\vspace{2mm}
+\small
+Simulation des Normalverteilungsbeispiels für $n := 10^5$
+\vspace{1mm}
+
+\tiny
+```{r, echo = TRUE, eval = F, errors = F}
+n           = 1e5                                   # Personenanzahl
+m           = 2                                     # Testmessungsanzahl
+mu          = 1                                     # Wahrer Werte Erwartungswertparameter
+Tau           = matrix(rep(NaN, n*m), nrow = n)     # Wahrer Wert Array
+Y           = matrix(rep(NaN, n*m), nrow = n)       # Beobachteter Wert Array
+E           = matrix(rep(NaN, n*m), nrow = n)       # Messfehler Array
+for(i in 1:n){                                      # Iteration über Testpersonen
+    Tau[i,1]  = rnorm(1,1,1)                        # Wahrer Wert Realisierung       für j = 1
+    Y[i,1]  = rnorm(1,Tau[i,1],1)                   # Beobachteter Wert Realisierung für j = 1
+    E[i,1]  = Y[i,1] - Tau[i,1]                     # Messfehler Realisierung        für j = 1
+    Tau[i,2]  = rnorm(1,Tau[i,1] + 1,.5)            # Wahrer Wert Realisierung       für j = 2
+    Y[i,2]  = rnorm(1,Tau[i,2],.5)                  # Beobachteter Wert Realisierung für j = 2
+    E[i,2]  = Y[i,2] - Tau[i,2]}                    # Messfehler Realisierung        für j = 2
+c_hat_e1_e2 = cov(E[,1],E[,2])                      # Kovarianzschätzung Messfehler  1, Messfehler 2
+c_hat_t1_e2 = cov(Tau[,1],E[,2])                    # Kovarianzschätzung wahrer Wert 1, Messfehler 2
+c_hat_y1_y2 = cov(Y[,1],Y[,2])                      # Kovarianzschätzung beobachteter Wert 1, beobachteter Wert 2
+c_hat_t1_t2 = cov(Tau[,1],Tau[,2])                  # Kovarianzschätzung wahrer Wert 1, wahrer Wert 2
+```
+
+\footnotesize
+Panels der untenstehenden Abbildung der Simulation
+
+A) Marginale Unkorreliertheit der Messfehler bezüglich zweier Testmessungen
+B) Marginale Unkorreliertheit des wahren Wertes und des Messfehlers bezüglich
+zweier Testmessungen
+C) Marginale Kovarianz der beobachteten Werte bezüglich zweier Testmessungen
+D) Marginale Kovarianz der wahren Werte bezüglich zweier Testmessungen
+
+
+# Das Modell multipler Testmessungen
+\vspace{2mm}
+\small
+Simulation des Normalverteilungsbeispiels für $n := 10^5$, 500 Stichprobenpunkte
+dargestellt
+
+```{r, echo = F, eval = F}
+library(latex2exp)
+library(mvtnorm)
+if(capabilities("cairo")){
+  cairo_pdf(
+  filename    = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-2.pdf",
+  width       = 9,
+  height      = 9,
+  family      = "sans")
+} else {
+  pdf(
+  file        = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-2.pdf",
+  width       = 9,
+  height      = 9,
+  family      = "sans")
+}
+par(
+family      = "sans",
+mfcol       = c(2,2),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex         = 1,
+font.main   = 1,
+cex.main    = 1)
+nsamp       = 500
+
+# Gemeinsame Verteilung der Messfehler
+plot(
+E[1:nsamp,1],
+E[1:nsamp,2],
+pch         = 21,
+col         = "white",
+bg          = "gray60",
+xlab        = TeX("$\\epsilon_{i1}$"),
+ylab        = TeX("$\\epsilon_{i2}$"),
+xlim        = c(-4,6),
+ylim        = c(-4,6),
+cex         = 1,
+main        = "")
+title(
+main        = bquote(hat("\u2102")*"("*epsilon[i1]*","~epsilon[i2]*")" == .(round(c_hat_e1_e2,3))),
+family      = "Cambria Math")
+mtext(LETTERS[1], adj=1, line=2, cex = 1.5, at = -7)
+
+# Gemeinsame Verteilung der beobachteten  Werte
+plot(
+Y[1:nsamp,1],
+Y[1:nsamp,2],
+pch         = 21,
+col         = "white",
+bg          = "gray60",
+xlab        = TeX("$y_{i1}$"),
+ylab        = TeX("$y_{i2}$"),
+xlim        = c(-4,6),
+ylim        = c(-4,6),
+cex         = 1,
+main        = "")
+title(
+main        = bquote(hat("\u2102")*"("*y[i1]*","~y[i2]*")" == .(round(c_hat_y1_y2,3))),
+family      = "Cambria Math")
+mtext(LETTERS[3], adj=1, line=2, cex = 1.5, at = -7)
+
+# Gemeinsame Verteilung des wahren Wertes und des Messfehlers
+plot(
+Tau[1:nsamp,1],
+E[1:nsamp,2],
+pch         = 21,
+col         = "white",
+bg          = "gray60",
+xlab        = TeX("$\\tau_{i1}$"),
+ylab        = TeX("$\\epsilon_{i2}$"),
+xlim        = c(-4,6),
+ylim        = c(-4,6),
+cex         = 1,
+main        = "")
+title(
+main        = bquote(hat("\u2102")*"("*tau[i1]*","~epsilon[i2]*")" == .(round(c_hat_t1_e2,3))),
+family      = "Cambria Math")
+mtext(LETTERS[2], adj=1, line=2, cex = 1.5, at = -7)
+
+# Gemeinsame Verteilung der wahren Werte
+plot(
+Tau[1:nsamp,1],
+Tau[1:nsamp,2],
+pch         = 21,
+col         = "white",
+bg          = "gray60",
+xlab        = TeX("$\\tau_{i1}$"),
+ylab        = TeX("$\\tau_{i2}$"),
+xlim        = c(-4,6),
+ylim        = c(-4,6),
+cex         = 1,
+main        = "")
+title(
+main        = bquote(hat("\u2102")*"("*tau[i1]*","~tau[i2]*")" == .(round(c_hat_t1_t2,3))),
+family      = "Cambria Math")
+mtext(LETTERS[4], adj=1, line=2, cex = 1.5, at = -7)
+dev.off()
+```
+
+```{r, echo = FALSE, out.width = "65%", fig.align = "center"}
+knitr::include_graphics("2-Abbildungen/gdt-4-normalverteilungsbeispiel-2.pdf")
+```
+
+#
+\vfill
+\setstretch{2.6}
+\large
+Grundlagen
+
+Das Modell multipler Testmessungen
+
+**Das Modell paralleler Testmessungen**
+
+Modelle kongenerischer Testmessungen
+
+Selbstkontrollfragen
+\vfill
+
+
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+\setstretch{1.1}
+Bisher haben wir im Modell der multiplen Testmessungen keine Aussage zu den
+Verhältnissen der True-Scores über verschiedene Testmessungen hinweg gemacht.
+Wir haben einerseits angenommen, dass für die Marginalverteilung der
+Testmessungen
+bei einer Person $i$ keine Unabhängigkeit gelten muss, dass also im Allgemeinen
+gilt, dass für $i = 1,...,n$
+\begin{equation}
+\mbb{P}(\tau_{i1},...,\tau_{im}) \neq \prod_{j=1}^m\mbb{P}(\tau_{ij})
+\end{equation}
+Andererseits haben wir die Form möglicher Abhängigkeiten zwischen den
+True-Scores
+$\tau_{i1}, ..., \tau_{im}$ bislang nicht genauer spezifiziert.
+
+Die klassische Testtheorie betrachtet in dieser Hinsicht einige Spezialfälle,
+die
+sich im Allgemeinen durch funktionale Abhängigkeiten zwischen $\tau_{i1}$ und
+$\tau_{i2},...,\tau_{im}$ der Form
+\begin{equation}
+\tau_{ij} = f_j(\tau_{i1})
+\mbox{ für } f_j : \mbb{R} \to \mbb{R}
+\mbox{ und } j = 2,...,m.
+\end{equation}
+auszeichnen. Wir betrachten im Folgenden den Fall, dass
+$f_j := \mbox{id}_{\mbb{R}}$ für alle $j = 2,...,m$ gilt,
+dass also insbesondere für Realisierungen $t_{ij}$ von $\tau_{ij}$ gilt, dass
+\begin{equation}
+t_{ij} = \mbox{id}_{\mbb{R}}\left(t_{i1}\right) = t_{i1}   \mbox{ für  }  j = 2,...,m,
+\end{equation}
+dass also die wahren Werte einer Person über die Testmessungen hinweg identisch
+sind. Diese Eigenschaft kennzeichnet $\tau$-äquivalente Testmessungen. Stimmen
+zusätzlich die Messfehlervarianzen überein, spricht man von parallelen
+Testmessungen. Im nachfolgend definierten Modell fordern wir hierfür die
+Gleichheit der bedingten Varianzen der beobachteten Werte bei jedem festen
+wahren Wert.
+
+Eine weitere Form der funktionalen Abhängigkeit liegt vor, wenn die wahren
+Werte durch testmessungsspezifische linear-affine Funktionen miteinander
+verbunden sind,
+\begin{equation}
+\tau_{ij} = f_j(\tau_{i1}) = a_j + b_j\tau_{i1}
+\mbox{ mit } a_j \in \mbb{R},\ b_j \neq 0
+\mbox{ für } j = 2,...,m.
+\end{equation}
+Diese Beziehung charakterisiert die später behandelten essentiell
+kongenerischen Testmodelle.
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+\vspace{3mm}
+\begin{definition}[Modell paralleler Testmessungen]
+Für $i = 1,...,n$ und $j = 1,...,m$ sei
+\begin{itemize}
+\item $\tau_{i}$ eine Zufallsvariable, die den wahren Wert der $i$ten Testperson in jeder Testmessung $j = 1,...,m$ modelliere,
+\item $y_{ij}$ eine Zufallsvariable, die den beobachteten Wert der $i$ten Testperson in der $j$ten Testmessung modelliere,
+\item $\eps_{ij} := y_{ij} -\tau_{i}$ die Zufallsvariable, die den Messfehler der $i$ten Testperson in der $j$ten Testmessung modelliere.
+\end{itemize}
+Dann heißt die gemeinsame Verteilung der $\tau_{i}$ und $y_{ij}$ mit den
+Faktorisierungseigenschaften
+\begin{equation}
+\mbb{P}\left(\tau_{1},y_{11},...y_{1m}, ...,\tau_{n},y_{n1},...,y_{nm}\right)
+:= \prod_{i=1}^n \left(
+\mbb{P}(\tau_{i})
+\prod_{j=1}^m \mbb{P}(y_{ij}|\tau_{i})
+\right)
+\end{equation}
+das \textit{Modell paralleler Testmessungen}, wenn gilt, dass
+\begin{itemize}
+\item[(1)] $\mbb{P}(\tau_{1}) = \cdots = \mbb{P}(\tau_{n})$,
+\item[(2)] $\mbb{P}(y_{1j}|\tau_{1}) = \cdots = \mbb{P}(y_{nj}|\tau_{n})$ für alle  $1 \le j \le m$,
+\item[(3)] $\mbb{E}(y_{ij}\vert \tau_i = t_i) = \mbb{E}(y_{ik}\vert \tau_i = t_i) := t_i$  für alle  $1 \le i \le n, 1 \le j,k \le m$,
+\item[(4)] $\mbb{V}(y_{ij}\vert \tau_i = t_i) = \mbb{V}(y_{ik}\vert \tau_i = t_i)$  für alle  $1 \le i \le n, 1 \le j,k \le m$.
+\end{itemize}
+\end{definition}
+
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+Bemerkungen
+\setstretch{2.5}
+
+* Für Testperson $i$ und Testmessungen $j = 1,...,m$ wird zunächst ein wahrer
+  Wert $t_{i}$ von $\mbb{P}(\tau_{i})$ realisiert.
+* Für Testperson $i$ und Testmessung $j$ wird dann ein beobachteter Wert
+  $y_{ij}$ anhand von $\mbb{P}(y_{ij}|\tau_{i}=t_{i})$ realisiert.
+* Die Werte des wahren Wertes einer Testperson werden über Testmessungen als
+  identisch angenommen.
+* Die Varianz der beobachteten Werte einer Testperson zwischen Messungen geht
+  nur auf die Propensität zurück.
+* Bei \underline{einer} Testmessung entspricht das Modell paralleler
+  Testmessungen dem Modell multipler Testmessungen.
+* Das \thmref{thm:eigenschaften-einer-Testmessung} gilt also analog.
+
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+\begin{theorem}[Eigenschaften des Modells paralleler Testmessungen]\label{thm:eigenschaften-paralleler-Testmessungen}
+\justifying
+\normalfont
+Gegeben sei das Modell paralleler Testmessungen. Dann gelten für alle $i =
+1,...,n$
+und alle $j,k$ mit $1 \le j,k \le m$ und $j \neq k$, dass
+\begin{itemize}
+\item[(1)] $\mbb{E}(y_{ij}) = \mbb{E}(y_{ik})$
+\item[(2)] $\mbb{V}(y_{ij}) = \mbb{V}(y_{ik})$
+\item[(3)] $\mbb{C}(\eps_{ij},\eps_{ik}) = 0$
+\item[(4)] $\mbb{C}(\tau_{i},\eps_{ik}) =  0$
+\item[(5)] $\mbb{C}(y_{ij},y_{ik}) = \mbb{V}(\tau_{i})$
+\end{itemize}
+\end{theorem}
+\vspace{-1mm}
+Bemerkungen
+\vspace{-2mm}
+
+* Bei Paralleltestmessungen sind alle Erwartungswerte der beobachteten Werte
+  einer Person identisch.
+* Bei Paralleltestmessungen sind alle Varianzen der beobachteten Werte einer
+  Person identisch.
+* Aussagen (3) und (4) gelten analog im Modell multipler Testmessungen bezüglich
+  zweier Testmessungen.
+* Aussage (5) besagt insbesondere, dass die Kovarianz der beobachteten Werte
+  zweier verschiedener Testmessungen stets der Varianz des gemeinsamen wahren
+  Werts entspricht, also $\mbb{C}(y_{ij},y_{ik}) = \mbb{V}(\tau_i)$ für alle
+  $j \neq k$.
+
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+\underline{Beweis}
+
+Zum Beweis setzen wir zur Vereinfachung der Notation zunächst
+\begin{equation}
+y_j      := y_{ij},
+y_k      := y_{ik},
+\tau            := \tau_{i},
+t               := t_{i},
+\mathcal{Y}_j   :=\mathcal{Y}_{ij},
+\mathcal{Y}_k   :=\mathcal{Y}_{ik} \mbox{ und }
+\mathcal{T}        := \mathcal{T}_{i}
+\end{equation}
+für alle $i = 1,...,n$. Wir betrachten weiterhin (nur) den diskreten Fall,
+setzen
+also die Existenz einer Wahrscheinlichkeitsmassefunktion
+$p_{\tau,y}$ der Form
+\begin{equation}
+p(t,y_j,y_k) = p(y_j|t)p(y_k|t)p(t)
+\end{equation}
+voraus und bezeichnen dabei mit $t$ einen Wert, den die Zufallsvariable $\tau$
+annimmt
+und der Einfachheit halber mit $y_j, y_k$ Werte, die die Zufallsvariablen $y_j,
+y_k$ annehmen können.
+ Der kontinuierliche Fall folgt dann analog.
+
+\noindent(1) Mit der Gleichheit der bedingten Erwartungswerte im Falle paralleler Testmessungen gilt
+\begin{equation*}
+\mbb{E}(y_{j})
+ = \sum_{t \in \mathcal{T}}\sum_{y_j \in\mathcal{Y}_j}y_jp(y_j|t)p(t)
+ = \sum_{t \in \mathcal{T}}\mbb{E}(y_{j}\vert \tau = t)p(t)
+ = \sum_{t \in \mathcal{T}}\sum_{y_k \in\mathcal{Y}_k}y_kp(y_k|t)p(t)
+ = \mbb{E}(y_{k}).
+\end{equation*}
+
+\noindent (2) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Iterierte Varianz (Foliensatz A)} ergibt sich
+\begin{equation*}
+\mbb{V}(y_{j})
+= \mbb{V}\left(\mbb{E}(y_j\vert \tau)\right) + \mbb{E}\left(\mbb{V}(y_j\vert
+\tau)\right)
+= \mbb{V}\left(\mbb{E}(y_k\vert \tau)\right) + \mbb{E}\left(\mbb{V}(y_k\vert
+\tau)\right)
+= \mbb{V}(y_{k}).
+\end{equation*}
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (3)  Wir bestimmen zunächst $\mbb{E}(\eps_j\eps_k)$. Mit Aussage
+(2) des Theorems zu den Eigenschaften des Modells multipler Testmessungen bei
+einer Testmessung gilt
+\begin{align}
+\begin{split}
+\mbb{E}(\eps_j\eps_k)
+& := \mbb{E}((y_j - \tau)(y_k - \tau)) \\
+&  = \sum_{t \in \mathcal{T}}
+     \sum_{y_j \in\mathcal{Y}_j}
+     \sum_{y_k \in\mathcal{Y}_k} (y_j - t)(y_k - t)  p(t) p(y_j|t)p(y_k|t)  \\
+&  = \sum_{t \in \mathcal{T}}
+     p(t)
+     \sum_{y_j \in\mathcal{Y}_j}
+     \sum_{y_k \in\mathcal{Y}_k} (y_j - t)(y_k - t) p(y_j|t)p(y_k|t)  \\
+&  = \sum_{t \in \mathcal{T}}
+     p(t)
+     \sum_{y_j \in\mathcal{Y}_j} (y_j - t) p(y_j|t)
+     \sum_{y_k \in\mathcal{Y}_k} (y_k - t) p(y_k|t)  \\
+&  = \sum_{t \in \mathcal{T}}
+     p(t)
+    \left(\sum_{y_j \in\mathcal{Y}_j} y_j p(y_j|t) - t\sum_{y_j \in\mathcal{Y}_j}p(y_j|t)\right)
+    \left(\sum_{y_k \in\mathcal{Y}_k} y_k p(y_k|t) - t\sum_{y_k \in\mathcal{Y}_k}p(y_k|t)\right) \\
+&  = \sum_{t \in \mathcal{T}} p(t)\left(t-t\right)\left(t-t\right) \\
+&  = \sum_{t \in \mathcal{T}} p(t)\cdot 0 \cdot 0 \\
+&  =  0.  \\
+\end{split}
+\end{align}
+
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+\vspace{2mm}
+\underline{Beweis (fortgeführt)}
+
+Mit
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
+Kovarianzverschiebungssatz (Foliensatz A)} und wiederum mit Aussage (2)
+von \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
+\begin{align}
+\begin{split}
+\mbb{C}(\eps_j,\eps_k)
+= \mbb{E}(\eps_j\eps_k) - \mbb{E}(\eps_j)\mbb{E}(\eps_k)
+= 0 - 0\cdot 0
+= 0
+\end{split}
+\end{align}
+
+\noindent (4) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Kovarianzverschiebungssatz (Foliensatz A)}  und wiederum mit Aussage (2)
+von \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
+\begin{align}
+\begin{split}
+\mbb{C}(\tau,\eps_k)
+& = \mbb{E}(\tau\eps_k)  - \mbb{E}(\tau)\mbb{E}(\eps_k) \\
+& = \mbb{E}(\tau\eps_k)  - \mbb{E}(\tau)\cdot 0 \\
+& = \mbb{E}(\tau(y_k - \tau)) \\
+& = \sum_{t \in \mathcal{T}}
+    \sum_{y_k \in\mathcal{Y}_k}
+    t(y_k - t)
+    p(t)p(y_k|t) \\
+& = \sum_{t \in \mathcal{T}} t p(t)
+    \sum_{y_k \in\mathcal{Y}_k} (y_k - t)
+    p(y_k|t) \\
+& = \sum_{t \in \mathcal{T}} t  p(t)
+    \left(
+    \sum_{y_k \in\mathcal{Y}_k} y_k p(y_k|t)
+     -
+    t \sum_{y_k \in\mathcal{Y}_k} p(y_k|t)
+     \right)\\
+& = \sum_{t \in \mathcal{T}} t  p(t) \left(t - t\right)\\
+& = \sum_{t \in \mathcal{T}} t  p(t) \cdot 0\\
+& = 0. \\
+\end{split}
+\end{align}
+
+
+# Das Modell paralleler Testmessungen
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (5) Wir halten zunächst fest, dass mit Aussage (4) des Theorems neben
+$\mbb{C}(\tau,\eps_k) = 0$ durch Austausch des Indexes und
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Symmetrie der Kovarianz (Foliensatz A)} auch
+\begin{equation}
+\mbb{C}(\tau,\eps_j) = \mbb{C}(\eps_j, \tau) = 0
+\end{equation}
+gilt. Mit
+\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
+Kovarianz bei paarweiser Addition (Foliensatz A)} und Aussage (3) des Theorems
+gilt dann
+\begin{align}
+\begin{split}
+\mbb{C}(y_j,y_k)
+& = \mbb{C}(\tau + \eps_j,\tau + \eps_k) \\
+& = \mbb{C}(\tau,\tau)          +
+    \mbb{C}(\tau,\eps_k) +
+    \mbb{C}(\eps_j,\tau)   +
+    \mbb{C}(\eps_j,\eps_k) \\
+& = \mbb{C}(\tau,\tau) + 0 + 0 + 0 \\
+& = \mbb{C}(\tau,\tau) \\
+& = \mbb{V}(\tau).
+\end{split}
+\end{align}
+
+
+# Das Modell paralleler Testmessungen
+\small
+Normalverteilungsbeispiel
+
+\footnotesize
+Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Modell paralleler
+Testmessungen. Für  $i = 1,...,n$ seien
+\begin{equation}
+\mbb{P}(\tau_{i}) =  N(1,1)
+\mbox{ und }
+\mbb{P}(y_{i1}|\tau_{i}) := \mbb{P}(y_{i2}|\tau_{i}) :=  N(\tau_{i},1)
+\end{equation}
+Für Testperson $i$ gibt es also nur eine Zufallsvariable des wahren Werts für
+alle Testmessungen und die Propensitätsverteilungen unterscheiden sich zwischen
+Testmessungen nicht.
+
+\vspace{1mm}
+Simulation des Normalverteilungsbeispiels für $n = 10^5$
+\vspace{1mm}
+\tiny
+```{r, echo = TRUE}
+n           = 1e5                               # Personenanzahl
+m           = 2                                 # Testmessungsanzahl
+Tau           = matrix(rep(NaN, n)  , nrow = n) # Wahrer Wert Array
+Y           = matrix(rep(NaN, n*m), nrow = n)   # Beobachteter Wert Array
+E           = matrix(rep(NaN, n*m), nrow = n)   # Messfehler Array
+for(i in 1:n){                                  # Personeniterationen
+    Tau[i]  = rnorm(1,1,1)                      # Wahrer Wert Realisierung für j = 1,2
+    for(j in 1:m){                              # Testmessungsiterationen
+        Y[i,j]  = rnorm(1,Tau[i],1)             # Beobachteter Wert Realisierung
+        E[i,j]  = Y[i,j] - Tau[i]}}             # Messfehler Realisierung
+e_hat_o1_o2 = apply(Y, 2, mean)                 # Erwartungswertschätzung Beobachteter Wert 1, Beobachteter Wert 2
+v_hat_o1_o2 = apply(Y, 2, var)                  # Varianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
+c_hat_e1_e2 = cov(E[,1],E[,2])                  # Kovarianzschätzung Messfehler 1, Messfehler 2
+c_hat_t_e2  = cov(Tau    ,E[,2])                # Kovarianzschätzung Wahrer Wert 1, Messfehler 2
+c_hat_y1_y2 = cov(Y[,1],Y[,2])                  # Kovarianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
+v_hat_t     = var(Tau)                          # Varianzschätzung Wahrer Wert
+```
+
+# Das Modell paralleler Testmessungen
+\small
+Simulation des Normalverteilungsbeispiels für $n = 10^5$, 500 Stichprobenpunkte
+dargestellt
+\vspace{3mm}
+
+
+```{r, echo = F, eval = F}
+library(latex2exp)
+library(mvtnorm)
+if(capabilities("cairo")){
+  cairo_pdf(
+  filename    = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-3.pdf",
+  width       = 12,
+  height      = 4,
+  family      = "sans")
+} else {
+  pdf(
+  file        = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-3.pdf",
+  width       = 12,
+  height      = 4,
+  family      = "sans")
+}
+par(
+family      = "sans",
+mfcol       = c(1,3),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(2,1,0),
+xaxs        = "i",
+yaxs        = "i",
+cex         = 1,
+font.main   = 1,
+cex.main    = 1)
+nsamp       = 500
+
+# Gemeinsame Verteilung der Messfehler
+plot(
+E[1:nsamp,1],
+E[1:nsamp,2],
+pch         = 21,
+col         = "white",
+bg          = "gray60",
+xlab        = TeX("$\\epsilon_{i1}$"),
+ylab        = TeX("$\\epsilon_{i2}$"),
+xlim        = c(-4,6),
+ylim        = c(-4,6),
+cex         = 1,
+main        = "")
+title(
+main        = bquote(hat("\u2102")*"("*epsilon[i1]*","~epsilon[i2]*")" == .(round(c_hat_e1_e2,3))),
+family      = "Cambria Math")
+mtext(LETTERS[1], adj=1, line=2, cex = 1.5, at = -7)
+
+# Gemeinsame Verteilung von wahrem Wert und Messfehler
+plot(
+Tau[1:nsamp,1],
+E[1:nsamp,2],
+pch         = 21,
+col         = "white",
+bg          = "gray60",
+xlab        = TeX("$\\tau_{i}$"),
+ylab        = TeX("$\\epsilon_{i2}$"),
+xlim        = c(-4,6),
+ylim        = c(-4,6),
+cex         = 1,
+main        = "")
+title(
+main        = bquote(hat("\u2102")*"("*tau[i]*","~epsilon[i2]*")" == .(round(c_hat_t_e2,3))),
+family      = "Cambria Math")
+mtext(LETTERS[2], adj=1, line=2, cex = 1.5, at = -7)
+
+# Gemeinsame Verteilung der beobachteten Werte
+plot(
+Y[1:nsamp,1],
+Y[1:nsamp,2],
+pch         = 21,
+col         = "white",
+bg          = "gray60",
+xlab        = TeX("$y_{i1}$"),
+ylab        = TeX("$y_{i2}$"),
+xlim        = c(-4,6),
+ylim        = c(-4,6),
+cex         = 1,
+main        = "")
+title(
+main        = bquote(hat("\u2102")*"("*y[i1]*","~y[i2]*")" == .(round(c_hat_y1_y2,3))),
+family      = "Cambria Math")
+mtext(LETTERS[3], adj=1, line=2, cex = 1.5, at = -7)
+dev.off()
+```
+
+```{r, echo = FALSE, out.width = "90%", fig.align = "center"}
+knitr::include_graphics("2-Abbildungen/gdt-4-normalverteilungsbeispiel-3.pdf")
+```
+
+\footnotesize
+
+A) Unkorreliertheit der Messfehler bezüglich zweier paralleler Testmessungen
+B) Unkorreliertheit des wahren Wertes und des Messfehlers bezüglich zweier
+paralleler Testmessungen
+C) Kovarianz der beobachteten Werte bezüglich zweier paralleler Testmessungen
+
+#
+\vfill
+\setstretch{2.6}
+\large
+Grundlagen
+
+Das Modell multipler Testmessungen
+
+Das Modell paralleler Testmessungen
+
+**Modelle kongenerischer Testmessungen**
+
+Selbstkontrollfragen
+\vfill
+
+
+# Modelle kongenerischer Testmessungen
+\small
+Integration von Faktoranalyse und klassischer Testtheorie nach @joreskog1970 und
+@joreskog1971
+
+\footnotesize
+Ausgangspunkt kongenerischer Testmodelle ist ein einfaktorielles
+Normalverteilungsmodell der Faktorenanalyse für eine Testperson und $m$ Items,
+\begin{equation}
+y = \mu + Lx + \varepsilon
+\Leftrightarrow
+\begin{pmatrix}
+y_1 \\
+\vdots \\
+y_m
+\end{pmatrix}
+=
+\begin{pmatrix}
+\mu_1 \\
+\vdots \\
+\mu_m
+\end{pmatrix}
++
+\begin{pmatrix}
+l_{1} \\
+\vdots \\
+l_{m}
+\end{pmatrix}
+x +
+\begin{pmatrix}
+\eps_1 \\
+\vdots \\
+\eps_m
+\end{pmatrix}
+\mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi) \mbox{ und } x \perp \varepsilon.
+\end{equation}
+Für die folgenden Modelle setzen wir eine positive Faktorvarianz $\Phi>0$
+voraus. Mit der Definition
+\begin{equation}
+\tau_j := \mu_j + l_{j} x
+\end{equation}
+gilt dann insbesondere, dass
+\begin{equation}
+y_j
+= \mu_j + l_j x + \varepsilon_j
+= \tau_j + \varepsilon_j
+\mbox{ für alle } j = 1,...,m
+\end{equation}
+bzw. unter Berücksichtigung der Personenindizes
+\begin{equation}
+y_{ij}
+= \mu_j + l_j x_i + \varepsilon_{ij}
+= \tau_{ij} + \varepsilon_{ij}
+\mbox{ für alle } i = 1,...,n \mbox{ und } j = 1,...,m.
+\end{equation}
+Grundlage der kongenerischen Testmessungsmodelle ist also die Darstellung des
+wahren Wertes einer Testperson in einer Testmessung als testmessungsspezifische
+linear-affine Funktion eines latenten testpersonenspezifischen Faktors. Durch
+Restriktionen an die Parameter $\mu$, $L$ und $\Psi$ können dann verschiedene
+Modelle kongenerischer Testmessungen definiert werden, die sich durch
+funktionale Abhängigkeiten zwischen den wahren Werten der Testmessungen
+auszeichnen.
+
+# Modelle kongenerischer Testmessungen
+
+\small
+Überblick über die Modelle kongenerischer Testmessungen
+\vspace{2mm}
+
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.6}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{@{}l|l|l|l|l|l|l|l@{}}
+Bezeichnung
+& $\mu \in \mbb{R}^m$
+& $L \in \mbb{R}^{m \times 1}$
+& $\Psi \in \mbb{R}^{m \times m}$
+& $\tau_j = f(\tau_k)$
+& $a_{jk}$
+& $b_{jk}$
+& $\mbb{V}(\tau_j)$
+\\\hline
+Essentiell kongenerisch
+& $\mu$
+& $L$
+& $\mbox{diag}(\psi_j)$
+& $a_{jk} + b_{jk} \tau_k$
+& $\mu_j-\frac{l_j\mu_k}{l_{k}}$
+& $\frac{l_j}{l_{k}}$
+& $b_{jk}^2\mbb{V}(\tau_k)$
+\\
+Kongenerisch
+& $0_m$
+& $L$
+& $\mbox{diag}(\psi_j)$
+& $b_{jk} \tau_k$
+& -
+& $\frac{l_j}{l_{k}}$
+&  $b_{jk}^2\mbb{V}(\tau_k)$
+\\
+Essentiell $\tau$-äquivalent
+& $\mu$
+& $1_m$
+& $\mbox{diag}(\psi_j)$
+& $a_{jk} + \tau_k$
+& $\mu_j-\mu_k$
+& -
+&  $\mbb{V}(\tau_k)$
+\\
+$\tau$-äquivalent
+& $c\,1_m$
+& $1_m$
+& $\mbox{diag}(\psi_j)$
+& $\tau_k$
+& -
+& -
+&  $\mbb{V}(\tau_k)$
+\\
+Essentiell parallel
+& $\mu$
+& $1_m$
+& $\psi I_m$
+& $a_{jk} + \tau_k$
+& $\mu_j-\mu_k$
+& -
+&  $\mbb{V}(\tau_k)$
+\\
+Parallel
+& $c\,1_m$
+& $1_m$
+& $\psi I_m$
+& $\tau_k$
+& -
+& -
+& $\mbb{V}(\tau_k)$
+\end{tabular}%
+}
+\endgroup
+
+\footnotesize
+Dabei ist $c \in \mbb{R}$ ein beliebiger gemeinsamer Mittelwert.
+
+\vspace{2mm}
+\footnotesize
+\flushright
+Nach @millsap1991
+
+
+# Modelle kongenerischer Testmessungen
+
+\footnotesize
+\begin{theorem}[Essentiell kongenerische und kongenerische Testmodelle]
+\justifying
+\normalfont
+Gegeben sei das einfaktorielle Normalverteilungsmodell der Faktorenanalyse für
+eine Testperson und $m$ Items mit nichtverschwindenden Faktorladungen
+$l_1,...,l_m$
+\begin{equation}
+y = \mu + Lx + \varepsilon
+\mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi), x \perp \varepsilon \mbox{ und } \Psi := \mbox{diag}(\psi_j)
+\label{eq:kongenerisches-testmodell}
+\end{equation}
+Dann wird das Modell in Gleichung \eqref{eq:kongenerisches-testmodell} auch als
+\textit{essentiell kongenerisches Testmodell} bezeichnet. Im Sinne der
+klassischen
+Testtheorie gilt für die wahren Werte $\tau_j$ und $\tau_k$ zweier
+Testmessungen $j$ und $k$ insbesondere, dass
+\begin{equation}
+\tau_j = a_{jk} + b_{jk} \tau_k
+\mbox{ wobei }
+a_{jk} := \mu_j - \frac{l_j\mu_k}{l_{k}}
+\mbox{ und }
+b_{jk} := \frac{l_j}{l_{k}}
+\mbox{ für alle }
+j,k = 1,...,m
+\mbox{ mit }
+j \neq k.
+\end{equation}
+Für die Varianzen gilt
+\begin{equation}
+\mbb{V}(\tau_j) = b_{jk}^2 \mbb{V}(\tau_k),
+\end{equation}
+sodass $\mbb{V}(\tau_j)$ und $\mbb{V}(\tau_k)$ im Allgemeinen nicht
+übereinstimmen.
+Gilt in Gleichung \eqref{eq:kongenerisches-testmodell} außerdem, dass $\mu =
+0_m$, so wird das Modell als \textit{kongenerisches Testmodell}
+bezeichnet. In diesem Fall gilt insbesondere, dass
+\begin{equation}
+\tau_j = b_{jk} \tau_k
+\mbox{ wobei }
+b_{jk} := \frac{l_j}{l_{k}}
+\mbox{ für alle }
+j,k = 1,...,m
+\mbox{ mit }
+j \neq k.
+\end{equation}
+Für die Varianzen gilt
+\begin{equation}
+\mbb{V}(\tau_j) = b_{jk}^2 \mbb{V}(\tau_k),
+\end{equation}
+sodass $\mbb{V}(\tau_j)$ und $\mbb{V}(\tau_k)$ im Allgemeinen nicht
+übereinstimmen.
+\end{theorem}
+
+# Modelle kongenerischer Testmessungen
+\footnotesize
+\underline{Beweis}
+
+Im Fall des essentiell kongenerischen Testmodells gilt, dass
+\begin{equation}
+\tau_j = \mu_j + l_{j} x \mbox{ und } \tau_k = \mu_k + l_{k} x \mbox{ für alle } j,k = 1,...,m \mbox{ mit } j \neq k.
+\end{equation}
+Dann gilt
+\begin{equation}
+\tau_k = \mu_k + l_{k} x
+\Leftrightarrow x = \frac{1}{l_{k}}\tau_k - \frac{\mu_k}{l_{k}}
+\end{equation}
+und damit
+\begin{equation}
+\tau_j
+= \mu_j + l_j\left(\frac{1}{l_{k}}\tau_k - \frac{\mu_k}{l_{k}}\right)
+= \mu_j + \frac{l_j}{l_{k}}\tau_k - \frac{l_j\mu_k}{l_{k}}
+= \mu_j  - \frac{l_j\mu_k}{l_{k}} + \frac{l_j}{l_{k}}\tau_k
+= a_{jk} + b_{jk}\tau_k
+\end{equation}
+Also ist die Funktion $f : \mbb{R} \to \mbb{R}$, die $\tau_j$ als Funktion von
+$\tau_k$ darstellt, eine linear-affine Funktion der Form
+\begin{equation}
+f(t) = a_{jk} + b_{jk}t \mbox{ für alle } t \in \mbb{R}.
+\end{equation}
+Entsprechend gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(a_{jk} + b_{jk}\tau_k) = b_{jk}^2 \mbb{V}(\tau_k).
+\end{equation}
+Für $b_{jk}^2 \neq 1$ folgt insbesondere, dass $\mbb{V}(\tau_j) \neq
+\mbb{V}(\tau_k)$.
+
+# Modelle kongenerischer Testmessungen
+\footnotesize
+\underline{Beweis (fortgesetzt)}
+
+Im Fall des kongenerischen Testmodells gilt unter der zusätzlichen Annahme $\mu
+= 0_m$, dass
+\begin{equation}
+\tau_j = l_{j} x \mbox{ und } \tau_k = l_{k} x \mbox{ für alle } j,k = 1,...,m \mbox{ mit } j \neq k.
+\end{equation}
+Dann gilt
+\begin{equation}
+\tau_k = l_{k} x
+\Leftrightarrow x = \frac{1}{l_{k}}\tau_k
+\end{equation}
+und damit
+\begin{equation}
+\tau_j
+= l_j\left(\frac{1}{l_{k}}\tau_k\right)
+= \frac{l_j}{l_{k}}\tau_k
+= b_{jk}\tau_k
+\end{equation}
+Also ist die Funktion $f : \mbb{R} \to \mbb{R}$, die $\tau_j$ als Funktion von
+$\tau_k$ darstellt, eine lineare Funktion der Form
+\begin{equation}
+f(t) = b_{jk}t \mbox{ für alle } t \in \mbb{R}.
+\end{equation}
+Entsprechend gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(b_{jk}\tau_k) = b_{jk}^2 \mbb{V}(\tau_k).
+\end{equation}
+Für $b_{jk}^2 \neq 1$ folgt insbesondere, dass $\mbb{V}(\tau_j) \neq
+\mbb{V}(\tau_k)$.
+
+$\hfill\Box$
+
+# Modelle kongenerischer Testmessungen
+
+\footnotesize
+\begin{theorem}[Essentiell $\tau$-äquivalente und $\tau$-äquivalente Testmodelle]
+\justifying
+\normalfont
+Gegeben sei das einfaktorielle Normalverteilungsmodell der Faktorenanalyse für
+eine Testperson und $m$ Items
+\begin{equation}
+y = \mu + Lx + \varepsilon \mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi), x \perp \varepsilon, L := 1_m \mbox{ und } \Psi := \mbox{diag}(\psi_j).
+\label{eq:tau-aequivalentes-testmodell}
+\end{equation}
+Dann wird das Modell in Gleichung \eqref{eq:tau-aequivalentes-testmodell} auch
+als \textit{essentiell $\tau$-äquivalentes Testmodell} bezeichnet. Im Sinne der
+klassischen
+Testtheorie gilt für die wahren Werte $\tau_j$ und $\tau_k$ zweier
+Testmessungen $j$ und $k$ insbesondere, dass
+\begin{equation}
+\tau_j = a_{jk} + \tau_k
+\mbox{ wobei }
+a_{jk} := \mu_j - \mu_k
+\mbox{ für alle }
+j,k = 1,...,m
+\mbox{ mit }
+j \neq k.
+\end{equation}
+Für die Varianzen gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(\tau_k).
+\end{equation}
+Gilt in Gleichung \eqref{eq:tau-aequivalentes-testmodell} außerdem, dass
+$\mu = c\,1_m$ mit $c \in \mbb{R}$, so wird das Modell als
+\textit{$\tau$-äquivalentes Testmodell}
+bezeichnet. In diesem Fall gilt insbesondere, dass
+\begin{equation}
+\tau_j = \tau_k
+\mbox{ für alle }
+j,k = 1,...,m
+\mbox{ mit }
+j \neq k.
+\end{equation}
+\end{theorem}
+
+# Modelle kongenerischer Testmessungen
+\footnotesize
+\underline{Beweis}
+
+Im Fall des essentiell $\tau$-äquivalenten Testmodells gilt, dass
+\begin{equation}
+\tau_j = \mu_j + x \mbox{ und } \tau_k = \mu_k + x \mbox{ für alle } j,k = 1,...,m \mbox{ mit } j \neq k.
+\end{equation}
+Dann gilt
+\begin{equation}
+\tau_k = \mu_k + x
+\Leftrightarrow x = \tau_k - \mu_k
+\end{equation}
+und damit
+\begin{equation}
+\tau_j
+= \mu_j + \tau_k - \mu_k
+= \mu_j - \mu_k + \tau_k
+= a_{jk} + \tau_k.
+\end{equation}
+Also ist die Funktion $f : \mbb{R} \to \mbb{R}$, die $\tau_j$ als Funktion von
+$\tau_k$ darstellt, eine linear-affine Funktion der Form
+\begin{equation}
+f(t) = a_{jk} + t \mbox{ für alle } t \in \mbb{R}.
+\end{equation}
+Entsprechend gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(a_{jk} + \tau_k) = \mbb{V}(\tau_k).
+\end{equation}
+
+# Modelle kongenerischer Testmessungen
+\footnotesize
+\underline{Beweis (fortgesetzt)}
+
+Im Fall des $\tau$-äquivalenten Testmodells gilt unter der zusätzlichen Annahme
+$\mu = c\,1_m$ mit $c \in \mbb{R}$, dass
+\begin{equation}
+\tau_j = c + x \mbox{ und } \tau_k = c + x
+\mbox{ für alle } j,k = 1,...,m \mbox{ mit } j \neq k.
+\end{equation}
+Damit gilt
+\begin{equation}
+\tau_j = \tau_k.
+\end{equation}
+Also ist die Funktion $f : \mbb{R} \to \mbb{R}$, die $\tau_j$ als Funktion von
+$\tau_k$ darstellt, die Identitätsfunktion
+\begin{equation}
+f(t) = t \mbox{ für alle } t \in \mbb{R}.
+\end{equation}
+Entsprechend gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(\tau_k).
+\end{equation}
+
+$\hfill\Box$
+
+
+# Modelle kongenerischer Testmessungen
+
+\footnotesize
+\begin{theorem}[Essentiell parallele und parallele Testmodelle]
+\justifying
+\normalfont
+Gegeben sei das einfaktorielle Normalverteilungsmodell der Faktorenanalyse für
+eine Testperson und $m$ Items
+\begin{equation}
+y = \mu + Lx + \varepsilon \mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi), x \perp \varepsilon, L := 1_m \mbox{ und } \Psi := \psi I_m.
+\label{eq:paralleles-testmodell}
+\end{equation}
+Dann wird das Modell in Gleichung \eqref{eq:paralleles-testmodell} auch als
+\textit{essentiell paralleles Testmodell} bezeichnet. Im Sinne der klassischen
+Testtheorie gilt für die wahren Werte $\tau_j$ und $\tau_k$ zweier
+Testmessungen $j$ und $k$ insbesondere, dass
+\begin{equation}
+\tau_j = a_{jk} + \tau_k
+\mbox{ wobei }
+a_{jk} := \mu_j - \mu_k
+\mbox{ für alle }
+j,k = 1,...,m
+\mbox{ mit }
+j \neq k.
+\end{equation}
+Für die Varianzen gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(\tau_k).
+\end{equation}
+Für die Messfehlervarianzen und die Varianzen der beobachteten Werte gilt
+außerdem
+\begin{equation}
+\mbb{V}(\varepsilon_j) = \mbb{V}(\varepsilon_k) = \psi
+\mbox{ und }
+\mbb{V}(y_j) = \mbb{V}(y_k).
+\end{equation}
+Gilt in Gleichung \eqref{eq:paralleles-testmodell} außerdem, dass
+$\mu = c\,1_m$ mit $c \in \mbb{R}$,
+so wird das Modell als \textit{paralleles Testmodell}
+bezeichnet. In diesem Fall gilt insbesondere, dass
+\begin{equation}
+\tau_j = \tau_k
+\mbox{ für alle }
+j,k = 1,...,m
+\mbox{ mit }
+j \neq k.
+\end{equation}
+\end{theorem}
+
+# Modelle kongenerischer Testmessungen
+\footnotesize
+\underline{Beweis}
+
+Im Fall des essentiell parallelen Testmodells gilt, dass
+\begin{equation}
+\tau_j = \mu_j + x \mbox{ und } \tau_k = \mu_k + x \mbox{ für alle } j,k = 1,...,m \mbox{ mit } j \neq k.
+\end{equation}
+Dann gilt
+\begin{equation}
+\tau_k = \mu_k + x
+\Leftrightarrow x = \tau_k - \mu_k
+\end{equation}
+und damit
+\begin{equation}
+\tau_j
+= \mu_j + \tau_k - \mu_k
+= \mu_j - \mu_k + \tau_k
+= a_{jk} + \tau_k.
+\end{equation}
+Also ist die Funktion $f : \mbb{R} \to \mbb{R}$, die $\tau_j$ als Funktion von
+$\tau_k$ darstellt, eine linear-affine Funktion der Form
+\begin{equation}
+f(t) = a_{jk} + t \mbox{ für alle } t \in \mbb{R}.
+\end{equation}
+Entsprechend gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(a_{jk} + \tau_k) = \mbb{V}(\tau_k).
+\end{equation}
+Aus $\Psi := \psi I_m$ folgt außerdem
+\begin{equation}
+\mbb{V}(\varepsilon_j) = \mbb{V}(\varepsilon_k) = \psi.
+\end{equation}
+Mit $y_j = \tau_j + \varepsilon_j$ und $y_k = \tau_k + \varepsilon_k$ folgt
+damit
+\begin{equation}
+\mbb{V}(y_j) = \mbb{V}(\tau_j) + \mbb{V}(\varepsilon_j)
+= \mbb{V}(\tau_k) + \mbb{V}(\varepsilon_k)
+= \mbb{V}(y_k).
+\end{equation}
+
+# Modelle kongenerischer Testmessungen
+\footnotesize
+\underline{Beweis (fortgesetzt)}
+
+Im Fall des parallelen Testmodells gilt unter der zusätzlichen Annahme
+$\mu = c\,1_m$ mit $c \in \mbb{R}$, dass
+\begin{equation}
+\tau_j = c + x \mbox{ und } \tau_k = c + x
+\mbox{ für alle } j,k = 1,...,m \mbox{ mit } j \neq k.
+\end{equation}
+Damit gilt
+\begin{equation}
+\tau_j = \tau_k.
+\end{equation}
+Also ist die Funktion $f : \mbb{R} \to \mbb{R}$, die $\tau_j$ als Funktion von
+$\tau_k$ darstellt, die Identitätsfunktion
+\begin{equation}
+f(t) = t \mbox{ für alle } t \in \mbb{R}.
+\end{equation}
+Entsprechend gilt
+\begin{equation}
+\mbb{V}(\tau_j) = \mbb{V}(\tau_k).
+\end{equation}
+Aus $\Psi := \psi I_m$ folgt außerdem
+\begin{equation}
+\mbb{V}(\varepsilon_j) = \mbb{V}(\varepsilon_k) = \psi.
+\end{equation}
+Mit $y_j = \tau_j + \varepsilon_j$ und $y_k = \tau_k + \varepsilon_k$ folgt
+damit
+\begin{equation}
+\mbb{V}(y_j) = \mbb{V}(\tau_j) + \mbb{V}(\varepsilon_j)
+= \mbb{V}(\tau_k) + \mbb{V}(\varepsilon_k)
+= \mbb{V}(y_k).
+\end{equation}
+
+$\hfill\Box$
+
+
+
+
+# Modelle kongenerischer Testmessungen
+\footnotesize
+
+Bemerkungen
+
+* Essentiell parallele Testmessungsmodelle sind nicht notwendigerweise parallel
+  im strikten Sinn. Bei ihnen gilt $\tau_{ij} = \mu_j + x_i$. Stimmen die
+  Intercepts aller Testmessungen überein, also $\mu_j = c$ für alle
+  $j = 1,...,m$, so gilt $\tau_{ij} = c + x_i =: \tau_i$. In diesem Fall ist
+  das Modell parallel.
+* Das zuvor definierte Modell paralleler Testmessungen ist im Allgemeinen nicht
+  notwendigerweise normalverteilt. Das parallele kongenerische
+  Testmessungsmodell ist eine normalverteilte parametrische Spezialisierung.
+* Mit Personenindizes hat das parallele kongenerische Testmessungsmodell die
+  Gestalt
+\begin{equation}
+y_{ij} = c + x_i + \varepsilon_{ij} = \tau_i + \varepsilon_{ij}
+\mbox{ mit }
+\tau_i := c + x_i.
+\end{equation}
+* Weil $\varepsilon_i \sim N(0_m,\psi I_m)$ gilt und die Messfehler unabhängig
+  vom Faktorwert sind, sind die beobachteten Werte bedingt auf $\tau_i$
+  unabhängig, sodass
+\begin{equation}
+\mbb{P}(y_{i1},...,y_{im}|\tau_i)
+= \prod_{j=1}^m \mbb{P}(y_{ij}|\tau_i)
+\end{equation}
+zur Faktorisierung des zuvor definierten Modells paralleler Testmessungen
+kongruent ist.
+
+#
+\vfill
+\setstretch{2.6}
+\large
+Grundlagen
+
+Das Modell multipler Testmessungen
+
+Das Modell paralleler Testmessungen
+
+Modelle kongenerischer Testmessungen
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen {.allowframebreaks}
+\footnotesize
+
+1. Skizzieren Sie die klassische Testtheorie und ihre Bedeutung für die
+   Fragebogendatenanalyse.
+1. Geben Sie die Definition eines bedingten Erwartungswerts wieder.
+1. Geben Sie die Definitionen von wahrem Wert, beobachtetem Wert und Messfehler
+   wieder.
+1. Erläutern Sie den Begriff der Propensitätsverteilung im Kontext der
+   klassischen Testtheorie.
+1. Geben Sie die Definition des Modells multipler Testmessungen wieder.
+1. Erläutern Sie das Modell multipler Testmessungen.
+1. Geben Sie die Definition des Vereinfachten Modells der Klassischen
+   Testtheorie wieder.
+1. Erläutern Sie das Vereinfachte Modell der klassischen Testtheorie.
+1. Geben Sie das Theorem zu den Eigenschaften bezüglich einer Testmessung
+   wieder.
+1. Erläutern Sie das Theorem zu den Eigenschaften bezüglich einer Testmessung.
+1. Geben Sie das Theorem zu den Eigenschaften bezüglich zweier Testmessungen
+   wieder.
+1. Erläutern Sie das Theorem zu den Eigenschaften bezüglich zweier
+   Testmessungen.
+1. Erläutern Sie den Begriff der parallelen Testmessungen.
+1. Erläutern Sie die Bedeutungen von
+\begin{equation}
+\tau_{ij} = \mbox{id}_{\mbb{R}} (\tau_{i1}) \mbox{ und } t_{ij} = \mbox{id}_{\mbb{R}}(t_{i1}) \mbox{ für } i = 1,...,n \mbox{ und } j = 2,...,m
+\end{equation}
+im Kontext paralleler Testmessungen.
+1. Geben Sie die Definition des Modells paralleler Testmessungen wieder.
+1. Erläutern Sie das Modell paralleler Testmessungen.
+1. Geben Sie das Theorem zu den Eigenschaften des Modells paralleler
+   Testmessungen wieder.
+1. Erläutern Sie das Theorem zu den Eigenschaften des Modells paralleler
+   Testmessungen.
+
+# Referenzen {.allowframebreaks}
+\footnotesize

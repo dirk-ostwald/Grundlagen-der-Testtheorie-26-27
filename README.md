@@ -13,11 +13,21 @@ außer einem PDF-Betrachter erforderlich.
 | --- | --- | --- |
 | 0 · Formalia | [PDF](0-Formalia/0-Formalia.pdf) | [Ordner](0-Formalia/) |
 | 1 · Psychologische Tests | [PDF](1-Psychologische-Tests/1-Psychologische-Tests.pdf) | [Ordner](1-Psychologische-Tests/) |
+| 2 · Modelle der klassischen Testtheorie | [PDF](2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf) | [Ordner](2-Modelle-der-klassischen-Testtheorie/) |
+| A · Wahrscheinlichkeitstheoretische Ergänzungen | [PDF](A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf) | [Ordner](A-Wahrscheinlichkeitstheoretische-Ergänzungen/) |
 
 Das begleitende [Vorlesungsskript als PDF](Skript/_book/Skript-Grundlagen-der-Testtheorie.pdf)
-enthält aktuell das Kapitel **Psychologische Tests**, Vorbemerkungen und
-Referenzen. Hinweise zu Quellen, Einrichtung und PDF-Erzeugung stehen in der
-[Skript-README](Skript/README.md).
+enthält aktuell Vorbemerkungen, die Kapitel **Psychologische Tests** und
+**Modelle der klassischen Testtheorie**, das Literaturverzeichnis und den
+Anhang **Wahrscheinlichkeitstheoretische Ergänzungen**. Das Modellkapitel
+behandelt multiple, parallele und kongenerische Testmessungen. Der Anhang
+fasst die benötigten Grundlagen zu Erwartungswerten, Varianzen und Kovarianzen
+sowie Normalverteilungen zusammen. Die zugehörigen Ergänzungsfolien sind
+inhaltlich mit dem Anhang abgestimmt.
+
+Hinweise zu Quellen, Einrichtung und PDF-Erzeugung stehen in der
+[Skript-README](Skript/README.md). Die Materialien zu Reliabilität und interner
+Konsistenz sind noch nicht Bestandteil dieser Veröffentlichung.
 
 Weitere Informationen zur Veranstaltung stehen auf der
 [Kurswebseite](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre/Lehre/Wintersemester+2027/Grundlagen+der+Testtheorie.html).

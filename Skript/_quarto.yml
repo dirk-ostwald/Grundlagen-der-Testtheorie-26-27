@@ -20,7 +20,13 @@ book:
   chapters:
     - index.qmd
     - _src/_part_9/901-Psychologische-Tests.qmd
-    - _src/Referenzen.qmd
+    - _src/_part_9/903-Modelle-der-klassischen-Testtheorie.qmd
+    # - _src/_part_9/904-Reliabilität-und-interne-Konsistenz.qmd
+    - Referenzen.qmd
+    # - _src/_part_9/A-Wahrscheinlichkeitstheoretische-Ergaenzungen.qmd
+  appendices:
+    - A-Wahrscheinlichkeitstheoretische-Ergaenzungen.qmd
+
 
 format:
   pdf:

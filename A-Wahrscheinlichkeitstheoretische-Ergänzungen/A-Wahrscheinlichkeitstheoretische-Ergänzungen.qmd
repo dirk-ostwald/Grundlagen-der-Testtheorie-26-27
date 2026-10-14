@@ -1,0 +1,931 @@
+---
+fontsize: 8pt
+format:
+    beamer:
+        include-in-header: "A-Header.tex"
+        colorlinks: true
+        urlcolor: darkblue
+        linkcolor: darkblue
+        citecolor: darkblue
+bibliography: A-Referenzen.bib
+---
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("A-Abbildungen/gdt-A-otto.png")
+```
+
+\vspace{2mm}
+
+\Huge
+Grundlagen der Testtheorie
+\vspace{6mm}
+
+\large
+BSc Psychologie WiSe 2026/27
+
+\normalsize
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+```{=latex}
+\vfill
+\begin{center}
+\huge
+(A) Wahrscheinlichkeitstheoretische Ergänzungen
+\end{center}
+\vfill
+```
+
+# A.1 Erwartungswerte
+
+\frametitle{A.1 Erwartungswerte}
+
+\footnotesize
+\begin{theorem}[Erwartungswert bei linear-affiner Kombination]\label{thm:erwartungswert-linear-affine-kombination}
+\justifying
+\normalfont
+$\xi$ sei ein $n$-dimensionaler Zufallsvektor mit Komponenten $\xi_1,...,\xi_n$
+und Ergebnisraum  $\mathcal{X} := \mathcal{X}_1 \times \cdots \times \mathcal{X}_n$.
+Die Komponenten besitzen endliche erste absolute Momente, also
+$\mathbb{E}(|\xi_i|) < \infty$ für $i = 1,...,n$. Weiterhin sei
+\begin{equation}
+f : \mathcal{X} \to \mathcal{Z}, x \mapsto f(x) := a_0 + \sum_{i=1}^n a_ix_i \mbox{ für }  a_0,...,a_n \in \mathbb{R}.
+\end{equation}
+eine linear-affine Kombination der Komponenten von $\xi$. Dann gilt
+\begin{equation}
+\mathbb{E}(f(\xi)) = \mathbb{E}\left(a_0 +\sum_{i=1}^n a_i\xi_i \right) = a_0 + \sum_{i = 1}^n a_i \mathbb{E}(\xi_i).
+\end{equation}
+\end{theorem}
+
+\footnotesize
+\underline{Beweis}
+
+Zur Vereinfachung der Notation schreiben wir $\sum_{x_i \in \mathcal{X}_i}$ als
+$\sum_{x_i}$.
+
+# A.1 Erwartungswerte
+
+\frametitle{A.1 Erwartungswerte}
+
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\begin{align}
+\begin{split}
+\mathbb{E}(f(\xi))
+& = \mathbb{E}\left(a_0 + \sum_{i=1}^{n} a_i\xi_i\right)
+\\
+& = \mathbb{E}(a_0 + a_1\xi_1 + \cdots + a_{n}\xi_{n})                              \\
+& = \sum_{x_1}\cdots\sum_{x_n} (a_0 + a_1x_1 + \cdots +
+a_{n}x_{n})p(x_1,...,x_{n})  \\
+& = \sum_{x_1}\cdots\sum_{x_n} \left(a_0p(x_1,...,x_n) +
+a_1x_1p(x_1,...,x_n) + \cdots +
+a_nx_np(x_1,...,x_n)\right)   \\
+& = \sum_{x_1}\cdots\sum_{x_n} a_0p(x_1,...,x_n)    +
+    \sum_{x_1}\cdots\sum_{x_n} a_1x_1p(x_1,...,x_n) + \cdots +
+    \sum_{x_1}\cdots\sum_{x_n} a_nx_np(x_1,...,x_n)   \\
+& = a_0\sum_{x_1}\cdots\sum_{x_n}p(x_1,...,x_n)    +
+    a_1\sum_{x_1}\cdots\sum_{x_n} x_1p(x_1,...,x_n) + \cdots +
+    a_n\sum_{x_n}\cdots\sum_{x_1} x_np(x_1,...,x_n)   \\
+& = a_0     +
+    a_1\sum_{x_1}x_1 \sum_{x_2}     \cdots\sum_{x_n} p(x_1,...,x_n) + \cdots +
+    a_n\sum_{x_n}x_n \sum_{x_{n-1}} \cdots\sum_{x_1} p(x_1,...,x_n)   \\
+& = a_0 + a_1\sum_{x_1}x_1 p(x_1) + \cdots +
+a_n\sum_{x_n}x_n p(x_n)  \\
+& = a_0 + a_1\mathbb{E}(\xi_1) + \cdots + a_n\mathbb{E}(\xi_n)  \\
+& = a_0 + \sum_{i=1}^n a_i\mathbb{E}(\xi_i)
+\end{split}
+\end{align}
+
+
+
+# A.1 Erwartungswerte
+
+\frametitle{A.1 Erwartungswerte}
+\footnotesize
+
+\begin{theorem}[Iterierter Erwartungswert]\label{thm:iterierter-erwartungswert}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$,
+wobei $\mathbb{E}(|\xi_1|) < \infty$ gilt. Dann gilt
+\begin{equation}
+\mathbb{E}(\xi_1) = \mathbb{E}\left(\mathbb{E}\left(\xi_1|\xi_2\right)\right).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Die folgenden Summen über $x_2$ laufen nur über Werte mit
+$p(x_2) > 0$.
+Wir beschränken uns auf den Beweis für einen diskreten Zufallsvektor. Es gilt
+\begin{align}
+\begin{split}
+\mathbb{E}(\xi_1)
+& = \sum_{x_1\in \mathcal{X}_1}x_1p(x_1)
+\\
+& = \sum_{x_1 \in \mathcal{X}_1}x_1\sum_{x_2 \in \mathcal{X}_2}
+p(x_1,x_2)          \\
+& = \sum_{x_1\in \mathcal{X}_1}x_1\sum_{x_2 \in \mathcal{X}_2}
+p(x_1|x_2)p(x_2)     \\
+& = \sum_{x_1\in \mathcal{X}_1}\sum_{x_2 \in \mathcal{X}_2} x_1
+p(x_1|x_2)p(x_2)    \\
+& = \sum_{x_2\in \mathcal{X}_2}\sum_{x_1 \in \mathcal{X}_1} x_1
+p(x_1|x_2)p(x_2)    \\
+& = \sum_{x_2\in \mathcal{X}_2}\mathbb{E}(\xi_1|\xi_2 = x_2)p(x_2)
+\\
+& = \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2 )\right).                                \\
+\end{split}
+\end{align}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+
+\begin{theorem}[Varianzen spezieller Linearkombinationen]\label{thm:varianzen-spezieller-linearkombinationen}
+\justifying
+\normalfont
+\vspace{1mm}
+
+
+\noindent (1) (Varianz bei Addition zweier Zufallsvariablen). Gegeben seien zwei Zufallsvariablen $\xi$ und $\zeta$. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi + \zeta)
+= \mathbb{V}(\xi) + \mathbb{V}(\zeta) + 2\mathbb{C}(\xi,\zeta).
+\end{equation}
+\noindent (2) (Varianz bei Subtraktion zweier Zufallsvariablen). Gegeben seien  zwei Zufallsvariablen $\xi$ und $\zeta$. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi - \zeta)
+= \mathbb{V}(\xi) + \mathbb{V}(\zeta) - 2\mathbb{C}(\xi,\zeta).
+\end{equation}
+\end{theorem}
+
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+
+\underline{Beweis}
+
+\noindent (1) Es seien $n := 2$, $\xi_1 := \xi$, $\xi_2 := \zeta$, $a_0 := 0$, $a_1 := 1$ und $a_2 := 1$. Dann gilt mit \thmref{thm:varianz-einer-linearkombination}
+\begin{align}
+\begin{split}
+\mathbb{V}(\xi + \zeta)
+& = \mathbb{V}(a_0 + a_1\xi_1 + a_2\xi_2)
+\\
+& = \mathbb{V}\left(a_0 + \sum_{i=1}^2 a_i \xi_i \right)
+\\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{2-1}\sum_{j=i+1}^2 a_i
+a_j\mathbb{C}(\xi_i,\xi_j)                          \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{1}\sum_{j=i+1}^2 a_ia_j
+\mathbb{C}(\xi_i,\xi_j)                            \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 1 + 1}^2 a_1a_j
+\mathbb{C}(\xi_1,\xi_j)                                                              \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 2}^2 a_1a_j\mathbb{C}(\xi_1,\xi_j)
+\\
+& = a_1^2\mathbb{V}(\xi_1) + a_2^2\mathbb{V}(\xi_2) + 2 a_1a_2\mathbb{C}(\xi_1,\xi_2)
+\\
+& = 1^2 \cdot \mathbb{V}(\xi)   +  1^2 \cdot \mathbb{V}(\zeta) + 2 \cdot  1 \cdot 1 \cdot
+\mathbb{C}(\xi,\zeta) \\
+& = \mathbb{V}(\xi) + \mathbb{V}(\zeta) + 2 \mathbb{C}(\xi,\zeta).
+\\
+\end{split}
+\end{align}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) Es seien $n := 2$, $\xi_1 := \xi$, $\xi_2 := \zeta$, $a_0 := 0$, $a_1 := 1$ und $a_2 := -1$. Dann gilt mit dem Theorem zur Varianz einer Linearkombination von Zufallsvariablen
+\begin{align}
+\begin{split}
+\mathbb{V}(\xi - \zeta)
+& = \mathbb{V}(a_0 + a_1\xi_1 + a_2\xi_2)
+\\
+& = \mathbb{V}\left(a_0 + \sum_{i=1}^2 a_i \xi_i \right)
+\\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{2-1}\sum_{j=i+1}^2 a_i
+a_j\mathbb{C}(\xi_i,\xi_j)                          \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{1}\sum_{j=i+1}^2 a_ia_j
+\mathbb{C}(\xi_i,\xi_j)                            \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 1 + 1}^2 a_1a_j
+\mathbb{C}(\xi_1,\xi_j)                                                              \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 2}^2 a_1a_j\mathbb{C}(\xi_1,\xi_j)
+\\
+& = a_1^2\mathbb{V}(\xi_1) + a_2^2\mathbb{V}(\xi_2) + 2 a_1a_2\mathbb{C}(\xi_1,\xi_2)
+\\
+& = 1^2\cdot \mathbb{V}(\xi)   +  (-1)^2 \cdot \mathbb{V}(\zeta) + 2 \cdot  1 \cdot
+(-1)\cdot  \mathbb{C}(\xi,\zeta)        \\
+& = \mathbb{V}(\xi) + \mathbb{V}(\zeta) - 2 \mathbb{C}(\xi,\zeta).
+\\
+\end{split}
+\end{align}
+
+\hfill $\Box$
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+
+\footnotesize
+\underline{Direkter Beweis der Varianzformel}
+
+Alternativ gilt ohne Rückgriff auf \thmref{thm:varianz-einer-linearkombination}
+und mit \thmref{thm:erwartungswert-linear-affine-kombination}, dass
+\begin{equation}
+\begin{split}
+& \mathbb{V}(a\xi + b\zeta + c)																	\\
+& = \mathbb{E}\left((a\xi + b\zeta + c - a\mathbb{E}(\xi) - b\mathbb{E}(\zeta) - c)^2\right) 	\\
+& = \mathbb{E}\left((a(\xi  - \mathbb{E}(\xi)) + b(\zeta  - \mathbb{E}(\zeta)))^2\right) 		\\
+& = \mathbb{E}\left(a^2(\xi - \mathbb{E}(\xi))^2
+				  + 2ab(\xi - \mathbb{E}(\xi))(\zeta - \mathbb{E}(\zeta))
+				  + b^2(\zeta - \mathbb{E}(\zeta))^2\right) 									\\
+& = a^2\mathbb{E}\left((\xi - \mathbb{E}(\xi))^2\right) +
+    b^2\mathbb{E}\left((\zeta - \mathbb{E}(\zeta))^2\right) +
+	2ab\mathbb{E}\left((\xi - \mathbb{E}(\xi))(\zeta - \mathbb{E}(\zeta))\right) 				\\
+& = a^2\mathbb{V}(\xi)+ b^2\mathbb{V}(\zeta) + 2ab\mathbb{C}(\xi,\zeta).
+\end{split}
+\end{equation}
+Die Spezialfälle folgen dann direkt mit $a := b := 1$ und $a := 1, b := -1$, respektive.
+
+\hfill $\Box$
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+
+\begin{theorem}[Kovarianzverschiebungssatz]\label{thm:kovarianzverschiebungssatz}
+\justifying
+\normalfont
+$\xi_1$ und $\xi_2$ seien Zufallsvariablen mit endlichen zweiten
+Momenten. Dann gilt
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2) = \mathbb{E}(\xi_1\xi_2) - \mathbb{E}(\xi_1)\mathbb{E}(\xi_2).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Mit der Definition der Kovarianz gilt
+\begin{align}
+\begin{split}
+\mathbb{C}(\xi_1,\xi_2)
+& = \mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right)
+\\
+& =
+\mathbb{E}\left(\xi_1\xi_2-\xi_1\mathbb{E}(\xi_2)-\mathbb{E}(\xi_1)\xi_2+\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)\right)
+\\
+& =
+\mathbb{E}(\xi_1\xi_2)-\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)-\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)+\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)
+\\
+& = \mathbb{E}(\xi_1\xi_2)-\mathbb{E}(\xi_1)\mathbb{E}(\xi_2).
+\end{split}
+\end{align}
+
+$\hfill\Box$
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+
+\footnotesize
+
+\begin{definition}[Bedingte Kovarianz]\label{def-bedingte-kovarianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2,\xi_3)$ mit Ergebnisraum
+$\mathcal{X} := \mathcal{X}_1 \times \mathcal{X}_2 \times \mathcal{X}_3$ und
+gemeinsamer WMF oder WDF $p(x_1,x_2,x_3)$. Für einen Bedingungswert $x_3$ mit
+positiver marginaler WMF bzw. WDF sei $p(x_1,x_2|x_3)$ die entsprechende
+bedingte WMF bzw. WDF. Es gelte
+$\mathbb{E}(\xi_1^2|\xi_3 = x_3) < \infty$ und
+$\mathbb{E}(\xi_2^2|\xi_3 = x_3) < \infty$.
+Dann ist die bedingte Kovarianz von $\xi_1$ und $\xi_2$ gegeben $\xi_3 = x_3$
+definiert als
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2|\xi_3 = x_3)
+:= \mathbb{E}
+  \left(
+  \left(\xi_1 - \mathbb{E}\left(\xi_1|\xi_3 = x_3\right)\right)
+  \left(\xi_2 - \mathbb{E}\left(\xi_2|\xi_3 = x_3\right)\right)|\xi_3 = x_3
+  \right)
+\end{equation}
+\end{definition}
+
+Die bedingte Kovarianz ist der Erwartungswert des Produkts der bedingt
+zentrierten Zufallsvariablen in ihrer bedingten gemeinsamen Verteilung.
+Für einen festen Bedingungswert $x_3$ ist sie eine feste Zahl. Als Funktion
+der Zufallsvariablen $\xi_3$ ergibt sich dagegen die Zufallsvariable
+$\mathbb{C}(\xi_1,\xi_2|\xi_3)$. Auch für die bedingte Kovarianz gilt ein
+Verschiebungssatz.
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+\begin{theorem}[Verschiebungssatz der bedingten Kovarianz]\label{thm:verschiebungssatz-der-bedingten-kovarianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2,\xi_3)$, wobei $\xi_1$ und $\xi_2$
+endliche zweite Momente besitzen. Dann gilt fast sicher
+\begin{equation}
+\mathbb{C}(\xi_1, \xi_2|\xi_3)
+= \mathbb{E}\left(\xi_1\xi_2|\xi_3\right) - \mathbb{E}\left(\xi_1|\xi_3\right)\mathbb{E}\left(\xi_2|\xi_3\right).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Ein Beweis ergibt sich durch die Ersetzung der entsprechenden Erwartungswerte
+im Beweis von \thmref{thm:kovarianzverschiebungssatz} durch die entsprechenden
+bedingten
+Erwartungswerte.
+
+$\hfill\Box$
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+\begin{theorem}[Kovarianz bei paarweiser Addition]\label{thm:kovarianz-bei-paarweiser-addition}
+\justifying
+\normalfont
+$\xi_1,\xi_2,\zeta_1,\zeta_2$ seien vier Zufallsvariablen mit endlichen zweiten
+Momenten. Dann gilt
+\begin{equation}
+\mathbb{C}(\xi_1 + \xi_2, \zeta_1 + \zeta_2)
+= \mathbb{C}(\xi_1,\zeta_1) + \mathbb{C}(\xi_1,\zeta_2) + \mathbb{C}(\xi_2,\zeta_1) + \mathbb{C}(\xi_2,\zeta_2).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Es seien $n := 2, m := 2, a_0 = b_0 := 0$ und $a_i = b_i := 1$ für $i = 1,2$.
+Dann
+gilt mit \thmref{thm:kovarianz-von-linearkombinationen}
+\begin{align}
+\begin{split}
+\mathbb{C}\left(\xi_1 +\xi_2, \zeta_1 + \zeta_2 \right)
+& = \mathbb{C}\left(a_0 + \sum_{i=1}^2 a_i \xi_i, b_0 + \sum_{j=1}^2 b_j \zeta_j \right)
+\\
+& = \sum_{i=1}^2 \sum_{j=1}^2 a_i b_j\mathbb{C}\left(\xi_i, \zeta_j \right) \\
+& = \sum_{i=1}^2 \sum_{j=1}^2 \mathbb{C}\left(\xi_i, \zeta_j \right) \\
+& = \mathbb{C}\left(\xi_1, \zeta_1\right) + \mathbb{C}\left(\xi_1, \zeta_2 \right) +
+\mathbb{C}\left(\xi_2, \zeta_1\right) + \mathbb{C}\left(\xi_2, \zeta_2 \right).
+\end{split}
+\end{align}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+\begin{theorem}[Iterierte Varianz]\label{thm:iterierte-varianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$,
+wobei $\xi_1$ ein endliches zweites Moment besitzt. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi_1) =
+\mathbb{E}(\mathbb{V}(\xi_1|\xi_2)) + \mathbb{V}(\mathbb{E}(\xi_1|\xi_2))
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Die folgenden Summen über $x_2$ laufen nur über Werte mit
+$p(x_2) > 0$.
+Wir beschränken uns auf den Beweis für einen diskreten Zufallsvektor. Mit
+\thmref{thm:kovarianzverschiebungssatz},
+\thmref{thm:iterierter-erwartungswert} und \thmref{thm:verschiebungssatz-der-bedingten-varianz}
+gilt
+\begin{align}
+\begin{split}
+\mathbb{V}(\xi_1)
+& = \mathbb{E}(\xi_1^2) - \mathbb{E}(\xi_1)^2
+\\
+& = \mathbb{E}\left(\mathbb{E}(\xi_1^2|\xi_2)\right) -
+\mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2                     \\
+& = \sum_{x_2 \in \mathcal{X}_2}p(x_2)\mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+\mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2    \\
+& = \sum_{x_2 \in \mathcal{X}_2}p(x_2)\left(\mathbb{V}(\xi_1|\xi_2 = x_2) +
+\mathbb{E}(\xi_1|\xi_2 = x_2)^2 \right) -
+     \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2                                                                       \\
+& = \sum_{x_2 \in \mathcal{X}_2}p(x_2)\mathbb{V}(\xi_1|\xi_2 = x_2) +
+    \sum_{x_2 \in \mathcal{X}_2}p(x_2)\mathbb{E}(\xi_1|\xi_2 = x_2)^2  -
+     \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2                                                                       \\
+& = \mathbb{E}(\mathbb{V}(\xi_1|\xi_2)) +
+    \left(\mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)^2\right) - \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2\right)          \\
+& = \mathbb{E}(\mathbb{V}(\xi_1|\xi_2)) + \mathbb{V}\left(\mathbb{E}(\xi_1|\xi_2)\right)
+\\
+\end{split}
+\end{align}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+
+\footnotesize
+
+\begin{definition}[Kovarianz und Korrelation zweier Zufallsvariablen]\label{def-kovarianz-und-korrelation-zweier-zufallsvariablen}
+\justifying
+\normalfont
+$\xi_1$ und $\xi_2$ seien Zufallsvariablen mit endlichen zweiten Momenten.
+Ihre \textit{Kovarianz} ist definiert als
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2) :=
+\mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right).
+\end{equation}
+Die \textit{Korrelation} zweier Zufallsvariablen $\xi_1$ und $\xi_2$ mit $\mathbb{S}(\xi_1) > 0$
+und $\mathbb{S}(\xi_2) > 0$ ist definiert als
+\begin{equation}
+\rho(\xi_1,\xi_2)
+:= \frac{\mathbb{C}(\xi_1,\xi_2)}{\mathbb{S}(\xi_1)\mathbb{S}(\xi_2)}.
+\end{equation}
+\end{definition}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+
+\footnotesize
+\begin{theorem}[Kovarianz von Linearkombinationen von Zufallsvariablen]\label{thm:kovarianz-von-linearkombinationen}
+\justifying
+\normalfont
+Gegeben seien $n$ Zufallsvariablen  $\xi_1,...,\xi_n$  und $n+1$ reelle Konstanten
+$a_0,a_1,...,a_n$ sowie $m$ Zufallsvariablen $\zeta_1,...,\zeta_m$ und $m + 1$ reelle
+Konstanten $b_0,b_1,...,b_m$.
+Alle genannten Zufallsvariablen besitzen endliche zweite Momente. Dann gilt
+\begin{equation}
+\mathbb{C}\left(a_0 + \sum_{i=1}^n a_i \xi_i, b_0 + \sum_{j=1}^m b_j \zeta_j\right)
+= \sum_{i=1}^n \sum_{j=1}^m a_ib_j\mathbb{C}(\xi_i, \zeta_j).
+\end{equation}
+\end{theorem}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\vspace{2mm}
+\scriptsize
+\underline{Beweis}
+
+\begin{align*}
+\begin{split}
+& \mathbb{C}\left(a_0 + \sum_{i=1}^n a_i \xi_i, b_0 + \sum_{j=1}^m b_j \zeta_j \right) \\
+& = \mathbb{E}\left(
+        \left(a_0 + \sum_{i=1}^n a_i \xi_i  - \mathbb{E}\left(a_0 + \sum_{i=1}^n a_i
+\xi_i\right)\right)
+        \left(b_0 + \sum_{j=1}^m b_j \zeta_j - \mathbb{E}\left(b_0 + \sum_{j=1}^m b_j
+\zeta_j \right)\right)
+        \right)
+\\
+& = \mathbb{E}\left(
+        \left(a_0 + \sum_{i=1}^n a_i \xi_i  - a_0 - \mathbb{E}\left(\sum_{i=1}^n a_i
+\xi_i\right)\right)
+        \left(b_0 + \sum_{j=1}^m b_j \zeta_j - b_0 - \mathbb{E}\left(\sum_{j=1}^m b_j
+\zeta_j \right)\right)
+        \right)
+\\
+& = \mathbb{E}\left(
+        \left(\sum_{i=1}^n a_i \xi_i  - \sum_{i=1}^n a_i \mathbb{E}(\xi_i) \right)
+        \left(\sum_{j=1}^m b_j \zeta_j - \sum_{j=1}^m b_j \mathbb{E}(\zeta_j)\right)
+        \right)
+\\
+& = \mathbb{E}
+        \Bigl(
+        \sum_{i=1}^n a_i \xi_i\sum_{j=1}^m b_j \zeta_j  - \sum_{i=1}^n a_i \xi_i
+\sum_{j=1}^m b_j \mathbb{E}(\zeta_j)
+\\
+&\qquad {}- \sum_{i=1}^n a_i \mathbb{E}(\xi_i)\sum_{j=1}^m b_j \zeta_j +  \sum_{i=1}^n a_i
+\mathbb{E}(\xi_i) \sum_{j=1}^m b_j \mathbb{E}(\zeta_j)
+        \Bigr)
+\\
+\end{split}
+\end{align*}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\scriptsize
+\underline{Beweis (fortgeführt)}
+\begin{align*}
+\begin{split}
+& = \mathbb{E}\left(\sum_{i=1}^n a_i \xi_i\sum_{j=1}^m b_j \zeta_j\right)
+    - \mathbb{E}\left(\sum_{i=1}^n a_i \xi_i \sum_{j=1}^m b_j \mathbb{E}(\zeta_j)\right)
+\\
+&\qquad {}- \mathbb{E}\left(\sum_{i=1}^n a_i \mathbb{E}(\xi_i)\sum_{j=1}^m b_j \zeta_j\right)
+        + \mathbb{E}\left(\sum_{i=1}^n a_i \mathbb{E}(\xi_i) \sum_{j=1}^m b_j
+\mathbb{E}(\zeta_j)\right)
+\\
+& =  \sum_{i=1}^n \sum_{j=1}^m a_ib_j \mathbb{E}(\xi_i\zeta_j)
+    - 2\sum_{i=1}^n \sum_{j=1}^m a_i  b_j \mathbb{E}(\xi_i)\mathbb{E}(\zeta_j)
+        + \sum_{i=1}^n\sum_{j=1}^m a_ib_j \mathbb{E}(\xi_i) \mathbb{E}(\zeta_j)
+\\
+& =  \sum_{i=1}^n \sum_{j=1}^m a_ib_j \left(\mathbb{E}(\xi_i\zeta_j) -  2
+\mathbb{E}(\xi_i)\mathbb{E}(\zeta_j) +\mathbb{E}(\xi_i)\mathbb{E}(\zeta_j)\right)
+\\
+& =  \sum_{i=1}^n \sum_{j=1}^m a_ib_j
+     \mathbb{E}\left((\xi_i -  \mathbb{E}(\xi_i))(\zeta_j - \mathbb{E}(\zeta_j))\right)
+\\
+& = \sum_{i=1}^n \sum_{j=1}^m a_ib_j\mathbb{C}(\xi_i, \zeta_j)
+\end{split}
+\end{align*}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+
+\begin{theorem}[Varianz einer Linearkombination]\label{thm:varianz-einer-linearkombination}
+\justifying
+\normalfont
+Gegeben seien $n$ Zufallsvariablen $\xi_1,...,\xi_n$ und $n+1$ reelle Konstanten
+$a_0,a_1,...,a_n$.
+Dann gilt
+\begin{equation}
+\mathbb{V}\left(a_0 + \sum_{i=1}^n a_i \xi_i \right)
+= \sum_{i=1}^n a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^n a_ia_j\mathbb{C}(\xi_i,\xi_j).
+\end{equation}
+\end{theorem}
+
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+
+\underline{Beweis}
+
+Mit $\mathbb{V}(\xi) = \mathbb{C}(\xi,\xi)$ und
+\thmref{thm:kovarianz-von-linearkombinationen}
+gilt zunächst
+\begin{align}
+\begin{split}
+\mathbb{V}\left(a_0 + \sum_{i=1}^n a_i\xi_i\right)
+& = \mathbb{C}\left(a_0 + \sum_{i=1}^n a_i\xi_i, a_0 + \sum_{i=1}^n a_i\xi_i\right)
+\\
+& = \mathbb{C}\left(a_0 + \sum_{i=1}^n a_i \xi_i, a_0 + \sum_{j=1}^n a_j \xi_j \right)
+\\
+& = \sum_{i=1}^n \sum_{j=1}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+\\
+& = \sum_{i=1}^n\sum_{\substack{j=1 \\ j = i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)  +
+\sum_{i=1}^n \sum_{\substack{j=1 \\ j \neq i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)    \\
+& = \sum_{i=1}^n a_i a_i\mathbb{C}(\xi_i,\xi_i)  + \sum_{i=1}^n \sum_{\substack{j=1 \\
+j \neq i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+\\
+& = \sum_{i=1}^n a_i^2\mathbb{V}(\xi_i)  + \sum_{i=1}^n \sum_{\substack{j=1 \\ j \neq
+i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+\\
+& = \sum_{i=1}^n a_i^2\mathbb{V}(\xi_i)  + 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^n a_ia_j
+\mathbb{C}(\xi_i,\xi_j),
+\end{split}
+\end{align}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+Dabei wurde in der vierten Gleichung die Doppelsumme in solche Terme
+aufgespalten,
+für die $i = j$ und für die $i \neq j$, und in der siebten Gleichung ausgenutzt,
+dass
+\begin{equation}
+a_ia_j\mathbb{C}(\xi_i,\xi_j) = a_ja_i\mathbb{C}(\xi_j,\xi_i).
+\end{equation}
+Wir verdeutlichen die daraus folgende Identität
+\begin{equation}
+\sum_{i=1}^n \sum_{\substack{j=1 \\ j \neq i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+= 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^n a_ia_j \mathbb{C}(\xi_i,\xi_j),
+\end{equation}
+am Beispiel $n = 3$ untenstehend. Analog mag man sich vorstellen, über alle
+Elemente außer der Diagonalelemente der $i = 1,...,n$ Zeilen und $j = 1,...,n$
+Spalten einer symmetrischen Matrix mit Einträgen $a_ia_j\mathbb{C}(\xi_i,\xi_j)$
+zu summieren. Die linke Seite oberer Gleichung entspricht dann dem zeilenweisen
+Vorgehen der Summationsbildung für alle Spalteneinträge außer dem, der in der
+Spalte der jeweils betrachteten Zeile steht, d.h. dem Diagonaleintrag. Die
+rechte
+Seite der obigen Gleichung entspricht dann dem Vorgehen, die Symmetrie der
+Matrix
+auszunutzen, also die Tatsache zu berücksichtigen, dass die Einträge der Matrix
+rechts
+oberhalb und links unterhalb der Diagonalen identisch sind, sodass es genügt,
+die Einträge der oberen Dreieckshälfte ohne Diagonale aufzuaddieren und zu verdoppeln. Dabei
+werden
+für jede Zeile $i = 1,...,n$ nur gerade die Spalten $j = i+1,...,n$ betrachtet,
+die rechts von der Diagonale stehen und ihre Einträge aufsummiert. In der
+letzten
+Zeile steht dabei nur ein Diagonalelement, das nicht zur Summe gehört, weshalb
+der Index der äußeren Summe nur bis $n-1$ läuft.
+
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+
+\underline{Beweis (fortgeführt)}
+
+Konkret ergibt sich zum Beispiel für $n := 3$:
+\begin{align}
+\begin{split}
+& \sum_{i=1}^3\sum_{\substack{j=1 \\ j \neq i}}^3 a_ia_j \mathbb{C}(\xi_i,\xi_j) \\
+& = \sum_{\substack{j=1 \\ j \neq 1}}^3 a_1a_j\mathbb{C}(\xi_1,\xi_j) +
+    \sum_{\substack{j=1 \\ j \neq 2}}^3 a_2a_j\mathbb{C}(\xi_2,\xi_j) +
+        \sum_{\substack{j=1 \\ j \neq 3}}^3 a_3a_j\mathbb{C}(\xi_3,\xi_j)\\
+& = a_1a_2\mathbb{C}(\xi_1,\xi_2) + a_1a_3\mathbb{C}(\xi_1,\xi_3) + a_2a_1\mathbb{C}(\xi_2,\xi_1) +
+a_2a_3\mathbb{C}(\xi_2,\xi_3)  + a_3a_1\mathbb{C}(\xi_3,\xi_1) + a_3a_2\mathbb{C}(\xi_3,\xi_2)\\
+& = a_1a_2\mathbb{C}(\xi_1,\xi_2) + a_2a_1\mathbb{C}(\xi_2,\xi_1) + a_1a_3\mathbb{C}(\xi_1,\xi_3) +
+a_3a_1\mathbb{C}(\xi_3,\xi_1) + a_2a_3\mathbb{C}(\xi_2,\xi_3) + a_3a_2\mathbb{C}(\xi_3,\xi_2)\\
+& = 2a_1a_2\mathbb{C}(\xi_1,\xi_2) + 2a_1a_3\mathbb{C}(\xi_1,\xi_3) +
+2a_2a_3\mathbb{C}(\xi_2,\xi_3)\\
+& = 2\left(a_1a_2\mathbb{C}(\xi_1,\xi_2) + a_1a_3\mathbb{C}(\xi_1,\xi_3) +
+a_2a_3\mathbb{C}(\xi_2,\xi_3)\right)\\
+& = 2\left(\sum_{j=2}^3 a_1a_j\mathbb{C}(\xi_1,\xi_j) + \sum_{j=3}^3
+a_2a_j\mathbb{C}(\xi_2,\xi_j)\right)\\
+& = 2\left(\sum_{j=1+1}^3 a_1a_j\mathbb{C}(\xi_1,\xi_j) + \sum_{j=2+1}^3
+a_2a_j\mathbb{C}(\xi_2,\xi_j)\right)\\
+& = 2\sum_{i=1}^{2}\sum_{j=i+1}^3 a_ia_j\mathbb{C}(\xi_i,\xi_j).
+\end{split}
+\end{align}
+
+\hfill $\Box$
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+
+\footnotesize
+\begin{definition}[Bedingte Varianz]\label{def-bedingte-varianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$ mit Ergebnisraum
+$\mathcal{X} := \mathcal{X}_1 \times \mathcal{X}_2$ und gemeinsamer WMF oder WDF.
+Für einen Bedingungswert $x_2$ mit positiver marginaler WMF bzw. WDF existiere
+die entsprechende bedingte Verteilung, und es gelte
+$\mathbb{E}(\xi_1^2|\xi_2 = x_2) < \infty$.
+Dann ist die \textit{bedingte Varianz von $\xi_1$ gegeben $\xi_2 = x_2$} definiert als
+\begin{equation}
+\mathbb{V}(\xi_1|\xi_2 = x_2) := \mathbb{E}\left(\left(\xi_1 - \mathbb{E}(\xi_1|\xi_2 = x_2)\right)^2|\xi_2 = x_2\right)
+\end{equation}
+und die \textit{bedingte Standardabweichung von $\xi_1$ gegeben $\xi_2 = x_2$} ist definiert als
+\begin{equation}
+\mathbb{S}(\xi_1|\xi_2 = x_2) := \sqrt{\mathbb{V}(\xi_1|\xi_2 = x_2)}.
+\end{equation}
+\end{definition}
+
+Für einen festen Bedingungswert $x_2$ sind die bedingte Varianz und die
+bedingte Standardabweichung feste Zahlen. Betrachtet man die bedingte Varianz
+dagegen als Funktion der Zufallsvariablen $\xi_2$, erhält man die
+Zufallsvariable $\mathbb{V}(\xi_1|\xi_2)$. Entsprechendes gilt für
+$\mathbb{S}(\xi_1|\xi_2)$. Auch für die bedingte Varianz gilt ein
+Verschiebungssatz.
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+\footnotesize
+\begin{theorem}[Verschiebungssatz der bedingten Varianz]\label{thm:verschiebungssatz-der-bedingten-varianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$, wobei $\xi_1$ ein endliches
+zweites Moment besitzt. Für alle Bedingungswerte $x_2$ mit positiver
+marginaler WMF bzw. WDF und endlichem bedingtem zweiten Moment gilt
+\begin{equation}
+\mathbb{V}(\xi_1|\xi_2 = x_2) = \mathbb{E}\left(\xi_1^2|\xi_2 = x_2\right) - \mathbb{E}(\xi_1|\xi_2 = x_2)^2
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Wir beschränken uns auf den Beweis für einen diskreten Zufallsvektor.
+\begin{align*}
+\begin{split}
+\mathbb{V}(\xi_1|\xi_2 = x_2)
+& = \mathbb{E}\left(\left(\xi_1 - \mathbb{E}(\xi_1|\xi_2 = x_2)\right)^2|\xi_2 =
+x_2\right)                                         \\
+& = \mathbb{E}\left(\xi_1^2 - 2\xi_1\mathbb{E}(\xi_1|\xi_2 = x_2) +
+\mathbb{E}(\xi_1|\xi_2 = x_2)^2|\xi_2 = x_2\right)              \\
+& = \sum_{x_1 \in \mathcal{X}_1}p(x_1|x_2)\left(x_1^2 -
+2x_1\mathbb{E}(\xi_1|\xi_2 = x_2) + \mathbb{E}(\xi_1|\xi_2 = x_2)^2\right)
+\\
+& = \sum_{x_1 \in \mathcal{X}_1}x_1^2p(x_1|x_2) -
+    \sum_{x_1 \in \mathcal{X}_1}2x_1\mathbb{E}(\xi_1|\xi_2 = x_2)p(x_1|x_2) +
+    \sum_{x_1 \in \mathcal{X}_1}\mathbb{E}(\xi_1|\xi_2 = x_2)^2p(x_1|x_2)                                                           \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+    2\mathbb{E}(\xi_1|\xi_2 = x_2)\sum_{x_1 \in \mathcal{X}_1}x_1p(x_1|x_2) +
+    \mathbb{E}(\xi_1|\xi_2 = x_2)^2\sum_{x_1 \in \mathcal{X}_1}p(x_1|x_2)                                                           \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+    2\mathbb{E}(\xi_1|\xi_2 = x_2)\mathbb{E}(\xi_1|\xi_2 = x_2) +
+    \mathbb{E}(\xi_1|\xi_2 = x_2)^2 \cdot 1                                                                                         \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+    2\mathbb{E}(\xi_1|\xi_2 = x_2)^2 +
+    \mathbb{E}(\xi_1|\xi_2 = x_2)^2                                                                                          \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) - \mathbb{E}(\xi_1|\xi_2 = x_2)^2
+\end{split}
+\end{align*}
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+
+\footnotesize
+\begin{theorem}[Nichtnegativität der Varianz]\label{thm:nichtnegativitaet-der-varianz}
+\justifying
+\normalfont
+$\xi$ sei eine Zufallsvariable mit endlichem zweiten Moment. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi) \ge 0.
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Wir betrachten den Fall einer diskreten Zufallsvariablen. Dann gilt zunächst
+\begin{equation}
+(x - \mathbb{E}(\xi))^2 \ge 0 \mbox{ für alle } x \in \mathcal{X}.
+\end{equation}
+Weiterhin gilt für die WMF $p$ von $\xi$, dass
+\begin{equation}
+p(x) \ge 0 \mbox{ für alle } x \in \mathcal{X}.
+\end{equation}
+Also folgt
+\begin{equation}
+p(x)(x - \mathbb{E}(\xi))^2 \ge 0 \mbox{ für alle } x \in \mathcal{X}.
+\end{equation}
+Damit gilt dann aber
+\begin{equation}
+\mathbb{V}(\xi) = \sum_{x \in \mathcal{X}} p(x)(x - \mathbb{E}(\xi))^2 \ge 0.
+\end{equation}
+Analog zeigt man die Nichtnegativität der Varianz bei kontinuierlichen Zufallsvariablen.
+
+\hfill $\Box$
+
+# A.2 Varianzen und Kovarianzen
+
+\frametitle{A.2 Varianzen und Kovarianzen}
+
+\footnotesize
+\begin{theorem}[Symmetrie von Kovarianz und Korrelation]\label{thm:symmetrie-der-kovarianz}
+\justifying
+\normalfont
+$\xi_1$ und $\xi_2$ seien zwei Zufallsvariablen mit endlichen zweiten Momenten.
+Für die Aussage zur Korrelation seien zudem $\mathbb{S}(\xi_1) > 0$ und
+$\mathbb{S}(\xi_2) > 0$ vorausgesetzt. Dann gelten
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2) = \mathbb{C}(\xi_2,\xi_1)
+\mbox{ und }
+\rho(\xi_1,\xi_2) = \rho(\xi_2,\xi_1).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Mit der Kommutativität der Multiplikation gilt zunächst
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2)
+= \mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right)
+= \mathbb{E}\left((\xi_2-\mathbb{E}(\xi_2))(\xi_1-\mathbb{E}(\xi_1))\right)
+= \mathbb{C}(\xi_2,\xi_1)
+\end{equation}
+Weiterhin gilt dann
+\begin{equation}
+\rho(\xi_1,\xi_2)
+= \frac{\mathbb{C}(\xi_1,\xi_2)}{\mathbb{S}(\xi_1)\mathbb{S}(\xi_2)}
+= \frac{\mathbb{C}(\xi_2,\xi_1)}{\mathbb{S}(\xi_2)\mathbb{S}(\xi_1)}
+= \rho(\xi_2,\xi_1)
+\end{equation}
+
+\hfill $\Box$
+
+# A.3 Normalverteilungen
+
+\frametitle{A.3 Normalverteilungen}
+
+\footnotesize
+
+\begin{theorem}[Gemeinsame Normalverteilungen]\label{thm-gemeinsame-normalverteilungen}
+\justifying
+\normalfont
+$\xi$ sei ein $m$-dimensionaler normalverteilter Zufallsvektor mit WDF
+\begin{equation}
+p_\xi : \mathbb{R}^m \to \mathbb{R}_{>0},\,x\mapsto
+p_\xi(x) := N(x;\mu_\xi,\Sigma_{\xi\xi}) \mbox{ mit }
+\mu_\xi \in \mathbb{R}^m,
+\Sigma_{\xi\xi} \in \mathbb{R}^{m\times m},
+\end{equation}
+$A\in\mathbb{R}^{n\times m}$ sei eine Matrix, $b\in\mathbb{R}^n$ sei ein Vektor
+und $\upsilon$ sei ein $n$-dimensionaler bedingt normalverteilter Zufallsvektor mit
+bedingter WDF
+\begin{equation}
+p_{\upsilon|\xi}(\cdot|x) : \mathbb{R}^n \to \mathbb{R}_{>0},\, y\mapsto
+p_{\upsilon|\xi}(y|x) := N(y;Ax+b,\Sigma_{\upsilon\upsilon}) \mbox{ mit }
+\Sigma_{\upsilon\upsilon} \in \mathbb{R}^{n\times n}.
+\end{equation}
+Die Matrizen $\Sigma_{\xi\xi}$ und $\Sigma_{\upsilon\upsilon}$ seien symmetrisch
+und positiv definit. Die bedingte Kovarianzmatrix $\Sigma_{\upsilon\upsilon}$
+sei unabhängig von $x$.
+Dann ist der $m+n$-dimensionale Zufallsvektor $(\xi,\upsilon)^T$ normalverteilt mit (gemeinsamer) WDF
+\begin{equation}\label{eq:gauss_joint}
+p_{\xi,\upsilon} : \mathbb{R}^{m+n} \to \mathbb{R}_{>0},\, \begin{pmatrix} x \\ y \end{pmatrix} \mapsto
+p_{\xi,\upsilon}\left(\begin{pmatrix} x \\ y \end{pmatrix}\right) = N\left(\begin{pmatrix} x \\ y \end{pmatrix};
+\mu_{\xi,\upsilon}, \Sigma_{\xi,\upsilon} \right),
+\end{equation}
+mit $\mu_{\xi,\upsilon} \in \mathbb{R}^{m+n}$ und $\Sigma_{\xi,\upsilon} \in \mathbb{R}^{(m+n) \times (m+n)}$ und insbesondere
+\begin{equation}
+\mu_{\xi,\upsilon} = \left( \begin{matrix} \mu_\xi \\ A\mu_\xi + b \end{matrix} \right)
+\mbox{ und }
+\Sigma_{\xi,\upsilon} = \left(\begin{matrix} \Sigma_{\xi\xi} & \Sigma_{\xi\xi}A^T \\ A\Sigma_{\xi\xi} & \Sigma_{\upsilon\upsilon} + A\Sigma_{\xi\xi}A^T \end{matrix} \right).
+\end{equation}
+\end{theorem}
+
+
+
+# A.3 Normalverteilungen
+
+\frametitle{A.3 Normalverteilungen}
+
+\scriptsize
+
+\begin{theorem}[Marginale Normalverteilungen]\label{thm-marginale-normalverteilungen}
+\justifying
+\normalfont
+Es sei $n := k + l$ und $\xi = (\xi_1,...,\xi_n)^T$ sei ein $n$-dimensionaler
+normalverteilter Zufallsvektor mit Erwartungswertparameter
+\begin{equation}
+\mu =
+\left(\begin{matrix}
+\mu_\upsilon \\
+\mu_\zeta
+\end{matrix}\right) \in \mathbb{R}^n,
+\end{equation}
+mit $\mu_\upsilon \in \mathbb{R}^k$ und $\mu_\zeta \in \mathbb{R}^l$ und Kovarianzmatrixparameter
+\begin{equation}
+\Sigma =
+\left(\begin{matrix}
+\Sigma_{\upsilon\upsilon} 	& \Sigma_{\upsilon\zeta} \\
+\Sigma_{\zeta\upsilon} 	& \Sigma_{\zeta\zeta}
+\end{matrix}\right) \in \mathbb{R}^{n \times n},
+\end{equation}
+mit $\Sigma_{\upsilon\upsilon}  \in \mathbb{R}^{k \times k}$,
+    $\Sigma_{\upsilon\zeta}     \in \mathbb{R}^{k \times l}$,
+    $\Sigma_{\zeta\upsilon}     \in \mathbb{R}^{l \times k}$,
+und $\Sigma_{\zeta\zeta}        \in \mathbb{R}^{l \times l}$.
+Dann sind $\upsilon := (\xi_1,...,\xi_k)^T$ und $\zeta := (\xi_{k+1}, ...,\xi_n)^T$
+normalverteilte Zufallsvektoren der Dimension $k$ bzw. $l$, und es gilt
+\begin{equation}
+\upsilon \sim N(\mu_\upsilon,\Sigma_{\upsilon\upsilon}) \mbox{ und } \zeta \sim N(\mu_\zeta,\Sigma_{\zeta\zeta}).
+\end{equation}
+\end{theorem}
+
+Die Marginalverteilungen einer multivariaten Normalverteilung sind also auch Normalverteilungen
+und die Parameter der Marginalverteilungen ergeben sich aus den Parametern der gemeinsamen Verteilung.
+Für Beweise dieses Theorems verweisen wir auf @mardia1979 und @anderson2003.
+
+# A.3 Normalverteilungen
+
+\frametitle{A.3 Normalverteilungen}
+
+\footnotesize
+
+\setbeamerfont{block title}{size=\small}
+\begin{theorem}[Linear-affine Transformation eines normalverteilten Zufallsvektors]\label{thm-linear-affine-transformation}
+\justifying
+\normalfont
+$\xi \sim N(\mu_\xi,\Sigma_\xi)$ sei ein normalverteilter $n$-dimensionaler Zufallsvektor
+und es sei
+\begin{equation}
+\zeta := A\xi + b \mbox{ mit } A \in \mathbb{R}^{m \times n} \mbox{ und } b \in \mathbb{R}^m.
+\end{equation}
+Dann gilt
+\begin{equation}
+\zeta \sim N(\mu_\zeta, \Sigma_\zeta)
+\mbox{ mit }
+\mu_\zeta    = A\mu_\xi + b \in \mathbb{R}^m \mbox{ und }
+\Sigma_\zeta = A\Sigma_\xi A^T \in \mathbb{R}^{m \times m}.
+\end{equation}
+\end{theorem}
+
+Die resultierende Normalverteilung kann degeneriert sein. Ist
+$\Sigma_\xi$ positiv definit, so ist $A\Sigma_\xi A^T$ genau dann positiv
+definit, wenn $A$ vollen Zeilenrang besitzt.
+
+Für einen Beweis verweisen wir auf @anderson2003.
+
+
+
+# Literatur
+
+\footnotesize
+
+::: {#refs}
+:::

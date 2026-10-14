@@ -45,3 +45,6 @@ inspect.json
 
 /.quarto/
 **/*.quarto_ipynb
+
+# Lokale Zwischenfassung der Layoutprüfung
+/A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Ergaenzungen-Layout.pdf

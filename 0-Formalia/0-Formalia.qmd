@@ -127,19 +127,19 @@ E1. Grundlagen der Testtheorie
 Datum & Einheit & Thema \\\hline
 16.10.2026 & Einführung & (0) Formalia \\
 23.10.2026 & Einführung & (1) Psychologische Tests \\
-30.10.2026 & Klassische Testtheorie & (2) Modellformulierung \\
-06.11.2026 & Klassische Testtheorie & (3) Modelleigenschaften \\
-13.11.2026 & Klassische Testtheorie & (4) Reliabilität \\
-20.11.2026 & Klassische Testtheorie & (5) Interne Konsistenz \\
-27.11.2026 & Exploratorische Faktorenanalyse & (6) Eigenanalyse \\
-04.12.2026 & Exploratorische Faktorenanalyse & (7) Modellformulierung \\
-11.12.2026 & Exploratorische Faktorenanalyse & (8) Modellschätzung \\
-18.12.2026 & Exploratorische Faktorenanalyse & (9) Rotation \\
+30.10.2026 & Klassische Testtheorie & (2) Modelle der klassischen Testtheorie \\
+06.11.2026 & Klassische Testtheorie & (2) Modelle der klassischen Testtheorie \\
+13.11.2026 & Klassische Testtheorie & (3) Reliabilität und interne Konsistenz \\
+20.11.2026 & Klassische Testtheorie & (3) Reliabilität und interne Konsistenz \\
+27.11.2026 & Exploratorische Faktorenanalyse & (4) Eigenanalyse \\
+04.12.2026 & Exploratorische Faktorenanalyse & (5) Modellformulierung \\
+11.12.2026 & Exploratorische Faktorenanalyse & (6) Modellschätzung \\
+18.12.2026 & Exploratorische Faktorenanalyse & (7) Rotation \\
  & \textcolor{black!50}{Weihnachtspause} & \\
-08.01.2027 & Item-Response-Theorie & (10) Modellformulierung \\
-15.01.2027 & Item-Response-Theorie & (11) Modellschätzung \\
-22.01.2027 & Item-Response-Theorie & (12) Modellevaluation \\
-29.01.2027 & Item-Response-Theorie & (13) Anwendungsbeispiel \\\hline
+08.01.2027 & Item-Response-Theorie & (8) Modellformulierung \\
+15.01.2027 & Item-Response-Theorie & (9) Modellschätzung \\
+22.01.2027 & Item-Response-Theorie & (10) Modellevaluation \\
+29.01.2027 & Item-Response-Theorie & (11) Anwendungsbeispiel \\\hline
 März 2027 (vorläufig) & Klausurtermin & Termin wird bekannt gegeben \\
 September 2027 (vorläufig)  & Klausurwiederholungstermin            &
 \end{tabular} 
