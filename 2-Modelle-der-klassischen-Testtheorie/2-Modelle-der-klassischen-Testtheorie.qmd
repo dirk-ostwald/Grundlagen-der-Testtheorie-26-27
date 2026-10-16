@@ -2625,6 +2625,7 @@ Modelle kongenerischer Testmessungen
 
 # Selbstkontrollfragen {.allowframebreaks}
 \footnotesize
+\setstretch{1.2}
 
 1. Skizzieren Sie die klassische Testtheorie und ihre Bedeutung für die
    Fragebogendatenanalyse.

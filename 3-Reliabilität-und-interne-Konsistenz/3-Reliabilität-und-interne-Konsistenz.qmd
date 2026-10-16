@@ -1976,6 +1976,7 @@ Itemanalyse
 
 # Selbstkontrollfragen {.allowframebreaks}
 \footnotesize
+\setstretch{1.2}
 
 1. Geben Sie die Definition der Reliabilität einer Testmessung wieder.
 1. Geben Sie das Theorem zu den Eigenschaften der Reliabilität einer Testmessung
@@ -2013,8 +2014,6 @@ Itemanalyse
 1. Geben Sie das Theorem zur Spearman-Brown-Formel wieder.
 1. Erläutern Sie die Spearman-Brown-Formel mit Bezugnahme auf die
    Testhalbierungsreliabilität.
-
-
 
 # Referenzen {.allowframebreaks}
 \footnotesize

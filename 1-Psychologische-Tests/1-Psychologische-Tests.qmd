@@ -2196,8 +2196,10 @@ Testkonstruktion
 
 # Selbstkontrollfragen {.allowframebreaks}
 \footnotesize
+\setstretch{1.2}
 
-1. Erläutern Sie den Begriff des psychologischen Tests nach @lienert1968 und kommentiert von @rost2004.
+1. Erläutern Sie den Begriff des psychologischen Tests nach @lienert1968 und
+   kommentiert von @rost2004.
 1. Nennen Sie die typischen Material- und Durchführungsbestandteile eines Tests.
 1. Erläutern Sie die Begriffe Item, Itemstamm, Antwortformat.
 1. Erläutern Sie den Begriff des psychometrischen Persönlichkeitstests.
@@ -2208,42 +2210,52 @@ Testkonstruktion
 1. Nennen Sie drei Formen von Persönlichkeitsentfaltungsverfahren.
 1. Erläutern Sie den Begriff des klinischen Tests.
 1. Erläutern Sie den Begriff des Einstellungstests.
-1. Erläutern Sie den Begriff des freien Antwortformats und nennen Sie zwei Beispiele.
+1. Erläutern Sie den Begriff des freien Antwortformats und nennen Sie zwei
+   Beispiele.
 1. Erläutern Sie Vor- und Nachteile freier Antwortformate.
-1. Erläutern Sie den Begriff des gebundenen Antwortformats und nennen Sie drei Beispiele.
+1. Erläutern Sie den Begriff des gebundenen Antwortformats und nennen Sie drei
+   Beispiele.
 1. Erläutern Sie den Begriff der Ordnungsaufgabe und nennen Sie zwei Beispiele.
 1. Erläutern Sie den Begriff der Auswahlaufgabe.
-1. Erläutern Sie die Begriffe der Distraktoren, der Disjunktion und der Exhaustivität bei Auswahlaufgaben.
+1. Erläutern Sie die Begriffe der Distraktoren, der Disjunktion und der
+   Exhaustivität bei Auswahlaufgaben.
 1. Erläutern Sie Vor- und Nachteile von Auswahlaufgaben.
 1. Erläutern Sie den Begriff der Forced-Choice-Auswahlaufgabe.
 1. Erläutern Sie den Begriff der Beurteilungsaufgabe.
-1. Erläutern Sie die Begriffe des forcierten und unforcierten Ratings bei Beurteilungaufgaben.
+1. Erläutern Sie die Begriffe des forcierten und unforcierten Ratings bei
+   Beurteilungaufgaben.
 1. Erläutern Sie den Begriff der Ausweichkategorie bei Beurteilungsaufgaben.
-1. Erläutern Sie den Begriff der Antwortskalenpolarität bei Beurteilungsaufgaben.
+1. Erläutern Sie den Begriff der Antwortskalenpolarität bei
+   Beurteilungsaufgaben.
 1. Erläutern Sie den Begriff der Antwortskalenbalance bei Beurteilungsaufgaben.
-1. Erläutern Sie den Begriff der Antwortskalenverankerung bei Beurteilungsaufgaben.
+1. Erläutern Sie den Begriff der Antwortskalenverankerung bei
+   Beurteilungsaufgaben.
 1. Erläutern Sie Vor- und Nachteile von Beurteilungsaufgaben.
 1. Erläutern Sie den Begriff des Testgütekriteriums.
 1. Nennen Sie die drei Hauptgütekriterien für psychologische Tests.
 1. Nennen Sie sieben Nebengütekriterien für psychologische Tests.
 1. Geben Sie die Definition der Objektivität nach @moosbrugger2012 wieder.
-1. Erläutern Sie die Begriffe Durchführungsobjektivität, Auswertungsobjektivität, Interpretationsobjektivität
+1. Erläutern Sie die Begriffe Durchführungsobjektivität,
+   Auswertungsobjektivität, Interpretationsobjektivität
 1. Geben Sie die Definition der Reliabilität nach @moosbrugger2012 wieder.
-1. Erläutern Sie die Begriffe der Retest-, Paralleltest- und Split-Half-Reliabililtät
-1. Erläutern Sie den Begriff der internen Konsistenz eines psychologischen Tests.
+1. Erläutern Sie die Begriffe der Retest-, Paralleltest- und
+   Split-Half-Reliabililtät
+1. Erläutern Sie den Begriff der internen Konsistenz eines psychologischen
+   Tests.
 1. Geben Sie die Definition der Validität nach @moosbrugger2012 wieder.
-1. Erläutern Sie die Begriffe der Augenschein-, Inhalts- und Kriteriumsvalidität.
+1. Erläutern Sie die Begriffe der Augenschein-, Inhalts- und
+   Kriteriumsvalidität.
 1. Erläutern Sie den Begriff der Konstruktvalidität eines psychologischen Tests.
 1. Nennen Sie die drei Hauptrichtungen der Testtheorie.
-1. Erläutern Sie die Standarddatenstruktur der Testtheorie und Fragebogendatenanalyse.
+1. Erläutern Sie die Standarddatenstruktur der Testtheorie und
+   Fragebogendatenanalyse.
 1. Erläutern Sie das Standardproblem der Testtheorie und Fragebogendatenanalyse.
-1. Erläutern Sie den Begriff der Klassischen Testtheorie.
+1. Erläutern Sie den Begriff der klassischen Testtheorie.
 1. Erläutern Sien den Begriff der Faktoranalyse.
 1. Erläutern Sie den Begriff der Item-Response-Theorien.
 1. Skizzieren Sie wesentliche Schritte in der Konstruktion eines Tests.
 1. Erläutern Sie den Begriff der Testnormierung.
 1. Erläutern Sie die Begriffe Raw Score, Z Score und T Score.
-
 
 # Referenzen {.allowframebreaks}
 \footnotesize   
