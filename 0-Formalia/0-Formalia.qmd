@@ -140,8 +140,8 @@ Datum & Einheit & Thema \\\hline
 15.01.2027 & Item-Response-Theorie & (9) Modellschätzung \\
 22.01.2027 & Item-Response-Theorie & (10) Modellevaluation \\
 29.01.2027 & Item-Response-Theorie & (11) Anwendungsbeispiel \\\hline
-März 2027 (vorläufig) & Klausurtermin & Termin wird bekannt gegeben \\
-September 2027 (vorläufig)  & Klausurwiederholungstermin            &
+März 2027 & Klausurtermin & Termin wird bekannt gegeben \\
+September 2027  & Klausurwiederholungstermin            &
 \end{tabular} 
 
 # Formalia
@@ -160,21 +160,32 @@ Literatur
 
 \footnotesize
 
-Krauth, Joachim (1995) Testkonstruktion und Testtheorie. Weinheim: Beltz, Psychologie Verl.-Union 
+Streiner, David L., Geoffrey R. Norman, and John Cairney (2024)
+[Health Measurement Scales: A Practical Guide to Their Development and Use](https://academic.oup.com/book/56061).
+Sixth Edition. Oxford: Oxford University Press
 
-Rencher, Alvin C., and William F. Christensen (2012) Methods of Multivariate Analysis. Third Edition. Wiley Series in Probability and Statistics. Hoboken, New Jersey: Wiley 
+Krauth, Joachim (1995)
+[Testkonstruktion und Testtheorie](https://www.deutsche-digitale-bibliothek.de/item/HIKXSX3CAG3Y42CWI24R43WEUFWLX7YS). Weinheim: Beltz, Psychologie Verl.-Union
 
-Lord, Frederic M., and Melvin R. Novick (1968) Statistical Theories of Mental Test Scores. The Addison-Wesley Series in Behavioral Science: Quantitative Methods. Charlotte 
+Rencher, Alvin C., and William F. Christensen (2012)
+[Methods of Multivariate Analysis](https://onlinelibrary.wiley.com/doi/book/10.1002/9781118391686). Third Edition. Wiley Series in Probability and Statistics. Hoboken, New
+Jersey: Wiley
 
-Rost, Jürgen (2004) Lehrbuch Testtheorie, Testkonstruktion. Aus dem Programm Huber. Bern: H. Huber 
+Lord, Frederic M., and Melvin R. Novick (1968)
+[Statistical Theories of Mental Test Scores](https://www.ets.org/research/policy_research_reports/publications/book/1968/awej.html). The Addison-Wesley Series in Behavioral Science: Quantitative Methods.
+Charlotte
 
-Pospeschill, Markus (2022) Testtheorie, Testkonstruktion, Testevaluation. München: Ernst Reinhardt Verlag 
+Rost, Jürgen (2004)
+[Lehrbuch Testtheorie, Testkonstruktion](https://search.gesis.org/publication/zis-Rost2004Lehrbuch). Aus dem Programm Huber. Bern: H. Huber
 
-Bühner, Markus (2010) Einführung in die Test- und Fragebogenkonstruktion. Pearson Studium Psychologie. München: Pearson Studium 
+Pospeschill, Markus (2022)
+[Testtheorie, Testkonstruktion, Testevaluation](https://www.reinhardt-verlag.de/55235_pospeschill_testtheorie/). München: Ernst Reinhardt Verlag
 
-Moosbrugger, Helfried, and Augustin Kelava (2021) Testtheorie und Fragebogenkonstruktion. Springer-Lehrbuch. Berlin Heidelberg: Springer 
+Bühner, Markus (2010)
+[Einführung in die Test- und Fragebogenkonstruktion](https://search.gesis.org/publication/zis-B%C3%BChner2010Einf%C3%BChrung). Pearson Studium Psychologie. München: Pearson Studium
 
-Ostwald, Dirk (2025) Theorie psychometrischer Verfahren
+Moosbrugger, Helfried, and Augustin Kelava (2021)
+[Testtheorie und Fragebogenkonstruktion](https://link.springer.com/book/10.1007/978-3-662-61532-4). Springer-Lehrbuch. Berlin Heidelberg: Springer
 
 # Formalia
 E1. Grundlagen der Testtheorie
@@ -184,7 +195,7 @@ E1. Grundlagen der Testtheorie
 * Selbstkontrollfragen fokussieren den Kursinhalt 
 * Selbstkontrollfragen sind Grundlage für Prüfungsfragen
 * Benotete digitale Multiple Choice Klausur (30 Fragen) im Universitätstestzentrum 
-* Klausurwiederholungstermin im September 2027 (vorläufig)
+* Klausurwiederholungstermin im September 2027
 * Altklausuren finden sich auf den Kurswebseiten vorheriger Iterationen.
 * [Altklausur - Was wissen Sie schon?](https://elearning.ovgu.de/mod/quiz/view.php?id=696481)
 
