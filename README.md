@@ -12,7 +12,7 @@ Testtheorie gehört zum BSc Psychologie.
 | 1 · Psychologische Tests | [PDF](1-Psychologische-Tests/1-Psychologische-Tests.pdf) |  
 | 2 · Modelle der klassischen Testtheorie | [PDF](2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf) | 
 | A · Wahrscheinlichkeitstheoretische Ergänzungen | [PDF](A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf) |  
-| Vorlesungsskript | [PDF][Vorlesungsskript als PDF](Skript/_book/Grundlagen-der-Testtheorie-2027.pdf) | 
+| Vorlesungsskript | [PDF](Skript/_book/Grundlagen-der-Testtheorie-2027.pdf) | 
 
 Weitere Informationen zur Veranstaltung stehen auf der
 [Kurswebseite](https://www.ipsy.ovgu.de/Institut/Abteilungen+des+Institutes/Methodenlehre/Lehre/Wintersemester+2027/Grundlagen+der+Testtheorie.html).
