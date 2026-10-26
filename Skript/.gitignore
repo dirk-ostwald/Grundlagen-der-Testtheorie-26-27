@@ -1,6 +1,4 @@
 _src/
-_book/*
-!_book/Skript-Grundlagen-der-Testtheorie.pdf
 .quarto/
 *.tex
 !_titelseite.tex
