@@ -255,7 +255,7 @@ Unabhängige Variable
 
 Abhängige Variable 
 
-* Itemantworten oder Gesamtsummenscore
+* Itemantworten oder Summenscore
 
 Experimentelle Einheiten
 
@@ -1841,6 +1841,143 @@ caption         = "20 Testpersonen × 10 Items (Antwortskala 1–5)")           
 ``` 
 \normalsize
 
+
+# Testtheorien
+\vspace{2mm}
+Standarddeskriptivstatistiken der Fragebogendatenanalyse (1)
+
+\footnotesize
+$y_{ij}$ bezeichnet den beobachteten Wert der $i$-ten von $n$ Testpersonen
+im $j$-ten von $m$ Items.
+
+```{=latex}
+\begingroup
+\setstretch{1}
+\footnotesize
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}p{\dimexpr0.58\textwidth-24pt\relax}@{}}
+\toprule
+Deskriptivstatistik
+& Bezeichnung
+& Formel
+\\
+\midrule
+Summe der Itemwerte von Testperson $i$
+& Summenscore
+& $\displaystyle y_i=\sum_{j=1}^{m}y_{ij}$
+\\
+\addlinespace[3mm]
+Mittelwert von Item $j$
+& Itemschwierigkeit
+& $\displaystyle \bar{y}_j=\frac{1}{n}\sum_{i=1}^{n}y_{ij}$
+\\
+\addlinespace[3mm]
+Varianz von Item $j$
+& Itemvarianz
+& $\displaystyle s_j^2=\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2$
+\\
+\addlinespace[3mm]
+Standardabweichung von Item $j$
+& Itemstandard\-abweichung
+& $\displaystyle s_j=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2}$
+\\
+\addlinespace[3mm]
+\bottomrule
+\end{tabular}
+\endgroup
+```
+
+
+# Testtheorien
+\vspace{2mm}
+Standarddeskriptivstatistiken der Fragebogendatenanalyse (2)
+
+```{=latex}
+\begingroup
+\setstretch{1}
+\fontsize{5.5}{6.2}\selectfont
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}p{\dimexpr0.58\textwidth-24pt\relax}@{}}
+\toprule
+Deskriptivstatistik
+& Bezeichnung
+& Formel
+\\
+\midrule
+Kovarianz von Item $j$ und Item $k$
+& Itemkovarianz
+& $\displaystyle c_{jk}=\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)(y_{ik}-\bar{y}_k)$
+\\
+\addlinespace[2mm]
+Matrix der paarweisen Itemkovarianzen
+& Kovarianzmatrix
+& $\displaystyle C=(c_{jk})_{j,k=1}^{m}=
+\begin{pmatrix}
+s_1^2
+& c_{12}
+& \cdots
+& c_{1m}
+\\
+c_{21}
+& s_2^2
+& \cdots
+& c_{2m}
+\\
+\vdots
+& \vdots
+& \ddots
+& \vdots
+\\
+c_{m1}
+& c_{m2}
+& \cdots
+& s_m^2
+\end{pmatrix}$
+\\
+\addlinespace[2mm]
+Korrelation von Item $j$ und Item $k$
+& Itemkorrelation
+& $\displaystyle r_{jk}=\frac{c_{jk}}{s_js_k}$
+\\
+\addlinespace[2mm]
+Matrix der paarweisen Itemkorrelationen
+& Korrelationsmatrix
+& $\displaystyle R=(r_{jk})_{j,k=1}^{m}=
+\begin{pmatrix}
+1
+& r_{12}
+& \cdots
+& r_{1m}
+\\
+r_{21}
+& 1
+& \cdots
+& r_{2m}
+\\
+\vdots
+& \vdots
+& \ddots
+& \vdots
+\\
+r_{m1}
+& r_{m2}
+& \cdots
+& 1
+\end{pmatrix}$
+\\
+\addlinespace[2mm]
+Korrelation von Item $j$ und Summenscore
+& Unbereinigte Trennschärfe
+& $\displaystyle r_{j,y}=\frac{\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)(y_i-\bar{y})}{\sqrt{\left(\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2\right)\left(\sum_{i=1}^{n}(y_i-\bar{y})^2\right)}}$
+\\
+\addlinespace[2mm]
+\bottomrule
+\end{tabular}
+\endgroup
+```
+
 # Testtheorien
 \vspace{2mm}
 Standardproblem der Testtheorie und Fragebogendatenanalyse
@@ -1905,7 +2042,7 @@ Klassische Testtheorie
 \setstretch{1.8}
 \small
 
-* Probabilistisches Modell von Item- und Summenwerten eines Tests
+* Probabilistisches Modell der Itemwerte und Summenscores eines Tests
 * Zentrale Beiträge von @gulliksen1950 und @lord1968
 * Latentes Variablenmodell der Form
 \begin{equation}
@@ -1927,7 +2064,9 @@ Faktoranalysen
 \setstretch{2}
 \small
 
-* Probabilistisches Modell der Kovarianzeigenschaften von Items eines Tests
+* Probabilistisches Modell der Itemvarianzen und Itemkovarianzen eines Tests
+* Empirische Grundlage: Kovarianzmatrix $C$ beziehungsweise Korrelationsmatrix $R$
+  der Itemwerte
 * Zentrale Beiträge von @spearman1904, @hotelling1933, @lawley1940
 * Latentes Variablenmodell der Form
 \begin{align}
@@ -2024,8 +2163,8 @@ Z Scores
 \small
 \setstretch{1.8}
 
-* Z Scores beschreiben die Abweichung vom Normmittel in Standardabweichungen
-* Berechnung aus Rohwert $x$, Normmittel $m$ und Normstandardabweichung $s$:
+* Z Scores beschreiben die Abweichung vom Mittelwert der Normstichprobe in Standardabweichungen
+* Berechnung aus Rohwert $x$, Mittelwert der Normstichprobe $m$ und Standardabweichung der Normstichprobe $s$:
 
 \begin{equation}
 z = \frac{x-m}{s}
@@ -2157,7 +2296,7 @@ Simulierte Rohwerte und die daraus berechneten Z Scores und T Scores
 
 Beispiel
 
-* Rohwert $x = 30$, Normmittel $m = 20$, Normstandardabweichung $s = 5$
+* Rohwert $x = 30$, Mittelwert der Normstichprobe $m = 20$, Standardabweichung der Normstichprobe $s = 5$
 
 \begin{equation}
 z = \frac{30-20}{5} = 2
@@ -2166,7 +2305,7 @@ z = \frac{30-20}{5} = 2
 t = 10 \cdot 2 + 50 = 70
 \end{equation}
 
-* Das Ergebnis liegt zwei Standardabweichungen über dem Normmittel
+* Das Ergebnis liegt zwei Standardabweichungen über dem Mittelwert der Normstichprobe
 
 Weitere Normskalen 
 

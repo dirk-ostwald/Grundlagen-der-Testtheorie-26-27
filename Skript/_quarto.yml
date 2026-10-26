@@ -16,7 +16,7 @@ book:
     - name: Dirk Ostwald
       affiliation: Otto-von-Guericke-Universität Magdeburg
   date: today
-  output-file: Skript-Grundlagen-der-Testtheorie
+  output-file: Grundlagen-der-Testtheorie-2027
   chapters:
     - index.qmd
     - _src/_part_9/901-Psychologische-Tests.qmd
