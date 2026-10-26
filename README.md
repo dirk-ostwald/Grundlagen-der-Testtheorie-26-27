@@ -6,8 +6,8 @@ Testtheorie gehört zum BSc Psychologie.
 
 ## Materialien
 
-| Thema | Folien |  
-| --- | --- |  
+| Einheit | Link |  
+|:--- |:--- |  
 | 0 · Formalia | [PDF](0-Formalia/0-Formalia.pdf) | [Ordner](0-Formalia/) |
 | 1 · Psychologische Tests | [PDF](1-Psychologische-Tests/1-Psychologische-Tests.pdf) |  
 | 2 · Modelle der klassischen Testtheorie | [PDF](2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf) | 
