@@ -20,5 +20,5 @@ if errorlevel 1 (
 )
 
 echo.
-echo Fertig: _book\Skript-Grundlagen-der-Testtheorie.pdf
+echo Fertig: _book\Grundlagen-der-Testtheorie-2027.pdf
 pause

@@ -5,7 +5,7 @@ Otto-von-Guericke-Universität Magdeburg im Wintersemester 2026/2027.
 
 ## Inhalte und Quellen
 
-Die aktuelle [PDF-Ausgabe](_book/Skript-Grundlagen-der-Testtheorie.pdf) enthält
+Die aktuelle [PDF-Ausgabe](_book/Grundlagen-der-Testtheorie-2027.pdf) enthält
 Vorbemerkungen, **Psychologische Tests** (PDWP-Kapitel 901), **Modelle der
 klassischen Testtheorie** (903), die Referenzen und einen Anhang mit den
 **Wahrscheinlichkeitstheoretischen Ergänzungen**. Kapitel 904 zu Reliabilität
@@ -29,7 +29,7 @@ Abbildungen, Literatur und LaTeX-Makros werden dort gepflegt. Änderungen über
 
 `Setup.cmd` legt die Verzeichnisverknüpfung bei Bedarf neu an. `Rendern.cmd`
 oder `quarto render --to pdf` im Skriptordner erzeugt die PDF unter
-`_book/Skript-Grundlagen-der-Testtheorie.pdf`. Benötigt werden Quarto, R und
+`_book/Grundlagen-der-Testtheorie-2027.pdf`. Benötigt werden Quarto, R und
 XeLaTeX. Die `.Rprofile` verwendet die R-Paketumgebung des PDWP-Quellprojekts.
 
 `_quarto.yml` bestimmt Titel und Kapitelreihenfolge. `_titelseite.tex` passt

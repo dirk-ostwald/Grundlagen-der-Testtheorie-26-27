@@ -31,7 +31,7 @@ Desktop.ini
 *.vrb
 
 # Externe Skriptquellen (für das später ergänzte Skript)
-/Skript/_src/
+/Vorlesungsskript/_src/
 
 # Lokale Vorschauen, Arbeitsdateien und Editor-/Synchronisationseinstellungen
 tmp/

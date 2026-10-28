@@ -1,3 +1,5 @@
+_book/*
+!_book/Grundlagen-der-Testtheorie-2027.pdf
 _src/
 .quarto/
 *.tex

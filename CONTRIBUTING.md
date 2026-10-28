@@ -27,8 +27,8 @@ Neue Fremdinhalte benötigen nachvollziehbare Quellen- und Lizenzangaben.
 
 ## Skript
 
-Der Ordner `Skript` enthält ein Quarto-Buchprojekt für die PDWP-Kapitel 900–905.
-Die Junction `Skript/_src/` verweist auf das externe PDWP-Quellprojekt und ist
+Der Ordner `Vorlesungsskript` enthält ein Quarto-Buchprojekt für die PDWP-Kapitel 900–905.
+Die Junction `Vorlesungsskript/_src/` verweist auf das externe PDWP-Quellprojekt und ist
 von der Versionsverwaltung ausgeschlossen. Änderungen an den verknüpften
 Kapiteln erfolgen unmittelbar im Quellprojekt. Einrichtung und Rendern sind in
-[Skript/README.md](Skript/README.md) beschrieben.
+[Vorlesungsskript/README.md](Vorlesungsskript/README.md) beschrieben.
