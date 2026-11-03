@@ -46,9 +46,9 @@ Prof. Dr. Dirk Ostwald
 \large
 Grundlagen
 
-Das Modell multipler Testmessungen
+Das Stichprobenmodell multipler Testmessungen
 
-Das Modell paralleler Testmessungen
+Das Stichprobenmodell paralleler Testmessungen
 
 Modelle kongenerischer Testmessungen
 
@@ -61,9 +61,9 @@ Selbstkontrollfragen
 \large
 **Grundlagen**
 
-Das Modell multipler Testmessungen
+Das Stichprobenmodell multipler Testmessungen
 
-Das Modell paralleler Testmessungen
+Das Stichprobenmodell paralleler Testmessungen
 
 Modelle kongenerischer Testmessungen
 
@@ -107,10 +107,13 @@ $\Rightarrow$ Retest-Reliabilität, Cronbach's $\alpha$, Spearman-Brown-Formel
 # Grundlagen
 
 \vspace{2mm}
-Standarddatenstruktur der Testtheorie und Fragebogendatenanalyse
+Datenstruktur der klassischen Testtheorie
 
 \small
 Beobachtung von Werten von $m$ Testmessungen von $n$ Testpersonen
+
+Eine Testmessung kann einem einzelnen Item oder dem Summenscore mehrerer Items
+entsprechen.
 
 \tiny
 \setstretch{0.9}
@@ -127,7 +130,7 @@ knitr::kable(                                                                   
 D,                                                                              # Daten
 align           = "c",                                                          # Orientierung
 row.names       = FALSE,                                                        # keine Zeilennamen
-caption         = "20 Testpersonen × 4 Testmessungen")                          # Caption
+caption         = "20 Testpersonen $\\times$ 4 Testmessungen")                          # Caption
 ```
 \normalsize
 
@@ -160,6 +163,8 @@ Bemerkungen
 * Erst im $m$-Komponentenmodell werden wir *Itemscores* und *Summenscores*
   unterscheiden.
 * Man beachte, dass $\tau_{ij}, y_{ij}$ und $\eps_{ij}$ Zufallsvariablen sind
+* Auch $\mathbb{E}(y_{ij}|\tau_{ij})$ ist als Funktion von $\tau_{ij}$ eine
+  Zufallsvariable.
 * Man beachte, dass $t_{ij} \in \mbb{R}$ eine Konstante ist.
 * Die implizit vorhandene bedingte Verteilung $\mbb{P}(y_{ij}|\tau_{ij} =
   t_{ij})$ wird *Propensitätsverteilung* genannt.
@@ -332,8 +337,8 @@ Charakter der im Folgenden gewählten Formalisierung der klassischen Testtheorie
   Datensatzes.
 * Moderne Formulierung als Modell mit latenten (nicht-direkt beobachteten)
   Zufallsvariablen
-* Explizite Nutzung von $\mbb{E}(y_{ij}|\tau_{ij} = t_{ij}) = t_{ij}$ in
-  Beweisen.
+* Explizite Nutzung von $\mbb{E}(y_{ij}|\tau_{ij}) = \tau_{ij}$, also speziell
+  $\mbb{E}(y_{ij}|\tau_{ij} = t_{ij}) = t_{ij}$, in Beweisen.
 * Ähnliche Darstellung z.B. in @foster2020
 * Wir setzen durchgängig voraus, dass die  wahren und beobachteten Werte endliche zweite Momente besitzen
 * Damit existieren auch die Erwartungswerte, Varianzen und Kovarianzen der Messfehler.
@@ -342,13 +347,13 @@ Charakter der im Folgenden gewählten Formalisierung der klassischen Testtheorie
 Überblick
 \vspace{-1mm}
 
-(1) Formulierung des *Modells multipler Testmessungen*
-(2) Formulierung des *Vereinfachten Modells der klassischen Testtheorie*
-(3) Eigenschaften des Modells multipler Testmessungen *bezüglich einer
-Testmessung*
-(4) Eigenschaften des Modells multipler Testmessungen *bezüglich zweier
-Testmessungen*
-(5) Formulierung des *Modells paralleler Testmessungen*
+(1) Formulierung des *Stichprobenmodells multipler Testmessungen*
+(2) Formulierung des *Populationsmodells einer Testmessung*
+(3) Eigenschaften des Stichprobenmodells multipler Testmessungen *bezüglich
+  einer Testmessung*
+(4) Eigenschaften des Stichprobenmodells multipler Testmessungen *bezüglich
+  zweier Testmessungen*
+(5) Formulierung des *Stichprobenmodells paralleler Testmessungen*
 (6) Formulierung des *Modells kongenerischer Testmessungen*
 
 
@@ -358,9 +363,9 @@ Testmessungen*
 \large
 Grundlagen
 
-**Das Modell multipler Testmessungen**
+**Das Stichprobenmodell multipler Testmessungen**
 
-Das Modell paralleler Testmessungen
+Das Stichprobenmodell paralleler Testmessungen
 
 Modelle kongenerischer Testmessungen
 
@@ -369,36 +374,40 @@ Selbstkontrollfragen
 
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
-\begin{definition}[Modell multipler Testmessungen]
+\begin{definition}[Stichprobenmodell multipler Testmessungen]
 \justifying
-Für $i = 1,...,n$ und $j = 1,...,m$ seien $\tau_{ij}$ eine Zufallsvariable, die
-den \textit{wahren Wert} der $i$ten Testperson in der $j$ten Testmessung
-modelliere,
-und $y_{ij}$ eine Zufallsvariable, die den \textit{beobachteten Wert} der $i$ten
-Testperson
-in der $j$ten Testmessung modelliere. Dann nennen wir die gemeinsame Verteilung
-der
-$\tau_{ij}$ und $y_{ij}$ mit der Faktorisierungseigenschaft
+Für $i=1,\ldots,n$ und $j=1,\ldots,m$ seien $\tau_{ij}$ und $y_{ij}$
+Zufallsvariablen, die den wahren beziehungsweise beobachteten Wert der $i$ten
+Testperson in der $j$ten Testmessung modellieren. Es gelte
 \begin{equation}
-\mbb{P}\left(\tau_{11},y_{11},...,\tau_{nm},y_{nm}\right)
-:= \prod_{i=1}^n \left(
-\mbb{P}(\tau_{i1},...,\tau_{im})
-\prod_{j=1}^m \mbb{P}(y_{ij}|\tau_{ij})
+\mathbb{E}(y_{ij}\mid\tau_{ij})=\tau_{ij}
+\quad\text{für alle }i=1,\ldots,n,\ j=1,\ldots,m.
+\end{equation}
+Dann nennen wir die gemeinsame Verteilung der $\tau_{ij}$ und $y_{ij}$ mit der
+Faktorisierungseigenschaft
+\begin{equation}
+\mathbb{P}(\tau_{11},y_{11},\ldots,\tau_{nm},y_{nm})
+= \prod_{i=1}^{n}
+\left(
+\mathbb{P}(\tau_{i1},\ldots,\tau_{im})
+\prod_{j=1}^{m}\mathbb{P}(y_{ij}\mid\tau_{ij})
 \right)
 \end{equation}
-das \textit{Modell multipler Testmessungen}, wenn gilt, dass
+das \textit{Stichprobenmodell multipler Testmessungen}, wenn außerdem gilt,
+dass
 \begin{equation}
-\mbb{P}(\tau_{11},...,\tau_{1m})\prod_{j=1}^m \mbb{P}(y_{1j}|\tau_{1j}) = \cdots =
-\mbb{P}(\tau_{n1},...,\tau_{nm})\prod_{j=1}^m \mbb{P}(y_{nj}|\tau_{nj}).
+\mathbb{P}(\tau_{11},\ldots,\tau_{1m})
+\prod_{j=1}^{m}\mathbb{P}(y_{1j}\mid\tau_{1j})
+= \cdots =
+\mathbb{P}(\tau_{n1},\ldots,\tau_{nm})
+\prod_{j=1}^{m}\mathbb{P}(y_{nj}\mid\tau_{nj}).
 \end{equation}
-Außerdem gelte $\mbb{E}(y_{ij}|\tau_{ij}) = \tau_{ij}$ für alle
-$i = 1,...,n$ und $j = 1,...,m$.
 \end{definition}
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \vspace{2mm}
 \footnotesize
 Bemerkungen
@@ -415,13 +424,11 @@ Bemerkungen
 * $\Leftrightarrow$ Die wahren Werte einer Testperson können zusammenhängen
   (Parallelität, $\tau$-Äquivalenz, ...,)
 * Für jedes $i = 1,...,n$ sind die beobachteten Werte $y_{i1},...,y_{im}$
-  bedingt unabhängig gegeben den Vektor der wahren Werte
-  $(\tau_{i1},...,\tau_{im})$.
+  bedingt unabhängig gegeben $(\tau_{i1},...,\tau_{im})$.
 * Die bedingte Verteilung von $y_{ij}$ gegeben alle wahren Werte hängt nur von
   $\tau_{ij}$ ab.
-* Ohne diese Konditionierung können die beobachteten Werte verschiedener
-  Testmessungen statistisch zusammenhängen, weil ihre wahren Werte
-  zusammenhängen können.
+* Ohne Konditionierung können beobachtete Werte aufgrund ihrer wahren Werte
+  zusammenhängen.
 * Die Marginalverteilungen $\mbb{P}(\tau_{i1},...,\tau_{im})\prod_{j=1}^m
   \mbb{P}(y_{ij}|\tau_{ij})$ sind identisch für $i = 1,...,n$.
 * $\Leftrightarrow$ Die Daten einer Testperson werden als unabhängig realisiert
@@ -432,11 +439,11 @@ Bemerkungen
 * Das $\bullet$ Subskript soll hier die Unspezifität bezüglich einer Testperson
   symbolisieren.
 * Für \underline{eine} Testmessung, also für  $m := 1$, gilt nach Definition des
-  Modells multipler Testmessungen
+  Stichprobenmodells multipler Testmessungen
 \begin{equation}
 \mbb{P}\left(\tau_{11},y_{11},...,\tau_{n1},y_{n1}\right)
-:= \prod_{i=1}^n \mbb{P}(\tau_{i1}, y_{i1})
- = \prod_{i=1}^n \mbb{P}(\tau_{i1})\mbb{P}(y_{i1}|\tau_{i1}).
+:= \prod_{i=1}^n \mbb{P}(\tau_{i1}, y_{i1}) = \prod_{i=1}^n
+\mbb{P}(\tau_{i1})\mbb{P}(y_{i1}|\tau_{i1}).
 \end{equation}
 * Dabei sind die gemeinsamen Marginalverteilungen $\mbb{P}(\tau_{i1}, y_{i1})$
   nach Definition identisch.
@@ -446,34 +453,35 @@ Bemerkungen
 \mbb{P}(\tau_{\bullet 1})\mbb{P}(y_{\bullet 1}|\tau_{\bullet 1})
 \end{equation}
 * Verzichtet man auf die Subskripte $\bullet 1$, so gelangt man zum
-  *Vereinfachten Modell der klassischen Testtheorie*.
+  *Populationsmodell einer Testmessung*.
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 
 \footnotesize
-\begin{definition}[Vereinfachtes Modell der klassischen Testtheorie]
+\begin{definition}[Populationsmodell einer Testmessung]
 \justifying
 $\tau$ sei eine Zufallsvariable, die die Verteilung der \textit{wahren Werte} zu
 einer Testmessung in einer Population beschreibe, und $y$ sei eine
-Zufallsvariable,
-die die Verteilung der \textit{beobachteten Werte} dieser Testmessung
-beschreibe.
-Dann heißt die gemeinsame Verteilung von $\tau$ und $y$,
+Zufallsvariable, die die Verteilung der \textit{beobachteten Werte} dieser
+Testmessung beschreibe. Es gelte
+\begin{equation}
+\mathbb{E}(y\mid\tau)=\tau.
+\end{equation}
+Dann heißt die gemeinsame Verteilung von $\tau$ und $y$
 \begin{equation}
 \mbb{P}\left(\tau,y\right)
 = \mbb{P}(\tau)\mbb{P}(y|\tau)
 \end{equation}
-das \textit{vereinfachte Modell der klassischen Testtheorie}.
-Dabei gelte $\mbb{E}(y|\tau) = \tau$.
+das \textit{Populationsmodell einer Testmessung}.
 \end{definition}
 
 \footnotesize
 Bemerkungen
 
-* Gegenüber dem Modell multipler Testmessungen treten weniger Zufallsvariablen
-  und Indizes auf.
-* Die Redundanz der Gleichheit vieler Verteilungen im Modell multipler
-  Testmessungen tritt nicht auf.
+* Gegenüber dem Stichprobenmodell multipler Testmessungen treten weniger
+  Zufallsvariablen und Indizes auf.
+* Die Redundanz der Gleichheit vieler Verteilungen im Stichprobenmodell
+  multipler Testmessungen tritt nicht auf.
 * $n$ beobachtete Testwerte werden als Teilbeobachtungen von Ziehungen aus
   $\mbb{P}\left(\tau,y\right)$ gedacht.
 * Für die Unabhängigkeit über Testpersonen mag man auch schreiben
@@ -486,7 +494,16 @@ y_1,...,y_n \sim N(\mu,\sigma^2).
 \end{equation}
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
+
+\footnotesize
+Populationsmodell einer Testmessung
+
+```{r, echo = FALSE, out.width = "100%", fig.align = "center"}
+knitr::include_graphics("2-Abbildungen/gdt-2-populationsmodell.pdf")
+```
+
+# Das Stichprobenmodell multipler Testmessungen
 
 \footnotesize
 * Ein Beispieldatensatz für $n = 5$ Testpersonen bei einer Testmessung ist etwa
@@ -502,32 +519,31 @@ $i$     & $\tau_i$ & $y_i$  \\\hline
 \end{tabular}
 \end{center}
 
-\setstretch{2.6}
+\setstretch{1.8}
 * Die $\tau_i$ Werte sind dabei \glqq virtuell\grqq{}, also im Modell
   simulierbar, aber in der Anwendung nicht vorhanden.
-* Viele wichtige Eigenschaften des Modells multipler Testmessungen ergeben sich
-  schon basierend auf $\mbb{P}\left(\tau,y\right)$.
-* Das Modell sieht einfacher zu handhaben aus als das Modell multipler
-  Testmessungen
-* Man findet das Vereinfachte Modell der klassischen Testtheorie oft in
-  Lehrbüchern.
+* Viele Eigenschaften des Stichprobenmodells multipler Testmessungen
+  ergeben sich schon basierend auf $\mbb{P}\left(\tau,y\right)$.
+* Das Modell sieht einfacher zu handhaben aus als das Stichprobenmodell
+  multipler Testmessungen
+* Man findet das Populationsmodell einer Testmessung oft in Lehrbüchern.
 * Aber: Wenn mehrere Personen und mehrere Testmessungen ins Spiel kommen, wird
   unklar, wovon die Rede ist.
 * Aber: Schätzer der Modellparameter beruhen immer auf allen beobachteten Werten
   $y_{1j}, ...y_{nj}$.
 * Wir werden nach Bedarf zwischen beiden Modellformulierungen hin und her
   wechseln.
-* Die Modellformulierung im Sinne des Modells multipler Testmessungen ist unser
-  Standardfall.
+* Die Modellformulierung im Sinne des Stichprobenmodells multipler Testmessungen
+  ist unser Standardfall.
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \begin{theorem}[Eigenschaften bezüglich einer Testmessung]\label{thm:eigenschaften-einer-Testmessung}
 \justifying
 \normalfont
-Gegeben sei das Modell multipler Testmessungen. Dann gelten für alle $i =
-1,...,n$ und alle $j = 1,...,m$
+Gegeben sei das Stichprobenmodell multipler Testmessungen. Dann gelten für alle
+$i = 1,...,n$ und alle $j = 1,...,m$
 \begin{itemize}
 \item[(1)] $\mbb{E}(\eps_{ij}|\tau_{ij} = t_{ij}) = 0$
 \item[(2)] $\mbb{E}(\eps_{ij}) = 0$
@@ -545,8 +561,8 @@ Bemerkungen
   Testmessung $j$.
 * 2 - 5 beziehen sich auf Eigenschaften der Marginalverteilungen von
   $\tau_{ij}$, $y_{ij},\eps_{ij}$ bei einer Testmessung $j$.
-* Im Sinne des Vereinfachten Modells der klassischen Testtheorie werden obige
-  Eigenschaften oft auch als
+* Im Sinne des Populationsmodells einer Testmessung werden obige Eigenschaften
+  oft auch als
 \begin{equation}
 \mbb{E}(\eps|\tau = t) = 0, \quad
 \mbb{E}(\eps) = 0, \quad
@@ -557,44 +573,55 @@ Bemerkungen
 geschrieben.
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
+\setstretch{1.2}
 
 Bemerkung zu $\mbb{E}(\eps|\tau = t) = 0$ und $\mbb{E}(\eps) = 0$
+\vspace{-2mm}
 
 * Die Tatsache, dass der bedingte Erwartungswert des Messfehlers $0$ ist, folgt
 aus der Definition des wahren Werts. Dies ist ein anderer Ansatz als anzunehmen,
 dass der bedingte Erwartungswert des Messfehlers $0$ ist. Weil der bedingte
 Erwartungswert des Messfehlers für jeden wahren Wert $0$ ist, ist auch sein
 (marginaler) Erwartungswert $0$.
+Bei festem wahren Wert gleichen sich positive und negative Abweichungen der
+beobachteten Werte vom wahren Wert im langfristigen Mittel aus.
 
 Bemerkung zu $\mbb{C}(\tau, \eps) = 0$
+\vspace{-2mm}
 
-* Sofern $\mbb{V}(\tau)>0$ und $\mbb{V}(\eps)>0$ gelten, folgt aus
-  $\mbb{C}(\tau,\eps)=0$ auch $\rho(\tau,\eps)=0$.
-Hohe oder niedrige wahre Werte sind also nicht systematisch mit hohen oder
-niedrigen
-Messfehlerwerten assoziiert.
+* Sofern $\mbb{V}(\tau)>0$ und $\mbb{V}(\eps)>0$ gelten, folgt aus $\mbb{C}(\tau,\eps)=0$ 
+auch $\rho(\tau,\eps)=0$. Hohe oder niedrige wahre Werte sind also nicht 
+systematisch mit hohen oder niedrigen Messfehlerwerten assoziiert. Bei Personen 
+mit höheren wahren Werten liegen die beobachteten Werte somit nicht tendenziell 
+weiter oberhalb oder unterhalb ihrer wahren Werte.
 
 Bemerkung zu $\mbb{V}(y) = \mbb{V}(\tau) + \mbb{V}(\eps)$
+\vspace{-2mm}
 
 * Die Varianz beobachteter Werte kann additiv in Beiträge der Varianz des wahren
 Werts und des Messfehlers zerlegt werden. Diese Eigenschaft des Modells ist für
-eine Eigenschaft der Reliabilität essenziell.
+eine Eigenschaft der Reliabilität essenziell. Variabilität in beobachteten 
+Testwerten spiegelt sowohl Variabilität in den wahren Werten als auch 
+Messfehlervariabilität wider.
 
 Bemerkung zu $\mbb{C}(y,\tau) = \mbb{V}(\tau)$
+\vspace{-2mm}
 
 * Die Kovarianz der beobachteten Werte und der wahren Werte einer Testmessung
 entspricht der Varianz der wahren Werte. Diese Eigenschaft des Modells ist für
-eine weitere Eigenschaft der Reliabilität essenziell.
+eine weitere Eigenschaft der Reliabilität essenziell. Zusätzliche Messfehlervarianz 
+erhöht die Streuung beobachteter Werte, erhöht aber nicht die Kovarianz von 
+beobachteten und wahren Werten.
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \vspace{2mm}
 \footnotesize
 \underline{Beweis}
 
 Zum Beweis von (1) bis (5) setzen wir zur Vereinfachung der Notation im Sinne
-des Vereinfachten Modells der klassischen Testtheorie zunächst
+des Populationsmodells einer Testmessung zunächst
 \begin{equation}
 y := y_{ij}, \tau := \tau_{ij}
 \mbox{ und analog }
@@ -609,8 +636,7 @@ p(t,y) = p(y|t)p(t)
 \end{equation}
 voraus. Dabei schreiben wir Werte, die die Zufallsvariable $\tau$ annimmt, als
 $t$ und Werte, die die Zufallsvariable $y$ annimmt der Einfachheit halber
-ebenfalls
-als $y$.  Der kontinuierliche Fall folgt dann jeweils analog.
+ebenfalls als $y$.  Der kontinuierliche Fall folgt dann jeweils analog.
 
 \noindent (1) Es gilt
 \begin{align}
@@ -625,7 +651,7 @@ als $y$.  Der kontinuierliche Fall folgt dann jeweils analog.
 \end{split}
 \end{align}
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -650,7 +676,7 @@ p(y|t)\right)\\
 \end{split}
 \end{align}
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -678,11 +704,13 @@ p(y|t)\right)\\
 \end{split}
 \end{align}
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
-\noindent (4) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Varianzen spezieller Linearkombinationen (Foliensatz A)} sowie Aussage (3) des Theorems gilt
+\noindent (4) Mit
+\hyperref[thm:varianzen-spezieller-linearkombinationen]{Theorem Varianzen
+spezieller Linearkombinationen} sowie Aussage (3) des Theorems gilt
 \begin{align}
 \begin{split}
 \mbb{V}(y)
@@ -692,7 +720,10 @@ p(y|t)\right)\\
 = \mbb{V}(\tau) + \mbb{V}(\eps)
 \end{split}
 \end{align}
-\noindent (5) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Kovarianzverschiebungssatz (Foliensatz A)}, \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Erwartungswert bei linear-affiner Kombination (Foliensatz A)},
+\noindent (5) Mit \hyperref[thm:kovarianzverschiebungssatz]{Theorem
+Kovarianzverschiebungssatz},
+\hyperref[thm:erwartungswert-linear-affine-kombination]{Theorem Erwartungswert
+bei linear-affiner Kombination},
 Aussage (2)  des Theorems und der Tatsache, dass mit Aussage (3) des Theorems
 außerdem folgt, dass
 \begin{equation}
@@ -722,7 +753,7 @@ gilt
 
 \hfill $\Box$
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 
 \begin{theorem}[Normalverteilungsbeispiel]
 \justifying
@@ -753,11 +784,11 @@ Bemerkungen
   induzieren eine $\tau_{i1}$ bedingte Normalverteilung von $\eps_{i1}$.
 * Dies und die Beispieldefinitionen induzieren eine gemeinsame Normalverteilung
   von $\tau_{i1}$ und $\eps_{i1}$.
-* Die Aussagen folgen dann mit den [\textcolor{darkblue}{Eigenschaften
-  gemeinsamer
-  Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf).
+* Die Aussagen folgen dann mit den
+\hyperref[thm-gemeinsame-normalverteilungen]{Eigenschaften gemeinsamer
+Normalverteilungen}.
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis}
 
@@ -773,8 +804,8 @@ induzierte gemeinsame Verteilung von $\tau$ und $y$, wobei offenbar
 \begin{equation}
 \mbb{P}(y|\tau) = N(a\cdot \tau + b,1) \mbox{ mit } a:= 1 \mbox{ und } b := 0
 \end{equation}
-gilt. Aus dem [\textcolor{blue}{Theorem zu gemeinsamen
-Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+gilt. Aus dem \hyperref[thm-gemeinsame-normalverteilungen]{Theorem zu
+gemeinsamen Normalverteilungen}
 ergibt sich dann zunächst,
 dass
 \begin{equation}
@@ -802,8 +833,8 @@ N\left(
 \end{pmatrix}
 \right)
 \end{equation}
-Aus dem [\textcolor{blue}{Theorem zu marginalen
-Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+Aus dem \hyperref[thm-marginale-normalverteilungen]{Theorem zu marginalen
+Normalverteilungen}
 ergibt sich
 dann durch Ablesen $y \sim N(\mu,2)$.
 
@@ -812,9 +843,8 @@ für einen beliebigen Wert $t \in \mbb{R}$. Dann gilt
 \begin{equation}
 \eps := y - t \mbox{ mit } y \sim N(t,1)
 \end{equation}
-Mit dem [\textcolor{blue}{Theorem zur linear-affinen Transformation
-normalverteilter
-Zufallsvektoren}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+Mit dem \hyperref[thm-linear-affine-transformation]{Theorem zur linear-affinen
+Transformation normalverteilter Zufallsvektoren}
 gilt dann
 \begin{equation}
 \eps \sim N\left(t - t, 1^2 \cdot 1\right) = N(0,1)
@@ -822,7 +852,7 @@ gilt dann
 Die Tatsache, dass dies für alle möglichen Werte von $\tau$ gilt, ist gerade
 Aussage (2).
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgesetzt)}
 
@@ -835,8 +865,8 @@ induzierte gemeinsame Verteilung von $\tau$ und $\eps$, wobei offenbar
 \begin{equation}
 \mbb{P}(\eps|\tau) = N(a\cdot \tau + b,1) \mbox{ mit } a:= 0 \mbox{ und } b := 0
 \end{equation}
-gilt. Aus dem [\textcolor{blue}{Theorem zu gemeinsamen
-Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+gilt. Aus dem \hyperref[thm-gemeinsame-normalverteilungen]{Theorem zu
+gemeinsamen Normalverteilungen}
 ergibt sich dann zunächst,
 dass
 \begin{equation}
@@ -864,8 +894,8 @@ N\left(
 \end{pmatrix}
 \right)
 \end{equation}
-Aus dem [\textcolor{blue}{Theorem zu marginalen
-Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+Aus dem \hyperref[thm-marginale-normalverteilungen]{Theorem zu marginalen
+Normalverteilungen}
 ergeben sich dann durch Ablesen
 \begin{equation}
 \eps \sim N(0,1)
@@ -874,7 +904,7 @@ ergeben sich dann durch Ablesen
 \end{equation}
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 
 \small
 Simulation des Normalverteilungsbeispiels mit $\mu := 1$ für $n := 10^4$
@@ -917,13 +947,13 @@ library(latex2exp)
 library(mvtnorm)
 if(capabilities("cairo")){
   cairo_pdf(
-  filename    = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-1.pdf",
+  filename    = "2-Abbildungen/gdt-2-normalverteilungsbeispiel-1.pdf",
   width       = 9,
   height      = 9,
   family      = "sans")
 } else {
   pdf(
-  file        = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-1.pdf",
+  file        = "2-Abbildungen/gdt-2-normalverteilungsbeispiel-1.pdf",
   width       = 9,
   height      = 9,
   family      = "sans")
@@ -1042,56 +1072,59 @@ mtext(LETTERS[4], adj=1, line=2, cex = 1.5, at = -1)
 dev.off()
 ```
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \vspace{2mm}
 \small
 Simulation des Normalverteilungsbeispiels mit $\mu := 1$ für $n := 10^4$
 
 ```{r, echo = FALSE, out.width = "65%", fig.align = "center"}
-knitr::include_graphics("2-Abbildungen/gdt-4-normalverteilungsbeispiel-1.pdf")
+knitr::include_graphics("2-Abbildungen/gdt-2-normalverteilungsbeispiel-1.pdf")
 ```
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 Eine Linear Mixed Model Version des Normalverteilungsbeispiels
 
 Wir betrachten das obige Normalverteilungsbeispiel konkret für $n := 5$
-Testpersonen.
-Dann gilt für die gemeinsame WDF von $\tau_{11},y_{11}, ...,\tau_{51},y_{51}$
-nach Definition des Modells multipler Testmessungen
+Testpersonen. Dann gilt für die gemeinsame WDF von $\tau_{11},y_{11},
+...,\tau_{51},y_{51}$ nach Definition des Stichprobenmodells multipler
+Testmessungen
 \begin{equation}
 p\left(\tau_{11},\tau_{21},\tau_{31},\tau_{41},\tau_{51},y_{11},y_{21},y_{31},y_{41},y_{51}\right)
-= \prod_{i=1}^5 p\left(\tau_{i1}\right)\prod_{i=1}^5 p\left(y_{i1}|\tau_{i1}\right)
+= \prod_{i=1}^5 p\left(\tau_{i1}\right)\prod_{i=1}^5
+p\left(y_{i1}|\tau_{i1}\right)
 \end{equation}
 Mit
 \begin{equation}
 \prod_{i=1}^5 p\left(\tau_{i1}\right)
-= N\left(\begin{pmatrix} \tau_{11} \\ \tau_{21} \\ \tau_{31} \\ \tau_{41} \\ \tau_{51} \end{pmatrix}; 1_5\mu, I_5\right)
+= N\left(\begin{pmatrix} \tau_{11} \\ \tau_{21} \\ \tau_{31} \\ \tau_{41} \\
+\tau_{51} \end{pmatrix}; 1_5\mu, I_5\right)
 \Leftrightarrow \tau_{i1} = \mu + \eta_i \mbox{ mit } \eta_i \sim N(0,1) \mbox{ u.i.v. für } i = 1,...,5
 \end{equation}
 und
 \begin{equation}
 \prod_{i=1}^5 p\left(y_{i1}|\tau_{i1}\right)
-= N\left(\begin{pmatrix} y_{11} \\ y_{21} \\ y_{31} \\ y_{41} \\ y_{51} \end{pmatrix};
-         \begin{pmatrix} \tau_{11} \\ \tau_{21} \\ \tau_{31} \\ \tau_{41} \\ \tau_{51} \end{pmatrix}, I_5\right)
+= N\left(\begin{pmatrix} y_{11} \\ y_{21} \\ y_{31} \\ y_{41} \\ y_{51}
+\end{pmatrix}; \begin{pmatrix} \tau_{11} \\ \tau_{21} \\ \tau_{31} \\ \tau_{41}
+\\ \tau_{51} \end{pmatrix}, I_5\right)
 \Leftrightarrow  y_{i1} = \tau_{i1} + \eps_{i1} \mbox{ mit } \eps_{i1} \sim N(0,1) \mbox{ u.i.v. für } i = 1,...,5
 \end{equation}
 ergibt sich eine hierarchische Linear Mixed Model Darstellung.
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \begin{theorem}[Eigenschaften bezüglich zweier Testmessungen]\label{thm:eigenschaften-zweier-Testmessungen}
 \justifying
 \normalfont
-Gegeben sei das Modell multipler Testmessungen. Dann gelten für alle
-Testpersonen $i = 1,...,n$
-und alle Testmessungen $j$ und $k$ mit $1 \le j,k \le m$ und $j \neq k$, dass
+Gegeben sei das Stichprobenmodell multipler Testmessungen. Dann gelten für alle
+Testpersonen $i = 1,...,n$ und alle Testmessungen $j$ und $k$ mit $1 \le j,k \le
+m$ und $j \neq k$, dass
 \begin{itemize}
 \item[(1)] $\mbb{C}(y_{ij},y_{ik}|\tau_{ij} = t_{ij},\tau_{ik} = t_{ik}) = 0$,
 \item[(2)] $\mbb{C}(\eps_{ij},\eps_{ik}|\tau_{ij} = t_{ij},\tau_{ik} = t_{ik}) = 0$,
 \item[(3)] $\mbb{C}(\eps_{ij},\eps_{ik}) = 0$,
-\item[(4)] $\mbb{C}(\tau_{ij},\eps_{ik}) = 0$ und
+\item[(4)] $\mbb{C}(\tau_{ij},\eps_{ik}) = 0$,
 \item[(5)] $\mbb{C}(y_{ij},y_{ik}) = \mbb{C}(\tau_{ij},\tau_{ik})$.
 \end{itemize}
 \end{theorem}
@@ -1103,8 +1136,8 @@ Bemerkungen
 * Aussage (2) bezieht sich auf die bedingte gemeinsame Verteilung von
   $\eps_{ij}$ und $\eps_{ik}$.
 * Aussagen (3) bis (5) beziehen sich auf die jeweiligen Marginalverteilungen.
-* Im Sinne des einfachen Modells der klassischen Testtheorie werden obige
-  Eigenschaften oft auch als
+* In populationsbezogener Notation werden die Eigenschaften zweier Testmessungen
+  oft auch als
 \begin{equation}
 \mbb{C}(y_{j},y_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0, \quad
 \mbb{C}(\eps_{j},\eps_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0,
@@ -1119,39 +1152,53 @@ geschrieben.
   Unkorreliertheit* subsummiert.
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
+\vspace{2mm}
+\setstretch{1.2}
 Bemerkung zu $\mbb{C}(y_{j},y_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0$
+\vspace{-1mm}
 
 * Gegeben die wahren Werte kovariieren die beobachteten Werte zweier
   Testmessungen nicht.
-* In der auf die wahren Werte bedingten Verteilung zweier beobachteter Werte
-  kovariieren diese nicht.
+* Bei festen wahren Werten gehen höhere beobachtete Werte in einer Testmessung
+  nicht systematisch mit höheren oder niedrigeren beobachteten Werten in der
+  anderen Testmessung einher.
 
 Bemerkung zu $\mbb{C}(\eps_{j},\eps_{k}|\tau_{j} = t_{j},\tau_{k} = t_{k}) = 0$
+\vspace{-1mm}
 
 * Gegeben die wahren Werte kovariieren die Messfehler zweier Testmessungen
   nicht.
-* In der auf die wahren Werte bedingten Verteilung zweier Messfehler kovariieren
-  diese nicht.
+* Positive Abweichungen vom jeweiligen wahren Wert treten nicht bevorzugt
+  gemeinsam oder gegenläufig auf.
 
 Bemerkung zu $\mbb{C}(\eps_{j},\eps_{k}) = 0$
+\vspace{-1mm}
 
-* Über alle wahren Werte hinweg kovariieren die Messfehler zweier Testmessungen
-  nicht.
-* In der marginalen Verteilung zweier Messfehler kovariieren diese nicht.
+* Auch über alle wahren Werte hinweg kovariieren die Messfehler zweier
+  Testmessungen nicht.
+* Auch in der Gesamtpopulation besteht zwischen den Messfehlern kein linearer
+  Zusammenhang.
 
 Bemerkung zu $\mbb{C}(\tau_{j},\eps_{k}) = 0$
+\vspace{-1mm}
 
-* Die wahren Werte einer Testmessung $j$ und der Messfehler einer Testmessung
+* Die wahren Werte einer Testmessung $j$ und die Messfehler einer Testmessung
   $k$ kovariieren nicht.
+* Bei Personen mit höheren wahren Werten in einer Testmessung liegen die
+  beobachteten Werte der anderen Testmessung nicht tendenziell weiter oberhalb
+  oder unterhalb ihrer wahren Werte.
 
 Bemerkung zu $\mbb{C}(y_{j},y_{k}) = \mbb{C}(\tau_{j},\tau_{k})$
+\vspace{-1mm}
 
-* Die (marginale) Kovarianz zweier Testmessungen entspricht der (marginalen)
-  Kovarianz der wahren Werte.
+* Die Kovarianz zweier beobachteter Testwerte entspricht der Kovarianz ihrer
+  wahren Werte.
+* Messfehlervariabilität erhöht die Streuung der beobachteten Werte, erhöht aber
+  nicht die Kovarianz zwischen den beiden Testmessungen.
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis}
 
@@ -1173,7 +1220,7 @@ annehmen können und der Einfachheit halber mit $y_j, y_k$ Werte, die die
 Zufallsvariablen $y_j, y_k$
 annehmen können. Der kontinuierliche Fall folgt dann wieder analog.
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -1223,7 +1270,7 @@ p(y_j|t_j)
 \end{split}
 \end{align}
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -1279,8 +1326,8 @@ p(y_j|t_j)
 \end{split}
 \end{align}
 Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Verschiebungssatz der bedingten Kovarianz (Foliensatz A)} und Aussage
+\hyperref[thm:verschiebungssatz-der-bedingten-kovarianz]{Theorem
+Verschiebungssatz der bedingten Kovarianz} und Aussage
 (1) des \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
 \begin{equation}
 \mbb{C}(\eps_j,\eps_k|\tau_j = t_j, \tau_k = t_k)
@@ -1289,7 +1336,7 @@ Verschiebungssatz der bedingten Kovarianz (Foliensatz A)} und Aussage
 = 0.
 \end{equation}
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -1340,8 +1387,8 @@ p(t_j,t_k)
 \end{split}
 \end{align}
 Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianzverschiebungssatz (Foliensatz A)} und Aussage (2) von
+\hyperref[thm:kovarianzverschiebungssatz]{Theorem Kovarianzverschiebungssatz}
+und Aussage (2) von
 \thmref{thm:eigenschaften-einer-Testmessung} ergibt sich dann
 \begin{equation}
 \mbb{C}(\eps_j,\eps_k)
@@ -1351,13 +1398,12 @@ Kovarianzverschiebungssatz (Foliensatz A)} und Aussage (2) von
 \end{equation}
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
 \noindent (4) Mit dem
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianzverschiebungssatz (Foliensatz A)}
+\hyperref[thm:kovarianzverschiebungssatz]{Theorem Kovarianzverschiebungssatz}
 und Aussage (2) von \thmref{thm:eigenschaften-einer-Testmessung} gilt
 \begin{align}
 \begin{split}
@@ -1402,21 +1448,20 @@ und Aussage (2) von \thmref{thm:eigenschaften-einer-Testmessung} gilt
 \end{split}
 \end{align}
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
 \noindent (5) Wir halten zunächst fest, dass mit Aussage (4) durch Vertauschen
 der Indizes und
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Symmetrie der Kovarianz (Foliensatz A)}  auch
+\hyperref[thm:symmetrie-der-kovarianz]{Theorem Symmetrie der Kovarianz}  auch
 \begin{equation}
 \mbb{C}(\tau_k,\eps_j) = \mbb{C}(\eps_j, \tau_k) = 0
 \end{equation}
 gilt. Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianz bei paarweiser Addition (Foliensatz A)} und Aussage (3) gilt dann
+\hyperref[thm:kovarianz-bei-paarweiser-addition]{Theorem Kovarianz bei
+paarweiser Addition} und Aussage (3) gilt dann
 \begin{align}
 \begin{split}
 \mbb{C}(y_j,y_k)
@@ -1433,13 +1478,13 @@ Kovarianz bei paarweiser Addition (Foliensatz A)} und Aussage (3) gilt dann
 \hfill $\Box$
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \small
 Normalverteilungsbeispiel
 
 \footnotesize
-Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Modell multipler
-Testmessungen.
+Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Stichprobenmodell
+multipler Testmessungen.
 
 Für  $i = 1,...,n$ seien
 \begin{equation}
@@ -1463,7 +1508,7 @@ Weiterhin seien
 Die Propensitätsverteilung von Testperson $i$ in Testmessung $j = 1$
 unterscheidet sich also von der von Testperson $i$ in Testmessung $j = 2$.
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \vspace{2mm}
 \small
 Simulation des Normalverteilungsbeispiels für $n := 10^5$
@@ -1500,7 +1545,7 @@ C) Marginale Kovarianz der beobachteten Werte bezüglich zweier Testmessungen
 D) Marginale Kovarianz der wahren Werte bezüglich zweier Testmessungen
 
 
-# Das Modell multipler Testmessungen
+# Das Stichprobenmodell multipler Testmessungen
 \vspace{2mm}
 \small
 Simulation des Normalverteilungsbeispiels für $n := 10^5$, 500 Stichprobenpunkte
@@ -1511,13 +1556,13 @@ library(latex2exp)
 library(mvtnorm)
 if(capabilities("cairo")){
   cairo_pdf(
-  filename    = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-2.pdf",
+  filename    = "2-Abbildungen/gdt-2-normalverteilungsbeispiel-2.pdf",
   width       = 9,
   height      = 9,
   family      = "sans")
 } else {
   pdf(
-  file        = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-2.pdf",
+  file        = "2-Abbildungen/gdt-2-normalverteilungsbeispiel-2.pdf",
   width       = 9,
   height      = 9,
   family      = "sans")
@@ -1612,7 +1657,7 @@ dev.off()
 ```
 
 ```{r, echo = FALSE, out.width = "65%", fig.align = "center"}
-knitr::include_graphics("2-Abbildungen/gdt-4-normalverteilungsbeispiel-2.pdf")
+knitr::include_graphics("2-Abbildungen/gdt-2-normalverteilungsbeispiel-2.pdf")
 ```
 
 #
@@ -1621,32 +1666,29 @@ knitr::include_graphics("2-Abbildungen/gdt-4-normalverteilungsbeispiel-2.pdf")
 \large
 Grundlagen
 
-Das Modell multipler Testmessungen
+Das Stichprobenmodell multipler Testmessungen
 
-**Das Modell paralleler Testmessungen**
+**Das Stichprobenmodell paralleler Testmessungen**
 
 Modelle kongenerischer Testmessungen
 
 Selbstkontrollfragen
 \vfill
 
-
-
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
-\setstretch{1.1}
-Bisher haben wir im Modell der multiplen Testmessungen keine Aussage zu den
-Verhältnissen der True-Scores über verschiedene Testmessungen hinweg gemacht.
-Wir haben einerseits angenommen, dass für die Marginalverteilung der
-Testmessungen
-bei einer Person $i$ keine Unabhängigkeit gelten muss, dass also im Allgemeinen
-gilt, dass für $i = 1,...,n$
+\vspace{2mm}
+\setstretch{1.2}
+Bisher haben wir im Stichprobenmodell multipler Testmessungen keine Aussage zu
+den Verhältnissen der True-Scores über verschiedene Testmessungen hinweg
+gemacht. Für die wahren Werte einer Person $i$ setzen wir keine
+Unabhängigkeit voraus. Die Gleichheit
 \begin{equation}
-\mbb{P}(\tau_{i1},...,\tau_{im}) \neq \prod_{j=1}^m\mbb{P}(\tau_{ij})
+\mbb{P}(\tau_{i1},...,\tau_{im}) = \prod_{j=1}^m\mbb{P}(\tau_{ij})
 \end{equation}
+wird für $i = 1,...,n$ also nicht gefordert, aber auch nicht ausgeschlossen.
 Andererseits haben wir die Form möglicher Abhängigkeiten zwischen den
-True-Scores
-$\tau_{i1}, ..., \tau_{im}$ bislang nicht genauer spezifiziert.
+True-Scores $\tau_{i1}, ..., \tau_{im}$ bislang nicht genauer spezifiziert.
 
 Die klassische Testtheorie betrachtet in dieser Hinsicht einige Spezialfälle,
 die
@@ -1681,10 +1723,10 @@ verbunden sind,
 Diese Beziehung charakterisiert die später behandelten essentiell
 kongenerischen Testmodelle.
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
 \vspace{3mm}
-\begin{definition}[Modell paralleler Testmessungen]
+\begin{definition}[Stichprobenmodell paralleler Testmessungen]
 Für $i = 1,...,n$ und $j = 1,...,m$ sei
 \begin{itemize}
 \item $\tau_{i}$ eine Zufallsvariable, die den wahren Wert der $i$ten Testperson in jeder Testmessung $j = 1,...,m$ modelliere,
@@ -1700,7 +1742,7 @@ Faktorisierungseigenschaften
 \prod_{j=1}^m \mbb{P}(y_{ij}|\tau_{i})
 \right)
 \end{equation}
-das \textit{Modell paralleler Testmessungen}, wenn gilt, dass
+das \textit{Stichprobenmodell paralleler Testmessungen}, wenn gilt, dass
 \begin{itemize}
 \item[(1)] $\mbb{P}(\tau_{1}) = \cdots = \mbb{P}(\tau_{n})$,
 \item[(2)] $\mbb{P}(y_{1j}|\tau_{1}) = \cdots = \mbb{P}(y_{nj}|\tau_{n})$ für alle  $1 \le j \le m$,
@@ -1710,7 +1752,7 @@ das \textit{Modell paralleler Testmessungen}, wenn gilt, dass
 \end{definition}
 
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
 Bemerkungen
 \setstretch{2.5}
@@ -1723,17 +1765,18 @@ Bemerkungen
   identisch angenommen.
 * Die Varianz der beobachteten Werte einer Testperson zwischen Messungen geht
   nur auf die Propensität zurück.
-* Bei \underline{einer} Testmessung entspricht das Modell paralleler
-  Testmessungen dem Modell multipler Testmessungen.
+* Bei \underline{einer} Testmessung entspricht das Stichprobenmodell paralleler
+  Testmessungen dem Stichprobenmodell multipler Testmessungen.
 * Das \thmref{thm:eigenschaften-einer-Testmessung} gilt also analog.
 
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
-\begin{theorem}[Eigenschaften des Modells paralleler Testmessungen]\label{thm:eigenschaften-paralleler-Testmessungen}
+\begin{theorem}[Eigenschaften des Stichprobenmodells paralleler Testmessungen]\label{thm:eigenschaften-paralleler-Testmessungen}
 \justifying
 \normalfont
-Gegeben sei das Modell paralleler Testmessungen. Dann gelten für alle $i =
+Gegeben sei das Stichprobenmodell paralleler Testmessungen. Dann gelten für alle
+$i =
 1,...,n$
 und alle $j,k$ mit $1 \le j,k \le m$ und $j \neq k$, dass
 \begin{itemize}
@@ -1752,15 +1795,15 @@ Bemerkungen
   einer Person identisch.
 * Bei Paralleltestmessungen sind alle Varianzen der beobachteten Werte einer
   Person identisch.
-* Aussagen (3) und (4) gelten analog im Modell multipler Testmessungen bezüglich
-  zweier Testmessungen.
+* Aussagen (3) und (4) gelten analog im Stichprobenmodell multipler
+  Testmessungen bezüglich zweier Testmessungen.
 * Aussage (5) besagt insbesondere, dass die Kovarianz der beobachteten Werte
   zweier verschiedener Testmessungen stets der Varianz des gemeinsamen wahren
-  Werts entspricht, also $\mbb{C}(y_{ij},y_{ik}) = \mbb{V}(\tau_i)$ für alle
-  $j \neq k$.
+  Werts entspricht, also $\mbb{C}(y_{ij},y_{ik}) = \mbb{V}(\tau_i)$ für alle $j
+  \neq k$.
 
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
 \underline{Beweis}
 
@@ -1796,7 +1839,8 @@ y_k$ annehmen können.
  = \mbb{E}(y_{k}).
 \end{equation*}
 
-\noindent (2) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Iterierte Varianz (Foliensatz A)} ergibt sich
+\noindent (2) Mit \hyperref[thm:iterierte-varianz]{Theorem Iterierte Varianz}
+ergibt sich
 \begin{equation*}
 \mbb{V}(y_{j})
 = \mbb{V}\left(\mbb{E}(y_j\vert \tau)\right) + \mbb{E}\left(\mbb{V}(y_j\vert
@@ -1806,47 +1850,40 @@ y_k$ annehmen können.
 = \mbb{V}(y_{k}).
 \end{equation*}
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
 \noindent (3)  Wir bestimmen zunächst $\mbb{E}(\eps_j\eps_k)$. Mit Aussage
-(2) des Theorems zu den Eigenschaften des Modells multipler Testmessungen bei
-einer Testmessung gilt
+(2) des Theorems zu den Eigenschaften des Stichprobenmodells multipler
+  Testmessungen bei einer Testmessung gilt
 \begin{align}
 \begin{split}
 \mbb{E}(\eps_j\eps_k)
-& := \mbb{E}((y_j - \tau)(y_k - \tau)) \\
-&  = \sum_{t \in \mathcal{T}}
-     \sum_{y_j \in\mathcal{Y}_j}
-     \sum_{y_k \in\mathcal{Y}_k} (y_j - t)(y_k - t)  p(t) p(y_j|t)p(y_k|t)  \\
-&  = \sum_{t \in \mathcal{T}}
-     p(t)
-     \sum_{y_j \in\mathcal{Y}_j}
-     \sum_{y_k \in\mathcal{Y}_k} (y_j - t)(y_k - t) p(y_j|t)p(y_k|t)  \\
-&  = \sum_{t \in \mathcal{T}}
-     p(t)
-     \sum_{y_j \in\mathcal{Y}_j} (y_j - t) p(y_j|t)
-     \sum_{y_k \in\mathcal{Y}_k} (y_k - t) p(y_k|t)  \\
-&  = \sum_{t \in \mathcal{T}}
-     p(t)
-    \left(\sum_{y_j \in\mathcal{Y}_j} y_j p(y_j|t) - t\sum_{y_j \in\mathcal{Y}_j}p(y_j|t)\right)
-    \left(\sum_{y_k \in\mathcal{Y}_k} y_k p(y_k|t) - t\sum_{y_k \in\mathcal{Y}_k}p(y_k|t)\right) \\
-&  = \sum_{t \in \mathcal{T}} p(t)\left(t-t\right)\left(t-t\right) \\
-&  = \sum_{t \in \mathcal{T}} p(t)\cdot 0 \cdot 0 \\
-&  =  0.  \\
+& := \mbb{E}((y_j - \tau)(y_k - \tau)) \\ &  = \sum_{t \in \mathcal{T}}
+\sum_{y_j \in\mathcal{Y}_j} \sum_{y_k \in\mathcal{Y}_k} (y_j - t)(y_k - t)  p(t)
+p(y_j|t)p(y_k|t)  \\ &  = \sum_{t \in \mathcal{T}} p(t) \sum_{y_j
+\in\mathcal{Y}_j} \sum_{y_k \in\mathcal{Y}_k} (y_j - t)(y_k - t)
+p(y_j|t)p(y_k|t)  \\ &  = \sum_{t \in \mathcal{T}} p(t) \sum_{y_j
+\in\mathcal{Y}_j} (y_j - t) p(y_j|t) \sum_{y_k \in\mathcal{Y}_k} (y_k - t)
+p(y_k|t)  \\ &  = \sum_{t \in \mathcal{T}} p(t) \left(\sum_{y_j
+\in\mathcal{Y}_j} y_j p(y_j|t) - t\sum_{y_j \in\mathcal{Y}_j}p(y_j|t)\right)
+\left(\sum_{y_k \in\mathcal{Y}_k} y_k p(y_k|t) - t\sum_{y_k
+\in\mathcal{Y}_k}p(y_k|t)\right) \\ &  = \sum_{t \in \mathcal{T}}
+p(t)\left(t-t\right)\left(t-t\right) \\ &  = \sum_{t \in \mathcal{T}} p(t)\cdot
+0 \cdot 0 \\ &  =  0.  \\
 \end{split}
 \end{align}
 
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
 \vspace{2mm}
 \underline{Beweis (fortgeführt)}
 
 Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianzverschiebungssatz (Foliensatz A)} und wiederum mit Aussage (2)
+\hyperref[thm:kovarianzverschiebungssatz]{Theorem Kovarianzverschiebungssatz}
+und wiederum mit Aussage (2)
 von \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
 \begin{align}
 \begin{split}
@@ -1857,7 +1894,8 @@ von \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
 \end{split}
 \end{align}
 
-\noindent (4) Mit \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Kovarianzverschiebungssatz (Foliensatz A)}  und wiederum mit Aussage (2)
+\noindent (4) Mit \hyperref[thm:kovarianzverschiebungssatz]{Theorem
+Kovarianzverschiebungssatz}  und wiederum mit Aussage (2)
 von \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
 \begin{align}
 \begin{split}
@@ -1885,19 +1923,19 @@ von \thmref{thm:eigenschaften-einer-Testmessung} folgt dann
 \end{align}
 
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
 \noindent (5) Wir halten zunächst fest, dass mit Aussage (4) des Theorems neben
 $\mbb{C}(\tau,\eps_k) = 0$ durch Austausch des Indexes und
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Symmetrie der Kovarianz (Foliensatz A)} auch
+\hyperref[thm:symmetrie-der-kovarianz]{Theorem Symmetrie der Kovarianz} auch
 \begin{equation}
 \mbb{C}(\tau,\eps_j) = \mbb{C}(\eps_j, \tau) = 0
 \end{equation}
 gilt. Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianz bei paarweiser Addition (Foliensatz A)} und Aussage (3) des Theorems
+\hyperref[thm:kovarianz-bei-paarweiser-addition]{Theorem Kovarianz bei
+paarweiser Addition} und Aussage (3) des Theorems
 gilt dann
 \begin{align}
 \begin{split}
@@ -1914,13 +1952,13 @@ gilt dann
 \end{align}
 
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \small
 Normalverteilungsbeispiel
 
 \footnotesize
-Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Modell paralleler
-Testmessungen. Für  $i = 1,...,n$ seien
+Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Stichprobenmodell
+paralleler Testmessungen. Für  $i = 1,...,n$ seien
 \begin{equation}
 \mbb{P}(\tau_{i}) =  N(1,1)
 \mbox{ und }
@@ -1953,7 +1991,7 @@ c_hat_y1_y2 = cov(Y[,1],Y[,2])                  # Kovarianzschätzung Beobachtet
 v_hat_t     = var(Tau)                          # Varianzschätzung Wahrer Wert
 ```
 
-# Das Modell paralleler Testmessungen
+# Das Stichprobenmodell paralleler Testmessungen
 \small
 Simulation des Normalverteilungsbeispiels für $n = 10^5$, 500 Stichprobenpunkte
 dargestellt
@@ -1965,13 +2003,13 @@ library(latex2exp)
 library(mvtnorm)
 if(capabilities("cairo")){
   cairo_pdf(
-  filename    = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-3.pdf",
+  filename    = "2-Abbildungen/gdt-2-normalverteilungsbeispiel-3.pdf",
   width       = 12,
   height      = 4,
   family      = "sans")
 } else {
   pdf(
-  file        = "2-Abbildungen/gdt-4-normalverteilungsbeispiel-3.pdf",
+  file        = "2-Abbildungen/gdt-2-normalverteilungsbeispiel-3.pdf",
   width       = 12,
   height      = 4,
   family      = "sans")
@@ -2048,7 +2086,7 @@ dev.off()
 ```
 
 ```{r, echo = FALSE, out.width = "90%", fig.align = "center"}
-knitr::include_graphics("2-Abbildungen/gdt-4-normalverteilungsbeispiel-3.pdf")
+knitr::include_graphics("2-Abbildungen/gdt-2-normalverteilungsbeispiel-3.pdf")
 ```
 
 \footnotesize
@@ -2064,9 +2102,9 @@ C) Kovarianz der beobachteten Werte bezüglich zweier paralleler Testmessungen
 \large
 Grundlagen
 
-Das Modell multipler Testmessungen
+Das Stichprobenmodell multipler Testmessungen
 
-Das Modell paralleler Testmessungen
+Das Stichprobenmodell paralleler Testmessungen
 
 **Modelle kongenerischer Testmessungen**
 
@@ -2081,7 +2119,7 @@ Integration von Faktoranalyse und klassischer Testtheorie nach @joreskog1970 und
 
 \footnotesize
 Ausgangspunkt kongenerischer Testmodelle ist ein einfaktorielles
-Normalverteilungsmodell der Faktorenanalyse für eine Testperson und $m$ Items,
+Modell der Faktorenanalyse für eine Testperson und $m$ Items,
 \begin{equation}
 y = \mu + Lx + \varepsilon
 \Leftrightarrow
@@ -2108,9 +2146,11 @@ x +
 \vdots \\
 \eps_m
 \end{pmatrix}
-\mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi) \mbox{ und } x \perp \varepsilon.
+\mbox{ mit } x \sim (0,\Phi), \varepsilon \sim (0_m, \Psi) \mbox{ und } x \perp \varepsilon.
 \end{equation}
-Für die folgenden Modelle setzen wir eine positive Faktorvarianz $\Phi>0$
+Die Notation $x \sim (0,\Phi)$ bezeichnet $\mbb{E}(x)=0$ und
+$\mbb{V}(x)=\Phi$. Analog bezeichnet $\varepsilon \sim (0_m,\Psi)$ den
+Erwartungswert $0_m$ und die Kovarianzmatrix $\Psi$. Wir setzen $\Phi>0$
 voraus. Mit der Definition
 \begin{equation}
 \tau_j := \mu_j + l_{j} x
@@ -2230,12 +2270,12 @@ Nach @millsap1991
 \begin{theorem}[Essentiell kongenerische und kongenerische Testmodelle]
 \justifying
 \normalfont
-Gegeben sei das einfaktorielle Normalverteilungsmodell der Faktorenanalyse für
-eine Testperson und $m$ Items mit nichtverschwindenden Faktorladungen
+Gegeben sei das einfaktorielle Modell der Faktorenanalyse für eine
+Testperson und $m$ Items mit nichtverschwindenden Faktorladungen
 $l_1,...,l_m$
 \begin{equation}
 y = \mu + Lx + \varepsilon
-\mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi), x \perp \varepsilon \mbox{ und } \Psi := \mbox{diag}(\psi_j)
+\mbox{ mit } x \sim (0,\Phi), \varepsilon \sim (0_m, \Psi), x \perp \varepsilon \mbox{ und } \Psi := \mbox{diag}(\psi_j)
 \label{eq:kongenerisches-testmodell}
 \end{equation}
 Dann wird das Modell in Gleichung \eqref{eq:kongenerisches-testmodell} auch als
@@ -2354,10 +2394,10 @@ $\hfill\Box$
 \begin{theorem}[Essentiell $\tau$-äquivalente und $\tau$-äquivalente Testmodelle]
 \justifying
 \normalfont
-Gegeben sei das einfaktorielle Normalverteilungsmodell der Faktorenanalyse für
-eine Testperson und $m$ Items
+Gegeben sei das einfaktorielle Modell der Faktorenanalyse für eine
+Testperson und $m$ Items
 \begin{equation}
-y = \mu + Lx + \varepsilon \mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi), x \perp \varepsilon, L := 1_m \mbox{ und } \Psi := \mbox{diag}(\psi_j).
+y = \mu + Lx + \varepsilon \mbox{ mit } x \sim (0,\Phi), \varepsilon \sim (0_m, \Psi), x \perp \varepsilon, L := 1_m \mbox{ und } \Psi := \mbox{diag}(\psi_j).
 \label{eq:tau-aequivalentes-testmodell}
 \end{equation}
 Dann wird das Modell in Gleichung \eqref{eq:tau-aequivalentes-testmodell} auch
@@ -2454,10 +2494,10 @@ $\hfill\Box$
 \begin{theorem}[Essentiell parallele und parallele Testmodelle]
 \justifying
 \normalfont
-Gegeben sei das einfaktorielle Normalverteilungsmodell der Faktorenanalyse für
-eine Testperson und $m$ Items
+Gegeben sei das einfaktorielle Modell der Faktorenanalyse für eine
+Testperson und $m$ Items
 \begin{equation}
-y = \mu + Lx + \varepsilon \mbox{ mit } x \sim N(0,\Phi), \varepsilon \sim N(0_m, \Psi), x \perp \varepsilon, L := 1_m \mbox{ und } \Psi := \psi I_m.
+y = \mu + Lx + \varepsilon \mbox{ mit } x \sim (0,\Phi), \varepsilon \sim (0_m, \Psi), x \perp \varepsilon, L := 1_m \mbox{ und } \Psi := \psi I_m.
 \label{eq:paralleles-testmodell}
 \end{equation}
 Dann wird das Modell in Gleichung \eqref{eq:paralleles-testmodell} auch als
@@ -2576,37 +2616,39 @@ damit
 $\hfill\Box$
 
 
-
-
 # Modelle kongenerischer Testmessungen
 \footnotesize
 
 Bemerkungen
 
 * Essentiell parallele Testmessungsmodelle sind nicht notwendigerweise parallel
-  im strikten Sinn. Bei ihnen gilt $\tau_{ij} = \mu_j + x_i$. Stimmen die
-  Intercepts aller Testmessungen überein, also $\mu_j = c$ für alle
-  $j = 1,...,m$, so gilt $\tau_{ij} = c + x_i =: \tau_i$. In diesem Fall ist
-  das Modell parallel.
-* Das zuvor definierte Modell paralleler Testmessungen ist im Allgemeinen nicht
-  notwendigerweise normalverteilt. Das parallele kongenerische
-  Testmessungsmodell ist eine normalverteilte parametrische Spezialisierung.
+  im strikten Sinn. Bei ihnen gilt $\tau_{ij}=\mu_j+x_i$. Stimmen die Intercepts
+  aller Testmessungen überein, also $\mu_j=c$ für alle $j=1,\ldots,m$, so gilt
+  $\tau_{ij}=c+x_i=:\tau_i$. In diesem Fall ist das Modell parallel.
+
+* Das parallele kongenerische Testmessungsmodell beschreibt gemeinsame wahre
+  Werte und gleiche Messfehlervarianzen. Ohne zusätzliche Annahmen impliziert es
+  jedoch nicht die bedingte Unabhängigkeit der beobachteten Werte im zuvor
+  definierten Stichprobenmodell paralleler Testmessungen.
+
 * Mit Personenindizes hat das parallele kongenerische Testmessungsmodell die
   Gestalt
 \begin{equation}
-y_{ij} = c + x_i + \varepsilon_{ij} = \tau_i + \varepsilon_{ij}
-\mbox{ mit }
-\tau_i := c + x_i.
+y_{ij}=c+x_i+\varepsilon_{ij}=\tau_i+\varepsilon_{ij}
+\mbox{ mit } \tau_i:=c+x_i.
 \end{equation}
-* Weil $\varepsilon_i \sim N(0_m,\psi I_m)$ gilt und die Messfehler unabhängig
-  vom Faktorwert sind, sind die beobachteten Werte bedingt auf $\tau_i$
-  unabhängig, sodass
+
+* Aus $\varepsilon_i\sim(0_m,\psi I_m)$ folgt, dass die Messfehler gleiche
+  Varianzen besitzen und paarweise unkorreliert sind. Sind die Messfehler
+  $\varepsilon_{i1},\ldots,\varepsilon_{im}$ zusätzlich gegenseitig unabhängig,
+  so folgt zusammen mit $x_i\perp\varepsilon_i$ die bedingte Faktorisierung
 \begin{equation}
-\mbb{P}(y_{i1},...,y_{im}|\tau_i)
-= \prod_{j=1}^m \mbb{P}(y_{ij}|\tau_i)
+\mathbb{P}(y_{i1},\ldots,y_{im}\mid\tau_i)
+=\prod_{j=1}^{m}\mathbb{P}(y_{ij}\mid\tau_i).
 \end{equation}
-zur Faktorisierung des zuvor definierten Modells paralleler Testmessungen
-kongruent ist.
+Unter dieser zusätzlichen Annahme erfüllt das Modell auch die bedingte
+Unabhängigkeitsannahme des zuvor definierten Stichprobenmodells paralleler
+Testmessungen.
 
 #
 \vfill
@@ -2614,9 +2656,9 @@ kongruent ist.
 \large
 Grundlagen
 
-Das Modell multipler Testmessungen
+Das Stichprobenmodell multipler Testmessungen
 
-Das Modell paralleler Testmessungen
+Das Stichprobenmodell paralleler Testmessungen
 
 Modelle kongenerischer Testmessungen
 
@@ -2628,36 +2670,842 @@ Modelle kongenerischer Testmessungen
 \setstretch{1.2}
 
 1. Skizzieren Sie die klassische Testtheorie und ihre Bedeutung für die
-   Fragebogendatenanalyse.
+  Fragebogendatenanalyse.
 1. Geben Sie die Definition eines bedingten Erwartungswerts wieder.
 1. Geben Sie die Definitionen von wahrem Wert, beobachtetem Wert und Messfehler
-   wieder.
+  wieder.
 1. Erläutern Sie den Begriff der Propensitätsverteilung im Kontext der
-   klassischen Testtheorie.
-1. Geben Sie die Definition des Modells multipler Testmessungen wieder.
-1. Erläutern Sie das Modell multipler Testmessungen.
-1. Geben Sie die Definition des Vereinfachten Modells der Klassischen
-   Testtheorie wieder.
-1. Erläutern Sie das Vereinfachte Modell der klassischen Testtheorie.
+  klassischen Testtheorie.
+1. Geben Sie die Definition des Stichprobenmodells multipler Testmessungen
+  wieder.
+1. Erläutern Sie das Stichprobenmodell multipler Testmessungen.
+1. Geben Sie die Definition des Populationsmodells einer Testmessung wieder.
+1. Erläutern Sie das Populationsmodell einer Testmessung.
 1. Geben Sie das Theorem zu den Eigenschaften bezüglich einer Testmessung
-   wieder.
+  wieder.
 1. Erläutern Sie das Theorem zu den Eigenschaften bezüglich einer Testmessung.
 1. Geben Sie das Theorem zu den Eigenschaften bezüglich zweier Testmessungen
-   wieder.
+  wieder.
 1. Erläutern Sie das Theorem zu den Eigenschaften bezüglich zweier
-   Testmessungen.
+  Testmessungen.
 1. Erläutern Sie den Begriff der parallelen Testmessungen.
 1. Erläutern Sie die Bedeutungen von
 \begin{equation}
 \tau_{ij} = \mbox{id}_{\mbb{R}} (\tau_{i1}) \mbox{ und } t_{ij} = \mbox{id}_{\mbb{R}}(t_{i1}) \mbox{ für } i = 1,...,n \mbox{ und } j = 2,...,m
 \end{equation}
 im Kontext paralleler Testmessungen.
-1. Geben Sie die Definition des Modells paralleler Testmessungen wieder.
-1. Erläutern Sie das Modell paralleler Testmessungen.
-1. Geben Sie das Theorem zu den Eigenschaften des Modells paralleler
-   Testmessungen wieder.
-1. Erläutern Sie das Theorem zu den Eigenschaften des Modells paralleler
-   Testmessungen.
+1. Geben Sie die Definition des Stichprobenmodells paralleler Testmessungen
+  wieder.
+1. Erläutern Sie das Stichprobenmodell paralleler Testmessungen.
+1. Geben Sie das Theorem zu den Eigenschaften des Stichprobenmodells paralleler
+  Testmessungen wieder.
+1. Erläutern Sie das Theorem zu den Eigenschaften des Stichprobenmodells
+  paralleler Testmessungen.
+
+#  {.plain}
+\vfill
+\center
+\huge
+Wahrscheinlichkeitstheoretische Ergänzungen
+\vfill
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Varianzen spezieller Linearkombinationen]\label{thm:varianzen-spezieller-linearkombinationen}
+\justifying
+\normalfont
+\vspace{1mm}
+
+
+\noindent (1) (Varianz bei Addition zweier Zufallsvariablen). Gegeben seien zwei
+Zufallsvariablen $\xi$ und $\zeta$. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi + \zeta)
+= \mathbb{V}(\xi) + \mathbb{V}(\zeta) + 2\mathbb{C}(\xi,\zeta).
+\end{equation}
+\noindent (2) (Varianz bei Subtraktion zweier Zufallsvariablen). Gegeben seien
+zwei Zufallsvariablen $\xi$ und $\zeta$. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi - \zeta)
+= \mathbb{V}(\xi) + \mathbb{V}(\zeta) - 2\mathbb{C}(\xi,\zeta).
+\end{equation}
+\end{theorem}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis}
+
+\noindent (1) Es seien $n := 2$, $\xi_1 := \xi$, $\xi_2 := \zeta$, $a_0 := 0$,
+$a_1 := 1$ und $a_2 := 1$. Dann gilt mit
+\hyperref[thm:varianz-einer-linearkombination]{Theorem Varianz einer
+Linearkombination}
+\begin{equation}
+\begin{split}
+\mathbb{V}(\xi + \zeta)
+& = \mathbb{V}(a_0 + a_1\xi_1 + a_2\xi_2)
+\\
+& = \mathbb{V}\left(a_0 + \sum_{i=1}^2 a_i \xi_i \right)
+\\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{2-1}\sum_{j=i+1}^2 a_i
+a_j\mathbb{C}(\xi_i,\xi_j)                          \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{1}\sum_{j=i+1}^2 a_ia_j
+\mathbb{C}(\xi_i,\xi_j)                            \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 1 + 1}^2 a_1a_j
+\mathbb{C}(\xi_1,\xi_j)                                                              \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 2}^2 a_1a_j\mathbb{C}(\xi_1,\xi_j)
+\\
+& = a_1^2\mathbb{V}(\xi_1) + a_2^2\mathbb{V}(\xi_2) + 2 a_1a_2\mathbb{C}(\xi_1,\xi_2)
+\\
+& = 1^2 \cdot \mathbb{V}(\xi)   +  1^2 \cdot \mathbb{V}(\zeta) + 2 \cdot  1 \cdot 1 \cdot
+\mathbb{C}(\xi,\zeta) \\
+& = \mathbb{V}(\xi) + \mathbb{V}(\zeta) + 2 \mathbb{C}(\xi,\zeta).
+\\
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) Es seien $n := 2$, $\xi_1 := \xi$, $\xi_2 := \zeta$, $a_0 := 0$,
+$a_1 := 1$ und $a_2 := -1$. Dann gilt mit dem Theorem zur Varianz einer
+Linearkombination von Zufallsvariablen
+\begin{equation}
+\begin{split}
+\mathbb{V}(\xi - \zeta)
+& = \mathbb{V}(a_0 + a_1\xi_1 + a_2\xi_2)
+\\
+& = \mathbb{V}\left(a_0 + \sum_{i=1}^2 a_i \xi_i \right)
+\\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{2-1}\sum_{j=i+1}^2 a_i
+a_j\mathbb{C}(\xi_i,\xi_j)                          \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{1}\sum_{j=i+1}^2 a_ia_j
+\mathbb{C}(\xi_i,\xi_j)                            \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 1 + 1}^2 a_1a_j
+\mathbb{C}(\xi_1,\xi_j)                                                              \\
+& = \sum_{i=1}^2 a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{j = 2}^2 a_1a_j\mathbb{C}(\xi_1,\xi_j)
+\\
+& = a_1^2\mathbb{V}(\xi_1) + a_2^2\mathbb{V}(\xi_2) + 2 a_1a_2\mathbb{C}(\xi_1,\xi_2)
+\\
+& = 1^2\cdot \mathbb{V}(\xi)   +  (-1)^2 \cdot \mathbb{V}(\zeta) + 2 \cdot  1 \cdot
+(-1)\cdot  \mathbb{C}(\xi,\zeta)        \\
+& = \mathbb{V}(\xi) + \mathbb{V}(\zeta) - 2 \mathbb{C}(\xi,\zeta).
+\\
+\end{split}
+\end{equation}
+
+\hfill $\Box$
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Direkter Beweis der Varianzformel}
+
+Alternativ gilt ohne Rückgriff auf
+\hyperref[thm:varianz-einer-linearkombination]{Theorem Varianz einer
+Linearkombination} und mit
+\hyperref[thm:erwartungswert-linear-affine-kombination]{Theorem Erwartungswert
+bei linear-affiner Kombination}, dass
+\begin{equation}
+\begin{split}
+& \mathbb{V}(a\xi + b\zeta + c)																	\\
+& = \mathbb{E}\left((a\xi + b\zeta + c - a\mathbb{E}(\xi) - b\mathbb{E}(\zeta) - c)^2\right) 	\\
+& = \mathbb{E}\left((a(\xi  - \mathbb{E}(\xi)) + b(\zeta  - \mathbb{E}(\zeta)))^2\right) 		\\
+& = \mathbb{E}\left(a^2(\xi - \mathbb{E}(\xi))^2
+				  + 2ab(\xi - \mathbb{E}(\xi))(\zeta - \mathbb{E}(\zeta))
+				  + b^2(\zeta - \mathbb{E}(\zeta))^2\right) 									\\
+& = a^2\mathbb{E}\left((\xi - \mathbb{E}(\xi))^2\right) +
+    b^2\mathbb{E}\left((\zeta - \mathbb{E}(\zeta))^2\right) +
+	2ab\mathbb{E}\left((\xi - \mathbb{E}(\xi))(\zeta - \mathbb{E}(\zeta))\right) 				\\
+& = a^2\mathbb{V}(\xi)+ b^2\mathbb{V}(\zeta) + 2ab\mathbb{C}(\xi,\zeta).
+\end{split}
+\end{equation}
+Die Spezialfälle folgen dann direkt mit $a := b := 1$ und $a := 1, b := -1$,
+respektive.
+
+\hfill $\Box$
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Kovarianzverschiebungssatz]\label{thm:kovarianzverschiebungssatz}
+\justifying
+\normalfont
+$\xi_1$ und $\xi_2$ seien Zufallsvariablen mit endlichen zweiten Momenten. Dann
+gilt
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2) = \mathbb{E}(\xi_1\xi_2) - \mathbb{E}(\xi_1)\mathbb{E}(\xi_2).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Mit der Definition der Kovarianz gilt
+\begin{equation}
+\begin{split}
+\mathbb{C}(\xi_1,\xi_2)
+& = \mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right)
+\\
+& =
+\mathbb{E}\left(\xi_1\xi_2-\xi_1\mathbb{E}(\xi_2)-\mathbb{E}(\xi_1)\xi_2+\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)\right)
+\\
+& =
+\mathbb{E}(\xi_1\xi_2)-\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)-\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)+\mathbb{E}(\xi_1)\mathbb{E}(\xi_2)
+\\
+& = \mathbb{E}(\xi_1\xi_2)-\mathbb{E}(\xi_1)\mathbb{E}(\xi_2).
+\end{split}
+\end{equation}
+
+$\hfill\Box$
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Erwartungswert bei linear-affiner Kombination]\label{thm:erwartungswert-linear-affine-kombination}
+\justifying
+\normalfont
+$\xi$ sei ein $n$-dimensionaler Zufallsvektor mit Komponenten $\xi_1,...,\xi_n$
+und Ergebnisraum  $\mathcal{X} := \mathcal{X}_1 \times \cdots \times
+\mathcal{X}_n$. Die Komponenten besitzen endliche erste absolute Momente, also
+$\mathbb{E}(|\xi_i|) < \infty$ für $i = 1,...,n$. Weiterhin sei
+\begin{equation}
+f : \mathcal{X} \to \mathcal{Z}, x \mapsto f(x) := a_0 + \sum_{i=1}^n a_ix_i \mbox{ für }  a_0,...,a_n \in \mathbb{R}.
+\end{equation}
+eine linear-affine Kombination der Komponenten von $\xi$. Dann gilt
+\begin{equation}
+\mathbb{E}(f(\xi)) = \mathbb{E}\left(a_0 +\sum_{i=1}^n a_i\xi_i \right) = a_0 + \sum_{i = 1}^n a_i \mathbb{E}(\xi_i).
+\end{equation}
+\end{theorem}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis}
+
+Zur Vereinfachung der Notation schreiben wir $\sum_{x_i \in \mathcal{X}_i}$ als
+$\sum_{x_i}$.
+
+\begin{equation}
+\begin{split}
+\mathbb{E}(f(\xi))
+& = \mathbb{E}\left(a_0 + \sum_{i=1}^{n} a_i\xi_i\right)
+\\
+& = \mathbb{E}(a_0 + a_1\xi_1 + \cdots + a_{n}\xi_{n})                              \\
+& = \sum_{x_1}\cdots\sum_{x_n} (a_0 + a_1x_1 + \cdots +
+a_{n}x_{n})p(x_1,...,x_{n})  \\
+& = \sum_{x_1}\cdots\sum_{x_n} \left(a_0p(x_1,...,x_n) +
+a_1x_1p(x_1,...,x_n) + \cdots +
+a_nx_np(x_1,...,x_n)\right)   \\
+& = \sum_{x_1}\cdots\sum_{x_n} a_0p(x_1,...,x_n)    +
+    \sum_{x_1}\cdots\sum_{x_n} a_1x_1p(x_1,...,x_n) + \cdots +
+    \sum_{x_1}\cdots\sum_{x_n} a_nx_np(x_1,...,x_n)   \\
+& = a_0\sum_{x_1}\cdots\sum_{x_n}p(x_1,...,x_n)    +
+    a_1\sum_{x_1}\cdots\sum_{x_n} x_1p(x_1,...,x_n) + \cdots +
+    a_n\sum_{x_n}\cdots\sum_{x_1} x_np(x_1,...,x_n)   \\
+& = a_0     +
+    a_1\sum_{x_1}x_1 \sum_{x_2}     \cdots\sum_{x_n} p(x_1,...,x_n) + \cdots +
+    a_n\sum_{x_n}x_n \sum_{x_{n-1}} \cdots\sum_{x_1} p(x_1,...,x_n)   \\
+& = a_0 + a_1\sum_{x_1}x_1 p(x_1) + \cdots +
+a_n\sum_{x_n}x_n p(x_n)  \\
+& = a_0 + a_1\mathbb{E}(\xi_1) + \cdots + a_n\mathbb{E}(\xi_n)  \\
+& = a_0 + \sum_{i=1}^n a_i\mathbb{E}(\xi_i)
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Gemeinsame Normalverteilungen]\label{thm-gemeinsame-normalverteilungen}
+\justifying
+\normalfont
+$\xi$ sei ein $m$-dimensionaler normalverteilter Zufallsvektor mit WDF
+\begin{equation}
+p_\xi : \mathbb{R}^m \to \mathbb{R}_{>0},\,x\mapsto
+p_\xi(x) := N(x;\mu_\xi,\Sigma_{\xi\xi}) \mbox{ mit }
+\mu_\xi \in \mathbb{R}^m,
+\Sigma_{\xi\xi} \in \mathbb{R}^{m\times m},
+\end{equation}
+$A\in\mathbb{R}^{n\times m}$ sei eine Matrix, $b\in\mathbb{R}^n$ sei ein Vektor
+und $\upsilon$ sei ein $n$-dimensionaler bedingt normalverteilter Zufallsvektor
+mit bedingter WDF
+\begin{equation}
+p_{\upsilon|\xi}(\cdot|x) : \mathbb{R}^n \to \mathbb{R}_{>0},\, y\mapsto
+p_{\upsilon|\xi}(y|x) := N(y;Ax+b,\Sigma_{\upsilon\upsilon}) \mbox{ mit }
+\Sigma_{\upsilon\upsilon} \in \mathbb{R}^{n\times n}.
+\end{equation}
+Die Matrizen $\Sigma_{\xi\xi}$ und $\Sigma_{\upsilon\upsilon}$ seien symmetrisch
+und positiv definit. Die bedingte Kovarianzmatrix $\Sigma_{\upsilon\upsilon}$
+sei unabhängig von $x$. Dann ist der $m+n$-dimensionale Zufallsvektor
+$(\xi,\upsilon)^T$ normalverteilt mit (gemeinsamer) WDF
+\begin{equation}\label{eq:gauss_joint}
+p_{\xi,\upsilon} : \mathbb{R}^{m+n} \to \mathbb{R}_{>0},\, \begin{pmatrix} x \\ y \end{pmatrix} \mapsto
+p_{\xi,\upsilon}\left(\begin{pmatrix} x \\ y \end{pmatrix}\right) = N\left(\begin{pmatrix} x \\ y \end{pmatrix};
+\mu_{\xi,\upsilon}, \Sigma_{\xi,\upsilon} \right),
+\end{equation}
+mit $\mu_{\xi,\upsilon} \in \mathbb{R}^{m+n}$ und $\Sigma_{\xi,\upsilon} \in
+\mathbb{R}^{(m+n) \times (m+n)}$ und insbesondere
+\begin{equation}
+\mu_{\xi,\upsilon} = \left( \begin{matrix} \mu_\xi \\ A\mu_\xi + b \end{matrix} \right)
+\mbox{ und }
+\Sigma_{\xi,\upsilon} = \left(\begin{matrix} \Sigma_{\xi\xi} & \Sigma_{\xi\xi}A^T \\ A\Sigma_{\xi\xi} & \Sigma_{\upsilon\upsilon} + A\Sigma_{\xi\xi}A^T \end{matrix} \right).
+\end{equation}
+\end{theorem}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Marginale Normalverteilungen]\label{thm-marginale-normalverteilungen}
+\justifying
+\normalfont
+Es sei $n := k + l$ und $\xi = (\xi_1,...,\xi_n)^T$ sei ein $n$-dimensionaler
+normalverteilter Zufallsvektor mit Erwartungswertparameter
+\begin{equation}
+\mu =
+\left(\begin{matrix}
+\mu_\upsilon \\
+\mu_\zeta
+\end{matrix}\right) \in \mathbb{R}^n,
+\end{equation}
+mit $\mu_\upsilon \in \mathbb{R}^k$ und $\mu_\zeta \in \mathbb{R}^l$ und
+Kovarianzmatrixparameter
+\begin{equation}
+\Sigma =
+\left(\begin{matrix}
+\Sigma_{\upsilon\upsilon} 	& \Sigma_{\upsilon\zeta} \\
+\Sigma_{\zeta\upsilon} 	& \Sigma_{\zeta\zeta}
+\end{matrix}\right) \in \mathbb{R}^{n \times n},
+\end{equation}
+mit $\Sigma_{\upsilon\upsilon}  \in \mathbb{R}^{k \times k}$,
+$\Sigma_{\upsilon\zeta}     \in \mathbb{R}^{k \times l}$,
+$\Sigma_{\zeta\upsilon}     \in \mathbb{R}^{l \times k}$, und
+$\Sigma_{\zeta\zeta}        \in \mathbb{R}^{l \times l}$. Dann sind $\upsilon :=
+(\xi_1,...,\xi_k)^T$ und $\zeta := (\xi_{k+1}, ...,\xi_n)^T$ normalverteilte
+Zufallsvektoren der Dimension $k$ bzw. $l$, und es gilt
+\begin{equation}
+\upsilon \sim N(\mu_\upsilon,\Sigma_{\upsilon\upsilon}) \mbox{ und } \zeta \sim N(\mu_\zeta,\Sigma_{\zeta\zeta}).
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Die Marginalverteilungen einer multivariaten Normalverteilung sind ebenfalls
+  normalverteilt.
+* Ihre Parameter sind die entsprechenden Teilvektoren und Teilmatrizen der
+  gemeinsamen Parameter.
+* Beweise finden sich bei @mardia1979 und @anderson2003.
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\setbeamerfont{block title}{size=\small}
+\begin{theorem}[Linear-affine Transformation eines normalverteilten Zufallsvektors]\label{thm-linear-affine-transformation}
+\justifying
+\normalfont
+$\xi \sim N(\mu_\xi,\Sigma_\xi)$ sei ein normalverteilter $n$-dimensionaler
+Zufallsvektor und es sei
+\begin{equation}
+\zeta := A\xi + b \mbox{ mit } A \in \mathbb{R}^{m \times n} \mbox{ und } b \in \mathbb{R}^m.
+\end{equation}
+Dann gilt
+\begin{equation}
+\zeta \sim N(\mu_\zeta, \Sigma_\zeta)
+\mbox{ mit }
+\mu_\zeta    = A\mu_\xi + b \in \mathbb{R}^m \mbox{ und }
+\Sigma_\zeta = A\Sigma_\xi A^T \in \mathbb{R}^{m \times m}.
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Die resultierende Normalverteilung kann degeneriert sein.
+* Bei positiv definitem $\Sigma_\xi$ ist $A\Sigma_\xi A^T$ genau dann positiv
+  definit, wenn $A$ vollen Zeilenrang hat.
+* Ein Beweis findet sich bei @anderson2003.
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Verschiebungssatz der bedingten Kovarianz]\label{thm:verschiebungssatz-der-bedingten-kovarianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2,\xi_3)$, wobei $\xi_1$ und
+$\xi_2$ endliche zweite Momente besitzen. Dann gilt fast sicher
+\begin{equation}
+\mathbb{C}(\xi_1, \xi_2|\xi_3)
+= \mathbb{E}\left(\xi_1\xi_2|\xi_3\right) - \mathbb{E}\left(\xi_1|\xi_3\right)\mathbb{E}\left(\xi_2|\xi_3\right).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Ein Beweis ergibt sich durch die Ersetzung der entsprechenden Erwartungswerte im
+Beweis von \hyperref[thm:kovarianzverschiebungssatz]{Theorem
+Kovarianzverschiebungssatz} durch die entsprechenden bedingten Erwartungswerte.
+
+$\hfill\Box$
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Symmetrie von Kovarianz und Korrelation]\label{thm:symmetrie-der-kovarianz}
+\justifying
+\normalfont
+$\xi_1$ und $\xi_2$ seien zwei Zufallsvariablen mit endlichen zweiten Momenten.
+Für die Aussage zur Korrelation seien zudem $\mathbb{S}(\xi_1) > 0$ und
+$\mathbb{S}(\xi_2) > 0$ vorausgesetzt. Dann gelten
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2) = \mathbb{C}(\xi_2,\xi_1)
+\mbox{ und }
+\rho(\xi_1,\xi_2) = \rho(\xi_2,\xi_1).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Mit der Kommutativität der Multiplikation gilt zunächst
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2)
+= \mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right)
+= \mathbb{E}\left((\xi_2-\mathbb{E}(\xi_2))(\xi_1-\mathbb{E}(\xi_1))\right)
+= \mathbb{C}(\xi_2,\xi_1)
+\end{equation}
+Weiterhin gilt dann
+\begin{equation}
+\rho(\xi_1,\xi_2)
+= \frac{\mathbb{C}(\xi_1,\xi_2)}{\mathbb{S}(\xi_1)\mathbb{S}(\xi_2)}
+= \frac{\mathbb{C}(\xi_2,\xi_1)}{\mathbb{S}(\xi_2)\mathbb{S}(\xi_1)}
+= \rho(\xi_2,\xi_1)
+\end{equation}
+
+\hfill $\Box$
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Kovarianz bei paarweiser Addition]\label{thm:kovarianz-bei-paarweiser-addition}
+\justifying
+\normalfont
+$\xi_1,\xi_2,\zeta_1,\zeta_2$ seien vier Zufallsvariablen mit endlichen zweiten
+Momenten. Dann gilt
+\begin{equation}
+\mathbb{C}(\xi_1 + \xi_2, \zeta_1 + \zeta_2)
+= \mathbb{C}(\xi_1,\zeta_1) + \mathbb{C}(\xi_1,\zeta_2) + \mathbb{C}(\xi_2,\zeta_1) + \mathbb{C}(\xi_2,\zeta_2).
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Es seien $n := 2, m := 2, a_0 = b_0 := 0$ und $a_i = b_i := 1$ für $i = 1,2$.
+Dann gilt mit \hyperref[thm:kovarianz-von-linearkombinationen]{Theorem Kovarianz
+von Linearkombinationen von Zufallsvariablen}
+\begin{equation}
+\begin{split}
+\mathbb{C}\left(\xi_1 +\xi_2, \zeta_1 + \zeta_2 \right)
+& = \mathbb{C}\left(a_0 + \sum_{i=1}^2 a_i \xi_i, b_0 + \sum_{j=1}^2 b_j \zeta_j \right)
+\\
+& = \sum_{i=1}^2 \sum_{j=1}^2 a_i b_j\mathbb{C}\left(\xi_i, \zeta_j \right) \\
+& = \sum_{i=1}^2 \sum_{j=1}^2 \mathbb{C}\left(\xi_i, \zeta_j \right) \\
+& = \mathbb{C}\left(\xi_1, \zeta_1\right) + \mathbb{C}\left(\xi_1, \zeta_2 \right) +
+\mathbb{C}\left(\xi_2, \zeta_1\right) + \mathbb{C}\left(\xi_2, \zeta_2 \right).
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\vspace{2mm}
+\begin{theorem}[Iterierte Varianz]\label{thm:iterierte-varianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$, wobei $\xi_1$ ein
+endliches zweites Moment besitzt. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi_1) =
+\mathbb{E}(\mathbb{V}(\xi_1|\xi_2)) + \mathbb{V}(\mathbb{E}(\xi_1|\xi_2))
+\end{equation}
+\end{theorem}
+
+\vspace{-1mm}
+\underline{Beweis}
+
+Die folgenden Summen über $x_2$ laufen nur über Werte mit $p(x_2) > 0$. Wir
+beschränken uns auf den Beweis für einen diskreten Zufallsvektor. Mit
+\hyperref[thm:kovarianzverschiebungssatz]{Theorem Kovarianzverschiebungssatz},
+\hyperref[thm:iterierter-erwartungswert]{Theorem Iterierter Erwartungswert} und
+\hyperref[thm:verschiebungssatz-der-bedingten-varianz]{Theorem Verschiebungssatz
+der bedingten Varianz}
+gilt
+\begin{equation}
+\begin{split}
+\mathbb{V}(\xi_1)
+& = \mathbb{E}(\xi_1^2) - \mathbb{E}(\xi_1)^2
+\\
+& = \mathbb{E}\left(\mathbb{E}(\xi_1^2|\xi_2)\right) -
+\mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2                     \\
+& = \sum_{x_2 \in \mathcal{X}_2}p(x_2)\mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+\mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2    \\
+& = \sum_{x_2 \in \mathcal{X}_2}p(x_2)\left(\mathbb{V}(\xi_1|\xi_2 = x_2) +
+\mathbb{E}(\xi_1|\xi_2 = x_2)^2 \right) -
+     \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2                                                                       \\
+& = \sum_{x_2 \in \mathcal{X}_2}p(x_2)\mathbb{V}(\xi_1|\xi_2 = x_2) +
+    \sum_{x_2 \in \mathcal{X}_2}p(x_2)\mathbb{E}(\xi_1|\xi_2 = x_2)^2  -
+     \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2                                                                       \\
+& = \mathbb{E}(\mathbb{V}(\xi_1|\xi_2)) +
+    \left(\mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)^2\right) - \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2)\right)^2\right)          \\
+& = \mathbb{E}(\mathbb{V}(\xi_1|\xi_2)) + \mathbb{V}\left(\mathbb{E}(\xi_1|\xi_2)\right)
+\\
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\vspace{2mm}
+\begin{theorem}[Iterierter Erwartungswert]\label{thm:iterierter-erwartungswert}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$, wobei $\mathbb{E}(|\xi_1|)
+< \infty$ gilt. Dann gilt
+\begin{equation}
+\mathbb{E}(\xi_1) = \mathbb{E}\left(\mathbb{E}\left(\xi_1|\xi_2\right)\right).
+\end{equation}
+\end{theorem}
+
+\vspace{-1mm}
+\underline{Beweis}
+
+Die folgenden Summen über $x_2$ laufen nur über Werte mit $p(x_2) > 0$. Wir
+beschränken uns auf den Beweis für einen diskreten Zufallsvektor. Es gilt
+\begin{equation}
+\begin{split}
+\mathbb{E}(\xi_1)
+& = \sum_{x_1\in \mathcal{X}_1}x_1p(x_1)
+\\
+& = \sum_{x_1 \in \mathcal{X}_1}x_1\sum_{x_2 \in \mathcal{X}_2}
+p(x_1,x_2)          \\
+& = \sum_{x_1\in \mathcal{X}_1}x_1\sum_{x_2 \in \mathcal{X}_2}
+p(x_1|x_2)p(x_2)     \\
+& = \sum_{x_1\in \mathcal{X}_1}\sum_{x_2 \in \mathcal{X}_2} x_1
+p(x_1|x_2)p(x_2)    \\
+& = \sum_{x_2\in \mathcal{X}_2}\sum_{x_1 \in \mathcal{X}_1} x_1
+p(x_1|x_2)p(x_2)    \\
+& = \sum_{x_2\in \mathcal{X}_2}\mathbb{E}(\xi_1|\xi_2 = x_2)p(x_2)
+\\
+& = \mathbb{E}\left(\mathbb{E}(\xi_1|\xi_2 )\right).                                \\
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{definition}[Bedingte Kovarianz]\label{def-bedingte-kovarianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2,\xi_3)$ mit Ergebnisraum
+$\mathcal{X} := \mathcal{X}_1 \times \mathcal{X}_2 \times \mathcal{X}_3$ und
+gemeinsamer WMF oder WDF $p(x_1,x_2,x_3)$. Für einen Bedingungswert $x_3$ mit
+positiver marginaler WMF bzw. WDF sei $p(x_1,x_2|x_3)$ die entsprechende
+bedingte WMF bzw. WDF. Es gelte $\mathbb{E}(\xi_1^2|\xi_3 = x_3) < \infty$ und
+$\mathbb{E}(\xi_2^2|\xi_3 = x_3) < \infty$. Dann ist die bedingte Kovarianz von
+$\xi_1$ und $\xi_2$ gegeben $\xi_3 = x_3$ definiert als
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2|\xi_3 = x_3)
+:= \mathbb{E}
+  \left(
+  \left(\xi_1 - \mathbb{E}\left(\xi_1|\xi_3 = x_3\right)\right)
+  \left(\xi_2 - \mathbb{E}\left(\xi_2|\xi_3 = x_3\right)\right)|\xi_3 = x_3
+  \right)
+\end{equation}
+\end{definition}
+
+Bemerkungen
+
+* Die bedingte Kovarianz ist der Erwartungswert des Produkts der bedingt
+  zentrierten Zufallsvariablen.
+* Für festes $x_3$ ist $\mathbb{C}(\xi_1,\xi_2\mid\xi_3=x_3)$ eine feste Zahl.
+* Als Funktion von $\xi_3$ ist $\mathbb{C}(\xi_1,\xi_2\mid\xi_3)$ eine
+  Zufallsvariable.
+* Auch für die bedingte Kovarianz gilt ein Verschiebungssatz.
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{definition}[Kovarianz und Korrelation zweier Zufallsvariablen]\label{def-kovarianz-und-korrelation-zweier-zufallsvariablen}
+\justifying
+\normalfont
+$\xi_1$ und $\xi_2$ seien Zufallsvariablen mit endlichen zweiten Momenten. Ihre
+\textit{Kovarianz} ist definiert als
+\begin{equation}
+\mathbb{C}(\xi_1,\xi_2) :=
+\mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right).
+\end{equation}
+Die \textit{Korrelation} zweier Zufallsvariablen $\xi_1$ und $\xi_2$ mit
+$\mathbb{S}(\xi_1) > 0$ und $\mathbb{S}(\xi_2) > 0$ ist definiert als
+\begin{equation}
+\rho(\xi_1,\xi_2)
+:= \frac{\mathbb{C}(\xi_1,\xi_2)}{\mathbb{S}(\xi_1)\mathbb{S}(\xi_2)}.
+\end{equation}
+\end{definition}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Kovarianz von Linearkombinationen von Zufallsvariablen]\label{thm:kovarianz-von-linearkombinationen}
+\justifying
+\normalfont
+Gegeben seien $n$ Zufallsvariablen  $\xi_1,...,\xi_n$  und $n+1$ reelle
+Konstanten $a_0,a_1,...,a_n$ sowie $m$ Zufallsvariablen $\zeta_1,...,\zeta_m$
+und $m + 1$ reelle Konstanten $b_0,b_1,...,b_m$. Alle genannten Zufallsvariablen
+besitzen endliche zweite Momente. Dann gilt
+\begin{equation}
+\mathbb{C}\left(a_0 + \sum_{i=1}^n a_i \xi_i, b_0 + \sum_{j=1}^m b_j \zeta_j\right)
+= \sum_{i=1}^n \sum_{j=1}^m a_ib_j\mathbb{C}(\xi_i, \zeta_j).
+\end{equation}
+\end{theorem}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis}
+
+\begin{equation}
+\begin{split}
+& \mathbb{C}\left(a_0 + \sum_{i=1}^n a_i \xi_i, b_0 + \sum_{j=1}^m b_j \zeta_j \right) \\
+& = \mathbb{E}\left(
+        \left(a_0 + \sum_{i=1}^n a_i \xi_i  - \mathbb{E}\left(a_0 + \sum_{i=1}^n a_i
+\xi_i\right)\right)
+        \left(b_0 + \sum_{j=1}^m b_j \zeta_j - \mathbb{E}\left(b_0 + \sum_{j=1}^m b_j
+\zeta_j \right)\right)
+        \right)
+\\
+& = \mathbb{E}\left(
+        \left(a_0 + \sum_{i=1}^n a_i \xi_i  - a_0 - \mathbb{E}\left(\sum_{i=1}^n a_i
+\xi_i\right)\right)
+        \left(b_0 + \sum_{j=1}^m b_j \zeta_j - b_0 - \mathbb{E}\left(\sum_{j=1}^m b_j
+\zeta_j \right)\right)
+        \right)
+\\
+& = \mathbb{E}\left(
+        \left(\sum_{i=1}^n a_i \xi_i  - \sum_{i=1}^n a_i \mathbb{E}(\xi_i) \right)
+        \left(\sum_{j=1}^m b_j \zeta_j - \sum_{j=1}^m b_j \mathbb{E}(\zeta_j)\right)
+        \right)
+\\
+& = \mathbb{E}
+        \Bigl(
+        \sum_{i=1}^n a_i \xi_i\sum_{j=1}^m b_j \zeta_j  - \sum_{i=1}^n a_i \xi_i
+\sum_{j=1}^m b_j \mathbb{E}(\zeta_j)
+- \sum_{i=1}^n a_i \mathbb{E}(\xi_i)\sum_{j=1}^m b_j \zeta_j +  \sum_{i=1}^n a_i
+\mathbb{E}(\xi_i) \sum_{j=1}^m b_j \mathbb{E}(\zeta_j)
+        \Bigr)
+\\
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis (fortgeführt)}
+\begin{equation}
+\begin{split}
+& = \mathbb{E}\left(\sum_{i=1}^n a_i \xi_i\sum_{j=1}^m b_j \zeta_j\right)
+    - \mathbb{E}\left(\sum_{i=1}^n a_i \xi_i \sum_{j=1}^m b_j \mathbb{E}(\zeta_j)\right)
+- \mathbb{E}\left(\sum_{i=1}^n a_i \mathbb{E}(\xi_i)\sum_{j=1}^m b_j \zeta_j\right)
+        + \mathbb{E}\left(\sum_{i=1}^n a_i \mathbb{E}(\xi_i) \sum_{j=1}^m b_j
+\mathbb{E}(\zeta_j)\right)
+\\
+& =  \sum_{i=1}^n \sum_{j=1}^m a_ib_j \mathbb{E}(\xi_i\zeta_j)
+    - 2\sum_{i=1}^n \sum_{j=1}^m a_i  b_j \mathbb{E}(\xi_i)\mathbb{E}(\zeta_j)
+        + \sum_{i=1}^n\sum_{j=1}^m a_ib_j \mathbb{E}(\xi_i) \mathbb{E}(\zeta_j)
+\\
+& =  \sum_{i=1}^n \sum_{j=1}^m a_ib_j \left(\mathbb{E}(\xi_i\zeta_j) -  2
+\mathbb{E}(\xi_i)\mathbb{E}(\zeta_j) +\mathbb{E}(\xi_i)\mathbb{E}(\zeta_j)\right)
+\\
+& =  \sum_{i=1}^n \sum_{j=1}^m a_ib_j
+     \mathbb{E}\left((\xi_i -  \mathbb{E}(\xi_i))(\zeta_j - \mathbb{E}(\zeta_j))\right)
+\\
+& = \sum_{i=1}^n \sum_{j=1}^m a_ib_j\mathbb{C}(\xi_i, \zeta_j)
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Varianz einer Linearkombination]\label{thm:varianz-einer-linearkombination}
+\justifying
+\normalfont
+Gegeben seien $n$ Zufallsvariablen $\xi_1,...,\xi_n$ und $n+1$ reelle Konstanten
+$a_0,a_1,...,a_n$. Dann gilt
+\begin{equation}
+\mathbb{V}\left(a_0 + \sum_{i=1}^n a_i \xi_i \right)
+= \sum_{i=1}^n a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^n a_ia_j\mathbb{C}(\xi_i,\xi_j).
+\end{equation}
+\end{theorem}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis}
+
+Mit $\mathbb{V}(\xi) = \mathbb{C}(\xi,\xi)$ und
+\hyperref[thm:kovarianz-von-linearkombinationen]{Theorem Kovarianz von
+Linearkombinationen von Zufallsvariablen}
+gilt zunächst
+\begin{equation}
+\begin{split}
+\mathbb{V}\left(a_0 + \sum_{i=1}^n a_i\xi_i\right)
+& = \mathbb{C}\left(a_0 + \sum_{i=1}^n a_i\xi_i, a_0 + \sum_{i=1}^n a_i\xi_i\right)
+\\
+& = \mathbb{C}\left(a_0 + \sum_{i=1}^n a_i \xi_i, a_0 + \sum_{j=1}^n a_j \xi_j \right)
+\\
+& = \sum_{i=1}^n \sum_{j=1}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+\\
+& = \sum_{i=1}^n\sum_{\substack{j=1 \\ j = i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)  +
+\sum_{i=1}^n \sum_{\substack{j=1 \\ j \neq i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)    \\
+& = \sum_{i=1}^n a_i a_i\mathbb{C}(\xi_i,\xi_i)  + \sum_{i=1}^n \sum_{\substack{j=1 \\
+j \neq i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+\\
+& = \sum_{i=1}^n a_i^2\mathbb{V}(\xi_i)  + \sum_{i=1}^n \sum_{\substack{j=1 \\ j \neq
+i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+\\
+& = \sum_{i=1}^n a_i^2\mathbb{V}(\xi_i)  + 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^n a_ia_j
+\mathbb{C}(\xi_i,\xi_j),
+\end{split}
+\end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis (fortgeführt)}
+
+Dabei wurde in der vierten Gleichung die Doppelsumme in solche Terme
+aufgespalten, für die $i = j$ und für die $i \neq j$, und in der siebten
+Gleichung ausgenutzt, dass
+\begin{equation}
+a_ia_j\mathbb{C}(\xi_i,\xi_j) = a_ja_i\mathbb{C}(\xi_j,\xi_i).
+\end{equation}
+Wir verdeutlichen die daraus folgende Identität
+\begin{equation}
+\sum_{i=1}^n \sum_{\substack{j=1 \\ j \neq i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
+= 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^n a_ia_j \mathbb{C}(\xi_i,\xi_j),
+\end{equation}
+am Beispiel $n=3$ auf der folgenden Folie.
+
+Bemerkungen
+
+* Die Einträge $a_ia_j\mathbb{C}(\xi_i,\xi_j)$ bilden eine symmetrische Matrix.
+* Die linke Summe erfasst alle Einträge außerhalb der Diagonale zeilenweise.
+* Oberes und unteres Dreieck liefern wegen der Symmetrie gleiche Beiträge.
+* Daher genügt die doppelte Summe über das obere Dreieck ohne Diagonale.
+* Für jede Zeile $i$ laufen die Spaltenindizes dort von $j=i+1$ bis $n$.
+* Die letzte Zeile trägt nichts bei, deshalb läuft die äußere Summe nur bis $n-1$.
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\underline{Beweis (fortgeführt)}
+
+Konkret ergibt sich zum Beispiel für $n := 3$:
+\begin{equation}
+\begin{split}
+& \sum_{i=1}^3\sum_{\substack{j=1 \\ j \neq i}}^3 a_ia_j \mathbb{C}(\xi_i,\xi_j) \\
+& = \sum_{\substack{j=1 \\ j \neq 1}}^3 a_1a_j\mathbb{C}(\xi_1,\xi_j) +
+    \sum_{\substack{j=1 \\ j \neq 2}}^3 a_2a_j\mathbb{C}(\xi_2,\xi_j) +
+        \sum_{\substack{j=1 \\ j \neq 3}}^3 a_3a_j\mathbb{C}(\xi_3,\xi_j)\\
+& = a_1a_2\mathbb{C}(\xi_1,\xi_2) + a_1a_3\mathbb{C}(\xi_1,\xi_3) + a_2a_1\mathbb{C}(\xi_2,\xi_1) +
+a_2a_3\mathbb{C}(\xi_2,\xi_3)  + a_3a_1\mathbb{C}(\xi_3,\xi_1) + a_3a_2\mathbb{C}(\xi_3,\xi_2)\\
+& = a_1a_2\mathbb{C}(\xi_1,\xi_2) + a_2a_1\mathbb{C}(\xi_2,\xi_1) + a_1a_3\mathbb{C}(\xi_1,\xi_3) +
+a_3a_1\mathbb{C}(\xi_3,\xi_1) + a_2a_3\mathbb{C}(\xi_2,\xi_3) + a_3a_2\mathbb{C}(\xi_3,\xi_2)\\
+& = 2a_1a_2\mathbb{C}(\xi_1,\xi_2) + 2a_1a_3\mathbb{C}(\xi_1,\xi_3) +
+2a_2a_3\mathbb{C}(\xi_2,\xi_3)\\
+& = 2\left(a_1a_2\mathbb{C}(\xi_1,\xi_2) + a_1a_3\mathbb{C}(\xi_1,\xi_3) +
+a_2a_3\mathbb{C}(\xi_2,\xi_3)\right)\\
+& = 2\left(\sum_{j=2}^3 a_1a_j\mathbb{C}(\xi_1,\xi_j) + \sum_{j=3}^3
+a_2a_j\mathbb{C}(\xi_2,\xi_j)\right)\\
+& = 2\left(\sum_{j=1+1}^3 a_1a_j\mathbb{C}(\xi_1,\xi_j) + \sum_{j=2+1}^3
+a_2a_j\mathbb{C}(\xi_2,\xi_j)\right)\\
+& = 2\sum_{i=1}^{2}\sum_{j=i+1}^3 a_ia_j\mathbb{C}(\xi_i,\xi_j).
+\end{split}
+\end{equation}
+
+\hfill $\Box$
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{definition}[Bedingte Varianz]\label{def-bedingte-varianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$ mit Ergebnisraum
+$\mathcal{X} := \mathcal{X}_1 \times \mathcal{X}_2$ und gemeinsamer WMF oder
+WDF. Für einen Bedingungswert $x_2$ mit positiver marginaler WMF bzw. WDF
+existiere die entsprechende bedingte Verteilung, und es gelte
+$\mathbb{E}(\xi_1^2|\xi_2 = x_2) < \infty$. Dann ist die \textit{bedingte
+Varianz von $\xi_1$ gegeben $\xi_2 = x_2$} definiert als
+\begin{equation}
+\mathbb{V}(\xi_1|\xi_2 = x_2) := \mathbb{E}\left(\left(\xi_1 - \mathbb{E}(\xi_1|\xi_2 = x_2)\right)^2|\xi_2 = x_2\right)
+\end{equation}
+und die \textit{bedingte Standardabweichung von $\xi_1$ gegeben $\xi_2 = x_2$}
+ist definiert als
+\begin{equation}
+\mathbb{S}(\xi_1|\xi_2 = x_2) := \sqrt{\mathbb{V}(\xi_1|\xi_2 = x_2)}.
+\end{equation}
+\end{definition}
+
+Bemerkungen
+
+* Für festes $x_2$ sind die bedingte Varianz und die bedingte Standardabweichung
+  feste Zahlen.
+* Als Funktionen von $\xi_2$ sind $\mathbb{V}(\xi_1\mid\xi_2)$ und
+  $\mathbb{S}(\xi_1\mid\xi_2)$ Zufallsvariablen.
+* Auch für die bedingte Varianz gilt ein Verschiebungssatz.
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\vspace{2mm}
+\begin{theorem}[Verschiebungssatz der bedingten Varianz]\label{thm:verschiebungssatz-der-bedingten-varianz}
+\justifying
+\normalfont
+Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$, wobei $\xi_1$ ein
+endliches zweites Moment besitzt. Für alle Bedingungswerte $x_2$ mit positiver
+marginaler WMF bzw. WDF und endlichem bedingtem zweiten Moment gilt
+\begin{equation}
+\mathbb{V}(\xi_1|\xi_2 = x_2) = \mathbb{E}\left(\xi_1^2|\xi_2 = x_2\right) - \mathbb{E}(\xi_1|\xi_2 = x_2)^2
+\end{equation}
+\end{theorem}
+
+\vspace{-1mm}
+\underline{Beweis}
+
+Wir beschränken uns auf den Beweis für einen diskreten Zufallsvektor.
+\begin{equation}
+\begin{split}
+\mathbb{V}(\xi_1|\xi_2 = x_2)
+& = \mathbb{E}\left(\left(\xi_1 - \mathbb{E}(\xi_1|\xi_2 = x_2)\right)^2|\xi_2 =
+x_2\right)                                         \\
+& = \mathbb{E}\left(\xi_1^2 - 2\xi_1\mathbb{E}(\xi_1|\xi_2 = x_2) +
+\mathbb{E}(\xi_1|\xi_2 = x_2)^2|\xi_2 = x_2\right)              \\
+& = \sum_{x_1 \in \mathcal{X}_1}p(x_1|x_2)\left(x_1^2 -
+2x_1\mathbb{E}(\xi_1|\xi_2 = x_2) + \mathbb{E}(\xi_1|\xi_2 = x_2)^2\right)
+\\
+& = \sum_{x_1 \in \mathcal{X}_1}x_1^2p(x_1|x_2) -
+    \sum_{x_1 \in \mathcal{X}_1}2x_1\mathbb{E}(\xi_1|\xi_2 = x_2)p(x_1|x_2) +
+    \sum_{x_1 \in \mathcal{X}_1}\mathbb{E}(\xi_1|\xi_2 = x_2)^2p(x_1|x_2)                                                           \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+    2\mathbb{E}(\xi_1|\xi_2 = x_2)\sum_{x_1 \in \mathcal{X}_1}x_1p(x_1|x_2) +
+    \mathbb{E}(\xi_1|\xi_2 = x_2)^2\sum_{x_1 \in \mathcal{X}_1}p(x_1|x_2)                                                           \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+    2\mathbb{E}(\xi_1|\xi_2 = x_2)\mathbb{E}(\xi_1|\xi_2 = x_2) +
+    \mathbb{E}(\xi_1|\xi_2 = x_2)^2 \cdot 1                                                                                         \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) -
+    2\mathbb{E}(\xi_1|\xi_2 = x_2)^2 +
+    \mathbb{E}(\xi_1|\xi_2 = x_2)^2                                                                                          \\
+& = \mathbb{E}(\xi_1^2|\xi_2 = x_2) - \mathbb{E}(\xi_1|\xi_2 = x_2)^2
+\end{split}
+\end{equation}
 
 # Referenzen {.allowframebreaks}
 \footnotesize

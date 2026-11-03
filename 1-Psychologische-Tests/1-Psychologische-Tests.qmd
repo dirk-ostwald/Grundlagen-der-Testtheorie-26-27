@@ -51,9 +51,9 @@ Antwortformate
 
 Testgütekriterien
 
-Testtheorien
-
 Testkonstruktion
+
+Testtheorien
 
 Selbstkontrollfragen
 \vfill
@@ -70,9 +70,9 @@ Antwortformate
 
 Testgütekriterien
 
-Testtheorien
-
 Testkonstruktion
+
+Testtheorien
 
 Selbstkontrollfragen
 \vfill
@@ -280,9 +280,9 @@ Antwortformate
 
 Testgütekriterien
 
-Testtheorien
-
 Testkonstruktion
+
+Testtheorien
 
 Selbstkontrollfragen
 \vfill
@@ -599,9 +599,9 @@ Testarten
 
 Testgütekriterien
 
-Testtheorien
-
 Testkonstruktion
+
+Testtheorien
 
 Selbstkontrollfragen
 \vfill
@@ -1401,9 +1401,9 @@ Antwortformate
 
 **Testgütekriterien**
 
-Testtheorien
-
 Testkonstruktion
+
+Testtheorien
 
 Selbstkontrollfragen
 \vfill
@@ -1756,7 +1756,7 @@ Nebengütekriterien
 Nebengütekriterium & Definition \\
 \midrule
 \textit{Normierung} & Für einen Test liegen geeignete Vergleichswerte vor, mit deren Hilfe das Ergebnis einer Testperson im Verhältnis zu einer relevanten Bezugsgruppe eingeordnet und interpretiert werden kann. \\ \addlinespace[1.5mm]
-\textit{Skalierung} & Die nach den Auswertungsregeln gebildeten Testwerte geben die qualitativen Beziehungen zwischen den Merkmalsausprägungen angemessen wieder. Formale Skalierungseigenschaften werden meist im Rahmen der Item-Response-Theorie geprüft. \\ \addlinespace[1.5mm]
+\textit{Skalierung} & Die nach den Auswertungsregeln gebildeten Testwerte geben die qualitativen Beziehungen zwischen den Merkmalsausprägungen angemessen wieder. \\ \addlinespace[1.5mm]
 \textit{Testökonomie} & Der finanzielle und zeitliche Aufwand eines Tests ist im Verhältnis zum diagnostischen Erkenntnisgewinn gering. \\ \addlinespace[1.5mm]
 \textit{Nützlichkeit} & Das erfasste Merkmal ist praktisch relevant, und die auf den Testergebnissen beruhenden Entscheidungen oder Maßnahmen lassen mehr Nutzen als Schaden erwarten. \\ \addlinespace[1.5mm]
 \textit{Zumutbarkeit} & Die zeitliche, psychische und physische Belastung der Testperson bleibt sowohl für sich genommen als auch im Verhältnis zum Nutzen der Testanwendung angemessen. \\ \addlinespace[1.5mm]
@@ -1783,13 +1783,398 @@ Antwortformate
 
 Testgütekriterien
 
-**Testtheorien**
+**Testkonstruktion**
 
-Testkonstruktion
+Testtheorien
 
 Selbstkontrollfragen
 \vfill
 
+# Testkonstruktion
+\vspace{1mm}
+\small
+
+Konstruktdefinition und Testplanung
+
+* Merkmal definieren und seine inhaltlichen Teilbereiche bestimmen
+* Zielgruppe und vorgesehenen Anwendungszweck festlegen
+
+Itemkonstruktion und Antwortformate
+
+* Geeignete Fragen oder Aufgaben aus der Konstruktdefinition ableiten
+* Antwortformate, Instruktionen und Auswertungsregeln festlegen
+
+Erprobung und Auswahl der Items
+
+* Testentwurf erproben und Eigenschaften der Items untersuchen
+* Items anhand statistischer und inhaltlicher Kriterien überarbeiten und auswählen
+
+Validierung und Dokumentation
+
+* Objektivität, Reliabilität und Validität des Tests untersuchen
+* Entwicklung, Anwendung und Güte des Tests im Testmanual dokumentieren
+
+
+# Testkonstruktion
+\vspace{2mm}
+Normierung
+\small
+\setstretch{2.2}
+
+* Normierung ermöglicht die Einordnung eines Ergebnisses in eine Vergleichsgruppe
+* Grundlage ist eine hinreichend große, möglichst repräsentative Normstichprobe
+* Rohwerte beschreiben die Ergebnisse einzelner Items oder eines gesamten Tests
+* Vergleichsgruppe und Normierungsverfahren werden im Testmanual dokumentiert
+* Normwerte können nach relevanten Merkmalen wie Alter oder Diagnose differenziert werden
+* Prozentränge geben an, welcher Anteil der Normstichprobe höchstens denselben Rohwert erzielt
+* Normwerte müssen regelmäßig auf ihre Aktualität überprüft werden
+* Neben Rohwertnormwerten sind auch Z-Scores, T-Scores und weitere Normwerte verbreitet.
+
+
+# Testkonstruktion
+\vspace{2mm}
+Beispiel BDI-II
+\small
+\setstretch{1.3}
+
+*Normwerte*
+
+Prozentränge für eine Patientenstichprobe und für Gesunde sind in Tabelle 11
+errechnet. Hieraus ist z. B. zu erkennen, dass 50% der depressiven Patienten in
+Behandlung einen BDI-II-Summenwert von 22 oder höher erzielen, während bei den
+Gesunden nur 5% diesen oder einen höheren Wert erreichen.
+
+\vspace{3mm}
+\footnotesize
+BDI-II-Summenwerte für ausgewählte Prozentränge
+
+\begingroup
+\setstretch{1}
+\renewcommand{\arraystretch}{1.5}
+\setlength{\tabcolsep}{2pt}
+
+| Prozentrang | 10 | 20 | 25 | 30 | 35 | 40 | 45 | 50 | 55 | 60 | 65 | 70 | 75 | 80 | 85 | 90 | 95 | 99 |
+|:------------|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Depressive  | 6 | 11 | 13 | 15 | 16 | 18 | 20 | 22 | 24 | 27 | 28 | 30 | 32 | 33 | 37 | 41 | 44 | 55 |
+| Gesunde     | 0 | 1 | 2 | 3 | 3 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 12 | 13 | 17 | 23 | 34 |
+
+\endgroup
+
+\vspace{2mm}
+\flushright
+\footnotesize
+@hautzinger2006, S. 29, Tabelle 11
+
+\footnotesize
+\vspace{2mm}
+\flushleft
+
+Die neuropsychologische Testbatterie CERAD-Plus verwendet Z-Scores zur Darstellung ihrer Normwerte.
+
+Die SCL-90-S zur Erfassung psychischer Belastung verwendet T-Scores zur Darstellung ihrer Normwerte.
+
+Weitere Beispiele für Normskalen sind die *Stanine-Werte* oder *Sten-Werte*.
+
+
+# Testkonstruktion
+\normalsize
+\setstretch{1.4}
+\vspace{2mm}
+Testrohwertdatenstruktur
+
+\footnotesize
+$y_{ij}$ bezeichnet den beobachteten Wert der $i$-ten Testperson im $j$-ten von $m$ Items, $y_i$ den Summenscore.
+
+Beispiel: Simulierter BDI-II-Datensatz mit $n=20$ Testpersonen, $m=21$ Items und $y_{ij}\in\{0,1,2,3\}$.
+
+\tiny
+\setstretch{0.9}
+```{r, echo = FALSE, results = "asis"}
+set.seed(1)
+n       = 20
+m       = 21
+p       = c(0,10,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,99,100)
+q       = c(0, 0, 1, 2, 3, 3, 3, 4, 5, 6, 7, 8, 9,10,12,13,17,23,34,34)
+scores  = round(approx(p, q, xout = seq(2.5,97.5,5))$y)
+scores  = sample(scores)
+Y       = matrix(0L, nrow = n, ncol = m)
+for (i in seq_len(n)) {
+  slots  = sample.int(3*m, scores[i])
+  Y[i, ] = tabulate((slots - 1L) %/% 3L + 1L, nbins = m)
+}
+stopifnot(all(rowSums(Y) == scores), all(Y >= 0 & Y <= 3))
+D       = data.frame(i = seq_len(n), Y, score = scores, check.names = FALSE)
+colnames(D) = c("$i$", paste0("$y_{i",1:m,"}$"), "$y_i$")
+cat("```{=latex}\n\\begingroup\n\\setlength{\\tabcolsep}{2pt}\n",
+    "\\renewcommand{\\arraystretch}{1.4}\n",
+    "\\centering\n\\resizebox{0.96\\textwidth}{!}{%\n",
+    "\\begin{tabular}{@{}c|*{21}{c}|c@{}}\n\\hline\n", sep = "")
+cat("\\rule[-1.3ex]{0pt}{4ex}", paste(colnames(D), collapse = "\n& "), "\n\\\\\n\\hline\n", sep = "")
+for (i in seq_len(n)) {
+  cat(paste(D[i, ], collapse = "\n& "), "\n\\\\\n", sep = "")
+}
+cat("\\hline\n\\end{tabular}%\n}\n\\par\n\\endgroup\n```\n")
+```
+
+# Testkonstruktion
+\normalsize
+\setstretch{1.3}
+\vspace{2mm}
+Standarddeskriptivstatistiken von Testrohwerten (1)
+
+\footnotesize
+$y_{ij}$ bezeichnet den beobachteten Wert der $i$-ten von $n$ Testpersonen
+im $j$-ten von $m$ Items.
+
+```{=latex}
+\begingroup
+\setstretch{1.2}
+\fontsize{5}{6.2}\selectfont
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lll@{}}
+\toprule
+Deskriptivstatistik
+& Bezeichnung
+& Formel
+\\
+\midrule
+Summe der Itemwerte von Testperson $i$
+& Summenscore
+& $\displaystyle y_i=\sum_{j=1}^{m}y_{ij}$
+\\
+\addlinespace[3mm]
+Mittelwert der Summenscores
+& Mittelwert
+& $\displaystyle \bar{y}=\frac{1}{n}\sum_{i=1}^{n}y_i$
+\\
+\addlinespace[3mm]
+Empirische Standardabweichung der Summenscores
+& Standardabweichung
+& $\displaystyle s=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(y_i-\bar{y})^2}$
+\\
+\addlinespace[3mm]
+Mittelwert von Item $j$
+& Itemschwierigkeit
+& $\displaystyle \bar{y}_j=\frac{1}{n}\sum_{i=1}^{n}y_{ij}$
+\\
+\addlinespace[3mm]
+Empirische Varianz von Item $j$
+& Itemvarianz
+& $\displaystyle s_j^2=\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2$
+\\
+\addlinespace[3mm]
+Empirische Standardabweichung von Item $j$
+& Itemstandard\-abweichung
+& $\displaystyle s_j=\sqrt{s_j^2}$
+\\
+\addlinespace[3mm]
+\bottomrule
+\end{tabular*}
+\endgroup
+```
+
+
+# Testkonstruktion
+\normalsize
+\setstretch{1.3}
+\vspace{2mm}
+Standarddeskriptivstatistiken von Testrohwerten (2)
+
+```{=latex}
+\begingroup
+\setstretch{1}
+\fontsize{5.5}{6.2}\selectfont
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}p{\dimexpr0.50\textwidth-16pt\relax}@{}}
+\toprule
+Deskriptivstatistik
+& Bezeichnung
+& Formel
+\\
+\midrule
+Empirische Kovarianz von Item $j$ und Item $k$
+& Itemkovarianz
+& \mbox{$\displaystyle c_{jk}=\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)(y_{ik}-\bar{y}_k)$}
+\\
+\addlinespace[4mm]
+Empirische Kovarianzmatrix
+& Kovarianzmatrix
+& \mbox{$\displaystyle C=(c_{jk})_{j,k=1}^{m}=
+\begin{pmatrix}
+s_1^2
+& c_{12}
+& \cdots
+& c_{1m}
+\\
+c_{21}
+& s_2^2
+& \cdots
+& c_{2m}
+\\
+\vdots
+& \vdots
+& \ddots
+& \vdots
+\\
+c_{m1}
+& c_{m2}
+& \cdots
+& s_m^2
+\end{pmatrix}$}
+\\
+\addlinespace[4mm]
+Empirische Korrelation von Item $j$ und Item $k$
+& Itemkorrelation
+& \mbox{$\displaystyle r_{jk}=\frac{c_{jk}}{s_js_k}$}
+\\
+\addlinespace[4mm]
+Empirische Korrelationsmatrix
+& Korrelationsmatrix
+& \mbox{$\displaystyle R=(r_{jk})_{j,k=1}^{m}=
+\begin{pmatrix}
+1
+& r_{12}
+& \cdots
+& r_{1m}
+\\
+r_{21}
+& 1
+& \cdots
+& r_{2m}
+\\
+\vdots
+& \vdots
+& \ddots
+& \vdots
+\\
+r_{m1}
+& r_{m2}
+& \cdots
+& 1
+\end{pmatrix}$}
+\\
+\addlinespace[4mm]
+Empirische Korrelation von Item $j$ und Summenscore
+& Unbereinigte Trennschärfe
+& \mbox{$\displaystyle r_{j,y}=\frac{\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)(y_i-\bar{y})}{\sqrt{\left(\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2\right)\left(\sum_{i=1}^{n}(y_i-\bar{y})^2\right)}}$}
+\\
+\addlinespace[4mm]
+\bottomrule
+\end{tabular}
+\endgroup
+```
+
+
+# Testkonstruktion
+\small
+Z-Scores
+\footnotesize
+
+* Z-Scores beschreiben die Abweichung vom Mittelwert der Normstichprobe in Standardabweichungen
+* Berechnung aus Summenscore $y_i$, Mittelwert $\bar{y}$ und Standardabweichung $s$ der Summenscores 
+\begin{equation}
+z_i = \frac{y_i-\bar{y}}{s}
+\end{equation}
+* In der Normstichprobe haben Z-Scores dann Mittelwert 0 und empirische Standardabweichung 1
+* $z_i = 0$: durchschnittlich, $z_i = \pm 1$: eine empirische Standardabweichung darüber/darunter
+* Bei normalverteilten Rohwerten sind Z-Scores standardnormalverteilt
+
+\small
+T-Scores
+\footnotesize
+
+* T-Scores übertragen Z-Scores in einen "leichter lesbaren" Wertebereich
+* Die dafür auf @mccall1922 zurückgehende Transformation lautet
+\begin{equation}
+t_i = 10z_i + 50
+\end{equation}
+* In der Normstichprobe haben T-Scores dann den Mittelwert 50 und die Standardabweichung 10
+* $z_i = -1,\,0,\,1$ entspricht also $t_i = 40,\,50,\,60$
+* Bei normalverteilten Rohwerten sind T-Scores normalverteilt
+* T-Scores haben nichts mit der T-Statistik der frequentistischen Inferenz zu tun
+
+# Testkonstruktion
+\vspace{1mm}
+\small 
+Z-Scores und T-Scores bei Normalverteilung einer Normstichprobe
+\vspace{2mm}
+
+```{r}
+#| label: normierung-z-t-normalverteilung
+#| echo: false
+#| fig-width: 7
+#| fig-height: 5
+#| out-height: "50%"
+#| fig-align: center
+
+par(
+  family = "sans", mfcol = c(1, 1), pty = "m", bty = "l",
+  lwd = 1, las = 1, mgp = c(4, 1, 0), xaxs = "i", yaxs = "i",
+  font.main = 1, cex = .9, cex.main = 1, mar = c(8, 4, 1, 2)
+)
+x = seq(-4, 4, length = 1000)
+plot(
+  x, dnorm(x), type = "l", lwd = 2, col = "black",
+  xlab = "", ylab = "", ylim = c(0, .5), xaxt = "n"
+)
+axis(1, at = -3:3, labels = -3:3, line = 1)
+mtext("Z-Scores", side = 1, line = 1.5, adj = 1)
+axis(1, at = -3:3, labels = seq(20, 80, 10), line = 3.5)
+mtext("T-Scores", side = 1, line = 4, adj = 1)
+cols = c(
+  rgb(.8, .8, .8, .5), rgb(.6, .6, .6, .5),
+  rgb(.4, .4, .4, .5), rgb(.6, .6, .6, .5),
+  rgb(.8, .8, .8, .5)
+)
+lims = c(-3, -2, -1, 1, 2, 3)
+for (i in seq_len(length(lims) - 1)) {
+  xx = seq(lims[i], lims[i + 1], length = 100)
+  polygon(
+    c(lims[i], xx, lims[i + 1]), c(0, dnorm(xx), 0),
+    col = cols[i], border = NA
+  )
+}
+labels = c("68%", "95%", "99,7%")
+for (i in 1:3) {
+  yy = dnorm(i)
+  arrows(0, yy, -i, yy, length = .1, angle = 20, code = 2)
+  arrows(0, yy, i, yy, length = .1, angle = 20, code = 2)
+  text(0, yy + .02, labels[i], cex = .8)
+}
+```
+\small
+Anwendungsbeispiel
+\vspace{-1mm}
+\footnotesize
+
+* Eine Testperson habe einen BDI-II-Summenscore von $y_i = 30$.
+* Die Normstichprobe habe den Mittelwert $\bar{y} = 20$ und die empirische
+  Standardabweichung $s = 5$.
+* Die Testperson hat dann einen Z-Score von  $z_i = \frac{30-20}{5} = 2$.
+* Das Ergebnis der Testperson liegt zwei Standardabweichungen über dem Mittelwert der Normstichprobe.
+* "Leichter zu lesen" (?!) ist die Aussage, die Testperson hat einen T-Score von $t_i = 10 \cdot 2 + 50 = 70$.
+
+
+# 
+\vfill
+\setstretch{2}
+\large
+Definitionsversuche
+
+Testarten
+
+Antwortformate
+
+Testgütekriterien
+
+Testkonstruktion
+
+**Testtheorien**
+
+Selbstkontrollfragen
+\vfill
 
 # Testtheorien
 \setstretch{1.8}
@@ -1817,169 +2202,6 @@ Besonderheiten
 
 # Testtheorien
 \vspace{2mm}
-Standarddatenstruktur der Testtheorie und Fragebogendatenanalyse
-
-\small
-Beobachtung von Werten von $m$ Items von $n$ Testpersonen
-
-\tiny 
-\setstretch{0.9}
-```{r, echo = F}
-set.seed(1)                                                                     # Reproduzierbarkeit
-n               = 20                                                            # Anzahl Testpersonsen
-m               = 10                                                            # Anzahl Items
-Y               = matrix(sample(1:5, n*m, replace = TRUE), nrow = n, ncol = m)  # Daten
-D               = as.data.frame(Y)                                              # Dataframe
-items           = paste0("Item ", 1:m)                                          # Itemlabel
-colnames(D)     = items                                                         # Itemlabels    
-D               = cbind(Testperson = paste0(1:n), D)                            # Testpersonenlabel    
-knitr::kable(                                                                   # Table    
-D,                                                                              # Daten    
-align           = "c",                                                          # Orientierung    
-row.names       = FALSE,                                                        # keine Zeilennamen
-caption         = "20 Testpersonen × 10 Items (Antwortskala 1–5)")              # Caption    
-``` 
-\normalsize
-
-
-# Testtheorien
-\vspace{2mm}
-Standarddeskriptivstatistiken der Fragebogendatenanalyse (1)
-
-\footnotesize
-$y_{ij}$ bezeichnet den beobachteten Wert der $i$-ten von $n$ Testpersonen
-im $j$-ten von $m$ Items.
-
-```{=latex}
-\begingroup
-\setstretch{1}
-\footnotesize
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.05}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}p{\dimexpr0.58\textwidth-24pt\relax}@{}}
-\toprule
-Deskriptivstatistik
-& Bezeichnung
-& Formel
-\\
-\midrule
-Summe der Itemwerte von Testperson $i$
-& Summenscore
-& $\displaystyle y_i=\sum_{j=1}^{m}y_{ij}$
-\\
-\addlinespace[3mm]
-Mittelwert von Item $j$
-& Itemschwierigkeit
-& $\displaystyle \bar{y}_j=\frac{1}{n}\sum_{i=1}^{n}y_{ij}$
-\\
-\addlinespace[3mm]
-Varianz von Item $j$
-& Itemvarianz
-& $\displaystyle s_j^2=\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2$
-\\
-\addlinespace[3mm]
-Standardabweichung von Item $j$
-& Itemstandard\-abweichung
-& $\displaystyle s_j=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2}$
-\\
-\addlinespace[3mm]
-\bottomrule
-\end{tabular}
-\endgroup
-```
-
-
-# Testtheorien
-\vspace{2mm}
-Standarddeskriptivstatistiken der Fragebogendatenanalyse (2)
-
-```{=latex}
-\begingroup
-\setstretch{1}
-\fontsize{5.5}{6.2}\selectfont
-\setlength{\tabcolsep}{6pt}
-\renewcommand{\arraystretch}{1.05}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}p{\dimexpr0.58\textwidth-24pt\relax}@{}}
-\toprule
-Deskriptivstatistik
-& Bezeichnung
-& Formel
-\\
-\midrule
-Kovarianz von Item $j$ und Item $k$
-& Itemkovarianz
-& $\displaystyle c_{jk}=\frac{1}{n-1}\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)(y_{ik}-\bar{y}_k)$
-\\
-\addlinespace[2mm]
-Matrix der paarweisen Itemkovarianzen
-& Kovarianzmatrix
-& $\displaystyle C=(c_{jk})_{j,k=1}^{m}=
-\begin{pmatrix}
-s_1^2
-& c_{12}
-& \cdots
-& c_{1m}
-\\
-c_{21}
-& s_2^2
-& \cdots
-& c_{2m}
-\\
-\vdots
-& \vdots
-& \ddots
-& \vdots
-\\
-c_{m1}
-& c_{m2}
-& \cdots
-& s_m^2
-\end{pmatrix}$
-\\
-\addlinespace[2mm]
-Korrelation von Item $j$ und Item $k$
-& Itemkorrelation
-& $\displaystyle r_{jk}=\frac{c_{jk}}{s_js_k}$
-\\
-\addlinespace[2mm]
-Matrix der paarweisen Itemkorrelationen
-& Korrelationsmatrix
-& $\displaystyle R=(r_{jk})_{j,k=1}^{m}=
-\begin{pmatrix}
-1
-& r_{12}
-& \cdots
-& r_{1m}
-\\
-r_{21}
-& 1
-& \cdots
-& r_{2m}
-\\
-\vdots
-& \vdots
-& \ddots
-& \vdots
-\\
-r_{m1}
-& r_{m2}
-& \cdots
-& 1
-\end{pmatrix}$
-\\
-\addlinespace[2mm]
-Korrelation von Item $j$ und Summenscore
-& Unbereinigte Trennschärfe
-& $\displaystyle r_{j,y}=\frac{\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)(y_i-\bar{y})}{\sqrt{\left(\sum_{i=1}^{n}(y_{ij}-\bar{y}_j)^2\right)\left(\sum_{i=1}^{n}(y_i-\bar{y})^2\right)}}$
-\\
-\addlinespace[2mm]
-\bottomrule
-\end{tabular}
-\endgroup
-```
-
-# Testtheorien
-\vspace{2mm}
 Standardproblem der Testtheorie und Fragebogendatenanalyse
 
 \small
@@ -1989,7 +2211,7 @@ Erklärung der beobachteten Itemkorrelationsstruktur durch latente Variablen
 
 ```{r, echo = F, eval = F}
 library(plot.matrix)                                                            # Visualisierung
-set.seed(42)                                                                    # Reproduzierbarkiet
+set.seed(42)                                                                    # Reproduzierbarkeit
 n           = 200                                                               # Anzahl Datenpunkte
 x1          = rnorm(n)                                                          # Item 1 
 x2          = 0.5*x1 + rnorm(n, sd = 0.8)                                       # Item 2
@@ -2050,12 +2272,14 @@ Klassische Testtheorie
 \end{equation}
 * Wahrer Wert = Latente Zufallsvariable
 * Meist als "Messfehlermodell" beschrieben
-* Erklärung von Antwortmustern durch einen nicht-direkt observierbaren True Score
+* Erklärung von Antwortmustern durch einen nicht direkt observierbaren True
+  Score
 * Modellierung von intra- und interindividueller Variabilität
 * Grundlage der quantitativen Reliabilitätsbeurteilung 
 
 \flushright
-$\Rightarrow$ Paralleltest-Reliabilität, Cronbach's $\alpha$, Spearman-Brown-Formel
+$\Rightarrow$ Paralleltest-Reliabilität, Cronbachs $\alpha$,
+Spearman-Brown-Formel
 
 
 # Testtheorien
@@ -2071,11 +2295,12 @@ Faktoranalysen
 * Latentes Variablenmodell der Form
 \begin{align}
 \begin{split}
-\mbox{Beobachteter Werte}    & = \mbox{Ladungen} \cdot \mbox{Faktorwerte} + \mbox{Fehler}  \\
+\mbox{Beobachtete Werte}    & = \mbox{Ladungen} \cdot \mbox{Faktorwerte} +
+\mbox{Fehler}  \\
 \end{split}
 \end{align}
 * Faktoren = Latente Zufallsvariablen
-* Erklärung von Antwortmustern durch wenige nicht-direkt observierbare Faktoren
+* Erklärung von Antwortmustern durch wenige nicht direkt observierbare Faktoren
 * Exploratorische und konfirmatorische Varianten
 
 \flushright
@@ -2087,7 +2312,7 @@ Item-Response-Theorien
 \setstretch{2}
 \small
 
-* Probabilistisches Modell von Itemantworten als Funktion von latenter Zustände
+* Probabilistisches Modell von Itemantworten als Funktion von latenten Zuständen
 * Zentrale Beiträge von @rasch1960, @novick1966, @lord1980 
 * Verschiedene mathematische Formen der logistischen Regression
 \begin{equation}
@@ -2095,7 +2320,7 @@ Item-Response-Theorien
 \end{equation}
 * Personenparameter = Manchmal latente Zufallsvariable, manchmal nicht
 * Einsatz und Entwicklung insbesondere bei Leistungstests (PISA)
-* Zur Bedeutung im klinischen Kontext, siehe @reise2009
+* Zur Bedeutung im klinischen Kontext siehe @reise2009
 
 \flushright
 $\Rightarrow$ Anwendung insbesondere im Bereich des adaptiven Leistungstestens
@@ -2112,225 +2337,13 @@ Antwortformate
 
 Testgütekriterien
 
-Testtheorien
-
-**Testkonstruktion**
-
-Selbstkontrollfragen
-\vfill
-
-# Testkonstruktion
-\vspace{1mm}
-\small
-\setstretch{1.1}
-
-Konstruktdefinition und Testplanung
-
-* Merkmal definieren und seine inhaltlichen Teilbereiche bestimmen
-* Zielgruppe und vorgesehenen Anwendungszweck festlegen
-
-Itemkonstruktion und Antwortformate
-
-* Geeignete Fragen oder Aufgaben aus der Konstruktdefinition ableiten
-* Antwortformate, Instruktionen und Auswertungsregeln festlegen
-
-Erprobung und Auswahl der Items
-
-* Testentwurf erproben und Eigenschaften der Items untersuchen
-* Items anhand statistischer und inhaltlicher Kriterien überarbeiten und auswählen
-
-Validierung und Dokumentation
-
-* Objektivität, Reliabilität und Validität des Tests untersuchen
-* Entwicklung, Anwendung und Güte des Tests im Testmanual dokumentieren
-
-# Testkonstruktion
-\vspace{2mm}
-Normierung
-\small
-\setstretch{1.9}
-
-* Rohwerte beschreiben die Ergebnisse einzelner Items oder eines gesamten Tests
-* Beispiel BDI-II: Itemwerte von 0 bis 3, Summenscore von 0 bis 63
-* Mittelwertscores ergeben sich durch Division der Summe durch die Itemanzahl
-* Normierung ermöglicht die Einordnung eines Ergebnisses in eine Vergleichsgruppe
-* Grundlage ist eine hinreichend große, möglichst repräsentative Normstichprobe
-* Vergleichsgruppe und Normierungsverfahren werden im Testmanual dokumentiert
-
-# Testkonstruktion
-\vspace{2mm}
-Z Scores
-\small
-\setstretch{1.8}
-
-* Z Scores beschreiben die Abweichung vom Mittelwert der Normstichprobe in Standardabweichungen
-* Berechnung aus Rohwert $x$, Mittelwert der Normstichprobe $m$ und Standardabweichung der Normstichprobe $s$:
-
-\begin{equation}
-z = \frac{x-m}{s}
-\end{equation}
-
-* In der Normstichprobe haben Z Scores Mittelwert 0 und Standardabweichung 1
-* $z = 0$: durchschnittlich, $z = \pm 1$: eine Standardabweichung darüber/darunter
-* Bei normalverteilten Rohwerten sind Z Scores standardnormalverteilt
-
-# Testkonstruktion
-\vspace{2mm}
-T Scores
-\small
-\setstretch{1.8}
-
-* T Scores übertragen Z Scores in einen leichter lesbaren Wertebereich
-* Die auf @mccall1922 zurückgehende Transformation lautet:
-
-\begin{equation}
-t = 10z + 50
-\end{equation}
-
-* In der Normstichprobe haben T Scores Mittelwert 50 und Standardabweichung 10
-* $z = -1,\,0,\,1$ entspricht $t = 40,\,50,\,60$
-* T Scores sind von der T-Statistik der frequentistischen Inferenz zu unterscheiden
-
-# Testkonstruktion
-\vspace{1mm}
-Z Scores und Normalverteilung
-\normalsize
-
-```{r}
-#| label: normierung-z-t-normalverteilung
-#| echo: false
-#| fig-width: 7
-#| fig-height: 5
-#| out-height: "65%"
-#| fig-align: center
-
-par(
-  family = "sans", mfcol = c(1, 1), pty = "m", bty = "l",
-  lwd = 1, las = 1, mgp = c(4, 1, 0), xaxs = "i", yaxs = "i",
-  font.main = 1, cex = .9, cex.main = 1, mar = c(8, 4, 1, 2)
-)
-x = seq(-4, 4, length = 1000)
-plot(
-  x, dnorm(x), type = "l", lwd = 2, col = "black",
-  xlab = "", ylab = "", ylim = c(0, .5), xaxt = "n"
-)
-axis(1, at = -3:3, labels = -3:3, line = 1)
-mtext("Z Scores", side = 1, line = 1.5, adj = 1)
-axis(1, at = -3:3, labels = seq(20, 80, 10), line = 3.5)
-mtext("T Scores", side = 1, line = 4, adj = 1)
-cols = c(
-  rgb(.8, .8, .8, .5), rgb(.6, .6, .6, .5),
-  rgb(.4, .4, .4, .5), rgb(.6, .6, .6, .5),
-  rgb(.8, .8, .8, .5)
-)
-lims = c(-3, -2, -1, 1, 2, 3)
-for (i in seq_len(length(lims) - 1)) {
-  xx = seq(lims[i], lims[i + 1], length = 100)
-  polygon(
-    c(lims[i], xx, lims[i + 1]), c(0, dnorm(xx), 0),
-    col = cols[i], border = NA
-  )
-}
-labels = c("68%", "95%", "99,7%")
-for (i in 1:3) {
-  yy = dnorm(i)
-  arrows(0, yy, -i, yy, length = .1, angle = 20, code = 2)
-  arrows(0, yy, i, yy, length = .1, angle = 20, code = 2)
-  text(0, yy + .02, labels[i], cex = .8)
-}
-```
-
-# Testkonstruktion
-\vspace{2mm}
-Rohwerte, Z Scores und T Scores
-\normalsize
-\vspace{5mm}
-
-```{r}
-#| label: normierung-rohwerte-z-t
-#| echo: false
-#| fig-width: 9
-#| fig-height: 3
-#| out-width: "100%"
-#| fig-align: center
-
-set.seed(1)
-mu = 20
-sigsqr = 30
-n = 1e4
-Y = rnorm(n, mu, sqrt(sigsqr))
-m = mean(Y)
-s = sd(Y)
-Z = (Y - m) / s
-T = 10 * Z + 50
-par(
-  family = "sans", mfcol = c(1, 3), pty = "m", bty = "l",
-  lwd = 1, las = 1, mgp = c(2, 1, 0), xaxs = "i", yaxs = "i",
-  font.main = 1, cex = .7, cex.main = 1
-)
-hist(
-  Y, breaks = 50, col = "gray90", prob = TRUE,
-  xlim = c(0, 65), ylim = c(0, .08),
-  xlab = "BDI-II Rohwerte", ylab = "", main = expression(y^{(i)})
-)
-hist(
-  Z, breaks = 50, col = "gray90", prob = TRUE,
-  xlim = c(-4, 4), ylim = c(0, .5),
-  xlab = "Z Scores", ylab = "",
-  main = expression(z^{(i)} == frac(y^{(i)} - m, s))
-)
-hist(
-  T, breaks = 50, col = "gray90", prob = TRUE,
-  xlim = c(0, 100), ylim = c(0, .05),
-  xlab = "T Scores", ylab = "",
-  main = expression(t^{(i)} == 10 * z^{(i)} + 50)
-)
-```
-
-\small
-Simulierte Rohwerte und die daraus berechneten Z Scores und T Scores
-
-# Testkonstruktion
-\vspace{2mm}
-\small
-
-Beispiel
-
-* Rohwert $x = 30$, Mittelwert der Normstichprobe $m = 20$, Standardabweichung der Normstichprobe $s = 5$
-
-\begin{equation}
-z = \frac{30-20}{5} = 2
-\end{equation}
-\begin{equation}
-t = 10 \cdot 2 + 50 = 70
-\end{equation}
-
-* Das Ergebnis liegt zwei Standardabweichungen über dem Mittelwert der Normstichprobe
-
-Weitere Normskalen 
-
-* *IQ-Werte* Mittelwert 100 und Standardabweichung 15
-* *Stanine-Werte* Zusammenfassung standardisierter Ergebnisse in neun Kategorien
-* *Sten-Werte* Zusammenfassung standardisierter Ergebnisse in zehn Kategorien
-
-# 
-\vfill
-\setstretch{2}
-\large
-Definitionsversuche
-
-Testarten
-
-Antwortformate
-
-Testgütekriterien
-
-Testtheorien
-
 Testkonstruktion
+
+Testtheorien
 
 **Selbstkontrollfragen**
 \vfill
+
 
 
 # Selbstkontrollfragen {.allowframebreaks}
@@ -2362,7 +2375,7 @@ Testkonstruktion
 1. Erläutern Sie den Begriff der Forced-Choice-Auswahlaufgabe.
 1. Erläutern Sie den Begriff der Beurteilungsaufgabe.
 1. Erläutern Sie die Begriffe des forcierten und unforcierten Ratings bei
-   Beurteilungaufgaben.
+   Beurteilungsaufgaben.
 1. Erläutern Sie den Begriff der Ausweichkategorie bei Beurteilungsaufgaben.
 1. Erläutern Sie den Begriff der Antwortskalenpolarität bei
    Beurteilungsaufgaben.
@@ -2375,10 +2388,10 @@ Testkonstruktion
 1. Nennen Sie sieben Nebengütekriterien für psychologische Tests.
 1. Geben Sie die Definition der Objektivität nach @moosbrugger2012 wieder.
 1. Erläutern Sie die Begriffe Durchführungsobjektivität,
-   Auswertungsobjektivität, Interpretationsobjektivität
+   Auswertungsobjektivität, Interpretationsobjektivität.
 1. Geben Sie die Definition der Reliabilität nach @moosbrugger2012 wieder.
 1. Erläutern Sie die Begriffe der Retest-, Paralleltest- und
-   Split-Half-Reliabililtät
+   Split-Half-Reliabilität.
 1. Erläutern Sie den Begriff der internen Konsistenz eines psychologischen
    Tests.
 1. Geben Sie die Definition der Validität nach @moosbrugger2012 wieder.
@@ -2386,15 +2399,14 @@ Testkonstruktion
    Kriteriumsvalidität.
 1. Erläutern Sie den Begriff der Konstruktvalidität eines psychologischen Tests.
 1. Nennen Sie die drei Hauptrichtungen der Testtheorie.
-1. Erläutern Sie die Standarddatenstruktur der Testtheorie und
-   Fragebogendatenanalyse.
+1. Erläutern Sie die Testrohwertdatenstruktur.
 1. Erläutern Sie das Standardproblem der Testtheorie und Fragebogendatenanalyse.
 1. Erläutern Sie den Begriff der klassischen Testtheorie.
-1. Erläutern Sien den Begriff der Faktoranalyse.
-1. Erläutern Sie den Begriff der Item-Response-Theorien.
+1. Erläutern Sie den Begriff der Faktoranalyse.
+1. Erläutern Sie den Begriff der Item-Response-Theorie.
 1. Skizzieren Sie wesentliche Schritte in der Konstruktion eines Tests.
 1. Erläutern Sie den Begriff der Testnormierung.
-1. Erläutern Sie die Begriffe Raw Score, Z Score und T Score.
+1. Erläutern Sie die Begriffe Rohwert, Z-Score und T-Score.
 
 # Referenzen {.allowframebreaks}
 \footnotesize   
