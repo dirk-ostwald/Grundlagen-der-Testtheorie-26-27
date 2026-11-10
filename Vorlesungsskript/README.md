@@ -17,8 +17,10 @@ paralleler und kongenerischer Testmessungen. Der lokal gepflegte Anhang
 Erwartungswerte, Varianzen und Kovarianzen sowie Normalverteilungen. Seine
 Definitionen, Sätze und Beweise stammen aus den entsprechenden PDWP-Kapiteln.
 Die Einträge folgen innerhalb der Abschnitte der Reihenfolge ihrer Verwendung
-im Haupttext. Die Ergänzungsfolien stehen im
-[zugehörigen Themenordner](../A-Wahrscheinlichkeitstheoretische-Ergänzungen/).
+im Haupttext. Die Ergänzungsfolien stehen im Anhang von
+[Foliensatz 2](../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf).
+Weitere Ergänzungen werden direkt in die Anhänge der jeweiligen Foliensätze
+aufgenommen. Der eigene Anhang des Skripts bleibt bestehen.
 
 Die Verzeichnis-Junction `_src` bindet das Quellprojekt unter
 `C:\Home\Home\pdwp-online\dirk-ostwald.github.io` direkt ein. Kapitel,
