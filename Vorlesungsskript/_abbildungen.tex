@@ -21,3 +21,18 @@
 
 % Platz für zusammengehörige Aussagen und Beweisanfänge reservieren.
 \usepackage{needspace}
+
+% Lange Codezeilen im Satz umbrechen, Quellcode unverändert lassen.
+\usepackage{fvextra}
+\RecustomVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},breaklines=true,breakanywhere=true}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines=true,breakanywhere=true}
+
+% Elastischer Wortabstand fuer lange deutsche Fachbegriffe.
+\setlength{\emergencystretch}{2em}
+
+\setlength{\parindent}{0pt}
+\hyphenation{Stich-proben-modell Test-messungen Komponenten-test-modell}
+\AtBeginEnvironment{Shaded}{\setlength{\FrameSep}{0pt}}
+
+\KOMAoptions{parskip=half-}
+\fvset{baselinestretch=0.98}

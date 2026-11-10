@@ -1,0 +1,91 @@
+% page layout
+\usepackage{geometry}
+\geometry{a4paper, left = 3cm, right = 3cm, top = 3cm, bottom = 3cm}
+
+% fonts and justifying
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{bm}
+
+% mathematics fonts
+\usepackage{mathtools}
+\usepackage{amsmath} 							
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\setcounter{MaxMatrixCols}{20}
+
+% development tools
+\usepackage{soul}
+
+% page layout
+\usepackage[headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\automark[section]{chapter}
+\ihead{\headmark}
+\ohead{\pagemark}
+\setkomafont{pageheadfoot}{\normalfont}
+\pagestyle{scrheadings}
+
+%  title page
+\renewcommand{\maketitle}{
+    \begin{titlepage}
+    \centering
+    
+    \vspace*{2cm}
+    \includegraphics[width=4cm]{_cover/cover.png}
+    
+    \vspace{3cm}
+
+    \huge\textbf{Probabilistische Datenwissenschaft} 
+    
+    \huge\textbf{für die Psychologie}    
+    
+    \vspace{5cm}
+    
+    \huge{Dirk Ostwald}
+
+    \vspace{1cm}
+    
+\end{titlepage}
+}
+
+% section titles
+\setkomafont{chapter}{\sffamily\bfseries\huge}
+\setkomafont{section}{\sffamily\bfseries\Large}
+
+% figure captions
+\usepackage{caption}
+\captionsetup{
+font 		    = footnotesize, 
+labelfont       = bf, 
+format          = plain,
+labelsep 	    = space, 
+justification   = justified,
+singlelinecheck = false}
+
+% definitions, theorems, proofs
+\AtEndEnvironment{definition}{\hfill$\bullet$}
+\AtEndEnvironment{theorem}{\hfill$\circ$}
+\AtEndEnvironment{example}{\hfill$\triangle$}
+\AtBeginEnvironment{proof}{\footnotesize}
+\AtBeginEnvironment{example}{\small}
+
+% additional math commands
+\usepackage{bm}                                         
+\newcommand{\niton}{\not\owns}
+\newcommand{\ups}{\mbox{y}}
+\newcommand{\tee}{\mbox{t}}
+\newcommand{\mrm}{\mathrm}
+\newcommand{\mbb}{\mathbb}
+\newcommand{\eps}{\varepsilon}
+\DeclareMathOperator*{\intinf}{\int_{-\infty}^{\infty}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\tr}{\mbox{tr}}
+
+
+% Tabellen mit festen Spaltenbreiten
+\usepackage{array}
+
+% Tabellen mit festen Spaltenbreiten
+\usepackage{ragged2e}

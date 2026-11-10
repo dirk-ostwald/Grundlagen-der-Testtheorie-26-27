@@ -29,13 +29,6 @@ BSc Psychologie WiSe 2026/27
 \vspace{6mm}
 Prof. Dr. Dirk Ostwald
 
-#  {.plain}
-
-\vfill
-\center
-\Huge
-\textcolor{red}{Aufnahme läuft!}
-\vfill
 
 #  {.plain}
 ```{=latex}
@@ -49,26 +42,26 @@ Prof. Dr. Dirk Ostwald
 
 #
 \vfill
-\setstretch{1.8}
+\setstretch{3.3}
 \large
 Reliabilität
 
-Interne Konsistenz
+Praxis der Reliabilitätsschätzung
 
-Itemanalyse
+Interne Konsistenz
 
 Selbstkontrollfragen
 \vfill
 
 #
 \vfill
-\setstretch{1.8}
+\setstretch{3.3}
 \large
 **Reliabilität**
 
-Interne Konsistenz
+Praxis der Reliabilitätsschätzung
 
-Itemanalyse
+Interne Konsistenz
 
 Selbstkontrollfragen
 \vfill
@@ -120,7 +113,7 @@ Testgütekriterium Reliabilität
 * Allerdings ergibt sich dabei keine Möglichkeit, die Reliabilität von
   Testmessungen empirisch zu messen.
 * Zentral ist dann die Definition der *Paralleltestreliabilität*. Diese ist
-  empirisch messbar.
+  empirisch schätzbar.
 * Bei der Retest-Reliabilität handelt es sich um eine spezielle
   Paralleltestreliabilität.
 * Innere Konsistenz und Split-Half-Reliabilität betrachten wir im Abschnitt
@@ -170,7 +163,7 @@ Bemerkungen (fortgesetzt)
   linear-affine Abhängigkeit von beobachtetem und wahrem Wert.
 * $\mbox{R}_j = 1$ impliziert also, dass der beobachtete Wert hinsichtlich des
   wahren Werts aussagekräftig ist.
-* Weil wahre Werte nur indirekt beobachtbar sind, wird eine alternative Form zu
+* Weil wahre Werte nur indirekt beobachtbar sind, wird eine alternative Form zur
   *Reliabilitätsschätzung* genutzt.
 
 # Reliabilität
@@ -234,6 +227,9 @@ Bemerkungen
   verschiedene Varianz (über Testpersonen) hat.
 * Die Reliabilität entspricht auch 1 minus dem Anteil der Varianz des
   Messfehlers an der des beobachteten Werts.
+* Definition und Äquivalenzen nach @kelley1927, @guttman1945 und @lord1968.
+* @cronbach1947 [S. 6–7] kritisiert die Trennung in „wahre“ Anteile und Messfehler
+  bei der Reliabilitätsdefinition.
 
 # Reliabilität
 \footnotesize
@@ -292,7 +288,8 @@ Bemerkungen
 \footnotesize
 \underline{Beweis}
 
-\noindent (1) Mit Aussage (5) \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)} gilt
+\noindent (1) Mit Aussage (5) von
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem Eigenschaften bezüglich einer Testmessung (Foliensatz 2)} gilt
 \begin{equation}
 \mbox{R}_j
 = \rho(y_{ij},\tau_{i})^2
@@ -345,31 +342,31 @@ halber auf das $i$ Subskript verzichten wollen,
 \begin{equation}
 p(t) =  N(t; 0,\sigma_\tau^2)
 \mbox{ und }
-p(y_1|t) :=  N(y_1; t,\sigma_\eps^2) \mbox{ und } p(y_2|t) :=  N(y_2; t,\sigma_\eps^2)
+p(\tilde{y}_1|t) :=  N(\tilde{y}_1; t,\sigma_\eps^2) \mbox{ und } p(\tilde{y}_2|t) :=  N(\tilde{y}_2; t,\sigma_\eps^2)
 \end{equation}
 Für Person $i$ gibt es also nur eine Zufallsvariable des wahren Werts für alle
 Testmessungen
 und die Propensitätsverteilungen unterscheiden sich zwischen Testmessungen
 nicht.
 
-Dann gilt zunächst mit dem  [\textcolor{blue}{Theorem zu gemeinsamen
-Normalverteilungen}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
+Dann gilt zunächst mit dem  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=76}{Theorem zu gemeinsamen Normalverteilungen
+(Anhang zu Foliensatz 2, Folie 76)}
 mit $A := 1$ und $b := 0$
 \begin{equation}
-p(t)p(y_1|t)
-= p(t,y_1)
+p(t)p(\tilde{y}_1|t)
+= p(t,\tilde{y}_1)
 = N\left(
-\begin{pmatrix} t \\ y_1 \end{pmatrix};
+\begin{pmatrix} t \\ \tilde{y}_1 \end{pmatrix};
 \begin{pmatrix} 0 \\ 0 \end{pmatrix},
 \begin{pmatrix} \sigma_{\tau}^2 & \sigma_{\tau}^2  \\  \sigma_{\tau}^2  & \sigma_{\tau}^2 + \sigma_{\eps}^2  \end{pmatrix}
 \right)
 \end{equation}
 und weiterhin mit $A := \begin{pmatrix} 1 & 0\end{pmatrix}$ und $b := 0$
 \begin{equation}
-p(t,y_1)p(y_2|t)
-= p(t,y_1,y_2)
+p(t,\tilde{y}_1)p(\tilde{y}_2|t)
+= p(t,\tilde{y}_1,\tilde{y}_2)
 = N\left(
-\begin{pmatrix} t  \\ y_1 \\ y_2 \end{pmatrix};
+\begin{pmatrix} t  \\ \tilde{y}_1 \\ \tilde{y}_2 \end{pmatrix};
 \begin{pmatrix} 0 \\ 0 \\ 0 \\ \end{pmatrix},
 \begin{pmatrix}
 \sigma_{\tau}^2  & \sigma_{\tau}^2                              & \sigma_{\tau}^2            \\
@@ -386,8 +383,8 @@ Normalverteilungsbeispiel (fortgeführt)
 \setstretch{1.2}
 
 \footnotesize
-Damit gilt dann durch Ablesen am Kovarianzmatrixparameter von $p(t,y_1,y_2)$,
-dass
+Damit gilt dann durch Ablesen am Kovarianzmatrixparameter von
+$p(t,\tilde{y}_1,\tilde{y}_2)$, dass
 \begin{equation}
 \rho(y_1, y_2)
 = \frac{\mbb{C}(y_1, y_2)}{\sqrt{\mbb{V}(y_1)}\sqrt{\mbb{V}(y_2)}}
@@ -413,70 +410,22 @@ Man beachte, dass es sich hierbei um eine auf Grundlage der Modellparameter
 bestimmte Größe,
 nicht um eine basierend auf beobachteten Daten geschätzte Größe handelt.
 
+#
+\vfill
+\setstretch{3.3}
+\large
+Reliabilität
 
-# Reliabilität
-\footnotesize
-\begin{definition}[Paralleltestreliabilitätsschätzer]
-Gegeben sei das Modell paralleler Testmessungen für $n$ Testpersonen und zwei
-Testmessungen $j = 1,2$,
-\begin{equation}
-\mbb{P}(\tau_1,y_{11},y_{12},...,\tau_n,y_{n1},y_{n2}) =
-\prod_{i=1}^n\mbb{P}(\tau_i)\mbb{P}(y_{i1}|\tau_i)\mbb{P}(y_{i2}|\tau_i)
-\end{equation}
-Dann wird der  mit den Stichprobenmitteln
-\begin{equation}
-\bar{y}_1 := \frac{1}{n}\sum_{i=1}^n y_{i1}
-\mbox{ und }
-\bar{y}_2 := \frac{1}{n}\sum_{i=1}^n y_{i2}
-\end{equation}
-definierte Stichprobenkorrelationskoeffizient
-\begin{equation}
-r_{12}:= \frac{\frac{1}{n-1}\sum_{i=1}^n(y_{i1} - \bar{y}_1)(y_{i2} - \bar{y}_2)}{\sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_{i1} - \bar{y}_1)^2}\sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_{i2} - \bar{y}_2)^2}}
-\end{equation}
-\textit{Paralleltestreliabilitätsschätzer} genannt und häufig mit $r_{tt}$ bezeichnet.
-\end{definition}
-Bemerkungen
+**Praxis der Reliabilitätsschätzung**
 
-* **R** bietet mit der `cor()` Funktion eine Möglichkeit,
-  Stichprobenkorrelationskoeffizienten zu berechnen.
+Interne Konsistenz
 
-# Reliabilität
-\small
-Normalverteilungsbeispiel (fortgeführt)
-\footnotesize
+Selbstkontrollfragen
+\vfill
 
-Simulation des Normalverteilungsbeispiels für $n := 30$
-\vspace{3mm}
 
-$p(t_i) =  N(t_i; 1,\sigma_\tau^2)$ und $p(y_{ij}|t_i) :=  N(y_{ij};
-t_i,\sigma_\eps^2)$ für $j = 1,2$
-mit $\sigma_\tau^2 := 1.0$ und $\sigma_\eps^2 := 0.2$  für  $i = 1,...,n$.
+# Praxis der Reliabilitätsschätzung
 
-\vspace{3mm}
-\tiny
-```{r, echo = TRUE}
-n           = 30                                    # Personenanzahl
-m           = 2                                     # Testmessungsanzahl
-sigsqr_tau  = 1                                     # wahrer Wert Varianz
-sigsqr_eps  = .2                                    # Messfehlervarianz
-R_12        = sigsqr_tau/(sigsqr_tau+sigsqr_eps)    # Paralleltestreliabilität
-Tau           = matrix(rep(NaN, n)  , nrow = n)       # wahrer Wert Array
-Y           = matrix(rep(NaN, n*m), nrow = n)       # beobachteter Wert Array
-E           = matrix(rep(NaN, n*m), nrow = n)       # Messfehler Array
-for(i in 1:n){                                      # Personeniterationen
-    Tau[i]  = rnorm(1,1,sqrt(sigsqr_tau))             # wahrer Wert Realisierung für j = 1,2
-    for(j in 1:m){                                  # Testmessungsiterationen
-        Y[i,j]  = rnorm(1,Tau[i],sqrt(sigsqr_eps))    # beobachteter Wert Realisierung
-        E[i,j]  = Y[i,j] - Tau[i]}}                   # Messfehler Realisierung
-r_12      = cor(Y[,1],Y[,2])                        # Reliabilitätsschätzer
-```
-
-```{r}
-cat("Paralleltestreliabilität R_12            : ", round(R_12,4),
-    "\nParalleltestreliabilitätsschätzer  r_12 : ",  round(r_12,4))
-```
-
-# Reliabilität
 Praxis der Paralleltestreliabilitätsschätzung
 
 \footnotesize
@@ -509,7 +458,7 @@ schwierig
 
 \flushright @moosbrugger2012, Kapitel 6, @pospeschill2022, Kapitel 6
 
-# Reliabilität
+# Praxis der Reliabilitätsschätzung
 Praxis der Retestreliabilitätsschätzung
 
 \footnotesize
@@ -543,25 +492,22 @@ $\tau$-äquivalenten Testmessungen.
 \flushright @moosbrugger2012, Kapitel 6, @pospeschill2022, Kapitel 6
 
 
-# Reliabilität
+# Praxis der Reliabilitätsschätzung
 \vspace{1mm}
 \small
 Potentielle Dynamiken wahrer Werte von $n = 5$ Testpersonen über Testmessungen
 
-```{r, echo = FALSE, eval = FALSE}
-if(capabilities("cairo")){
-  cairo_pdf(
-  filename    = "3-Abbildungen/gdt-4-test-retest-dynamiken.pdf",
-  width       = 8,
-  height      = 8,
-  family      = "sans")
-} else {
-  pdf(
-  file        = "3-Abbildungen/gdt-4-test-retest-dynamiken.pdf",
-  width       = 8,
-  height      = 8,
-  family      = "sans")
-}
+```{r}
+#| label: test-retest-dynamiken
+#| fig.path: "3-Abbildungen/generated/"
+#| echo: false
+#| eval: true
+#| cache: false
+#| dev: cairo_pdf
+#| fig-width: 8
+#| fig-height: 8
+#| fig-align: center
+#| out-width: "45%"
 par(
 family      = "sans",
 mfrow       = c(2,2),
@@ -614,17 +560,9 @@ for(p in 1:4){
     cex         = 1.1)
   }
 }
-dev.off()
-```
-
-```{r, echo = FALSE, out.width = "45%", fig.align = "center"}
-knitr::include_graphics("3-Abbildungen/gdt-4-test-retest-dynamiken.pdf")
 ```
 
 \footnotesize
-\vspace{1mm}
-\flushright
-Nach @pospeschill2022, Kapitel 6
 \vspace{1mm}
 
 \centering
@@ -634,48 +572,242 @@ B Variierende wahre Werte bei einem instabilen Merkmal              & $\Rightarr
 C Identische linear-affine Transformation des wahren Werts          & $\Rightarrow$ Hohe Reliabilität             \\
 D Variable positiv linear-affine Transformation des wahren Werts    & $\Rightarrow$ Verringerung der Reliabilität \\
 \end{tabular}
+\par
+\vfill
+\begingroup
+\tiny
+\raggedleft
+Nach @pospeschill2022, Kapitel 6
+\par
+\endgroup
 
+
+# Praxis der Reliabilitätsschätzung
+\footnotesize
+\begin{definition}[Reliabilitätsschätzer bei parallelen Testmessungen]
+Gegeben sei das Modell paralleler Testmessungen für $n$ Testpersonen und zwei
+Testmessungen $j = 1,2$,
+\begin{equation}
+\mbb{P}(\tau_1,y_{11},y_{12},...,\tau_n,y_{n1},y_{n2}) =
+\prod_{i=1}^n\mbb{P}(\tau_i)\mbb{P}(y_{i1}|\tau_i)\mbb{P}(y_{i2}|\tau_i)
+\end{equation}
+Dann wird der  mit den Stichprobenmitteln
+\begin{equation}
+\bar{y}_1 := \frac{1}{n}\sum_{i=1}^n y_{i1}
+\mbox{ und }
+\bar{y}_2 := \frac{1}{n}\sum_{i=1}^n y_{i2}
+\end{equation}
+definierte Stichprobenkorrelationskoeffizient
+\begin{equation}
+r_{12}:= \frac{\frac{1}{n-1}\sum_{i=1}^n(y_{i1} - \bar{y}_1)(y_{i2} - \bar{y}_2)}{\sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_{i1} - \bar{y}_1)^2}\sqrt{\frac{1}{n-1}\sum_{i=1}^n (y_{i2} - \bar{y}_2)^2}}
+\end{equation}
+\textit{Reliabilitätsschätzer} genannt und häufig mit $r_{tt}$ bezeichnet.
+\end{definition}
+Bemerkungen
+
+* Der Schätzer wird sowohl bei Paralleltest- als auch bei Retestverfahren
+  verwendet.
+* Voraussetzung ist, dass die jeweiligen Messungen als parallel angenommen
+  werden können.
+* **R** bietet mit der `cor()` Funktion eine Möglichkeit,
+  Stichprobenkorrelationskoeffizienten zu berechnen.
+
+# Praxis der Reliabilitätsschätzung
+\small
+Normalverteilungsbeispiel (fortgeführt)
+\footnotesize
+
+Simulation des Normalverteilungsbeispiels für $n := 30$
+\vspace{3mm}
+
+$p(t_i) =  N(t_i; 1,\sigma_\tau^2)$ und $p(y_{ij}|t_i) :=  N(y_{ij};
+t_i,\sigma_\eps^2)$ für $j = 1,2$
+mit $\sigma_\tau^2 := 1.0$ und $\sigma_\eps^2 := 0.2$  für  $i = 1,...,n$.
+
+\vspace{3mm}
+\tiny
+```{r, echo = TRUE}
+n               = 30                                  # Personenanzahl
+m               = 2                                   # Testmessungsanzahl
+sigsqr_tau      = 1                                   # wahrer Wert Varianz
+sigsqr_eps      = .2                                  # Messfehlervarianz
+R_12            = sigsqr_tau/(sigsqr_tau+sigsqr_eps)  # Paralleltestreliabilität
+Tau             = matrix(rep(NaN, n)  , nrow = n)     # wahrer Wert Array
+Y               = matrix(rep(NaN, n*m), nrow = n)     # beobachteter Wert Array
+E               = matrix(rep(NaN, n*m), nrow = n)     # Messfehler Array
+for(i in 1:n){                                        # Personeniterationen
+    Tau[i]      = rnorm(1,1,sqrt(sigsqr_tau))         # wahrer Wert Realisierung für j = 1,2
+    for(j in 1:m){                                    # Testmessungsiterationen
+        Y[i,j]  = rnorm(1,Tau[i],sqrt(sigsqr_eps))    # beobachteter Wert Realisierung
+        E[i,j]  = Y[i,j] - Tau[i]}}                   # Messfehler Realisierung
+r_12            = cor(Y[,1],Y[,2])                    # Reliabilitätsschätzer
+```
+
+```{r}
+cat("Paralleltestreliabilität R_12 : ", round(R_12,4),
+    "\nReliabilitätsschätzer r_12    : ", round(r_12,4))
+```
+
+
+# Praxis der Reliabilitätsschätzung
+\footnotesize
+\setbeamerfont{block title}{size=\footnotesize}
+\begin{theorem}[Approximative Verteilung der Fishertransformation einer Stichprobenkorrelation]
+\justifying
+\normalfont
+Gegeben sei eine Stichprobe $(y_{11},y_{12}),...,(y_{n1},y_{n2}) \sim \mathbb{P}(y_1,y_2)$
+von Beobachtungen zweier Zufallsvariablen $y_1$ und $y_2$ mit Korrelation
+$\rho := \rho(y_1,y_2)$ und Stichprobenkorrelation $r$. Weiterhin bezeichne
+\begin{equation}
+\tilde{r} := \frac{1}{2} \ln \left(\frac{1 + r}{1 - r} \right)
+\end{equation}
+die \textit{Fishertransformation} von $r$. Dann ist $\tilde{r}$
+asymptotisch normalverteilt mit
+\begin{equation}
+\tilde{r} \stackrel{a}{\sim}  N\left(\frac{1}{2}\ln\left(\frac{1+\rho}{1-\rho}\right), (n-3)^{-1} \right).
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Die approximative Varianz der Fishertransformation ist unabhängig von $\rho$.
+* Die Approximation ermöglicht die Konstruktion eines Konfidenzintervalls
+  für $\rho$.
+* Eine ausführliche Darstellung findet sich bei @johnson1994 [Kapitel 32].
+
+# Praxis der Reliabilitätsschätzung
+\footnotesize
+\begin{theorem}[Approximatives Konfidenzintervall einer Korrelation]
+\justifying
+\normalfont
+Gegeben sei eine Stichprobe $(y_{11},y_{12}),...,(y_{n1},y_{n2}) \sim \mathbb{P}(y_1,y_2)$
+von Beobachtungen zweier Zufallsvariablen $y_1$ und $y_2$ mit Korrelation $\rho$,
+Stichprobenkorrelation $r$ und Fishertransformation $\tilde{r}$. Ferner sei
+$\delta \in ]0,1[$ ein Konfidenzlevel und es sei
+\begin{equation}
+z_\delta := \phi^{-1}\left(\frac{1+\delta}{2}\right)
+\end{equation}
+mit der inversen KVF $\phi^{-1}$ einer standardnormalverteilten Zufallsvariable.
+Schließlich seien
+\begin{equation}
+\tilde{r}_u := \tilde{r} - z_\delta\left(\sqrt{n - 3}\right)^{-1}
+\mbox{ und }
+\tilde{r}_o := \tilde{r} + z_\delta\left(\sqrt{n - 3}\right)^{-1}.
+\end{equation}
+Dann gilt für $n \to \infty$ für das Intervall
+\begin{equation}
+\kappa(r) :=
+\left[
+\frac{\exp(2\tilde{r}_u)- 1}{\exp(2\tilde{r}_u) + 1},
+\frac{\exp(2\tilde{r}_o)- 1}{\exp(2\tilde{r}_o) + 1}
+\right],
+\end{equation}
+dass
+\begin{equation}
+\mathbb{P}_{\rho}\left(\kappa(r) \ni \rho \right) = \delta.
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Bei parallelen Testmessungen ist $\rho=R_{12}=R_1=R_2$.
+* Das Intervall ist dann ein approximatives Konfidenzintervall für die
+  Reliabilität.
+
+# Praxis der Reliabilitätsschätzung
+\small
+Simulation der Konfidenzintervallüberdeckung
+\footnotesize
+
+Für $n=30$ Personen und zwei parallele Testmessungen betrachten wir
+das bisherige Normalverteilungsmodell
+\begin{equation}
+p(t_i)=N(t_i;1,\sigma_\tau^2),
+\qquad
+p(y_{ij}\mid t_i)=N(y_{ij};t_i,\sigma_\varepsilon^2)
+\end{equation}
+mit $\sigma_\tau^2=1$ und $\sigma_\varepsilon^2=0.2$. Damit gilt
+\begin{equation}
+R_{12}=\frac{\sigma_\tau^2}{\sigma_\tau^2+\sigma_\varepsilon^2}
+=\frac{1}{1.2}\approx0.833.
+\end{equation}
+
+Simulationsablauf
+
+* Wir generieren $10^5$ unabhängige Datensätze dieses Modells.
+* Für jeden Datensatz berechnen wir $r$, $\tilde r$ und $\kappa(r)$ bei
+  $\delta=0.95$.
+* Wir vergleichen die Verteilung von $\tilde r$ mit ihrer Normalapproximation.
+* Wir prüfen, ob die Intervalle den festen Parameter $R_{12}$ enthalten.
+
+# Praxis der Reliabilitätsschätzung
+\small
+Simulationsergebnisse
+\footnotesize
+
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("3-Abbildungen/gdt-3-fisher-transformation-konfidenzintervalle.pdf")
+```
+
+Bemerkungen
+
+* Die simulierte Verteilung ist gegenüber der Normalapproximation leicht
+  nach rechts verschoben.
+* Von den 100 dargestellten Intervallen enthalten 98 die wahre Reliabilität.
+* Orange Markierungen kennzeichnen Intervalle, die die wahre Reliabilität
+  nicht enthalten.
+* Das Konfidenzlevel $0.95$ verlangt keine Überdeckung in genau 95 von
+  100 Fällen.
 
 
 #
 \vfill
-\setstretch{1.8}
+\setstretch{3.3}
 \large
 Reliabilität
 
-**Interne Konsistenz**
+Praxis der Reliabilitätsschätzung
 
-Itemanalyse
+**Interne Konsistenz**
 
 Selbstkontrollfragen
 \vfill
 
 
 # Interne Konsistenz
-Motivation
-
 \small
-BDI-II Interne Konsistenz (@hautzinger2006)
-
+Überblick
 \footnotesize
-In Tabelle 2 sind bisherige Ergebnisse zur internen Konsistenz (Cronbach's
-$\alpha$)
-des BDI II aufgelistet. In psychiatrischen Stichproben lag die interne
-Konsistenz
-im Bereich von $0.89 \le \alpha \le 0.94$, in nichtklinischen Stichproben im
-Bereich von
-$0.84 \le \alpha \le 0.91$.
+
+Abschätzung der Reliabilität eines Tests anhand seiner Itemwerte aus einer
+einzigen Testdurchführung.
+
+\vspace{2mm}
+Cronbach's $\alpha$
+
+* Untere Grenze der Gesamtreliabilität eines Tests, bei Parallelität gleich der Gesamtreliabilität.
+* Grundlage ist das *$m$-Komponententestmodell mit multiplen Testmessungen* 
+* Bestimmung aus (empirischen) Itemvarianzen und der Summenscorevarianz 
 
 \vspace{1mm}
+Spearman-Brown-Formel
 
-```{r, echo = FALSE,  out.width = "70%", fig.align = "center"}
-knitr::include_graphics("3-Abbildungen/gdt-4-bdi-cronbachs-alpha-international.png")
-```
+* Bestimmung der  Gesamtreliabilität eines Tests aus der Reliabilität seiner Items 
+* Setzt ein $m$-Komponententestmodell mit parallelen Testmessungen voraus 
+* Verknüpfung der Anzahl der Komponenten mit ihrer gemeinsamen Reliabilität 
 
-# Interne Konsistenz
+\vspace{1mm}
+McDonald's $\omega$
+
+* Bestimmung der Gesamtreliabilität in einem einfaktoriellen Faktorenanalysemodell 
+* Grundlage ist speziell das Modell *essentiell kongenerischer Items* 
+* Berechnung aus geschätzten Faktorladungen, Faktorvarianz und Fehlervarianzen 
+
+
+# Interne Konsistenz | Cronbach's $\alpha$
 \small
 \setstretch{1.2}
-Vorbemerkungen
+$m$-Komponententestmodell
 \footnotesize
 
 $y_{ij}$ bezeichnete bisher die Zufallsvariable zur Modellierung des
@@ -707,7 +839,7 @@ y_i := \sum_{j=1}^m y_{ij}
 Wir fassen diese Vorüberlegungen in der Definition des
 *$m$-Komponententestmodells* zusammen.
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 
 \footnotesize
 \begin{definition}[$m$-Komponententestmodell]
@@ -737,7 +869,7 @@ Bemerkung
 * Die $m$ *Komponenten* eines Tests entsprechen seinen $m$ Items.
 
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \begin{definition}[Reliabilitäten von $m$-Komponententestmodellen]\label{def:reliabilitaeten-m-komponententestmodelle}
 \justifying
@@ -769,51 +901,75 @@ Bemerkung
 genannt.
 
 
-# Interne Konsistenz
-
-\small
-Cronbach's $\alpha$
-
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
+\setstretch{1.2}
+
 Grundlage der Bestimmung von Cronbach's $\alpha$ ist die Idee der
-*Testhalbierungs-Reliabilität*
+*Testhalbierungsreliabilität*.
 
-* Besteht ein Test aus vielen Items, so kann eine Testhälfte als Paralleltest
-  der anderen angesehen werden.
-* Die Korrelation der Testhälften ist dann ein Maß für die
-  Paralleltestreliabilität.
+\vspace{-1mm}
 
-Die resultierende Testhälften-Korrelation ist aber nur die Reliabilität eines
-Tests halber Länge
+* Bei der Testhalbierung werden zwei Testhälften gebildet, die als parallele
+  Testmessungen angenommen werden.
+* Die Korrelation der Testhälften entspricht dann der Reliabilität einer
+  Testhälfte.
+* Zur Bestimmung der Gesamttestreliabilität muss die volle Testlänge
+  berücksichtigt werden.
 
-Grundsätzlich erhöht sich die Reliabilität eines Tests paralleler Items mit
-zunehmender Testlänge
+\vspace{-1mm}
 
-* Die Varianz der Messfehler  erhöht sich linear, da Messfehler nach Annahme
-  unabhängig sind.
-* Die Varianz der wahren Werte erhöht sich quadratisch, da wahre Werte nach
-  Annahme kovariieren.
+Bei parallelen Items wächst die Varianz der Summe der wahren Werte quadratisch
+mit der Itemanzahl:
+\vspace{-1mm}
+\begin{equation}
+\mbb{V}\left(\sum_{j=1}^{m}\tau_{ij}\right)
+= \mbb{V}(m\tau_{i1})
+= m^2\mbb{V}(\tau_{i1}).
+\end{equation}
+\vspace{-1mm}
+Die Varianz der Summe der Messfehler wächst dagegen nur linear:
+\vspace{-1mm}
+\begin{equation}
+\mbb{V}\left(\sum_{j=1}^{m}\eps_{ij}\right)
+= \sum_{j=1}^{m}\mbb{V}(\eps_{ij})
+= m\mbb{V}(\eps_{i1}).
+\end{equation}
+\vspace{-1mm}
 
-Die Split-Half-Korrelation muss also auf die volle Testlänge aufgewertet werden.
+\vspace{-1mm}
 
-* Dies ist mit der von @spearman1910 und @brown1910 entwickelten Formel möglich
+* Bei parallelen Items sind die wahren Werte identisch.
+* Die Messfehler sind unabhängig und haben dieselbe Varianz.
 
-Man kann einen Test natürlich auch in mehr als zwei Teile teilen und alle
-Paralleltestkorrelationen bestimmen.
+\vspace{-1mm}
 
-* Cronbach's $\alpha$ bildet die Situation ab, in der alle Items als
-  Paralleltests betrachtet werden.
+Von der Testhalbierung zu Cronbach's $\alpha$
 
-Wir betrachten in der Folge die Spearman-Brown Formel und ihre Eigenschaften als
-Spezialfall von Cronbach's $\alpha$.
+\vspace{-1mm}
+
+* Bei parallelen Items nimmt die Gesamtreliabilität mit zunehmender Testlänge
+  zu.
+* Die Spearman-Brown-Formel rechnet die Korrelation paralleler Testhälften auf
+  die volle Testlänge um.
+* Die Formel geht auf @spearman1910 und @brown1910 zurück.
+* Ein Test kann auch in mehr als zwei Komponenten aufgeteilt werden.
+
+\vspace{-1mm}
+
+Cronbach's $\alpha$ ist auch ohne Parallelität definiert und entspricht bei
+parallelen Items der Gesamtreliabilität.
+
+Wir betrachten im Folgenden die Spearman-Brown-Formel und ihre Eigenschaften
+als Spezialfall von Cronbach's $\alpha$.
 
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \begin{definition}[Cronbach's $\alpha$]
 Gegeben sei ein $m$-Komponententestmodell. Dann heißt
 \begin{equation}
-\alpha := \frac{m}{m-1}\left(1 - \frac{\sum_{j=1}^m \mbb{V}(y_{ij})}{\mbb{V}(y_i)}\right) \mbox{ für beliebiges } 1 \le i \le n
+\alpha := \frac{m}{m-1}\left(1 - \frac{\sum_{j=1}^m \mbb{V}(y_{ij})}{\mbb{V}(y_i)}\right) \mbox{ für ein beliebiges } 1 \le i \le n
 \end{equation}
 \textit{Cronbach's $\alpha$} oder \textit{Koeffizient $\alpha$}.
 \end{definition}
@@ -826,7 +982,7 @@ Bemerkungen
 * Die Formel wurde durch @cronbach1951 als *Coefficient $\alpha$* popularisiert
 * Frühere Anwendungen finden sich zum Beispiel in @hoyt1941 und @guttman1945
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \vspace{2mm}
 \footnotesize
 Bemerkungen (fortgesetzt)
@@ -841,24 +997,24 @@ wird Cronbach's $\alpha$ häufig auch geschrieben als
 * Zum Verständnis von $\alpha$ unterstellen wir im Folgenden, dass die Anzahl
   der Items hoch, also $\frac{m}{m-1} \approx 1$ ist.
 * Nach
-  \href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-  Varianz einer Linearkombination (Foliensatz A)} gilt dann allgemein
+  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=89}{Theorem
+Varianz einer Linearkombination
+(Anhang zu Foliensatz 2, Folie 89)} gilt dann allgemein
 \begin{equation}
 \mbb{V}(y) = \sum_{j = 1}^m \mbb{V}(y_j) + 2 \sum_{j=1}^{m-1}\sum_{k = j+1}^m \mbb{C}(y_j,y_k)
 \end{equation}
 * Sind die beobachteten Werte in diesem Fall (marginal) unabhängig, so gilt
 \begin{equation}
-\mbb{C}(y_j,y_k) = 0 \mbox{ für alle } 1 \le j,k \le m
+\mbb{C}(y_j,y_k) = 0 \mbox{ für alle } 1 \le j,k \le m \mbox{ mit } j \neq k
 \end{equation}
-* Bei großem $m$ und Unabhängigkeit der beobachteten Werte gilt also
+* Bei Unabhängigkeit der beobachteten Werte gilt also exakt
 \begin{equation}
 \alpha
-\approx 1 \cdot \left(1 - \frac{\sum_{j=1}^m \mbb{V}(y_{j})}{\mbb{V}(y)}\right)
-= \left(1 - \frac{\sum_{j=1}^m \mbb{V}(y_{j})}{\sum_{j = 1}^m \mbb{V}(y_j)}\right)
-= 0
+= \frac{m}{m-1}\left(1 - \frac{\sum_{j=1}^m \mbb{V}(y_j)}{\sum_{j=1}^m \mbb{V}(y_j)}\right)
+= 0.
 \end{equation}
-* Induziert ein gemeinsamer wahrer Wert andererseits marginale Kovarianzen
-  $\mbb{C}(y_j,y_k) > 0$, so folgt
+* Ist die Summe der Kovarianzbeiträge wesentlich größer als die Summe der
+  Itemvarianzen, so folgt
 \begin{equation}
 \mbb{V}(y)
 =   \sum_{j = 1}^m \mbb{V}(y_j) + 2 \sum_{j=1}^{m-1}\sum_{k = j+1}^m \mbb{C}(y_j,y_k)
@@ -867,7 +1023,7 @@ wird Cronbach's $\alpha$ häufig auch geschrieben als
 \frac{\sum_{j=1}^m \mbb{V}(y_{j})}{\mbb{V}(y)} \approx 0 \Rightarrow \alpha \approx 1
 \end{equation}
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \begin{theorem}[Cronbach's $\alpha$ und Gesamtreliabilität]\label{thm:cronbachs-alpha}
 \justifying
@@ -894,7 +1050,7 @@ Bemerkungen
   $m$-Komponententestmodells gleich $\alpha$.
 * Der Beweis des Theorems geht unter anderem auf @novick1967 zurück.
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \underline{Beweis}
 
@@ -920,7 +1076,7 @@ um. Speziell gilt für reelle Zahlen $\tau_1,...,\tau_m$, dass
 \sum_{j=1}^m \tau_j = \frac{1}{m-1}\sum_{j=1}^{m-1}\sum_{k = j + 1}^m (\tau_j + \tau_k).
 \end{equation}
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \underline{Beweis}
 
@@ -942,7 +1098,7 @@ Anstelle eines Beweises betrachten wir den Fall $m := 4$. Dann gilt
 \end{split}
 \end{align}
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -950,11 +1106,13 @@ Anstelle eines Beweises betrachten wir den Fall $m := 4$. Dann gilt
 Testmessungen eine Ungleichung her. Dazu betrachten wir im Modell multipler
 Testmessungen
 die Varianz der Differenz zweier wahrer Werte $\tau_j$ und $\tau_k$. Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Nichtnegativität der Varianz (Foliensatz A)}
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=95}{Theorem
+Nichtnegativität der Varianz
+(Anhang zu Foliensatz 2, Folie 95)}
 und
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Varianzen spezieller Linearkombinationen (Foliensatz A)} ergibt sich
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=69}{Theorem
+Varianzen spezieller Linearkombinationen
+(Anhang zu Foliensatz 2, Folie 69)} ergibt sich
 \begin{align}
 \begin{split}
 \mbb{V}(\tau_j - \tau_k)                                            \ge 0
@@ -974,10 +1132,12 @@ Folgenden also Gleichheit.
 
 \noindent(3) (*Varianzungleichung für die Summe wahrer Werte*) Wir betrachten nun die
 Varianz der Summe der wahren Werte im $m$-Komponententestmodell. Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Varianz einer Linearkombination (Foliensatz A)} der Summendarstellung, aus (1) und
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=89}{Theorem
+Varianz einer Linearkombination
+(Anhang zu Foliensatz 2, Folie 89)}, der Summendarstellung aus (1) und
 der Kovarianzungleichung für den wahren Wert aus (2) ergibt sich zunächst
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \underline{Beweis (fortgeführt)}
 \begin{align}
@@ -1002,7 +1162,7 @@ der Kovarianzungleichung für den wahren Wert aus (2) ergibt sich zunächst
 \end{split}
 \end{align}
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -1010,8 +1170,9 @@ Mit Aussage (5) von
 \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
 Eigenschaften bezüglich zweier Testmessungen (Foliensatz 2)} und wiederum
 mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Varianz einer Linearkombination (Foliensatz A)} gilt dann
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=89}{Theorem
+Varianz einer Linearkombination
+(Anhang zu Foliensatz 2, Folie 89)} gilt dann
 \begin{align}
 \begin{split}
 \mbb{V}(\tau)
@@ -1025,7 +1186,7 @@ Varianz einer Linearkombination (Foliensatz A)} gilt dann
 \end{split}
 \end{align}
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
@@ -1045,7 +1206,7 @@ Varianz einer Linearkombination (Foliensatz A)} gilt dann
 \end{align}
 $\hfill\Box$
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \footnotesize
 \begin{definition}[Cronbach's $\alpha$ Schätzer]
 \justifying
@@ -1053,18 +1214,18 @@ Gegeben sei das $m$-Komponententestmodell mit beobachteten Werten $y_{ij}$
 für $i = 1,...,n$ Testpersonen und $j = 1,...,m$ Testkomponenten (Items). Dann
 ist ein Schätzer für die Varianz des $j$ten Items gegeben durch
 \begin{equation}
-S^2_j := \frac{1}{n-1}\sum_{i=1}^n \left(y_{ij} - \bar{y}_j\right)^2 \mbox{ mit } \bar{y}_j := \frac{1}{n}\sum_{i=1}^n y_{ij}
+s_j^2 := \frac{1}{n-1}\sum_{i=1}^n \left(y_{ij} - \bar{y}_j\right)^2 \mbox{ mit } \bar{y}_j := \frac{1}{n}\sum_{i=1}^n y_{ij}
 \end{equation}
 und ein Schätzer für die Varianz der Testsummenscores ist gegeben durch
 \begin{equation}
-S^2 := \frac{1}{n-1}\sum_{i=1}^n \left(y_i - \bar{y}\right)^2 \mbox{ mit }
+s^2 := \frac{1}{n-1}\sum_{i=1}^n \left(y_i - \bar{y}\right)^2 \mbox{ mit }
 y_i := \sum_{j=1}^m y_{ij}
 \mbox{ und }
 \bar{y} := \frac{1}{n}\sum_{i=1}^n y_i
 \end{equation}
 Ein Schätzer für $\alpha$ ergibt sich entsprechend zu
 \begin{equation}
-\hat{\alpha} = \frac{m}{m-1}\left(1 - \frac{\sum_{j=1}^m S^2_j}{S^2}\right).
+\hat{\alpha} = \frac{m}{m-1}\left(1 - \frac{\sum_{j=1}^m s_j^2}{s^2}\right).
 \end{equation}
 \end{definition}
 
@@ -1073,7 +1234,7 @@ Bemerkung
 * Zur frequentistischen Verteilungstheorie dieses Schätzers, siehe z.B.
   @kristof1963, @feldt1965, @feldt1987, @vanzyl2000, @yuan2002.
 
-# Interne Konsistenz
+# Interne Konsistenz | Cronbach's $\alpha$
 \small
 Simulation im Modell paralleler Testmessungen
 \begin{equation}
@@ -1110,7 +1271,408 @@ cat("Cronbach's alpha (manuell) : ", round(a,3),
 ```
 
 
-# Interne Konsistenz
+# Interne Konsistenz | Spearman-Brown-Formel
+\footnotesize
+\begin{theorem}[Spearman-Brown-Formel]\label{thm:spearman-brown-formel}
+\normalfont
+\justifying
+Gegeben sei ein $m$-Komponententestmodell mit parallelen Testmessungen,
+Reliabilität $\mbox{R}$ und Komponentenreliabilitäten $\mbox{R}_1, ...,
+\mbox{R}_m$. Dann gilt
+\begin{equation}
+\mbox{R} = \frac{m\mbox{R}_1}{1 + (m-1)\mbox{R}_1}
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Die Testhalbierungsreliabilität ergibt sich als der Spezialfall $m = 2$.
+* Sei dazu $\mbox{R}_1$ die durch $\rho(y_{i1},y_{i2})$ gegebene
+  Paralleltestreliabilität. Für die Gesamttestreliabilität ergibt sich
+\begin{equation}
+\mbox{R} = \frac{2\cdot \mbox{R}_1}{1 + (2 - 1)\mbox{R}_1} = \frac{2\rho(y_{i1},y_{i2})}{1 + \rho(y_{i1},y_{i2})}
+\end{equation}
+* Für $\mbox{R}_1 = 0.7$ ergibt sich beispielsweise
+\begin{equation}
+\mbox{R} = \frac{2\cdot 0.7}{1 + 0.7} \approx 0.82
+\end{equation}
+* In der Praxis unterscheidet man folgende Methoden zur Testhalbierung
+* Odd-Even: Eine Testhälfte besteht aus den ungerade, die andere aus den gerade
+  nummerierten Items
+* Zeitpartitionierung: Der Test wird in zwei Abschnitte geteilt, deren
+  Bearbeitung die gleiche Zeit beansprucht.
+* Itemzwillinge: Es werden Itemzwillinge konstruiert und zufällig einer der
+  Testhälften zugeordnet.
+
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\footnotesize
+
+\underline{Beweis}
+
+Wir halten zunächst fest, dass nach \thmref{thm:cronbachs-alpha} und durch
+Annahme
+paralleler Testmessungen gilt, dass
+\begin{equation}
+\mbox{R} = \frac{m}{m-1}\left(1-\frac{\sum_{j=1}^m \mbb{V}(y_{j})}{\mbb{V}(y)}\right)
+\end{equation}
+
+\noindent (1) *(Summe der Varianzen der beobachteten Werte bei Parallelität)*
+Nach
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
+Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)} sind die
+Varianzen aller
+beobachteten Werte über Testmessungen bei parallelen Testmessungen identisch.
+Es gilt also
+\begin{equation}
+\sum_{j=1}^m \mbb{V}(y_{j}) = \sum_{j=1}^m \mbb{V}(y_1) = m\mbb{V}(y_1)
+\end{equation}
+
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\vspace{1mm}
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) *(Varianz der Summe der beobachteten Werte bei Parallelität)*
+
+Mit
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=89}{Theorem
+Varianz einer Linearkombination
+(Anhang zu Foliensatz 2, Folie 89)} gilt
+\begin{align}
+\begin{split}
+\mbb{V}(y)
+& =                 \mbb{V}\left(\sum_{j=1}^m y_j\right) \\
+& =                 \sum_{j=1}^m \mbb{V}(y_j) + 2 \sum_{j=1}^{m-1}\sum_{k=j+1}^m
+\mbb{C}(y_j, y_k) \\
+& \stackrel{(a)}{=} \sum_{j=1}^m \mbb{V}(y_1) + 2 \sum_{j=1}^{m-1}\sum_{k=j+1}^m
+\mbb{C}(y_1, y_2) \\
+& =                  m\mbb{V}(y_1) + 2 \mbb{C}(y_1, y_2)
+\sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 \\
+& \stackrel{(b)}{=}  m\mbb{V}(y_1) + 2 \mbb{C}(y_1, y_2) \frac{m(m-1)}{2} \\
+& =                  m\mbb{V}(y_1) + m(m-1)\rho(y_1,
+y_2)\sqrt{\mbb{V}(y_1)}\sqrt{\mbb{V}(y_2)}  \\
+& \stackrel{(c)}{=}  m\mbb{V}(y_1) + m(m-1)\rho(y_1,
+y_2)\sqrt{\mbb{V}(y_1)}\sqrt{\mbb{V}(y_1)} \\
+& \stackrel{(d)}{=}  m\mbb{V}(y_1) + m(m-1)\mbox{R}_1 \mbb{V}(y_1) \\
+& =                  m\mbb{V}(y_1)\left(1 + (m-1)\mbox{R}_1\right) \\
+\end{split}
+\end{align}
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\vspace{1mm}
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+Dabei gilt
+
+* $\stackrel{(a)}{=}$ mit Aussage (5) von
+  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
+  Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)}, dass
+\begin{equation}
+\mbb{C}(y_j, y_k) = \mbb{V}(\tau_1) \mbox{ für } 1 \le j,k \le m \mbox{ mit } j \neq k
+\end{equation}
+also, dass die Kovarianzen der beobachteten Werte beliebiger Paare paralleler
+Testmessungen identisch und damit insbesondere identisch zu $\mbb{C}(y_1, y_2)$
+sind,
+* $\stackrel{(b)}{=}$ mit der unter (4) per Induktionsbeweis gezeigten Identität
+\begin{equation}
+\sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 = \frac{m(m-1)}{2}
+\end{equation}
+* $\stackrel{(c)}{=}$  mit Aussage (2) von
+  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
+  Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)},
+* $\stackrel{(d)}{=}$  mit Aussage (3) von
+  \thmref{thm:paralleltestreliabilitaet}
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (3) *(Einsetzen in Cronbach's $\alpha$)*
+
+Einsetzen ergibt dann
+\begin{align}
+\begin{split}
+\mbox{R}
+& = \frac{m}{m-1}\left(1-\frac{\sum_{j=1}^m \mbb{V}(y_{j})}{\mbb{V}(y)}\right)
+\\
+& = \frac{m}{m-1}\left(1-\frac{m\mbb{V}(y_1)}{m\mbb{V}(y_1)\left(1 +
+(m-1)\mbox{R}_1\right)}\right) \\
+& = \frac{m}{m-1}\left(1-\frac{1}{1 + (m-1)\mbox{R}_1}\right) \\
+& = \frac{m}{m-1}\left(\frac{1 + (m-1)\mbox{R}_1}{1 +
+(m-1)\mbox{R}_1}-\frac{1}{1 + (m-1)\mbox{R}_1}\right) \\
+& = \frac{m}{m-1}\left(\frac{1 + (m-1)\mbox{R}_1-1}{1 + (m-1)\mbox{R}_1}\right)
+\\
+& = \frac{m}{m-1} \cdot \frac{(m-1)\mbox{R}_1}{1 + (m-1)\mbox{R}_1} \\
+& = \frac{m\mbox{R}_1}{1 + (m-1)\mbox{R}_1}. \\
+\end{split}
+\end{align}
+
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (4) *(Induktionsbeweis der Doppelsummenform)*
+
+Es bleibt zu zeigen, dass
+\begin{equation}
+S_m := \sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 = \frac{m(m-1)}{2} =: P_m
+\end{equation}
+(1) Induktionsanfang: Für $m := 2$ gilt
+\begin{equation}
+S_2
+= \sum_{j=1}^{2-1}\sum_{k=j+1}^2 1
+= \sum_{j=1}^1 \sum_{k=j+1}^2 1
+= \sum_{k=1+1}^2 1
+= \sum_{k=2}^2 1
+= 1
+= \frac{2(2-1)}{2}
+= P_2
+\end{equation}
+Zu Demonstrationszwecken betrachten wir auch $m := 3$. Hier gilt
+\begin{equation}
+S_3
+= \sum_{j=1}^{3-1}\sum_{k=j+1}^3 1
+= \sum_{j=1}^2 \sum_{k=j+1}^3 1
+= \sum_{k=1+1}^3 1 +  \sum_{k=2+1}^3 1
+= \sum_{k=2}^3 1 +  \sum_{k=3}^3 1
+= 3
+= \frac{3(3-1)}{2}
+= P_3
+\end{equation}
+
+\noindent (2) Induktionsschritt: Es gelte nun für ein $m \ge 2$
+\begin{equation}
+S_m = \sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 = \frac{m(m-1)}{2} = P_m
+\end{equation}
+
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+Dann gilt nach Definition für $m + 1$
+\begin{align}
+\begin{split}
+S_{m+1}
+& =  \sum_{j=1}^{m+1-1}\sum_{k=j+1}^{m+1} 1 \\
+& =  \sum_{j=1}^{m}\sum_{k=j+1}^{m+1} 1     \\
+& =  \sum_{j=1}^{m-1}\sum_{k=j+1}^{m+1} 1 + \sum_{k=m+1}^{m+1} 1    \\
+& =  \left(\sum_{j=1}^{m-1}\sum_{k=j+1}^{m+1} 1\right) + 1   \\
+& =  \left(\sum_{j=1}^{m-1}\left(\sum_{k=j+1}^{m} 1  + 1 \right) \right) + 1
+\\
+& =  \left(\sum_{j=1}^{m-1} \sum_{k=j+1}^{m} 1 \right) + \left(\sum_{j=1}^{m-1}
+1\right) + 1   \\
+& =  \left(\sum_{j=1}^{m-1} \sum_{k=j+1}^{m} 1 \right) + (m-1) + 1   \\
+& =   S_m  + m   \\
+\end{split}
+\end{align}
+
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+Dann aber gilt nach der Induktionsschrittannahme
+\begin{align}
+\begin{split}
+S_{m+1}
+& =  S_m  + m   \\
+& =  P_m  + m   \\
+& = \frac{m(m-1)}{2}  + m   \\
+& = \frac{m(m-1)}{2}  + \frac{2m}{2}  \\
+& = \frac{m(m-1) + 2m}{2}   \\
+& = \frac{m^2 - m  + 2m}{2}   \\
+& = \frac{m^2 + m}{2}   \\
+& = \frac{m(m+1)}{2}   \\
+& = \frac{(m+1)((m+1)-1)}{2}   \\
+& = P_{m+1}
+\end{split}
+\end{align}
+
+
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\small
+Normalverteilungsbeispiel zur Spearman-Brown-Formel
+
+\footnotesize
+Wir betrachten den Fall eines $m$-Komponententestmodells mit $m$ parallelen
+Testmessungen. Für alle $i = 1,...,n$ gelte die folgende Darstellung durch
+Wahrscheinlichkeitsdichten. Dabei verzichten wir wiederum auf das Subskript
+$i$:
+\begin{equation}
+p(t_1) := N(t_1;1,\sigma_\tau^2), t_2 := t_1,...,t_m := t_1
+\end{equation}
+sowie
+\begin{equation}
+p(y_1|t_1) := N(y_1;t_1,\sigma_\eps^2), ...,
+p(y_m|t_1) := N(y_m;t_1,\sigma_\eps^2)
+\end{equation}
+
+Per Definition gilt im $m$-Komponententest mit parallelen Testmessungen für die
+Gesamtreliabilität
+\begin{equation}
+\mbox{R}
+:= \frac{\mbb{V}(\tau)}{\mbb{V}(y)}
+= \frac{\mbb{V}\left(\sum_{j=1}^m \tau_j\right)}{\mbb{V}\left(\sum_{j=1}^m y_j \right)}
+\end{equation}
+Für den Zähler halten wir fest, dass mit der Identität der wahren Werte im
+Modell paralleler Testmessungen gilt
+\begin{equation}
+\mbb{V}\left(\sum_{j=1}^m \tau_j\right)
+= \mbb{V}\left(\sum_{j=1}^m \tau_1\right)
+= \mbb{V}\left(m\tau_1\right)
+= m^2\mbb{V}\left(\tau_1\right)
+= m^2\sigma_\tau^2
+\end{equation}
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\small
+Normalverteilungsbeispiel zur Spearman-Brown-Formel (fortgesetzt)
+
+\footnotesize
+Für den Nenner betrachten wir die Wahrscheinlichkeitsdichtefunktion der
+gemeinsamen
+Verteilung von $\tau_1, y_1,...,y_m$, die in Generalisierung des im Abschnitt
+Reliabilität
+betrachteten Normalverteilungsbeispiels die folgende Form hat:
+
+\begin{equation}
+p\left(t_1,y_1,...,y_m\right)
+=
+N\left(
+\begin{pmatrix}
+t_1     \\
+y_1     \\
+\vdots  \\
+y_m
+\end{pmatrix};
+\begin{pmatrix}
+1       \\
+1       \\
+\vdots  \\
+1
+\end{pmatrix},
+\begin{pmatrix}
+\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2                        \\
+\sigma_\tau^2 &  \sigma_\tau^2 + \sigma_\eps^2 & \cdots & \sigma_\tau^2                        \\
+\vdots        &  \vdots                               & \ddots & \vdots                               \\
+\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2 + \sigma_\eps^2 \\
+\end{pmatrix}
+\right)
+\end{equation}
+
+Um nun die Varianz der Summe der beobachteten Werte zu bestimmen, bestimmen wir
+mithilfe des
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=78}{Theorem zur linear-affinen Transformation eines normalverteilten Zufallsvektors
+(Anhang zu Foliensatz 2, Folie 78)}
+die Kovarianzmatrix
+des durch die Matrix $A := \begin{pmatrix} 0 & 1 & ... & 1\end{pmatrix} \in
+\mbb{R}^{1\times(m+1)}$
+transformierten Zufallsvektors $(\tau_1,y_1,...,y_m)^T$, also die
+Kovarianzmatrix von
+\begin{equation}
+\sum_{j=1}^m y_j
+=
+\begin{pmatrix} 0 & 1 & ... & 1 \end{pmatrix}
+\begin{pmatrix}
+\tau_1  \\
+y_1     \\
+\vdots  \\
+y_m
+\end{pmatrix}
+\end{equation}
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\small
+\vspace{2mm}
+Normalverteilungsbeispiel zur Spearman-Brown-Formel (fortgesetzt)
+
+\footnotesize
+Es ergibt sich
+\begin{align*}
+\begin{split}
+\begin{pmatrix} 0 & 1 & ... & 1 \end{pmatrix}
+\begin{pmatrix}
+\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2                        \\
+\sigma_\tau^2 &  \sigma_\tau^2 + \sigma_\eps^2 & \cdots & \sigma_\tau^2                        \\
+\vdots        &  \vdots                               & \ddots & \vdots                               \\
+\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2 + \sigma_\eps^2 \\
+\end{pmatrix}
+\begin{pmatrix} 0 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
+& =
+\begin{pmatrix}
+m\sigma_\tau^2
+& m\sigma_\tau^2 + \sigma_\eps^2
+& ...
+& m\sigma_\tau^2 + \sigma_\eps^2
+\end{pmatrix}
+\begin{pmatrix} 0 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
+\\
+& = m\left(m\sigma_\tau^2 + \sigma_\eps^2 \right)
+\\
+& = m^2\sigma_\tau^2 + m\sigma_\eps^2
+\end{split}
+\end{align*}
+Für die Gesamtreliabilität ergibt sich folglich
+\begin{equation}
+\mbox{R}
+= \frac{\mbb{V}(\tau)}{\mbb{V}(y)}
+= \frac{\mbb{V}\left(\sum_{j=1}^m \tau_j\right)}{\mbb{V}\left(\sum_{j=1}^m y_j \right)}
+= \frac{m^2 \sigma_\tau^2}{m^2\sigma_\tau^2 + m\sigma_\eps^2}
+\end{equation}
+Gilt also beispielsweise $\sigma^2_\tau := 1.0$ und $\sigma_\eps^2 := 0.2$,
+so ergibt sich für $\mbox{R}$ bei $m := 21$ parallelen Testmessungen
+\begin{equation}
+\mbox{R}
+= \frac{(21)^2 \cdot 1.0}{(21)^2\cdot 1.0 + 21\cdot 0.2}
+= \frac{441}{441 + 4.2}
+\approx 0.990566
+\end{equation}
+Basierend auf der im Abschnitt Reliabilität bestimmten Itemreliabilität
+$\mbox{R}_1 = \frac{1.0}{1.2}$ ergibt sich mithilfe der
+Spearman-Brown-Formel dasselbe Ergebnis
+\begin{equation}
+\mbox{R} = \frac{m\mbox{R}_1}{1 + (m-1)\mbox{R}_1} = \frac{21\cdot \frac{1.0}{1.2}}{1 + 20 \cdot \frac{1.0}{1.2}} \approx 0.990566.
+\end{equation}
+
+# Interne Konsistenz | Spearman-Brown-Formel
+\small
+Normalverteilungsbeispiel zur Spearman-Brown-Formel (fortgesetzt)
+\vspace{2mm}
+\fontsize{4}{4.8}\selectfont
+```{r, echo = TRUE}
+n                       = 1e1                                                     # Anzahl Testpersonen
+m                       = 21                                                      # Anzahl Testmessungen
+k                       = 2                                                       # Anzahl Testwiederholungen
+sigsqr_tau              = 1                                                       # Varianz der wahren Werte
+sigsqr_eps              = 0.2                                                     # Varianz der Messfehler
+R_1                     = sigsqr_tau/(sigsqr_tau + sigsqr_eps)                    # Itemreliabilität
+R                       = ((m^2)*sigsqr_tau)/(((m^2)*sigsqr_tau + m*sigsqr_eps))  # Gesamtreliabilität nach Beispiel
+SBF                     = (m*R_1)/(1 + (m-1)*R_1)                                 # Gesamtreliabilität nach SB-Formel
+Tau                     = matrix(rep(NaN,n)  , nrow = n)                          # Initialisierung wahre Werte
+Y_sb                    = array(NaN, dim = c(n, m, k))                            # Initialisierung beobachtete Werte
+for(i in 1:n){                                                                    # Iteration über Testpersonen
+    Tau[i]              = rnorm(1,1,sqrt(sigsqr_tau))                             # Realisierung wahrer Werte pro Testperson
+    for(t in 1:k){                                                                # Iteration über parallele Testwiederholungen
+        for(j in 1:m){                                                            # Iteration über parallele Testmessungen
+            Y_sb[i,j,t] = rnorm(1,Tau[i], sqrt(sigsqr_eps))}}}                    # Realisierung beobachteter Werte
+R_tt                    = cor(apply(Y_sb, c(1, 3), sum))[1,2]                     # Korrelation der Summenscores
+```
+
+```{r}
+cat("Itemreliabilität                                  : ", R_1,
+    "\nGesamtreliabilität nach Normalverteilungsbeispiel : ", R,
+    "\nGesamtreliabilität nach Spearman-Brown-Formel     : ", SBF,
+    "\nKorrelation der Summenscores über Paralleltests   : ", R_tt)
+```
+
+
+# Interne Konsistenz | McDonald's $\omega$
 
 \footnotesize
 \begin{theorem}[McDonald's einfaktorielles essentiell kongenerisches $\omega$]\label{thm:mcdonalds-einfaktorielles-essentiell-kongenerisches-omega}
@@ -1122,22 +1684,22 @@ Gesamtreliabilität $\mbox{R}$, dass
 \mbox{R}
 = \frac{\left(\sum_{j=1}^m l_j\right)^2\Phi}{\left(\sum_{j=1}^m l_j\right)^2\Phi + \sum_{j=1}^m \psi_j}
 \end{equation}
-und wird als \textit{McDonald's einfaktorielles kongenerisches $\omega$}
+und wird als \textit{McDonald's einfaktorielles essentiell kongenerisches $\omega$}
 bezeichnet.
 \end{theorem}
 
 Bemerkungen
 
-* Neben dem obigen $\omega$ gibt es auch ein hierarchisches $\omega_h$  und ein
-  totales $\omega_t$
-* $\omega_h$ und $\omega_t$ basieren auf hierarchischen Testmodellen, die hier
-  nicht behandelt werden.
+* $\omega_t$ berücksichtigt die Varianzbeiträge aller gemeinsamen Faktoren,
+  $\omega_h$ nur die eines Generalfaktors.
+* Das hier betrachtete einfaktorielle $\omega$ ist ein Spezialfall von
+  $\omega_t$.
 * Offenbar ist zur Berechnung von $\omega$ eine Schätzung der
   Faktorenanalysemodellparameter nötig.
 * Unterschiedliche Faktorenanalysemodellparameterschätzer können zu
   unterschiedlichen $\omega$-Schätzwerten führen.
 
-# Interne Konsistenz
+# Interne Konsistenz | McDonald's $\omega$
 \vspace{2mm}
 \footnotesize
 \underline{Beweis}
@@ -1154,8 +1716,9 @@ Es gilt dann für die Gesamtreliabilität
 \end{equation}
 Wir betrachten zunächst die Varianz der Summe der wahren Werte. Mit der
 Definition der wahren Werte im essentiell kongenerischen Testmodell und
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianz von Linearkombinationen von Zufallsvariablen (Foliensatz A)} gilt,
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=86}{Theorem
+Kovarianz von Linearkombinationen von Zufallsvariablen
+(Anhang zu Foliensatz 2, Folie 86)} gilt,
 dass
 \begin{align}
 \begin{split}
@@ -1172,10 +1735,10 @@ dass
 \end{align}
 
 
-# Interne Konsistenz
+# Interne Konsistenz | McDonald's $\omega$
 
 \footnotesize
-\underline{Beweis(fortgeführt)}
+\underline{Beweis (fortgeführt)}
 
 Weiter gilt dann
 \begin{align}
@@ -1192,16 +1755,18 @@ Weiter gilt dann
 \end{align}
 
 
-# Interne Konsistenz
+# Interne Konsistenz | McDonald's $\omega$
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
 Weiterhin gilt für die Varianz der Summe der beobachteten Werte mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianz von Linearkombinationen von Zufallsvariablen (Foliensatz A)} und
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=86}{Theorem
+Kovarianz von Linearkombinationen von Zufallsvariablen
+(Anhang zu Foliensatz 2, Folie 86)} und
 wiederholter Anwendung von
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianz bei paarweiser Addition (Foliensatz A)}
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=81}{Theorem
+Kovarianz bei paarweiser Addition
+(Anhang zu Foliensatz 2, Folie 81)}
 \begin{align}
 \begin{split}
 \mbb{V}\left(\sum_{j=1}^m y_j\right)
@@ -1216,10 +1781,11 @@ Kovarianz bei paarweiser Addition (Foliensatz A)}
 \end{align}
 Für die verbleibenden Kovarianzen gilt mit der Definition der wahren Werte im
 essentiell kongenerischen Testmodell, wiederum unter Anwendung von
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianz von Linearkombinationen von Zufallsvariablen (Foliensatz A)}, dass
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=86}{Theorem
+Kovarianz von Linearkombinationen von Zufallsvariablen
+(Anhang zu Foliensatz 2, Folie 86)}, dass
 
-# Interne Konsistenz
+# Interne Konsistenz | McDonald's $\omega$
 \footnotesize
 \vspace{2mm}
 \underline{Beweis (fortgeführt)}
@@ -1294,23 +1860,23 @@ ergibt sich schließlich
 = \frac{\left(\sum_{j=1}^m l_j\right)^2\Phi}{\left(\sum_{j=1}^m l_j\right)^2\Phi + \sum_{j=1}^m \psi_j}.
 \end{equation}
 
-# Interne Konsistenz
+# Interne Konsistenz | McDonald's $\omega$
 
 \small
-Schätzung von $\omega$ in obigem Normalverteilungsmodell paralleler
-Testmessungen
+Schätzung von $\omega$ im Normalverteilungsmodell zur Schätzung von
+Cronbach's $\alpha$
 \tiny
 \vspace{2mm}
 
 ```{r, echo = TRUE}
 # McDonald's einfaktorielles kongenerisches Omega mit psych
 library(psych)                                                  # psych
-psycho  = omega(Y, nfactors = 1, plot = FALSE)                  # Einfaktorielle Omega-Berechnung mit psych
+psycho  = omega(Y, nfactors = 1, plot = FALSE, covar = TRUE)    # Omega auf ursprünglicher Itemskalierung
 L_p     = as.numeric(psycho$schmid$sl[, 1])                     # Faktorladungsmatrixschätzer
-Psi_p   = as.numeric(psycho$schmid$sl[, "u2"])                  # Fehlerkovarianzmatrixschätzer
-Phi_p   = 1                                                     # psych Standardisierung
+Psi_p   = as.numeric(psycho$schmid$sl[, "u2"])                  # Fehlervarianzschätzer
+Phi_p   = 1                                                     # Standardisierte Faktorvarianz
 omega_f = ((sum(L_p)^2)*Phi_p)/((sum(L_p)^2)*Phi_p+ sum(Psi_p)) # Omega für \Phi := 1 und die obigen Schätzer
-omega_p = psycho$omega.tot                                      # direkte Extraktion von Omega aus psych Ausgabe
+omega_p = psycho$omega.tot                                      # Omega mit empirischer Summenscorevarianz
 
 # McDonald's einfaktorielles kongenerisches Omega mit lavaan
 library(lavaan)                                                 # lavaan
@@ -1325,651 +1891,25 @@ omega_l = (sum(L_l)^2*Phi_l)/(sum(L_l)^2*Phi_l+sum(Psi_l))      # Omega für die
 ```
 
 ```{r, echo = FALSE}
-cat("McDonald's einfaktorielles kongenerisches Omega (psych)  : ",  round(omega_p, 3),
-  "\nMcDonald's einfaktorielles kongenerisches Omega (Formel) : ",  round(omega_f, 3),
-  "\nMcDonald's einfaktorielles kongenerisches Omega (lavaan) : ", round(omega_l, 3))
+cat("Omega (psych, empirische Summenscorevarianz)       : ", round(omega_p, 3),
+  "\nOmega (psych-Parameter, modellimplizierte Varianz) : ", round(omega_f, 3),
+  "\nOmega (lavaan, modellimplizierte Varianz)          : ", round(omega_l, 3))
 ```
-# Interne Konsistenz
-\footnotesize
-\begin{theorem}[Spearman-Brown-Formel]\label{thm:spearman-brown-formel}
-\normalfont
-\justifying
-Gegeben sei ein $m$-Komponententestmodell mit parallelen Testmessungen,
-Reliabilität $\mbox{R}$ und Komponentenreliabilitäten $\mbox{R}_1, ...,
-\mbox{R}_m$. Dann gilt
-\begin{equation}
-\mbox{R} = \frac{m\mbox{R}_1}{1 + (m-1)\mbox{R}_1}
-\end{equation}
-\end{theorem}
-
-Bemerkungen
-
-* Die Testhalbierungsreliabilität ergibt sich als der Spezialfall $m = 2$.
-* Sei dazu $\mbox{R}_1$ die durch $\rho(y_{i1},y_{i2})$ gegebene
-  Paralleltestreliabilität. Für die Gesamttestreliabilität ergibt sich
-\begin{equation}
-\mbox{R} = \frac{2\cdot \mbox{R}_1}{1 + (2 - 1)\mbox{R}_1} = \frac{2\rho(y_{i1},y_{i2})}{1 + \rho(y_{i1},y_{i2})}
-\end{equation}
-* Für $\mbox{R}_1 = 0.7$ ergibt sich beispielsweise
-\begin{equation}
-\mbox{R} = \frac{2\cdot 0.7}{1 + 0.7} \approx 0.82
-\end{equation}
-* In der Praxis unterscheidet man folgende Methoden zur Testhalbierung:
-* Odd-Even: Eine Testhälfte besteht aus den ungerade, die andere aus den gerade
-  nummerierten Items
-* Zeitpartitionierung: Der Test wird in zwei Abschnitte geteilt, deren
-  Bearbeitung die gleiche Zeit beansprucht.
-* Itemzwillinge: Es werden Itemzwillinge konstruiert und zufällig einer der
-  Testhälften zugeordnet.
-
-
-# Interne Konsistenz
 \footnotesize
 
-\underline{Beweis}
-
-Wir halten zunächst fest, dass nach \thmref{thm:cronbachs-alpha} und durch
-Annahme
-paralleler Testmessungen gilt, dass
-\begin{equation}
-\mbox{R} = \frac{m}{m-1}\left(1-\frac{\sum_{j=1}^m \mbb{V}(y_{j})}{\mbb{V}(y)}\right)
-\end{equation}
-
-\noindent (1) *(Summe der Varianzen der beobachteten Werte bei Parallelität)*
-Nach
-\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
-Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)} sind die
-Varianzen aller
-beobachteten Werte über Testmessungen bei parallelen Testmessungen identisch.
-Es gilt also
-\begin{equation}
-\sum_{j=1}^m \mbb{V}(y_{j}) = \sum_{j=1}^m \mbb{V}(y_1) = m\mbb{V}(y_1)
-\end{equation}
-
-
-# Interne Konsistenz
-\vspace{1mm}
-\footnotesize
-\underline{Beweis (fortgeführt)}
-
-\noindent (2) *(Varianz der Summe der beobachteten Werte bei Parallelität)*
-
-Mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Varianz einer Linearkombination (Foliensatz A)} gilt
-\begin{align}
-\begin{split}
-\mbb{V}(y)
-& =                 \mbb{V}\left(\sum_{j=1}^m y_j\right) \\
-& =                 \sum_{j=1}^m \mbb{V}(y_j) + 2 \sum_{j=1}^{m-1}\sum_{k=j+1}^m
-\mbb{C}(y_j, y_k) \\
-& \stackrel{(a)}{=} \sum_{j=1}^m \mbb{V}(y_1) + 2 \sum_{j=1}^{m-1}\sum_{k=j+1}^m
-\mbb{C}(y_1, y_2) \\
-& =                  m\mbb{V}(y_1) + 2 \mbb{C}(y_1, y_2)
-\sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 \\
-& \stackrel{(b)}{=}  m\mbb{V}(y_1) + 2 \mbb{C}(y_1, y_2) \frac{m(m-1)}{2} \\
-& =                  m\mbb{V}(y_1) + m(m-1)\rho(y_1,
-y_2)\sqrt{\mbb{V}(y_1)}\sqrt{\mbb{V}(y_2)}  \\
-& \stackrel{(c)}{=}  m\mbb{V}(y_1) + m(m-1)\rho(y_1,
-y_2)\sqrt{\mbb{V}(y_1)}\sqrt{\mbb{V}(y_1)} \\
-& \stackrel{(d)}{=}  m\mbb{V}(y_1) + m(m-1)\mbox{R}_1 \mbb{V}(y_1) \\
-& =                  m\mbb{V}(y_1)\left(1 + (m-1)\mbox{R}_1\right) \\
-\end{split}
-\end{align}
-
-# Interne Konsistenz
-\vspace{1mm}
-\footnotesize
-\underline{Beweis (fortgeführt)}
-
-Dabei gilt
-
-* $\stackrel{(a)}{=}$ mit Aussage (5) von
-  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
-  Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)}, dass
-\begin{equation}
-\mbb{C}(y_j, y_k) = \mbb{V}(\tau) \mbox{ für alle } j,k \mbox{ mit } 1 \le j,k \le m
-\end{equation}
-also, dass die Kovarianzen der beobachteten Werte beliebiger Paare paralleler
-Testmessungen identisch und damit insbesondere identisch zu $\mbb{C}(y_1, y_2)$
-sind,
-* $\stackrel{(b)}{=}$ mit der unter (4) per Induktionsbeweis gezeigten Identität
-\begin{equation}
-\sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 = \frac{m(m-1)}{2}
-\end{equation}
-* $\stackrel{(c)}{=}$  mit Aussage (2) von
-  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
-  Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)},
-* $\stackrel{(d)}{=}$  mit Aussage (3) von
-  \thmref{thm:paralleltestreliabilitaet}
-
-# Interne Konsistenz
-\footnotesize
-\underline{Beweis (fortgeführt)}
-
-\noindent (3) *(Einsetzen in Cronbach's $\alpha$)*
-
-Einsetzen ergibt dann
-\begin{align}
-\begin{split}
-\mbox{R}
-& = \frac{m}{m-1}\left(1-\frac{\sum_{j=1}^m \mbb{V}(y_{j})}{\mbb{V}(y)}\right)
-\\
-& = \frac{m}{m-1}\left(1-\frac{m\mbb{V}(y_1)}{m\mbb{V}(y_1)\left(1 +
-(m-1)\mbox{R}_1\right)}\right) \\
-& = \frac{m}{m-1}\left(1-\frac{1}{1 + (m-1)\mbox{R}_1}\right) \\
-& = \frac{m}{m-1}\left(\frac{1 + (m-1)\mbox{R}_1}{1 +
-(m-1)\mbox{R}_1}-\frac{1}{1 + (m-1)\mbox{R}_1}\right) \\
-& = \frac{m}{m-1}\left(\frac{1 + (m-1)\mbox{R}_1-1}{1 + (m-1)\mbox{R}_1}\right)
-\\
-& = \frac{m}{m-1} \cdot \frac{(m-1)\mbox{R}_1}{1 + (m-1)\mbox{R}_1} \\
-& = \frac{m\mbox{R}_1}{1 + (m-1)\mbox{R}_1}. \\
-\end{split}
-\end{align}
-
-
-# Interne Konsistenz
-\footnotesize
-\underline{Beweis (fortgeführt)}
-
-\noindent (4) *(Induktionsbeweis der Doppelsummenform)*
-
-Es bleibt zu zeigen, dass
-\begin{equation}
-S_m := \sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 = \frac{m(m-1)}{2} =: P_m
-\end{equation}
-(1) Induktionsanfang: Für $m := 2$ gilt
-\begin{equation}
-S_2
-= \sum_{j=1}^{2-1}\sum_{k=j+1}^2 1
-= \sum_{j=1}^1 \sum_{k=j+1}^2 1
-= \sum_{k=1+1}^2 1
-= \sum_{k=2}^2 1
-= 1
-= \frac{2(2-1)}{2}
-= P_2
-\end{equation}
-Zu Demonstrationszwecken betrachten wir auch $m := 3$. Hier gilt
-\begin{equation}
-S_3
-= \sum_{j=1}^{3-1}\sum_{k=j+1}^3 1
-= \sum_{j=1}^2 \sum_{k=j+1}^3 1
-= \sum_{k=1+1}^3 1 +  \sum_{k=2+1}^3 1
-= \sum_{k=2}^3 1 +  \sum_{k=3}^3 1
-= 3
-= \frac{3(3-1)}{2}
-= P_3
-\end{equation}
-
-\noindent (2) Induktionsschritt: Es gelte nun für ein $m \ge 2$
-\begin{equation}
-S_m = \sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 = \frac{m(m-1)}{2} = P_m
-\end{equation}
-
-
-# Interne Konsistenz
-\footnotesize
-\underline{Beweis (fortgeführt)}
-
-Dann gilt nach Definition für $m + 1$
-\begin{align}
-\begin{split}
-S_{m+1}
-& =  \sum_{j=1}^{m+1-1}\sum_{k=j+1}^{m+1} 1 \\
-& =  \sum_{j=1}^{m}\sum_{k=j+1}^{m+1} 1     \\
-& =  \sum_{j=1}^{m-1}\sum_{k=j+1}^{m+1} 1 + \sum_{k=m+1}^{m+1} 1    \\
-& =  \left(\sum_{j=1}^{m-1}\sum_{k=j+1}^{m+1} 1\right) + 1   \\
-& =  \left(\sum_{j=1}^{m-1}\left(\sum_{k=j+1}^{m} 1  + 1 \right) \right) + 1
-\\
-& =  \left(\sum_{j=1}^{m-1} \sum_{k=j+1}^{m} 1 \right) + \left(\sum_{j=1}^{m-1}
-1\right) + 1   \\
-& =  \left(\sum_{j=1}^{m-1} \sum_{k=j+1}^{m} 1 \right) + (m-1) + 1   \\
-& =   S_m  + m   \\
-\end{split}
-\end{align}
-
-
-# Interne Konsistenz
-\footnotesize
-\underline{Beweis (fortgeführt)}
-
-Dann aber gilt nach der Induktionsschrittannahme
-\begin{align}
-\begin{split}
-S_{m+1}
-& =  S_m  + m   \\
-& =  P_m  + m   \\
-& = \frac{m(m-1)}{2}  + m   \\
-& = \frac{m(m-1)}{2}  + \frac{2m}{2}  \\
-& = \frac{m(m-1) + 2m}{2}   \\
-& = \frac{m^2 - m  + 2m}{2}   \\
-& = \frac{m^2 + m}{2}   \\
-& = \frac{m(m+1)}{2}   \\
-& = \frac{(m+1)((m+1)-1)}{2}   \\
-& = P_{m+1}
-\end{split}
-\end{align}
-
-
-
-# Interne Konsistenz
-\small
-Normalverteilungsbeispiel
-
-\footnotesize
-Wir betrachten den Fall eines $m$-Komponententestmodells mit $m$ parallelen
-Testmessungen. Für alle $i = 1,...,n$ seien in Wahrscheinlichkeitsdichteform,
-wobei wir wiederum auf das Subskript $i$ verzichten wollen
-\begin{equation}
-p(t_1) := N(t_1;1,\sigma_\tau^2), t_2 := t_1,...,t_m := t_1
-\end{equation}
-sowie
-\begin{equation}
-p(y_1|t_1) := N(y_1;t_1,\sigma_\eps^2), ...,
-p(y_m|t_1) := N(y_m;t_1,\sigma_\eps^2)
-\end{equation}
-
-Per definition gilt im $m$-Komponententest mit parallelen Testmessungen für die
-Gesamtreliabilität
-\begin{equation}
-\mbox{R}
-:= \frac{\mbb{V}(\tau)}{\mbb{V}(y)}
-= \frac{\mbb{V}\left(\sum_{j=1}^m \tau_j\right)}{\mbb{V}\left(\sum_{j=1}^m y_j \right)}
-\end{equation}
-Für den Zähler halten wir fest, dass mit der Identität der wahren Werte im
-Modell paralleler Testmessungen gilt
-\begin{equation}
-\mbb{V}\left(\sum_{j=1}^m \tau_j\right)
-= \mbb{V}\left(\sum_{j=1}^m \tau_1\right)
-= \mbb{V}\left(m\tau_1\right)
-= m^2\mbb{V}\left(\tau_1\right)
-= m^2\sigma_\tau^2
-\end{equation}
-
-# Interne Konsistenz
-\small
-Normalverteilungsbeispiel (fortgeführt)
-
-\footnotesize
-Für den Nenner betrachten wir die Wahrscheinlichkeitsdichtefunktion der
-gemeinsamen
-Verteilung von $\tau_1, y_1,...,y_m$, die in Generalisierung des im Abschnitt
-Reliabilität
-betrachteten Normalverteilungsbeispiels die folgende Form hat:
-
-\begin{equation}
-p\left(t_1,y_1,...,y_m\right)
-=
-N\left(
-\begin{pmatrix}
-t_1     \\
-y_1     \\
-\vdots  \\
-y_m
-\end{pmatrix};
-\begin{pmatrix}
-1       \\
-1       \\
-\vdots  \\
-1
-\end{pmatrix},
-\begin{pmatrix}
-\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2                        \\
-\sigma_\tau^2 &  \sigma_\tau^2 + \sigma_\eps^2 & \cdots & \sigma_\tau^2                        \\
-\vdots        &  \vdots                               & \ddots & \vdots                               \\
-\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2 + \sigma_\eps^2 \\
-\end{pmatrix}
-\right)
-\end{equation}
-
-Um nun die Varianz der Summe der beobachteten Werte zu bestimmen, bestimmen wir
-mithilfe des
-[\textcolor{blue}{Theorem zur linear-affinen Transformation eines
-normalverteilten
-Zufallsvektors}](https://www.ipsy.ovgu.de/ipsy_media/Methodenlehre+I/Sommersemester+2025/Allgemeines+Lineares+Modell/04_Normalverteilungen.pdf)
-die Kovarianzmatrix
-des durch die Matrix $A := \begin{pmatrix} 0 & 1 & ... & 1\end{pmatrix} \in
-\mbb{R}^{1\times(m+1)}$
-transformierten Zufallsvektors $(\tau_1,y_1,...,y_m)^T$, also die
-Kovarianzmatrix von
-\begin{equation}
-\sum_{j=1}^m y_j
-=
-\begin{pmatrix} 0 & 1 & ... & 1 \end{pmatrix}
-\begin{pmatrix}
-\tau_1  \\
-y_1     \\
-\vdots  \\
-y_m
-\end{pmatrix}
-\end{equation}
-
-# Interne Konsistenz
-\small
-\vspace{2mm}
-Normalverteilungsbeispiel (fortgeführt)
-
-\footnotesize
-Es ergibt sich
-\begin{align*}
-\begin{split}
-\begin{pmatrix} 0 & 1 & ... & 1 \end{pmatrix}
-\begin{pmatrix}
-\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2                        \\
-\sigma_\tau^2 &  \sigma_\tau^2 + \sigma_\eps^2 & \cdots & \sigma_\tau^2                        \\
-\vdots        &  \vdots                               & \ddots & \vdots                               \\
-\sigma_\tau^2 &  \sigma_\tau^2                        & \cdots & \sigma_\tau^2 + \sigma_\eps^2 \\
-\end{pmatrix}
-\begin{pmatrix} 0 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
-& =
-\begin{pmatrix}
-m\sigma_\tau^2
-& m\sigma_\tau^2 + \sigma_\eps^2
-& ...
-& m\sigma_\tau^2 + \sigma_\eps^2
-\end{pmatrix}
-\begin{pmatrix} 0 \\ 1 \\ \vdots \\ 1 \end{pmatrix}
-\\
-& = m\left(m\sigma_\tau^2 + \sigma_\eps^2 \right)
-\\
-& = m^2\sigma_\tau^2 + m\sigma_\eps^2
-\end{split}
-\end{align*}
-Für die Gesamtreliabilität ergibt sich folglich
-\begin{equation}
-\mbox{R}
-= \frac{\mbb{V}(\tau)}{\mbb{V}(y)}
-= \frac{\mbb{V}\left(\sum_{j=1}^m \tau_j\right)}{\mbb{V}\left(\sum_{j=1}^m y_j \right)}
-= \frac{m^2 \sigma_\tau^2}{m^2\sigma_\tau^2 + m\sigma_\eps^2}
-\end{equation}
-Gilt also beispielsweise $\sigma^2_\tau := 1.0$ und $\sigma_\eps^2 := 0.2$,
-so ergibt sich für $\mbox{R}$ bei $m := 21$ parallelen Testmessungen
-\begin{equation}
-\mbox{R}
-= \frac{(21)^2 \cdot 1.0}{(21)^2\cdot 1.0 + 21\cdot 0.2}
-= \frac{441}{441 + 4.2}
-= 0.990566
-\end{equation}
-Basierend auf der im Abschnitt Reliabilität bestimmten Itemreliabilität
-$\mbox{R}_1 = \frac{1.0}{1.2}$ ergibt sich mithilfe der
-Spearman-Brown-Formel dasselbe Ergebnis
-\begin{equation}
-\mbox{R} = \frac{m\mbox{R}_1}{1 + (m-1)\mbox{R}_1} = \frac{21\cdot \frac{1.0}{1.2}}{1 + 20 \cdot \frac{1.0}{1.2}} = 0.990566.
-\end{equation}
-
-# Interne Konsistenz
-\small
-Normalverteilungsbeispiel
-\vspace{2mm}
-\tiny
-```{r, echo = TRUE}
-n           = 1e1                                                       # Anzahl Testpersonen
-m           = 21                                                        # Anzahl Testmessungen
-k           = 2                                                         # Anzahl Testwiederholungen
-sigsqr_tau  = 1                                                         # Varianz der wahren Werte
-sigsqr_eps  = 0.2                                                       # Varianz der Messfehler
-R_1         = sigsqr_tau/(sigsqr_tau + sigsqr_eps)                      # Itemreliabilität
-R           = ((m^2)*sigsqr_tau)/(((m^2)*sigsqr_tau + m*sigsqr_eps))    # Gesamtreliabilität nach Beispiel
-SBF         = (m*R_1)/(1 + (m-1)*R_1)                                   # Gesamtreliabilität nach SB-Formel
-Tau           = matrix(rep(NaN,n)  , nrow = n)                            # Initialisierung wahre Werte
-Y           = array(NaN, dim = c(n, m, k))                              # Initialisierung beobachtete Werte
-for(i in 1:n){                                                          # Iteration über Testpersonen
-    Tau[i] = rnorm(1,1,sqrt(sigsqr_tau))                                  # Realisierung wahrer Werte pro Testperson
-    for(t in 1:k){                                                      # Iteration über parallele Testwiederholungen
-        for(j in 1:m){                                                  # Iteration über parallele Testmessungen
-            Y[i,j,t] = rnorm(1,Tau[i], sqrt(sigsqr_eps))}}}               # Realisierung beobachteter Werte
-R_tt        = cor(apply(Y, c(1, 3), sum))[1,2]                          # Korrelation der Summenscores
-```
-
-```{r}
-cat("Itemreliabilität                                  : ", R_1,
-    "\nGesamtreliabilität nach Normalverteilungsbeispiel : ", R,
-    "\nGesamtreliabilität nach Spearman-Brown-Formel     : ", SBF,
-    "\nKorrelation der Summenscores über Paralleltests   : ", R_tt)
-```
-
-
+* Alle Berechnungen beziehen sich auf die ursprüngliche Itemskalierung.
+* Die direkte `psych`-Ausgabe nutzt die empirische, die Formel die
+  modellimplizierte Summenscorevarianz.
 
 #
 \vfill
-\setstretch{1.8}
+\setstretch{3.3}
 \large
 Reliabilität
 
-Interne Konsistenz
-
-**Itemanalyse**
-
-Selbstkontrollfragen
-\vfill
-
-
-# Itemanalyse
-\footnotesize
-\begin{definition}[Vereinfachtes $m$-Komponententestmodell]
-Gegeben sei das vereinfachte Modell multipler Testmessungen für $j = 1,...m$.
-Dann heißt die gemeinsame Verteilung der $y_j$ und $\tau_j$ mit der
-Faktorisierungseigenschaft
-\begin{equation}
-\mbb{P}(\tau_1,...,\tau_m,y_1,...,y_m)
-= \mbb{P}(\tau_1,...,\tau_m)\prod_{j=1}^m \mbb{P}(y_j|\tau_j)
-\end{equation}
-das \textit{vereinfachte $m$-Komponententestmodell} und die beobachteten Werte
-$y_1,...,y_m$ der Testmessungen die \textit{Items} des
-$m$-Komponententestmodells.
-Weiterhin bezeichnen wir mit
-\begin{itemize}
-\item $y = \sum_{j=1}^m y_j$ den \textit{Summenscore} und
-\item $\tau = \sum_{j=1}^m \tau_j$ die \textit{Summe der wahren Werte}
-\end{itemize}
-\end{definition}
-
-Bemerkung
-
-* Im vereinfachten $m$-Komponententestmodell wird die Testperson $i$ nicht
-  ausgzeichnet.
-
-# Itemanalyse
-\footnotesize
-\begin{definition}[Itemkennwerte]
-Gegeben sei das vereinfachte $m$-Komponententestmodell und eine Zufallsvariable
-$u$.
-Dann heißen
-\begin{itemize}
-\item $\mbb{E}(y_j)$ die \textit{Schwierigkeit} des $j$-ten Items,
-\item $\mbb{V}(y_j)$ die \textit{Varianz} des $j$-ten Items,
-\item $\mbb{S}(y_j)$ die \textit{Standardabweichung} des $j$-ten Items,
-\item $\rho(y_j, y_k)$ die \textit{Korrelation} zwischen dem $j$-ten und $k$-ten Item,
-\item $\rho(y_j, y)$ die \textit{Trennschärfe} des $j$-ten Items
-\item $\mbox{R}_j := \rho(\tau_j, y_j)^2$ die \textit{Reliabilität} des $j$-ten Items
-\end{itemize}
-\end{definition}
-
-Bemerkung
-
-* Es handelt sich im Wesentlichen um die üblichen Definitionen von Kennwerten
-  von Zufallsvariablen.
-
-# Itemanalyse
-\footnotesize
-\begin{theorem}[Erwartungswert und Varianz eines Summenscores]\label{thm:erwartungswert-und-varianz-eines-summenscores}
-\justifying
-\normalfont
-Gegeben sei das vereinfachte $m$-Komponententestmodell. Dann gelten
-\begin{itemize}
-\item[(1)] $\mbb{E}(y) = \sum_{j=1}^m \mbb{E}(y_j)$
-\item[(2)] $\mbb{V}(y) = \sum_{j=1}^m \mbb{V}(y_j) + 2\sum_{j=1}^{m-1}\sum_{k=j+1}^m \rho(y_j, y_k)\mbb{S}(y_j)\mbb{S}(y_k)$
-\end{itemize}
-\end{theorem}
-\underline{Beweis}
-
-Die Aussage (1) ergibt sich unmittelbar aus
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Erwartungswert bei linear-affiner Kombination (Foliensatz A)}
-Für die Aussage (2) gilt mit
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Varianz einer Linearkombination (Foliensatz A)}, dass
-\begin{equation}
-\mbb{V}(y) = \sum_{j=1}^m \mbb{V}(y_j) + 2\sum_{j=1}^{m-1}\sum_{k=j+1}^m \mbb{C}(y_j, y_k)
-\end{equation}
-Die Definition der Korrelation liefert dann die gewünschte Aussage, da
-\begin{equation}
-\rho(y_j, y_k) = \frac{\mbb{C}(y_j, y_k)}{\mbb{S}(y_j)\mbb{S}(y_k)}
-\Leftrightarrow
-\mbb{C}(y_j, y_k) = \rho(y_j, y_k)\mbb{S}(y_j)\mbb{S}(y_k)
-\end{equation}
-$\hfill\Box$
-
-# Itemanalyse
-\footnotesize
-\begingroup
-\setbeamerfont{block title}{size=\small}
-\begin{theorem}[Spearman-Brown-Formel in mittlerer Inter-Item-Korrelationsform]\label{thm:spearman-brown-formel-mittlere-inter-item-korrelation}
-\justifying
-\normalfont
-Gegeben sei das vereinfachte $m$-Komponententestmodell mit parallelen Items
-und Inter-Item-Korrelationen $\rho(y_j, y_k) = \rho$ für alle $j,k$ mit
-$1 \le j,k \le m$ und $j \neq k$. Sei weiterhin
-\begin{equation}
-\bar{\rho}
-:= \frac{1}{m^2 - m}\sum_{j=1}^{m}\sum_{\substack{k = 1 \\ k \neq j}}^m \rho(y_j, y_k)
- = \frac{2}{m^2 - m}\sum_{j=1}^{m-1}\sum_{k=j+1}^m \rho(y_j, y_k)
-\end{equation}
-die mittlere Inter-Item-Korrelation. Dann gilt
-\begin{equation}
-\mbox{R} = \frac{m\bar{\rho}}{1 + (m-1)\bar{\rho}}
-\end{equation}
-\end{theorem}
-\endgroup
-
-Bemerkungen
-
-* Es handelt sich um Gleichung (1) in @smith2000.
-* $\bar{\rho}$ berechnet die mittlere Inter-Item-Korrelation nur über Itempaare
-  mit $j \neq k$.
-
-# Itemanalyse
-\footnotesize
-\underline{Beweis}
-
-Wir halten zunächst fest, dass durch Vernachlässigung des Personenindex $i$
-mit \thmref{thm:paralleltestreliabilitaet} für die Reliabilität des $j$-ten
-Items gilt, dass
-\begin{equation}
-\mbox{R}_j = \rho(y_j,y_k) = \mbox{R}_k \mbox{ für alle } j,k \mbox{ mit } 1 \le j,k \le m \mbox{ und } j \neq k
-\end{equation}
-also insbesondere auch
-\begin{equation}
-\rho(y_j, y_k) = \mbox{R}_1 \mbox{ für alle } j,k \mbox{ mit } 1 \le j,k \le m \mbox{ und } j \neq k
-\end{equation}
-Die mittlere Inter-Item-Korrelation ergibt sich dann zu
-\begin{equation}
-\bar{\rho}
-= \frac{1}{m^2 - m}\sum_{j=1}^{m}\sum_{\substack{k = 1 \\ k \neq j}}^m \rho(y_j, y_k)
-= \frac{1}{m^2 - m}\sum_{j=1}^{m}\sum_{\substack{k = 1 \\ k \neq j}}^m \mbox{R}_1
-= \frac{1}{m^2 - m} \cdot (m^2 - m)\mbox{R}_1
-= \mbox{R}_1
-\end{equation}
-Aus der Spearman-Brown-Formel für parallele Testmessungen ergibt sich dann
-unmittelbar die gewünschte Aussage, da mit \thmref{thm:spearman-brown-formel}
-für parallele Testmessungen gilt, dass
-\begin{equation}
-\mbox{R} = \frac{m\mbox{R}_1}{1 + (m-1)\mbox{R}_1} = \frac{m\bar{\rho}}{1 + (m-1)\bar{\rho}}.
-\end{equation}
-$\hfill\Box$
-
-# Itemanalyse
-\setstretch{1}
-\footnotesize
-\begin{theorem}[Vollversions-Kurzversions-Korrelation]\label{thm:vollversions-kurzversions-korrelation}
-\normalfont
-\justifying
-Seien
-\begin{equation}
-I_{\mrm{v}} := \{1,\dots,m\}, I_{\mrm{k}} \subset I_{\mrm{v}}, 0 < |I_{\mrm{k}}| < |I_{\mrm{v}}|
-\end{equation}
-die Itemindexmengen einer \textit{Vollversion} und einer \textit{Kurzversion}
-eines vereinfachten $m$-Komponententestmodells. Die Mengen beobachteter Werte
-separater Realisierungen der Vollversion und der Kurzversion seien definiert als
-\begin{equation}
-Y_{\mrm{v}} := \{y_{\mrm{v}j} \mid j \in I_{\mrm{v}}\}, Y_{\mrm{k}} := \{y_{\mrm{k}j} \mid j \in I_{\mrm{k}}\}.
-\end{equation}
-Die zugehörigen Summenscores seien definiert als
-\begin{equation}
-y_{\mrm{v}} := \sum_{j \in I_{\mrm{v}}} y_{\mrm{v}j}, y_{\mrm{k}} := \sum_{j \in I_{\mrm{k}}} y_{\mrm{k}j}.
-\end{equation}
-Die zugehörigen Mengen wahrer Werte seien definiert als
-\begin{equation}
-T_{\mrm{v}} := \{\tau_{\mrm{v}j} \mid j \in I_{\mrm{v}}\}, T_{\mrm{k}} := \{\tau_{\mrm{k}j} \mid j \in I_{\mrm{k}}\}.
-\end{equation}
-Für die Summen der wahren Werte gelte
-\begin{equation}
-\tau_{\mrm{v}} := \sum_{j \in I_{\mrm{v}}} \tau_{\mrm{v}j}, \tau_{\mrm{k}} := \sum_{j \in I_{\mrm{k}}} \tau_{\mrm{k}j}, \rho(\tau_{\mrm{v}}, \tau_{\mrm{k}}) = 1.
-\end{equation}
-Die Summenfehlerwerte der Vollversion und der Kurzversion seien definiert als
-\begin{equation}
-\eps_{\mrm{v}} := y_{\mrm{v}} - \tau_{\mrm{v}}, \eps_{\mrm{k}} := y_{\mrm{k}} - \tau_{\mrm{k}}.
-\end{equation}
-Weiterhin gelte bei separaten Realisierungen der Vollversion und der Kurzversion
-\begin{equation}
-\mbb{C}(\tau_{\mrm{v}},\eps_{\mrm{k}}) = 0, \mbb{C}(\tau_{\mrm{k}},\eps_{\mrm{v}}) = 0, \mbb{C}(\eps_{\mrm{v}},\eps_{\mrm{k}}) = 0.
-\end{equation}
-Die Reliabilitäten der Vollversion und der Kurzversion seien mit
-$\mbox{R}_{\mrm{v}}$ bzw. $\mbox{R}_{\mrm{k}}$ bezeichnet. Dann gilt
-\begin{equation}
-\rho(y_{\mrm{v}}, y_{\mrm{k}})
-= \sqrt{\mbox{R}_{\mrm{k}}\mbox{R}_{\mrm{v}}}.
-\end{equation}
-\end{theorem}
-
-# Itemanalyse
-\footnotesize
-\underline{Beweis}
-
-Mit den Annahmen des Theorems,
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem
-Kovarianz bei paarweiser Addition (Foliensatz A)},
-\href{../A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Wahrscheinlichkeitstheoretische-Ergänzungen.pdf}{Theorem Symmetrie der Kovarianz (Foliensatz A)} und \defref{def:reliabilitaeten-m-komponententestmodelle}
-gilt, dass
-\begin{align}
-\begin{split}
-\rho(y_{\mrm{v}}, y_{\mrm{k}})
-& = \frac{\mbb{C}(y_{\mrm{v}},
-y_{\mrm{k}})}{\mbb{S}(y_{\mrm{v}})\mbb{S}(y_{\mrm{k}})} \\
-& = \frac{\mbb{C}(\tau_{\mrm{v}} + \eps_{\mrm{v}}, \tau_{\mrm{k}} +
-\eps_{\mrm{k}})}{\mbb{S}(y_{\mrm{v}})\mbb{S}(y_{\mrm{k}})} \\
-& = \frac{\mbb{C}(\tau_{\mrm{v}}, \tau_{\mrm{k}}) +
-          \mbb{C}(\tau_{\mrm{v}}, \eps_{\mrm{k}}) +
-          \mbb{C}(\eps_{\mrm{v}}, \tau_{\mrm{k}}) +
-          \mbb{C}(\eps_{\mrm{v}}, \eps_{\mrm{k}})}{\mbb{S}(y_{\mrm{v}})\mbb{S}(y_{\mrm{k}})} \\
-& = \frac{\mbb{C}(\tau_{\mrm{v}},
-\tau_{\mrm{k}})}{\mbb{S}(y_{\mrm{v}})\mbb{S}(y_{\mrm{k}})} \\
-& = \frac{\mbb{C}(\tau_{\mrm{v}},
-\tau_{\mrm{k}})}{\mbb{S}(y_{\mrm{v}})\mbb{S}(y_{\mrm{k}})} \cdot
-    \frac{\mbb{S}(\tau_{\mrm{v}})\mbb{S}(\tau_{\mrm{k}})}{\mbb{S}(\tau_{\mrm{v}})\mbb{S}(\tau_{\mrm{k}})} \\
-& = \frac{\mbb{C}(\tau_{\mrm{v}},
-\tau_{\mrm{k}})}{\mbb{S}(\tau_{\mrm{v}})\mbb{S}(\tau_{\mrm{k}})} \cdot
-    \frac{\mbb{S}(\tau_{\mrm{v}})}{\mbb{S}(y_{\mrm{v}})} \cdot
-    \frac{\mbb{S}(\tau_{\mrm{k}})}{\mbb{S}(y_{\mrm{k}})} \\
-& = \rho(\tau_{\mrm{v}}, \tau_{\mrm{k}}) \cdot
-    \sqrt{\frac{\mbb{V}(\tau_{\mrm{v}})}{\mbb{V}(y_{\mrm{v}})}} \cdot
-    \sqrt{\frac{\mbb{V}(\tau_{\mrm{k}})}{\mbb{V}(y_{\mrm{k}})}} \\
-& = 1 \cdot \sqrt{\mbox{R}_{\mrm{v}}} \sqrt{\mbox{R}_{\mrm{k}}}\\
-& = \sqrt{\mbox{R}_{\mrm{v}}\mbox{R}_{\mrm{k}}}
-\end{split}
-\end{align}
-
-$\hfill\Box$
-
-#
-\vfill
-\setstretch{1.8}
-\large
-Reliabilität
+Praxis der Reliabilitätsschätzung
 
 Interne Konsistenz
-
-Itemanalyse
 
 **Selbstkontrollfragen**
 \vfill
@@ -1987,7 +1927,8 @@ Itemanalyse
 1. Geben Sie das Theorem zur Paralleltestreliabilität wieder.
 1. Warum ist die Annahme paralleler Testmessungen für die empirische Messung der
    Reliabilität zentral?
-1. Geben Sie die Definition des Paralleltestreliabilitätsschätzers wieder.
+1. Geben Sie die Definition des Reliabilitätsschätzers bei parallelen
+   Testmessungen wieder.
 1. Erläutern Sie das praktische Vorgehen zur Durchführung einer
    Paralleltestreliabilitätsschätzung.
 1. Erläutern Sie das praktische Vorgehen zur Durchführung einer
@@ -2010,10 +1951,12 @@ Itemanalyse
    $m$-Komponententestmodells wieder.
 1. Wann ist die Gesamtreliabilität eines $m$-Komponententestmodells mit
    Cronbach's $\alpha$ identisch?
-1. Geben Sie die Definition des Cronbach's $\alpha$ Schätzers wieder.
+1. Geben Sie die Definition des Cronbach's $\alpha$-Schätzers wieder.
 1. Geben Sie das Theorem zur Spearman-Brown-Formel wieder.
 1. Erläutern Sie die Spearman-Brown-Formel mit Bezugnahme auf die
    Testhalbierungsreliabilität.
+1. Geben Sie die Definition von McDonald's $\omega$ wieder.
+1. Erläutern Sie das McDonald's $\omega$ zugrundeliegende Testmodell.
 
 # Referenzen {.allowframebreaks}
 \footnotesize

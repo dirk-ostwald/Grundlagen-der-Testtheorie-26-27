@@ -11,3 +11,7 @@ tmp/
 inspect.json
 
 /.quarto/
+
+_build_src/
+_render_figures/
+!_texheader.tex

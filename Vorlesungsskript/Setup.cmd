@@ -2,7 +2,7 @@
 REM ------------------------------------------------------------------------ REM
 REM Einmalige Einrichtung: legt die Verzeichnis-Junction _src an, ueber die
 REM das PDWP-Quellprojekt in dieses Quarto-Projekt eingeblendet wird.
-REM Es werden keine Dateien kopiert. Administratorrechte sind nicht noetig.
+REM Es werden keine Quellkopien erstellt. Administratorrechte sind nicht noetig.
 REM
 REM WICHTIG: Vorher in Nextcloud unter
 REM   Einstellungen - Allgemein - Ignorierte Dateien bearbeiten

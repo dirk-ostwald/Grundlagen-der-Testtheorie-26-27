@@ -1,6 +1,8 @@
 project:
   type: book
   output-dir: _book
+  post-render:
+    - powershell -NoProfile -ExecutionPolicy Bypass -File _aufraeumen.ps1
 
 lang: de
 csl: https://www.zotero.org/styles/apa
@@ -21,11 +23,10 @@ book:
     - index.qmd
     - _src/_part_9/901-Psychologische-Tests.qmd
     - _src/_part_9/903-Modelle-der-klassischen-Testtheorie.qmd
-    # - _src/_part_9/904-Reliabilität-und-interne-Konsistenz.qmd
+    - _src/_part_9/904-Reliabilität-und-interne-Konsistenz.qmd
     - Referenzen.qmd
-    # - _src/_part_9/A-Wahrscheinlichkeitstheoretische-Ergaenzungen.qmd
   appendices:
-    - A-Wahrscheinlichkeitstheoretische-Ergaenzungen.qmd
+    - _anhang/A-Wahrscheinlichkeitstheoretische-Ergaenzungen.qmd
 
 
 format:
@@ -33,12 +34,15 @@ format:
     pdf-engine: xelatex
     documentclass: scrreprt
     toc-depth: 2
-    # Verknüpfte Quelldateien beim Aufräumen erhalten.
+    papersize: a4
+    template-partials:
+      - _templates/fonts.latex
+    # TEX bis zum Post-Render-Schritt erhalten, dort gezielt entfernen.
     keep-tex: true
     latex-clean: false
     code-line-numbers: false
     latex-tinytex: false
     include-in-header:
-      - _src/_texheader.tex
+      - _texheader.tex
       - _titelseite.tex
       - _abbildungen.tex

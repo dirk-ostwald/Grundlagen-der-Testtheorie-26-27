@@ -127,6 +127,7 @@ items           = paste0("Testmessung ", 1:m)                                   
 colnames(D)     = items                                                         # Itemlabels
 D               = cbind(Testperson = paste0(1:n), D)                            # Testpersonenlabel
 knitr::kable(                                                                   # Table
+booktabs        = TRUE,                                                         # Abstaende nach je fuenf Personen
 D,                                                                              # Daten
 align           = "c",                                                          # Orientierung
 row.names       = FALSE,                                                        # keine Zeilennamen
@@ -137,22 +138,19 @@ caption         = "20 Testpersonen $\\times$ 4 Testmessungen")                  
 # Grundlagen
 
 \footnotesize
-\begin{definition}[Wahrer Wert, beobachteter Wert und Messfehler]
+\begin{definition}[Beobachteter Wert, wahrer Wert und Messfehler]
 \justifying
-Für $i = 1,...,n$ und $j = 1,...,m$ ist der \textit{wahre Wert (True score)}
-einer Testperson $i$ für eine Testmessung $j$ als Zufallsvariable $\tau_{ij}$
-modelliert.
-Der \textit{beobachtete Wert (observed score)} wird durch die Zufallsvariable
-$y_{ij}$ modelliert. Die gemeinsame Verteilung des wahren Werts und des
-beobachteten Werts erfülle $\mbb{E}(y_{ij}|\tau_{ij}) = \tau_{ij}$.
-Bedingt auf $\tau_{ij} = t_{ij}$ gilt damit
+Für $i = 1,\ldots,n$ und $j = 1,\ldots,m$ modelliere die Zufallsvariable
+$y_{ij}$ den \textit{beobachteten Wert} und die Zufallsvariable $\tau_{ij}$ den
+\textit{wahren Wert} der $i$-ten Testperson in der $j$-ten Testmessung. Dann gilt
+nach dem Modell der klassischen Testtheorie  
 \begin{equation}
-\mbb{E}(y_{ij}|\tau_{ij} = t_{ij}) = t_{ij}.
+\tau_{ij} = \mathbb{E}(y_{ij}\mid\tau_{ij}),
 \end{equation}
-Der \textit{Messfehler} einer Testperson für diese Testmessung ist definiert als
-die Zufallsvariable
+und der \textit{Messfehler} der $i$-ten Testperson in der $j$-ten Testmessung ist
+definiert als
 \begin{equation}
-\eps_{ij} := y_{ij} - \tau_{ij}.
+\varepsilon_{ij} := y_{ij}-\tau_{ij}.
 \end{equation}
 \end{definition}
 
@@ -162,14 +160,16 @@ Bemerkungen
 * Eine *Testmessung* mag aus einem Item oder der Summe mehrerer Items bestehen.
 * Erst im $m$-Komponentenmodell werden wir *Itemscores* und *Summenscores*
   unterscheiden.
-* Man beachte, dass $\tau_{ij}, y_{ij}$ und $\eps_{ij}$ Zufallsvariablen sind
-* Auch $\mathbb{E}(y_{ij}|\tau_{ij})$ ist als Funktion von $\tau_{ij}$ eine
+* $\tau_{ij}$, $y_{ij}$ und $\varepsilon_{ij}$ sind Zufallsvariablen. Auch
+  $\mathbb{E}(y_{ij}\mid\tau_{ij})$ ist als Funktion von $\tau_{ij}$ eine
   Zufallsvariable.
-* Man beachte, dass $t_{ij} \in \mbb{R}$ eine Konstante ist.
-* Die implizit vorhandene bedingte Verteilung $\mbb{P}(y_{ij}|\tau_{ij} =
-  t_{ij})$ wird *Propensitätsverteilung* genannt.
-* Die Propensitätsverteilung modelliert intraindividuelle Variabilität
-  beobachteter Werte bei festem wahren Wert.
+* Für einen festen wahren Wert $t_{ij}$ von $\tau_{ij}$ gilt
+  \begin{equation}
+  \mathbb{E}(y_{ij}\mid\tau_{ij}=t_{ij})=t_{ij}.
+  \end{equation}
+* Die bedingte Verteilung $\mathbb{P}(y_{ij}\mid\tau_{ij}=t_{ij})$ wird
+  *Propensitätsverteilung* genannt. Sie modelliert die intraindividuelle
+  Variabilität beobachteter Werte bei festem wahren Wert.
 * Die klassische Ausgangsdefinition findet sich weiterhin in vielen Lehrbüchern
   zur Testtheorie
 
@@ -611,9 +611,7 @@ Bemerkung zu $\mbb{C}(y,\tau) = \mbb{V}(\tau)$
 
 * Die Kovarianz der beobachteten Werte und der wahren Werte einer Testmessung
 entspricht der Varianz der wahren Werte. Diese Eigenschaft des Modells ist für
-eine weitere Eigenschaft der Reliabilität essenziell. Zusätzliche Messfehlervarianz 
-erhöht die Streuung beobachteter Werte, erhöht aber nicht die Kovarianz von 
-beobachteten und wahren Werten.
+eine weitere Eigenschaft der Reliabilität essenziell.
 
 # Das Stichprobenmodell multipler Testmessungen
 \vspace{2mm}
@@ -912,23 +910,23 @@ Simulation des Normalverteilungsbeispiels mit $\mu := 1$ für $n := 10^4$
 
 \tiny
 ```{r, echo = TRUE}
-n           = 1e4                                       # Personenanzahl
-m           = 1                                         # Testmessungsanzahl
-mu          = 1                                         # Erwartungswertparameter wahrer Wert
-Tau         = matrix(rep(NaN, n*m), nrow = n)           # Wahrer Wert Array
-Y           = matrix(rep(NaN, n*m), nrow = n)           # Beobachteter Wert Array
-E           = matrix(rep(NaN, n*m), nrow = n)           # Messfehler Array
-for(i in 1:n){                                          # Iteration über Testpersonen
-  for(j in 1:m){                                        # Iteration über Testmessungen
-    Tau[i,j]  = rnorm(1,mu,1)                           # Wahrer Wert Realisierung
-    Y[i,j]  = rnorm(1,Tau[i,j],1)                       # Beobachteter Wert Realisierung
-    E[i,j]  = Y[i,j] - Tau[i,j]}}                       # Messfehler Realisierung
-e_hat_es    = mean(E[,1])                               # Erwartungswertschätzung Messfehler
-c_hat_ts_es = cov(Tau[,1],E[,1])                        # Kovarianzschätzung wahrer Wert, Messfehler
-v_hat_os    = var(Y[,1])                                # Varianzschätzung beobachteter Wert
-v_hat_ts    = var(Tau[,1])                              # Varianzschätzung wahrer Wert
-v_hat_es    = var(E[,1])                                # Varianzschätzung Messfehler
-c_hat_os_ts = cov(Y[,1],Tau[,1])                        # Kovarianzschätzung beobachteter Wert, wahrer Wert
+n            = 1e4                                    # Personenanzahl
+m            = 1                                      # Testmessungsanzahl
+mu           = 1                                      # Erwartungswertparameter wahrer Wert
+Tau          = matrix(rep(NaN, n*m), nrow = n)        # Wahrer Wert Array
+Y            = matrix(rep(NaN, n*m), nrow = n)        # Beobachteter Wert Array
+E            = matrix(rep(NaN, n*m), nrow = n)        # Messfehler Array
+for(i in 1:n){                                        # Iteration über Testpersonen
+  for(j in 1:m){                                      # Iteration über Testmessungen
+    Tau[i,j] = rnorm(1,mu,1)                          # Wahrer Wert Realisierung
+    Y[i,j]   = rnorm(1,Tau[i,j],1)                    # Beobachteter Wert Realisierung
+    E[i,j]   = Y[i,j] - Tau[i,j]}}                    # Messfehler Realisierung
+e_hat_es     = mean(E[,1])                            # Erwartungswertschätzung Messfehler
+c_hat_ts_es  = cov(Tau[,1],E[,1])                     # Kovarianzschätzung wahrer Wert, Messfehler
+v_hat_os     = var(Y[,1])                             # Varianzschätzung beobachteter Wert
+v_hat_ts     = var(Tau[,1])                           # Varianzschätzung wahrer Wert
+v_hat_es     = var(E[,1])                             # Varianzschätzung Messfehler
+c_hat_os_ts  = cov(Y[,1],Tau[,1])                     # Kovarianzschätzung beobachteter Wert, wahrer Wert
 ```
 
 \footnotesize
@@ -1195,8 +1193,6 @@ Bemerkung zu $\mbb{C}(y_{j},y_{k}) = \mbb{C}(\tau_{j},\tau_{k})$
 
 * Die Kovarianz zweier beobachteter Testwerte entspricht der Kovarianz ihrer
   wahren Werte.
-* Messfehlervariabilität erhöht die Streuung der beobachteten Werte, erhöht aber
-  nicht die Kovarianz zwischen den beiden Testmessungen.
 
 # Das Stichprobenmodell multipler Testmessungen
 \footnotesize
@@ -1516,23 +1512,23 @@ Simulation des Normalverteilungsbeispiels für $n := 10^5$
 
 \tiny
 ```{r, echo = TRUE, eval = F, errors = F}
-n           = 1e5                                   # Personenanzahl
-m           = 2                                     # Testmessungsanzahl
-mu          = 1                                     # Wahrer Werte Erwartungswertparameter
-Tau           = matrix(rep(NaN, n*m), nrow = n)     # Wahrer Wert Array
-Y           = matrix(rep(NaN, n*m), nrow = n)       # Beobachteter Wert Array
-E           = matrix(rep(NaN, n*m), nrow = n)       # Messfehler Array
-for(i in 1:n){                                      # Iteration über Testpersonen
-    Tau[i,1]  = rnorm(1,1,1)                        # Wahrer Wert Realisierung       für j = 1
-    Y[i,1]  = rnorm(1,Tau[i,1],1)                   # Beobachteter Wert Realisierung für j = 1
-    E[i,1]  = Y[i,1] - Tau[i,1]                     # Messfehler Realisierung        für j = 1
-    Tau[i,2]  = rnorm(1,Tau[i,1] + 1,.5)            # Wahrer Wert Realisierung       für j = 2
-    Y[i,2]  = rnorm(1,Tau[i,2],.5)                  # Beobachteter Wert Realisierung für j = 2
-    E[i,2]  = Y[i,2] - Tau[i,2]}                    # Messfehler Realisierung        für j = 2
-c_hat_e1_e2 = cov(E[,1],E[,2])                      # Kovarianzschätzung Messfehler  1, Messfehler 2
-c_hat_t1_e2 = cov(Tau[,1],E[,2])                    # Kovarianzschätzung wahrer Wert 1, Messfehler 2
-c_hat_y1_y2 = cov(Y[,1],Y[,2])                      # Kovarianzschätzung beobachteter Wert 1, beobachteter Wert 2
-c_hat_t1_t2 = cov(Tau[,1],Tau[,2])                  # Kovarianzschätzung wahrer Wert 1, wahrer Wert 2
+n            = 1e5                                    # Personenanzahl
+m            = 2                                      # Testmessungsanzahl
+mu           = 1                                      # Wahrer Werte Erwartungswertparameter
+Tau          = matrix(rep(NaN, n*m), nrow = n)        # Wahrer Wert Array
+Y            = matrix(rep(NaN, n*m), nrow = n)        # Beobachteter Wert Array
+E            = matrix(rep(NaN, n*m), nrow = n)        # Messfehler Array
+for(i in 1:n){                                        # Iteration über Testpersonen
+    Tau[i,1] = rnorm(1,1,1)                           # Wahrer Wert Realisierung       für j = 1
+    Y[i,1]   = rnorm(1,Tau[i,1],1)                    # Beobachteter Wert Realisierung für j = 1
+    E[i,1]   = Y[i,1] - Tau[i,1]                      # Messfehler Realisierung        für j = 1
+    Tau[i,2] = rnorm(1,Tau[i,1] + 1,.5)               # Wahrer Wert Realisierung       für j = 2
+    Y[i,2]   = rnorm(1,Tau[i,2],.5)                   # Beobachteter Wert Realisierung für j = 2
+    E[i,2]   = Y[i,2] - Tau[i,2]}                     # Messfehler Realisierung        für j = 2
+c_hat_e1_e2  = cov(E[,1],E[,2])                       # Kovarianzschätzung Messfehler  1, Messfehler 2
+c_hat_t1_e2  = cov(Tau[,1],E[,2])                     # Kovarianzschätzung wahrer Wert 1, Messfehler 2
+c_hat_y1_y2  = cov(Y[,1],Y[,2])                       # Kovarianzschätzung beobachteter Wert 1, beobachteter Wert 2
+c_hat_t1_t2  = cov(Tau[,1],Tau[,2])                   # Kovarianzschätzung wahrer Wert 1, wahrer Wert 2
 ```
 
 \footnotesize
@@ -1973,22 +1969,22 @@ Simulation des Normalverteilungsbeispiels für $n = 10^5$
 \vspace{1mm}
 \tiny
 ```{r, echo = TRUE}
-n           = 1e5                               # Personenanzahl
-m           = 2                                 # Testmessungsanzahl
-Tau           = matrix(rep(NaN, n)  , nrow = n) # Wahrer Wert Array
-Y           = matrix(rep(NaN, n*m), nrow = n)   # Beobachteter Wert Array
-E           = matrix(rep(NaN, n*m), nrow = n)   # Messfehler Array
-for(i in 1:n){                                  # Personeniterationen
-    Tau[i]  = rnorm(1,1,1)                      # Wahrer Wert Realisierung für j = 1,2
-    for(j in 1:m){                              # Testmessungsiterationen
-        Y[i,j]  = rnorm(1,Tau[i],1)             # Beobachteter Wert Realisierung
-        E[i,j]  = Y[i,j] - Tau[i]}}             # Messfehler Realisierung
-e_hat_o1_o2 = apply(Y, 2, mean)                 # Erwartungswertschätzung Beobachteter Wert 1, Beobachteter Wert 2
-v_hat_o1_o2 = apply(Y, 2, var)                  # Varianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
-c_hat_e1_e2 = cov(E[,1],E[,2])                  # Kovarianzschätzung Messfehler 1, Messfehler 2
-c_hat_t_e2  = cov(Tau    ,E[,2])                # Kovarianzschätzung Wahrer Wert 1, Messfehler 2
-c_hat_y1_y2 = cov(Y[,1],Y[,2])                  # Kovarianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
-v_hat_t     = var(Tau)                          # Varianzschätzung Wahrer Wert
+n              = 1e5                                  # Personenanzahl
+m              = 2                                    # Testmessungsanzahl
+Tau            = matrix(rep(NaN, n)  , nrow = n)      # Wahrer Wert Array
+Y              = matrix(rep(NaN, n*m), nrow = n)      # Beobachteter Wert Array
+E              = matrix(rep(NaN, n*m), nrow = n)      # Messfehler Array
+for(i in 1:n){                                        # Personeniterationen
+    Tau[i]     = rnorm(1,1,1)                         # Wahrer Wert Realisierung für j = 1,2
+    for(j in 1:m){                                    # Testmessungsiterationen
+        Y[i,j] = rnorm(1,Tau[i],1)                    # Beobachteter Wert Realisierung
+        E[i,j] = Y[i,j] - Tau[i]}}                    # Messfehler Realisierung
+e_hat_o1_o2    = apply(Y, 2, mean)                    # Erwartungswertschätzung Beobachteter Wert 1, Beobachteter Wert 2
+v_hat_o1_o2    = apply(Y, 2, var)                     # Varianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
+c_hat_e1_e2    = cov(E[,1],E[,2])                     # Kovarianzschätzung Messfehler 1, Messfehler 2
+c_hat_t_e2     = cov(Tau    ,E[,2])                   # Kovarianzschätzung Wahrer Wert 1, Messfehler 2
+c_hat_y1_y2    = cov(Y[,1],Y[,2])                     # Kovarianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
+v_hat_t        = var(Tau)                             # Varianzschätzung Wahrer Wert
 ```
 
 # Das Stichprobenmodell paralleler Testmessungen
@@ -3506,6 +3502,41 @@ x_2\right)                                         \\
 & = \mathbb{E}(\xi_1^2|\xi_2 = x_2) - \mathbb{E}(\xi_1|\xi_2 = x_2)^2
 \end{split}
 \end{equation}
+
+# Wahrscheinlichkeitstheoretische Ergänzungen
+\footnotesize
+
+\begin{theorem}[Nichtnegativität der Varianz]\label{thm:nichtnegativitaet-der-varianz}
+\justifying
+\normalfont
+$\xi$ sei eine Zufallsvariable mit endlichem zweiten Moment. Dann gilt
+\begin{equation}
+\mathbb{V}(\xi) \ge 0.
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Wir betrachten den Fall einer diskreten Zufallsvariablen. Dann gilt zunächst
+\begin{equation}
+(x - \mathbb{E}(\xi))^2 \ge 0 \mbox{ für alle } x \in \mathcal{X}.
+\end{equation}
+Weiterhin gilt für die WMF $p$ von $\xi$, dass
+\begin{equation}
+p(x) \ge 0 \mbox{ für alle } x \in \mathcal{X}.
+\end{equation}
+Also folgt
+\begin{equation}
+p(x)(x - \mathbb{E}(\xi))^2 \ge 0 \mbox{ für alle } x \in \mathcal{X}.
+\end{equation}
+Damit gilt dann aber
+\begin{equation}
+\mathbb{V}(\xi) = \sum_{x \in \mathcal{X}} p(x)(x - \mathbb{E}(\xi))^2 \ge 0.
+\end{equation}
+Analog zeigt man die Nichtnegativität der Varianz bei kontinuierlichen
+Zufallsvariablen.
+
+\hfill $\Box$
 
 # Referenzen {.allowframebreaks}
 \footnotesize
