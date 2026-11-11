@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _book
+  output-dir: .
   post-render:
     - powershell -NoProfile -ExecutionPolicy Bypass -File _aufraeumen.ps1
 

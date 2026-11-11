@@ -60,3 +60,10 @@ Abbildungen benötigt. Die fertige PDF ist unabhängig davon direkt lesbar.
 
 Bei Verwendung von Nextcloud sollte `_src` als ignoriertes Muster eingetragen
 sein, damit die Quellen nicht doppelt synchronisiert werden.
+
+## Ablage der Renderausgabe
+
+Quarto rendert zunächst im Skriptordner. Der Post-Render-Schritt verschiebt
+die fertige PDF nach _book. So werden die über _src eingebundenen
+Abbildungsordner nicht relativ zum Ausgabeordner an einen falschen Ort
+verschoben. Die Kapitel bleiben unverändert im ursprünglichen Quellprojekt.
