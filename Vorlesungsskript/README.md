@@ -1,69 +1,57 @@
 # Vorlesungsskript „Grundlagen der Testtheorie“
 
-Das Quarto-Buch begleitet die Veranstaltung von Dirk Ostwald an der
-Otto-von-Guericke-Universität Magdeburg im Wintersemester 2026/2027.
+Im Verzeichnis `Vorlesungsskript` ausführen:
 
-## Inhalte und Quellen
+```powershell
+quarto render
+```
 
-Die aktuelle [PDF-Ausgabe](_book/Grundlagen-der-Testtheorie-2027.pdf) enthält
-Vorbemerkungen, **Psychologische Tests** (PDWP-Kapitel 901), **Modelle der
-klassischen Testtheorie** (903), **Reliabilität und interne Konsistenz**
-(904), die Referenzen und einen Anhang mit den
-**Wahrscheinlichkeitstheoretischen Ergänzungen**.
+Die fertige PDF liegt unter `_book/Grundlagen-der-Testtheorie-2027.pdf`.
+Benötigt werden Quarto, R mit den in den Kapiteln verwendeten Paketen und XeLaTeX.
 
-Kapitel 903 umfasst einen historischen Abriss sowie die Modelle multipler,
-paralleler und kongenerischer Testmessungen. Der lokal gepflegte Anhang
-`_anhang/A-Wahrscheinlichkeitstheoretische-Ergaenzungen.qmd` gliedert sich in
-Erwartungswerte, Varianzen und Kovarianzen sowie Normalverteilungen. Seine
-Definitionen, Sätze und Beweise stammen aus den entsprechenden PDWP-Kapiteln.
-Die Einträge folgen innerhalb der Abschnitte der Reihenfolge ihrer Verwendung
-im Haupttext. Die Ergänzungsfolien stehen im Anhang von
-[Foliensatz 2](../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf).
-Weitere Ergänzungen werden direkt in die Anhänge der jeweiligen Foliensätze
-aufgenommen. Der eigene Anhang des Skripts bleibt bestehen.
+## Quellen und Konfiguration
 
-Die Verzeichnis-Junction `_src` bindet das Quellprojekt unter
-`C:\Home\Home\pdwp-online\dirk-ostwald.github.io` direkt ein. Kapitel,
-Abbildungen, Literatur und LaTeX-Makros werden dort gepflegt. Änderungen über
-`_src` ändern unmittelbar die Originaldateien.
+- `_quarto.yml` legt Kapitel, PDF-Format und den Post-Render-Schritt fest.
+- `index.qmd`, `Referenzen.qmd` und `_anhang/` enthalten die lokalen Texte.
+- `_src` ist eine Verzeichnis-Junction auf
+  `C:\Home\Home\pdwp-online\dirk-ostwald.github.io`. Die fünf Kapitel aus
+  `_part_9`, die Literaturdaten und die Kapitelabbildungen werden direkt dort
+  gelesen. Änderungen über `_src` ändern die Originaldateien.
+- `_texheader.tex`, `_titelseite.tex`, `_abbildungen.tex` und `_logo.png`
+  bestimmen Makros, Layout und Titelseite.
+- `_verweise.lua` ordnet frühere Anhangsbezeichnungen zu und verlinkt ausgewählte
+  Inhalte außerhalb des Skripts mit dem PDWP-Onlinelehrbuch.
+- `.Renviron` setzt die UTF-8-Locale für R unter Windows.
+- `_aufraeumen.ps1` verschiebt die fertige PDF nach `_book`. Quarto rendert zuvor
+  im Projektordner, damit Ressourcen nicht über die externe Junction verschoben
+  werden. LaTeX-Zwischendateien werden automatisch entfernt. `keep-tex: true`
+  verhindert dabei Quartos Bereinigung im externen Quellprojekt. Die lokale
+  TeX-Datei entfernt der Post-Render-Schritt.
 
-Quarto liest die drei Kapitel direkt über `_src/_part_9` aus dem
-Quellprojekt. Es gibt keine zusätzlichen Quellkopien. Die Verknüpfung `_src`
-ist lediglich ein weiterer Zugriffspfad auf dieselben Originaldateien.
+Abbildungen werden als feste PDF-Dateien aus `_src/_part_9/_figures` eingebunden.
+Die Erzeugungsblöcke haben `eval = FALSE`. Bei Änderungen an einer Abbildung
+den zugehörigen R-Block per „Run Cell“ ausführen, danach rendern. Für die
+interaktive Ausführung zuerst `efa-setup` beziehungsweise `cfa-setup`, danach
+die weiteren Zellen des jeweiligen Kapitels von oben nach unten ausführen.
+Das CFA-Beispiel verwendet die Datendatei aus der EFA-Simulation. Beim Rendern
+steht das EFA-Kapitel deshalb vor dem CFA-Kapitel.
 
-## Einrichtung und Rendern
+## Lokale Hilfsdateien
 
-`Setup.cmd` legt die Verzeichnisverknüpfung bei Bedarf neu an. `Rendern.cmd`
-oder `quarto render --to pdf` im Skriptordner erzeugt die PDF unter
-`_book/Grundlagen-der-Testtheorie-2027.pdf`. Benötigt werden Quarto, R und
-XeLaTeX. Die `.Rprofile` verwendet die R-Paketumgebung des PDWP-Quellprojekts.
+`.quarto/` wird von Quarto automatisch erzeugt und kann bei geschlossenem
+Renderprozess gelöscht werden. `.gitignore`, `.sync-exclude.lst` und `.vscode/`
+dienen der Versionsverwaltung, Synchronisation beziehungsweise dem Editor.
+Bei Verwendung eines Synchronisationsclients muss `_src` ausgeschlossen sein,
+damit das externe Quellprojekt nicht doppelt synchronisiert wird.
 
-Die Datei `.Renviron` setzt eine Windows-kompatible UTF-8-Locale.
-`_aufraeumen.ps1` entfernt nach erfolgreichem Rendern die erzeugte Datei
-`Grundlagen-der-Testtheorie-2027.tex` automatisch.
+Falls die Junction nach einem Umzug fehlt, lässt sie sich im Skriptordner so
+neu anlegen:
 
-`_quarto.yml` bestimmt Titel und Kapitelreihenfolge. `_texheader.tex` enthält
-die aus dem Quellprojekt übernommenen Makros mit KOMA-kompatiblen Kopfzeilen.
-`_templates/fonts.latex` kombiniert Unicode-Text mit AMS-Mathematik. `_titelseite.tex` passt
-Cover und Fußzeile an. `_abbildungen.tex` steuert die Abbildungsplatzierung und unterstützt das Layout
-des Anhangs. `Referenzen.qmd` platziert das Literaturverzeichnis vor dem Anhang.
-Logo und Gestaltung entsprechen den anderen Vorlesungsskripten. Die Lizenz
-ist CC BY 4.0.
+```powershell
+New-Item -ItemType Junction -Path _src -Target 'C:\Home\Home\pdwp-online\dirk-ostwald.github.io'
+```
 
-`_verweise.lua` leitet Verweise auf Inhalte außerhalb der Kapitelauswahl zu den
-entsprechenden Stellen im PDWP-Onlinelehrbuch weiter. Verweise auf die im
-Anhang aufgenommenen Grundlagen werden innerhalb des Skripts aufgelöst.
+Die Lizenz ist CC BY 4.0.
 
-Das externe PDWP-Quellprojekt wird nicht in diesem Repository versioniert.
-Für das erneute Rendern werden dessen aktuelle Kapitel, Literaturdaten und
-Abbildungen benötigt. Die fertige PDF ist unabhängig davon direkt lesbar.
-
-Bei Verwendung von Nextcloud sollte `_src` als ignoriertes Muster eingetragen
-sein, damit die Quellen nicht doppelt synchronisiert werden.
-
-## Ablage der Renderausgabe
-
-Quarto rendert zunächst im Skriptordner. Der Post-Render-Schritt verschiebt
-die fertige PDF nach _book. So werden die über _src eingebundenen
-Abbildungsordner nicht relativ zum Ausgabeordner an einen falschen Ort
-verschoben. Die Kapitel bleiben unverändert im ursprünglichen Quellprojekt.
+R-Caching ist für dieses Buch deaktiviert. Das Rendering benötigt keine
+kapitelbezogenen _cache- oder _files-Ordner.

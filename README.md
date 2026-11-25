@@ -12,6 +12,7 @@ Testtheorie gehört zum BSc Psychologie.
 | 1 · Psychologische Tests | [PDF](1-Psychologische-Tests/1-Psychologische-Tests.pdf) |
 | 2 · Modelle der klassischen Testtheorie | [PDF](2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf) |
 | 3 · Reliabilität und interne Konsistenz | [PDF](3-Reliabilität-und-interne-Konsistenz/3-Reliabilität-und-interne-Konsistenz.pdf) |
+| 4 · Exploratorische Faktorenanalyse | [PDF](4-Exploratorische-Faktorenanalyse.pdf) |
 | Vorlesungsskript | [PDF](Vorlesungsskript/_book/Grundlagen-der-Testtheorie-2027.pdf) |
 
 Wahrscheinlichkeitstheoretische Ergänzungen stehen im Anhang von Foliensatz 2.

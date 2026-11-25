@@ -1,0 +1,849 @@
+# Ergänzungen aus der Linearen Algebra {#sec-ergaenzungen-lineare-algebra}
+
+:::{#def-nullmatrizen-einsmatrizen}
+## Nullmatrizen, Einsmatrizen
+
+Wir bezeichnen *Nullmatrizen* mit
+
+\begin{equation}
+0_{nm} := (0)_{1 \le i \le n, 1 \le j \le m} \in \mathbb{R}^{n \times m}
+\mbox{ und }
+0_{n} := (0)_{1 \le i \le n} \in \mathbb{R}^{n}
+\end{equation}
+
+Wir bezeichnen die *Einsmatrizen* mit
+
+\begin{equation}
+1_{nm} := (1)_{1 \le i \le n, 1 \le j \le m} \in \mathbb{R}^{n \times m}
+\mbox{ und }
+1_n := (1)_{1 \le i \le n} \in \mathbb{R}^n
+\end{equation}
+
+:::
+
+$0_{nm}$ und $0_{n}$ bestehen nur aus Nullen. $1_{nm}$ und $1_{n}$ bestehen nur
+aus Einsen. Es gelten zum Beispiel
+
+\begin{equation}
+0_n0_n^T = 0_{nn} \mbox{ und } 1_n1_n^T = 1_{nn}.
+\end{equation}
+
+:::{#def-einheitsmatrizen-und-einheitsvektoren}
+## Einheitsmatrizen und Einheitsvektoren
+
+Wir bezeichnen die *Einheitsmatrix* mit
+
+\begin{equation}
+I_{n} := (i_{jk})_{1 \le i \le n, 1 \le j \le n} \in \mathbb{R}^{n \times n} \mbox{ mit } i_{jk} = 1 \mbox{ für } j = k \mbox{ und } i_{jk} = 0 \mbox{ für } j \neq k
+\end{equation}
+
+Wir bezeichnen die *Einheitsvektoren* $e_i, i = 1,...,n$ mit
+
+\begin{equation}
+e_{i} := (e_{{i}_j})_{1 \le j \le n} \in \mathbb{R}^{n} \mbox{ mit } e_{{i}_j} = 1 \mbox{ für } i = j \mbox{ und } e_{{i}_j} = 0 \mbox{ für } i \neq j
+\end{equation}
+
+:::
+
+$I_n$ besteht nur aus Nullen und Diagonalelementen gleich Eins. $e_i, i =
+1,....,n$ besteht nur aus Nullen und einer Eins in der $i$ten Komponente. Es
+gilt
+
+\begin{equation}
+I_n = \begin{pmatrix} e_1 & \cdots & e_n \end{pmatrix}
+\end{equation}
+
+Es gelten weiterhin zum Beispiel für $1 \le i,j \le n$
+
+\begin{equation}
+e^T_ie_j = 0 \mbox{ für } i \neq j,  e^T_ie_i = 1 \mbox{ und } e^T_iv = v^Te_i = v_i \mbox{ für } v \in \mathbb{R}^n.
+\end{equation}
+
+:::{#def-diagonalmatrix}
+## Diagonalmatrix
+
+Eine Matrix $D \in \mathbb{R}^{n \times m}$ heißt *Diagonalmatrix*, wenn $d_{ij}
+= 0$ für $1 \le i \le n, 1 \le j \le m$ mit $i \neq j$.
+:::
+
+Eine Diagonalmatrix $D\in \mathbb{R}^{n \times n}$ mit Diagonalelementen
+$d_1,...,d_n$ schreibt man auch als
+
+\begin{equation}
+D = \mbox{diag}(d_1,...,d_n).
+\end{equation}
+
+Diagonalmatrizen haben viele "gute" Eigenschaften. Zum Beispiel überzeugt man
+sich leicht davon, dass Multiplikation einer Matrix $A$ von links mit einer
+Diagonalmatrix $D$ der Multiplikation der Zeilen der Matrix $A$ mit den
+entsprechenden Diagonaleinträgen von $D$ entspricht. Die entsprechende
+Multiplikation von rechts entspricht der Multiplikation der Spalten von $A$ mit
+entsprechenden Diagonaleinträgen von $D$. Eine weitere wichtige Eigenschaft ist
+
+\begin{equation}
+D := \mbox{diag}(d_1,...,d_n) \Rightarrow |D| = \prod_{i=1}^n d_i
+\end{equation}
+
+Für Beweise dieser Eigenschaften wird auf die weiterführende Literatur, z.B.
+@searle1982 verwiesen.
+
+:::{#def-symmetrische-matrix}
+## Symmetrische Matrix
+
+Eine Matrix $S \in \mathbb{R}^{n \times n}$ heißt *symmetrisch*, wenn gilt dass
+$S^T = S$.
+:::
+
+Symmetrische Matrizen sind spezielle quadratische Matrizen. Symmetrische
+Matrizen haben viele "gute" Eigenschaften. Beispielweise gilt für die Summe
+zweier symmetrischer Matrizen, dass auch diese wieder symmetrisch ist
+
+\begin{equation}
+A = A^T \mbox{ und } B = B^T \Rightarrow A + B = (A + B)^T
+\end{equation}
+
+und das die Inverse einer symmetrischen Matrix, sofern sie existiert, auch
+symmetrisch ist,
+
+\begin{equation}
+S^T = S \Rightarrow \left(S^{-1}\right)^T = S^{-1}.
+\end{equation}
+
+Für Beweise dieser Eigenschaften wird auf die weiterführende Literatur, z.B.
+@searle1982, verwiesen.
+
+:::{#def-positiv-definite-matrizen-und-positiv-semidefinite-matrizen}
+## Positiv-definite Matrizen und positiv-semidefinite Matrizen
+
+Eine quadratische Matrix $C \in \mathbb{R}^{n \times n}$ heißt
+*positiv-definit*, wenn $C$ symmetrisch ist und gilt, dass
+
+\begin{equation}
+x^TCx > 0 \mbox{ für alle } x \in \mathbb{R}^n \mbox{ mit } x \neq 0_n.
+\end{equation}
+
+Wenn $C \in \mathbb{R}^{n \times n}$ positiv-definit ist, so schreiben wir $C
+\in \mathbb{R}^{n \times n} \mbox{ pd}$.
+
+Eine quadratische Matrix $C \in \mathbb{R}^{n \times n}$ heißt
+*positiv-semidefinit*, wenn $C$ symmetrisch ist und gilt, dass
+
+\begin{equation}
+x^TCx \ge 0 \mbox{ für alle } x \in \mathbb{R}^n \mbox{ mit } x \neq 0_n.
+\end{equation}
+
+Wenn $C \in \mathbb{R}^{n \times n}$ positiv-semidefinit ist, so schreiben wir
+$C \in \mathbb{R}^{n \times n} \mbox{ psd}$.
+:::
+
+Positive-definite und positiv-semidefinite Matrizen sind spezielle symmetrische
+Matrizen. Nichtsinguläre Kovarianzmatrizen sind positiv-definit.
+Kovarianzmatrizen von Zufallsvektoren sind positiv-semidefinite Matrizen.
+Positiv-definite Matrizen haben viele "gute" Eigenschaften. Beispielsweise
+existiert die Inverse $C^{-1}$ einer positiv-definiten Matrix und ist selbst
+positiv-definit, für einen Beweis dieser Eigenschaft verweisen wir auf die
+weiterführende Literatur, z.B. @searle1982.
+
+:::{#def-orthonormalbasis}
+## Orthonormalbasis
+
+Eine Menge $B = \{b_1,\dots,b_k\}$ von $k$ Vektoren in $\mathbb{R}^k$ heißt
+\textit{Orthonormalbasis von $\mathbb{R}^k$}, wenn mit dem Skalarprodukt
+\begin{equation}
+\langle x,y \rangle := x^Ty
+\end{equation}
+für $x,y \in \mathbb{R}^k$ folgende, zum Teil äquivalente, Bedingungen gelten:
+
+\noindent (1) Die Vektoren $b_1,\dots,b_k \in \mathbb{R}^k$ bilden eine
+Basis von $\mathbb{R}^k$,
+das heißt, sie sind linear unabhängig und jeder Vektor $x\in\mathbb{R}^k$ lässt
+sich als Linearkombination $x = \sum_{i=1}^k c_ib_i$ mit eindeutigen Koordinaten
+$c_1,...,c_k \in \mathbb{R}$ schreiben.
+
+\noindent (2) Die Vektoren $b_1,\dots,b_k\in \mathbb{R}^k$ sind orthonormal, das heißt
+$\langle b_i, b_j \rangle =
+\begin{cases}
+0 & i \neq j \\
+1 & i = j
+\end{cases}
+\mbox{ für }
+1 \le i,j \le k$.
+
+\noindent (3) Die Koordinaten $c_1,...,c_k \in \mathbb{R}$ eines
+$x \in \mathbb{R}^k$ bezüglich $B$ ergeben sich durch die
+Orthogonalprojektionen
+\begin{equation}
+c_i = \langle x, b_i \rangle = x^Tb_i \mbox{ für } i = 1,\ldots,k,
+\end{equation}
+es gilt also
+\begin{equation}
+x
+= \sum_{i=1}^k c_ib_i
+= \sum_{i=1}^k \langle x, b_i \rangle b_i
+= \sum_{i=1}^k \left(x^Tb_i \right) b_i
+\end{equation}
+:::
+
+Bei Bedarf wird empfohlen, sich der
+[\textcolor{darkblue}{Grundlagen der Vektorrechnung}](https://youtu.be/vhQqZgZzdao?si=qFesQnvxTfQ57GwN)
+zu vergewissern.
+Siehe dazu auch
+[\textcolor{darkblue}{Probabilistische Datenwissenschaft für die Psychologie}, Kapitel 8](https://dirk-ostwald.github.io/_part_1/108-Vektoren.html)
+
+:::{#exm-orthonormalbasis-standardbasis}
+## Orthonormalbasis (1)
+
+Ein Beispiel für eine Orthonormalbasis von $\mathbb{R}^2$ ist die
+*Standardbasis*
+\begin{equation}
+\mbox{B}_1
+:= \{b_1,b_2\}
+:= \left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}
+\end{equation}
+Offenbar gelten
+\begin{equation}
+b_1^Tb_1
+=
+\begin{pmatrix*}[r] 1 & 0 \end{pmatrix*}
+\begin{pmatrix*}[r] 1\\ 0 \end{pmatrix*}
+= 1 + 0
+= 1, \quad
+b_2^Tb_2
+= \begin{pmatrix*}[r] 0 &  1 \end{pmatrix*}
+  \begin{pmatrix*}[r] 0 \\ 1 \end{pmatrix*}
+= 0 + 1
+= 1
+\end{equation}
+und
+\begin{equation}
+b_1^Tb_2
+= \begin{pmatrix*}[r] 1 &  0 \end{pmatrix*}
+ \begin{pmatrix*}[r]  0 \\ 1 \end{pmatrix*}
+= 0 + 0
+= 0.
+\end{equation}
+Sei nun beispielsweise
+\begin{equation}
+x := \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix} \in \mathbb{R}^2.
+\end{equation}
+Die Koordinaten $c_1$ und $c_2$ von $x$ bezüglich $\mbox{B}_1$ ergeben sich
+durch die Orthogonalprojektionen
+\begin{equation}
+\begin{gathered}
+c_1 = x^Tb_1 = \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{1}{3}
+\\
+\mbox{und}\quad
+c_2 = x^Tb_2 = \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{2}{3}
+\end{gathered}
+\end{equation}
+Offenbar lässt sich $x \in \mathbb{R}^2$ also schreiben als
+\begin{equation}
+\begin{aligned}
+x&= \sum_{i=1}^2 c_i b_i \\
+&= c_1b_1 + c_2b_2 \\
+&= \frac{1}{3} \begin{pmatrix} 1 \\ 0 \end{pmatrix} +  \frac{2}{3} \begin{pmatrix} 0 \\ 1 \end{pmatrix} \\
+&= \begin{pmatrix} \frac{1}{3} \\ 0 \end{pmatrix} +   \begin{pmatrix} 0 \\ \frac{2}{3} \end{pmatrix} \\
+&= \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix}
+\end{aligned}
+\end{equation}
+
+:::
+
+:::{#exm-orthonormalbasis-alternative-basis}
+## Orthonormalbasis (2)
+
+Ein weiteres Beispiel für eine Orthonormalbasis von $\mathbb{R}^2$ ist
+\begin{equation}
+\mbox{B}_2 :=
+\{b_1,b_2\} :=
+\left\{
+\begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*},
+\begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}\end{pmatrix*}
+\right\}.
+\end{equation}
+Auch hier gelten
+\begin{equation}
+b_1^Tb_1
+=
+\begin{pmatrix*}[r] \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix*}
+\begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{2} + \frac{1}{2}
+= 1, \quad
+b_2^Tb_2
+= \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix*}
+  \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{2} + \frac{1}{2}
+= 1
+\end{equation}
+und
+\begin{equation}
+b_1^Tb_2
+= \begin{pmatrix*}[r] \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix*}
+ \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= -\frac{1}{2} + \frac{1}{2}
+= 0.
+\end{equation}
+Sei nun wiederum
+\begin{equation}
+x := \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix} \in \mathbb{R}^2.
+\end{equation}
+Die Koordinaten $c_1$ und $c_2$ von $x$ bezüglich $\mbox{B}_2$ ergeben sich
+durch die Orthogonalprojektionen
+\begin{equation}
+\begin{gathered}
+c_1
+= x^Tb_1
+= \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{\sqrt{2}} \approx 0.71
+\\
+\mbox{und}\quad
+c_2
+= x^Tb_2
+= \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{3\sqrt{2}} \approx 0.24
+\end{gathered}
+\end{equation}
+Offenbar lässt sich $x \in \mathbb{R}^2$ also auch schreiben als
+\begin{equation}
+\begin{aligned}
+x&= \sum_{i=1}^2 c_i b_i \\
+&= c_1b_1 + c_2b_2 \\
+&= \frac{1}{\sqrt{2}}  \begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*} +
+  \frac{1}{3\sqrt{2}} \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*} \\
+&=  \begin{pmatrix*}[r]  \frac{1}{2} \\ \frac{1}{2} \end{pmatrix*} +
+   \begin{pmatrix*}[r] -\frac{1}{6} \\ \frac{1}{6} \end{pmatrix*} \\
+&= \begin{pmatrix} \frac{3}{6} - \frac{1}{6} \\ \frac{3}{6} + \frac{1}{6} \end{pmatrix} \\
+&= \begin{pmatrix} \frac{2}{6} \\ \frac{4}{6} \end{pmatrix} \\
+&= \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix}
+\end{aligned}
+\end{equation}
+
+:::
+
+@fig-anhang-orthonormalbasenprojektion veranschaulicht die beiden Beispiele.
+
+![Visualisierung der Koordinaten eines Vektors bezüglich der Standardbasis
+und einer weiteren Orthonormalbasis.](Abbildungen/gdt-4-orthonormalbasenprojektion.pdf){#fig-anhang-orthonormalbasenprojektion width="95%"}
+
+:::{#def-orthogonale-matrix}
+## Orthogonale Matrix
+
+Eine Matrix $Q \in \mathbb{R}^{m \times m}$ heißt *orthogonal*, wenn
+\begin{equation}
+Q^TQ = I_m.
+\end{equation}
+:::
+
+Die Spalten einer orthogonalen Matrix sind also paarweise orthogonal, es gilt
+für
+\begin{equation}
+Q = \begin{pmatrix} q_1 & \cdots & q_m \end{pmatrix} \mbox{ mit } q_i \in \mathbb{R}^m \mbox{ für } 1 \le i \le m,
+\end{equation}
+dass
+\begin{equation}
+q_i^Tq_j = 0 \mbox{ für } i \neq j \mbox{ und }  q_i^Tq_j = 1 \mbox{ für } i = j \mbox{ mit } 1 \le i,j \le m.
+\end{equation}
+Die Spalten einer orthogonalen $m \times m$ Matrix sind also $m$ orthonormale
+Vektoren.
+
+:::{#thm-eigenschaften-orthogonaler-matrizen}
+## Eigenschaften orthogonaler Matrizen
+
+$Q \in \mathbb{R}^{m \times m}$ sei eine orthogonale Matrix. Dann gelten:
+
+\noindent (1) (Inverse) Die Inverse von $Q$ ist $Q^T$, es gilt
+\begin{equation}
+Q^{-1} = Q^T.
+\end{equation}
+\noindent (2) (Transposition) Die Zeilen von $Q$ sind orthonormal, es gilt
+\begin{equation}
+QQ^T = I_m.
+\end{equation}
+\noindent (3) (Determinante) Es gilt
+\begin{equation}
+|Q| = 1 \mbox{ oder } |Q| = -1.
+\end{equation}
+
+:::
+
+:::{.proof}
+
+\noindent(1) Weil $Q^TQ = I_m$ gilt, ist $Q$ injektiv und als quadratische
+Matrix invertierbar. Damit gilt
+\begin{equation}
+Q^TQ = I_m \Leftrightarrow Q^TQQ^{-1} = I_mQ^{-1} \Leftrightarrow  Q^{-1} = Q^T.
+\end{equation}
+\noindent(2) Mit Eigenschaft (1) gilt
+\begin{equation}
+QQ^T = QQ^{-1} = I_m.
+\end{equation}
+\noindent(3) Mit dem Multiplikationssatz und der Transpositionseigenschaft
+von Determinanten gilt
+\begin{equation}
+|Q|^2 = |Q||Q| = |Q||Q^T| = |QQ^T| = |I_m| =  1.
+\end{equation}
+Aus $|Q|^2 = 1$ folgt dann aber, dass $|Q|=1$ oder $|Q|=-1$ sein muss.
+:::
+
+:::{#def-eigenvektor-eigenwert}
+## Eigenvektor, Eigenwert
+
+$A \in \mathbb{R}^{m \times m}$ sei eine quadratische Matrix. Dann heißt jeder
+Vektor $v \in \mathbb{R}^m, v \neq 0_m$, für den gilt, dass
+
+\begin{equation}
+Av  = \lambda v
+\end{equation}
+
+mit $\lambda \in \mathbb{R}$ ein *Eigenvektor* von $A$. $\lambda$ heißt
+zugehöriger *Eigenwert* von $A$.
+:::
+
+Ein Eigenvektor $v$ von $A$ wird durch $A$ mit einem Faktor $\lambda$
+verlängert. Jeder Eigenvektor hat einen zugehörigen Eigenwert. Die Eigenwerte
+verschiedener Eigenvektoren können identisch sein.
+
+:::{#thm-multiplikativitaet-von-eigenvektoren}
+## Multiplikativität von Eigenvektoren
+
+$A \in \mathbb{R}^{m \times m}$ sei eine quadratische Matrix. Wenn $v \in
+\mathbb{R}^m$ Eigenvektor von $A$ mit Eigenwert $\lambda \in \mathbb{R}$ ist,
+dann ist für $c \in \mathbb{R}\setminus\{0\}$ auch $cv \in \mathbb{R}^m$
+Eigenvektor von $A$ und zwar wiederum mit Eigenwert $\lambda \in \mathbb{R}$.
+:::
+
+:::{.proof}
+
+Es gilt
+
+\begin{equation}
+Av = \lambda v   \Leftrightarrow
+cAv = c\lambda v \Leftrightarrow
+A(cv) = \lambda(cv)
+\end{equation}
+
+Also ist $cv$ ein Eigenvektor von $A$ mit Eigenwert $\lambda$.
+
+:::
+
+**Konvention**
+
+Wir betrachten nur Eigenvektoren mit $\Vert v \Vert = 1$.
+
+### Eigenvektoren: geometrisches Beispiel {-}
+
+Für
+
+\begin{equation}
+A=\begin{pmatrix}2&1\\1&2\end{pmatrix},\qquad
+v=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix},\qquad
+w=\begin{pmatrix}1\\0\end{pmatrix}
+\end{equation}
+
+gilt $Av=3v$, während $Aw=(2,1)^T$ kein Vielfaches von $w$ ist.
+
+![Eigenvektor und ein Vektor, der kein Eigenvektor
+ist.](Abbildungen/gdt-4-eigenvektor-visualisierung.pdf){#fig-anhang-eigenvektor
+width="55%"}
+
+
+:::{#thm-eigenwerte-bestimmen}
+## Bestimmung von Eigenwerten und Eigenvektoren
+
+Für $A\in\mathbb{R}^{m\times m}$ ist eine reelle Zahl $\lambda$ genau dann ein
+Eigenwert, wenn sie eine Nullstelle des *charakteristischen Polynoms*
+
+\begin{equation}
+\chi_A(\lambda):=\det(A-\lambda I_m)
+\end{equation}
+
+ist. Die zugehörigen Eigenvektoren sind die von null verschiedenen Lösungen von
+
+\begin{equation}
+(A-\lambda I_m)v=0_m.
+\end{equation}
+
+:::
+
+Allgemeine reelle Matrizen können auch komplexe Eigenwerte haben. Für reelle
+symmetrische Matrizen sind alle Eigenwerte reell. Bei kleinen Matrizen lassen
+sich Eigenwerte und Eigenvektoren von Hand bestimmen. In **R** berechnet
+`eigen(A)` die Eigenwerte und zugehörigen Eigenvektoren.
+
+
+:::{.proof}
+
+Für $v\neq0_m$ gilt
+
+\begin{equation}
+Av=\lambda v\quad\Longleftrightarrow\quad(A-\lambda I_m)v=0_m.
+\end{equation}
+
+Ein solches $v$ existiert genau dann, wenn die lineare Abbildung mit Matrix
+$A-\lambda I_m$ einen nichttrivialen Kern hat. Für eine quadratische Matrix ist
+dies äquivalent zu Nichtinvertierbarkeit und damit zu
+
+\begin{equation}
+\det(A-\lambda I_m)=0.
+\end{equation}
+
+Ist $\lambda$ auf diese Weise bestimmt, liefert jede von null verschiedene
+Lösung des homogenen Gleichungssystems
+
+\begin{equation}
+(A-\lambda I_m)v=0_m
+\end{equation}
+
+einen zugehörigen Eigenvektor. Seine Länge kann anschließend auf eins normiert
+werden.
+:::
+
+
+### Beispiel: Berechnung der Eigenwerte {-}
+
+Für
+
+\begin{equation}
+A=\begin{pmatrix}2&1\\1&2\end{pmatrix}
+\end{equation}
+
+ergibt sich
+
+\begin{equation}
+\begin{aligned}
+\chi_A(\lambda)
+&=\det\begin{pmatrix}2-\lambda&1\\1&2-\lambda\end{pmatrix}\\
+&=(2-\lambda)^2-1\\
+&=\lambda^2-4\lambda+3\\
+&=(\lambda-3)(\lambda-1).
+\end{aligned}
+\end{equation}
+
+Die Nullstellen und damit die Eigenwerte sind
+
+\begin{equation}
+\lambda_1=3,\qquad\lambda_2=1.
+\end{equation}
+
+
+### Beispiel: Berechnung der Eigenvektoren {-}
+
+Für $\lambda_1=3$ gilt
+
+\begin{equation}
+(A-3I_2)v_1=0_2
+\quad\Longleftrightarrow\quad
+\begin{pmatrix}-1&1\\1&-1\end{pmatrix}v_1=0_2.
+\end{equation}
+
+Ein normierter Eigenvektor ist daher
+
+\begin{equation}
+v_1=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}.
+\end{equation}
+
+Für $\lambda_2=1$ erhält man entsprechend
+
+\begin{equation}
+\begin{pmatrix}1&1\\1&1\end{pmatrix}v_2=0_2,
+\qquad v_2=\frac1{\sqrt2}\begin{pmatrix}-1\\1\end{pmatrix}.
+\end{equation}
+
+Damit gelten $v_1^Tv_2=0$ und $\|v_1\|=\|v_2\|=1$. Für $Q=(v_1,v_2)$ und
+$\Lambda=\operatorname{diag}(3,1)$ folgt $A=Q\Lambda Q^T$.
+
+
+:::{#thm-eigenwerte-positiv-semi-definiter-matrizen}
+## Eigenwerte positiv-(semi)definiter Matrizen
+
+Alle Eigenwerte einer reellen symmetrischen positiv-definiten Matrix sind
+positiv. Alle Eigenwerte einer reellen symmetrischen positiv-semidefiniten
+Matrix sind nichtnegativ.
+:::
+
+:::{.proof}
+
+Seien $Sv=\lambda v$ und $v\neq0_m$. Dann gilt
+
+\begin{equation}
+v^TSv=\lambda v^Tv,\qquad
+\lambda=\frac{v^TSv}{v^Tv}.
+\end{equation}
+
+Wegen $v^Tv>0$ bestimmt der Zähler das Vorzeichen von $\lambda$. Positive
+Definitheit ergibt $\lambda>0$, positive Semidefinitheit $\lambda\geq0$.
+
+:::
+
+Folgerung für die Hauptkomponentenschätzung
+
+Stichprobenkovarianz- und Korrelationsmatrizen sind positiv-semidefinit. Die zur
+Bildung von $Q_k\Lambda_k^{1/2}$ benötigten Quadratwurzeln sind daher reell.
+
+
+:::{#thm-eigenwerte-und-eigenvektoren-symmetrischer-matrizen}
+## Eigenwerte und Eigenvektoren symmetrischer Matrizen
+
+$S \in \mathbb{R}^{m \times m}$ sei eine symmetrische Matrix. Dann gelten
+
+\noindent (1) Die Eigenwerte von $S$ sind reell.
+
+\noindent (2) Die Eigenvektoren zu je zwei verschiedenen Eigenwerten von $S$ sind
+orthogonal.
+
+:::
+
+Bemerkung
+
+In nachfolgendem Beweis setzen wir die Tatsache dass eine symmetrische Matrix
+$m$ reelle Eigenwerte hat als gegeben voraus und zeigen lediglich, dass die
+Eigenvektoren zu je zwei verschiedenen Eigenwerten einer symmetrischen Matrix
+orthogonal sind. Ein vollständiger Beweis des Theorems findet sich in
+@strang2009, Kapitel 6.4. Da wir als Eigenvektoren nur Eigenvektoren der Länge 1
+betrachten, sind die hier angesprochenen orthogonalen Eigenvektoren insbesondere
+auch orthonormal.
+
+:::{.proof}
+
+Ohne Beschränkung der Allgemeinheit seien $\lambda_i$ und $\lambda_j$ mit $1 \le
+i,j \le m$ und $\lambda_i \neq \lambda_j$ zwei verschiedenen Eigenwerte von $S$
+mit zugehörigen Eigenvektoren $q_i$ und $q_j$, respektive. Dann ergibt sich wie
+unten gezeigt, dass
+
+\begin{equation}
+\lambda_i q_i^Tq_j = \lambda_j q_i^Tq_j.
+\end{equation}
+
+Mit $q_i \neq 0_m, q_j \neq 0_m$ und $\lambda_i \neq \lambda_j$ folgt damit
+$q_i^Tq_j = 0$, weil es keine andere Zahl $c$ als die Null gibt, für die bei
+$a,b\in \mathbb{R}$ und $a \neq b$ gilt, dass
+
+\begin{equation}
+ac = bc.
+\end{equation}
+
+Um
+
+\begin{equation}
+\lambda_i q_i^Tq_j = \lambda_j q_i^Tq_j.
+\end{equation}
+
+zu zeigen, halten wir zunächst fest, dass
+
+\begin{equation}
+                 Sq_i       = \lambda_i q_i
+\Leftrightarrow (Sq_i)^T    = (\lambda_i q_i)^T
+\Leftrightarrow q_i^TS^T    = q_i^T \lambda_i^T
+\Leftrightarrow q_i^T S     = q_i^T \lambda_i
+\Leftrightarrow q_i^T Sq_j  = \lambda_i q_i^Tq_j
+\end{equation}
+
+und
+
+\begin{equation}
+                     Sq_j = \lambda_j q_j
+\Leftrightarrow q_i^TSq_j = \lambda_j q_i^Tq_j
+\end{equation}
+
+gelten. Sowohl $\lambda_i q_i^Tq_j$ als auch $\lambda_j q_i^Tq_j$ sind also mit
+$q_i^T Sq_j$ und damit auch miteinander identisch.
+
+:::
+
+:::{#thm-orthonormalzerlegung-einer-symmetrischen-matrix}
+## Orthonormalzerlegung einer symmetrischen Matrix
+
+$S \in \mathbb{R}^{m \times m}$ sei eine symmetrische Matrix. Dann kann $S$
+geschrieben werden als
+\begin{equation}
+S = Q\Lambda Q^T,
+\end{equation}
+wobei $Q \in \mathbb{R}^{m \times m}$ eine orthogonale Matrix ist und
+$\Lambda \in \mathbb{R}^{m \times m}$ eine Diagonalmatrix ist. Die
+Diagonaleinträge von $\Lambda$ sind die Eigenwerte von $S$, die Spalten von
+$Q$ sind zugehörige orthonormale Eigenvektoren.
+:::
+
+:::{.proof}
+
+Wir verwenden ohne Beweis das Resultat, dass jede reelle symmetrische Matrix
+eine Orthonormalbasis aus Eigenvektoren besitzt. Dies gilt auch bei mehrfachen
+Eigenwerten.
+
+Es seien $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m$ die der Größe
+nach geordneten Eigenwerte von $S$ und $q_1,\ldots,q_m$ zugehörige
+orthonormale Eigenvektoren. Mit
+\begin{equation}
+Q := (q_1,\ldots,q_m)
+\quad\text{und}\quad
+\Lambda := \operatorname{diag}(\lambda_1,\ldots,\lambda_m)
+\end{equation}
+folgt aus den Definitionen von Eigenwerten und Eigenvektoren
+\begin{equation}
+Sq_i = \lambda_i q_i
+\quad\text{für }i=1,\ldots,m
+\quad\Longleftrightarrow\quad
+SQ = Q\Lambda.
+\end{equation}
+Rechtsseitige Multiplikation mit $Q^T$ ergibt mit $QQ^T=I_m$
+\begin{equation}
+S = SQQ^T = Q\Lambda Q^T.
+\end{equation}
+
+:::
+
+$S = Q \Lambda Q^T$ heißt auch *Diagonalisierung* von $S$. Man wählt als
+Diagonalelemente von $\Lambda$ die der Größe nach geordneten Eigenwerte von $S$.
+Man wählt als Spalten von $Q$ die zugehörigen orthonormalen Eigenvektoren von
+$S$.
+
+:::{#thm-spur-und-determinante-einer-symmetrischen-matrix}
+## Spur und Determinante einer symmetrischen Matrix
+
+$S \in \mathbb{R}^{m \times m}$ sei eine symmetrische Matrix mit verschiedenen
+Eigenwerten $\lambda_1,...,\lambda_m$. Dann gelten
+
+\begin{equation}
+|S| =\prod_{i=1}^m \lambda_i \mbox{ und } \tr(S) =\sum_{i=1}^m \lambda_i
+\end{equation}
+
+:::
+
+:::{.proof}
+
+Mit @thm-orthonormalzerlegung-einer-symmetrischen-matrix gilt, dass
+
+\begin{equation}
+|S| = |Q\Lambda Q^T|
+\end{equation}
+
+wobei $Q\in\mathbb{R}^{m\times m}$ eine orthogonale Matrix und $\Lambda
+\in\mathbb{R}^{m\times m}$ die Diagonalmatrix der $m$ verschiedenen Eigenwerte
+von $S$ ist. Mit dem Determinantenmultiplikationssatz, der
+Determinanteneigenschaft von orthogonalen Matrizen und der Tatsache, dass die
+Determinante einer Diagonalmatrix dem Produkt ihrer Diagonalelemente entspricht,
+gilt dann weiterhin
+
+\begin{equation}
+|S| = |Q\Lambda Q^T| = |Q| |\Lambda| |Q^T| = |\Lambda| = \prod_{i=1}^m \lambda_i.
+\end{equation}
+
+Wiederum mit @thm-orthonormalzerlegung-einer-symmetrischen-matrix gilt, dass
+
+\begin{equation}
+\tr(S) = \tr\left(Q\Lambda Q^T\right).
+\end{equation}
+
+Mit der zyklischen Permutationsinvarianz der Spur, der Inversionseigenschaft
+orthogonaler Matrizen und der Definition der Spur gilt dann weiterhin
+
+\begin{equation}
+\tr(S) = \tr\left(Q\Lambda Q^T\right) = \tr\left(Q^TQ\Lambda\right) = \tr(\Lambda) = \sum_{i=1}^m \lambda_i.
+\end{equation}
+
+:::
+
+:::{#def-singulaerwertzerlegung}
+## Singulärwertzerlegung
+
+Für eine Matrix $A\in\mathbb{R}^{r\times s}$ heißt eine Darstellung
+
+\begin{equation}
+A=UDV^T
+\end{equation}
+
+mit orthogonalen Matrizen $U\in\mathbb{R}^{r\times r}$, $V\in\mathbb{R}^{s\times
+s}$ und einer rechteckigen Diagonalmatrix $D\in\mathbb{R}^{r\times s}$ mit
+nichtnegativen Diagonaleinträgen *Singulärwertzerlegung* (SVD). Die
+Diagonaleinträge $d_1\geq\ldots\geq d_{\min(r,s)}\geq0$ heißen *Singulärwerte*.
+:::
+
+Jede reelle Matrix besitzt eine Singulärwertzerlegung. Die Matrix muss weder
+quadratisch noch symmetrisch sein. Die Anzahl positiver Singulärwerte ist der
+Rang von $A$. `svd(A)` liefert in **R** die Singulärwerte und die zugehörigen
+Singulärvektoren. Der Varimax-Algorithmus verwendet diese Zerlegung in jedem
+Iterationsschritt.
+
+Siehe auch @strang2009.
+
+:::{#thm-svd-eigenanalyse}
+## Singulärwertzerlegung und Eigenanalyse
+
+Für $A=UDV^T$ gelten
+
+\begin{equation}
+AA^T=U(DD^T)U^T,\qquad A^TA=V(D^TD)V^T.
+\end{equation}
+
+Die Spalten von $U$ sind Eigenvektoren von $AA^T$, die Spalten von $V$ sind
+Eigenvektoren von $A^TA$. Die positiven Eigenwerte beider Matrizen sind die
+Quadrate der positiven Singulärwerte von $A$.
+:::
+
+$AA^T$ und $A^TA$ sind symmetrisch und positiv-semidefinit. Ihre positiven
+Eigenwerte stimmen einschließlich der Vielfachheiten überein. Bei rechteckigem
+$A$ können sich die Anzahlen der Null-Eigenwerte unterscheiden. Singulärwerte
+sind somit die nichtnegativen Quadratwurzeln der entsprechenden Eigenwerte.
+
+
+:::{.proof}
+
+Aus $A=UDV^T$ und der Orthogonalität von $U$ und $V$ folgt
+
+\begin{equation}
+\begin{aligned}
+AA^T&=(UDV^T)(UDV^T)^T\\
+&=UDV^TVD^TU^T\\
+&=U(DD^T)U^T,\\[2mm]
+A^TA&=(UDV^T)^T(UDV^T)\\
+&=VD^TU^TUDV^T\\
+&=V(D^TD)V^T.
+\end{aligned}
+\end{equation}
+
+$DD^T$ und $D^TD$ sind Diagonalmatrizen. Ihre positiven Diagonaleinträge sind
+die quadrierten positiven Singulärwerte von $A$. Damit sind beide Darstellungen
+Orthonormalzerlegungen und die Aussagen folgen.
+
+:::
+
+
+### Bezug zur Stichprobenkovarianzmatrix {-}
+
+Sei $Y_c\in\mathbb{R}^{m\times n}$ eine zeilenweise mittelwertzentrierte
+Datenmatrix und $Y_c=UDV^T$ ihre Singulärwertzerlegung. Dann gilt
+
+\begin{equation}
+C=\frac1{n-1}Y_cY_c^T
+=U\left(\frac{DD^T}{n-1}\right)U^T.
+\end{equation}
+
+Die Eigenwerte von $C$ ergeben sich also aus den quadrierten Singulärwerten von
+$Y_c$, geteilt durch $n-1$. Für die ersten $k$ Singulärwerte ist der
+Hauptkomponentenschätzer
+
+\begin{equation}
+\hat L=\frac1{\sqrt{n-1}}U_k\operatorname{diag}(d_1,\ldots,d_k).
+\end{equation}
+
+Eigenanalyse der Kovarianzmatrix und SVD der zentrierten Daten liefern dieselbe
+Lösung. Die maximale Anzahl positiver Eigenwerte ist $\min(m,n-1)$. Die gesamte
+Herleitung ist eine algebraische Aussage über den Datensatz.
+
+### Selbstkontrollfragen zur Eigenanalyse {-}
+
+1. Definieren Sie Eigenvektor, Eigenwert und charakteristisches Polynom.
+2. Bestimmen Sie Eigenwerte und normierte Eigenvektoren von
+   $\begin{pmatrix}2&1\\1&2\end{pmatrix}$.
+3. Begründen Sie die Nichtnegativität der Eigenwerte einer Kovarianzmatrix.
+4. Beweisen Sie die Orthogonalität von Eigenvektoren einer symmetrischen Matrix
+   zu verschiedenen Eigenwerten.
+5. Erläutern Sie die Orthonormalzerlegung auch für mehrfache Eigenwerte.
+6. Leiten Sie Determinante und Spur aus der Orthonormalzerlegung ab.
+7. Definieren Sie die Singulärwertzerlegung einschließlich der
+   Matrixdimensionen.
+8. Beweisen Sie den Zusammenhang der SVD mit den Eigenanalysen von $AA^T$ und
+   $A^TA$.
+9. Leiten Sie die Hauptkomponentenschätzung aus der SVD einer zentrierten
+   Datenmatrix ab.
+

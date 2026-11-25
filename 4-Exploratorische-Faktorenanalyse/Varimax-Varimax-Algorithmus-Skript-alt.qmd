@@ -1,0 +1,239 @@
+---
+title: "Untitled"
+format: html
+---
+
+
+Faktorenrotationsansätze sind ein weites Feld. Im Folgenden betrachten wir
+zunächst den Begriff einer Vektorraumorthonormalbasis am Beispiel von
+$\mathbb R^2$ und anschließend den Begriff der Orthonormalbasisprojektion.
+Darauf aufbauend behandeln wir Orthomaxverfahren („orthogonale Rotationen“)
+zur Auswahl einer Einfachstruktur.
+
+### Varimax-Rotation {-}
+
+Eine Kriterium, das eine *einfache Struktur (simple structure)* nach  @thurstone1937, 
+der geschätzten Faktorladungsmatrix begünstigen soll, ist das Varimax-Kriterium 
+nach @kaiser1958. Im Wesentlichen formuliert das Varimax-Kriterium eine Zielfunktion, 
+um die Summe der Varianzen der quadrierten Einträge der Spalten der Faktorenladungsmatrix zu maximieren.
+Auf diese Weise sollen Spalten bevorzugt werden, deren Einträge entweder nahe 
+am Spaltenmittelwert der Quadrate oder stark positiv bzw. negativ davon 
+abweichend sind und damit ein Muster bevorzugt werden, das in modernen Begriffen
+als *sparse matrix* bezeichnet wird (@rohe2023). Entscheidend ist, dass das Varimax-Kriterium eine Funktion 
+der auf die ursprüngliche Faktorenladungsmatrix angewandten orthogonalen Rotation ist, 
+dargestellt durch die Multiplikation mit einer orthogonalen Matrix (@deisenroth2020). 
+Das Varimax-Problem besteht somit darin, die orthogonale Matrix zu identifizieren, 
+die das Varimax-Kriterium für eine gegebene Anfangs-Faktorenladungsmatrix maximiert. 
+Eine so erhaltene Version der Faktorenladungsmatrix ist hoffentlich leicht interpretierbar, 
+da sie direkt Gruppen von beobachtbaren Variablen mit kanonischen Einheitsvektor-Faktorwerten verknüpft 
+und somit den Faktoren im Hinblick auf die von ihnen getragenen beobachtbaren Variablen 
+Bedeutung verleiht. Der spezifische Varimax-Ansatz der **R** Funktion `varimax()` 
+implementiert einen Algorithmus, der als *simultane Faktoren-Varimax-Lösung*  bezeichnet 
+wird und von @horst1965 und @lawley1971 entwickelt wurde.
+
+Im Folgenden geben wir daher zunächst einen kurzen Überblick über die Varimax-Zielfunktion, 
+die verwendet wird, um eine einfache Struktur der Faktorenladungsmatrix zu erreichen, betrachten dann
+das daraus resultierende Optimierungsproblem mit Nebenbedingungen, gegen dann 
+die notwendige Bedingung für ein Maximum der Lagrange-Funktion dieses Problems an
+und betrachten schließlich über den iterativen Algorithmus, der in `varimax()` 
+implementiert ist, um die notwendige Bedingung für eine orthogonale Koordinatentransformation 
+zu lösen. Zu diesem Zweck sei durchgängig
+\begin{equation}
+\hat{L}_M = \left(\hat{l}_{M_{ij}}\right){1 \le i \le m, 1 \le j \le k} := \hat{L}M
+\end{equation}
+die koordinatentransformierte Version einer Schätzung der Faktorenladungsmatrix 
+$\hat{L} \in \mathbb{R}^{m \times k}$, sodass die Koordinaten der Zeilenvektoren 
+von $\hat{L}$ bezüglich der Basisvektoren ausgedrückt werden, die die Spalten der 
+orthogonalen Matrix $M \in \mathbb{R}^{k \times k}$ bilden. Im Jargon der Faktorenanalyse 
+wird $\hat{L}_M$ üblicherweise als die *rotierte Faktorenladungsmatrix* bezeichnet und 
+$M$ als die *Rotationsmatrix*. 
+
+:::{#def-varimax-zielfunktion}
+Gegeben sei ein Schätzer $\hat{L}$ für die Faktorladungsmatrix eines Faktoranalysemodells.
+Dann ist die Varimax-Zielfunktion definiert als
+\footnotesize
+$$ 
+v : \mathbb{R}^{k \times k}_{\mbox{o}} \to \mathbb{R},
+M \mapsto v(M)
+:= \sum_{j=1}^k \sum_{i=1}^m\left(\hat{l}_{M_{ij}}^2 - \frac{1}{m}\sum_{r=1}^m \hat{l}^2_{M_{rj}} \right)^2
+ = \sum_{j=1}^k \sum_{i=1}^m\left(\hat{l}_{M_{ij}}^4 - \frac{1}{m}\left(\sum_{r=1}^m \hat{l}^2_{M_{rj}}\right)^2 \right),
+$$ {#eq-v}
+\normalsize
+wobei $\mathbb{R}^{k \times k}_{\mbox{o}}$ die Menge aller orthogonalen $k \times k$-Matrizen bezeichnen soll. 
+::: 
+
+Für eine gegebene Faktorenladungsmatrix bewertet die Varimax-Zielfunktion $v$ 
+also die Summe der Abweichungsquadrate der quadrierten Einträge von $\hat{L}_M$, 
+wobei jede Abweichung vom entsprechenden Spaltenmittelwert als Funktion der Rotationsmatrix
+$M$ gemessen wird. Es sei angemerkt, dass die Gleichheit auf der rechten Seite von 
+@eq-v einige algebraische Umformungen erfordert, die hier nicht ausgeführt werden. 
+
+Die Grundidee des Varimax-Ansatzes besteht nun darin, $v$ bezüglich der orthogonalen 
+Matrix $M$ zu maximieren. Dies führt auf das nichtlineare Optimierungsproblem 
+$$
+\mbox{max}\, v(M) \mbox { unter der Nebenbedingung } M^TM = I_k.
+$$ {#eq-max}
+Mittels der Differentialrechnung für Matrizen konnte gezeigt werden (vgl. @horst1965, 
+@lawley1971, @neudecker1969, @magnus1989), dass die notwendige Bedingung für 
+ein Maximum der Lagrange-Funktion des Optimierungsproblems @eq-max in der Gleichung
+$$
+MA_M = B_M
+$$ {#eq-MAB}
+ausgedrückt werden kann, wobei $A_M \in \mathbb{R}^{k \times k}$ eine 
+symmetrische und positiv definite Matrix unbekannter Lagrange-Multiplikatoren ist und
+\begin{equation}
+B_M := \hat{L}^T\left(C_M- \frac{1}{m}\hat{L}_M D_M\right) 
+\end{equation}
+mit 
+\begin{equation}
+\hat{L}_M := \hat{L}M,
+C_M := \left(\hat{l}_{M_{ij}}^3\right)_{1 \le i \le m, 1 \le j \le k} \mbox{ und }
+D_M := \mbox{diag}\left(\sum_{i=1}^m \hat{l}_{M_{i1}}^2, ..., \sum_{i=1}^m \hat{l}_{M_{ik}}^2\right)
+\end{equation}
+ist. Bemerkenswert ist, dass @eq-MAB lediglich eine implizite Definition des optimalen 
+$M$ liefert, da beide Seiten der Gleichung von $M$ abhängen. Um dieses Gleichungssystem 
+iterativ nach $M$ zu lösen, geht der in `varimax()` implementierte Ansatz der 
+simultanen Faktoren-Varimax-Lösung nach folgendem Algorithmus vor.
+
+:::{#def-simultane-faktoren-varimax-loesungsalgorithmus}
+## Simultane-Faktoren-Varimax-Lösungsalgorithmus  
+Gegeben sei ein Schätzer $\hat{L}$ für die Faktorladungsmatrix eines Faktoranalysemodells.
+Dann hat der Algorithmus der **R** Funktion `varimax()` die folgende Form:
+
+\footnotesize
+\noindent \underline{Initialisierung}
+\begin{itemize}
+\item[(SN)] Setze $\hat{L}_N:= N\hat{L}$ mit
+$N := \mbox{diag}\left(
+\left(\sum_{j = 1}^k \hat{l}_{1j}^2\right)^{-\frac{1}{2}},
+....,
+\left(\sum_{j = 1}^k \hat{l}_{mj}^2\right)^{-\frac{1}{2}}\right)$
+\item[(S0)] Setze $M^{(0)} := I_k,\delta^{(0)} := 0, \delta^{(1)} := 1$ und definiere $\epsilon^{(0)}$
+\end{itemize}
+
+\noindent \underline{Iterationen}
+
+\noindent Für $i = 1, ....,1000$ und solange $d^{(i)} \ge d^{(i-1)}(1 + \epsilon)$
+
+\begin{itemize}
+\item[(S1)] Setze $\hat{L}_{M^{(i)}} = \hat{L}_N M^{(i-1)}$
+\item[(S2)] Setze $B_{M^{(i)}} = \hat{L}_N^T\left(C_{M^{(i)}} - \frac{1}{m}\hat{L}_{M^{(i)}}D_{M^{(i)}}\right)$
+\item[(S3)] Evaluiere $B_{M^{(i)}} = U^{(i)}\Delta^{(i)}V^{(i)^T}$
+\item[(S4)] Setze $M^{(i)} = U^{(i)}V^{(i)^T}$
+\item[(S5)] Evaluiere $d^{(i)} := \mbox{tr}(\Delta^{(i)})$
+\end{itemize}
+
+\noindent \underline{Finalisierung}
+\begin{itemize}
+\item[(S6)] Setze $\hat{L}_{NM}:= \hat{L}_NM^{(i)}$ und $\hat{L}_{M}:= N^{-1}\hat{L}_{NM}$
+\end{itemize}
+:::
+
+In @def-simultane-faktoren-varimax-loesungsalgorithmus normalisiert der 
+Initialisierungsschritt (SN) jede Zeile der Faktorladungsmatrixschätzung $\hat{L}$ 
+auf die euklidische Einheitslänge durch Multiplikation mit einer $m \times m$ 
+diagonalen Normalisierungsmatrix $N$, deren Diagonalelemente den reziproken 
+euklidischen Längen der Zeilen von $\hat{L}$ entsprechen. Obwohl nicht unumstritten
+(vgl. @kaiser1970, @kaiser1974, @rohe2023), wurde diese zeilenweise Normalisierung 
+bei der Einführung der Varimax-Rotation durch @kaiser1958 vorgeschlagen und bildet 
+das Standardverfahren in der **R** Implementierung der Varimax-Prozedur. Die 
+Rotationsmatrix wird dann als $k \times k$ Einheitsmatrix initialisiert, 
+die Konvergenzvariablen $\delta$ werden auf $0$ gesetzt und ein geeigneter Wert 
+für das Konvergenzkriterium $\epsilon$ wird definiert. Die Iterationsschritte (S1) 
+und (S2) evaluieren dann die relevanten Iterandenmatrizen für die rechte Seite von 
+@eq-MAB, $L_{M^{(i)}}$, $D_{M^{(i)}}$, $C_{M^{(i)}}$, und $B_{M^{(i)}}$, wodurch 
+die rekursive Gleichung
+$$
+M^{(i+1)}A_{M^{(i)}} = B_{M^{(i)}}
+$$ {#eq-rekursion}
+implizit definiert wird. Diese implizite rekursive Gleichung wird dann für 
+$M^{(i+1)}$ mittels einer Singulärwertzerlegung von $B_{M^{(i)}}$ gelöst, 
+wobei $M^{(i+1)}$ in den Iterationsschritten (S3) und (S4) auf $U^{(i)}V^{(i)}$ 
+gesetzt wird. Hierbei sind $U^{(i)}$ und $V^{(i)}$ die Matrizen der linken bzw. 
+rechten Singulärvektoren von $B_{M^{(i)}}$, und wir begründen diese Lösung 
+untenstehend. Die Konvergenz des Algorithmus wird dann anhand der Spur der 
+Singulärwertmatrix $\Delta^{(i)}$ im Iterationsschritt (S5) bewertet. Schließlich 
+wird nach der Konvergenz die optimierte Transformationsmatrix $M^{(i)}$ auf die 
+normalisierte Faktorladungsmatrixschätzung angewendet und die Normalisierungsskalierung 
+in Schritt (S6) rückgängig gemacht. 
+
+Wir wollen schließlich den Iterationsschritt (S4) begründen, welche die notwendige 
+Bedingung für ein Maximum der Lagrange-Funktion des restringierten Optimierungsproblems 
+Gleichung @eq-max in der Form von @eq-MAB iterativ mittels einer Singulärwertzerlegung 
+der Matrix auf der rechten Seite von @eq-MAB löst. Dieser Ansatz nutzt die 
+Eigenschaften der beteiligten Matrizen und deren Beziehungen. Zur Vereinfachung 
+der Notation verzichten wir im Folgenden auf die Matrixabhängigkeit von $M$ sowie 
+auf den Iterations-Superskript und betrachten die Lösung von $MA = B$ für 
+bekanntes $B$ und unbekannte (aber positiv-definite und symmetrische) Lagrange-Multiplikatormatrix $A$.
+Zunächst stellen wir fest, dass die Prämultiplikation von $MA = B$ mit der Transponierten von $B$ ergibt, dass
+
+\footnotesize
+$$
+MA = B
+\Leftrightarrow B^TMA = B^TB
+\Leftrightarrow (MA)^T MA B^TB
+\Leftrightarrow A^TM^TMA = B^T B
+\Leftrightarrow  A^2 = B^TB,
+$$ {#eq-A2BTB}
+
+\normalsize
+wobei die letzte Äquivalenz aus der Orthogonalität von $M$ und der Symmetrie von $A$ folgt.
+
+Basierend auf @eq-A2BTB formulieren wir als Nächstes zwei Ausdrücke für die unbekannte
+Matrix $A^2$. Erstens betrachten wir die Singulärwertzerlegung von $B= USV^T$, 
+wobei $U$ die orthogonale Matrix der linken Singulärvektoren, $S$ die Diagonalmatrix 
+der Singulärwerte und $V$ die orthogonale Matrix der rechten Singulärvektoren ist. Wir erhalten dann:
+$$ 
+A^2 = B^TB = \left(USV^T\right)^TUSV^T = VSU^TUSV^T = VS^2V^T.
+$$ {#eq-BTBSVD}
+Da $A$ eine positiv-definite und symmetrische Matrix ist, kann sie als Zerlegung 
+in ihre orthogonale Matrix von Eigenvektoren $Q$ und ihre Diagonalmatrix von Eigenwerten 
+$\Lambda$ geschrieben werden. Wir haben also auch:
+$$ 
+A^2 = AA = Q\Lambda Q^TQ\Lambda Q^T = Q\Lambda^2 Q^T
+$$ {#eq-AA}
+und wir erhalten:
+\begin{equation}
+A^2 = VS^2V^T = Q\Lambda^2 Q^T = A^2.
+\end{equation}
+Ohne Beschränkung der Allgemeinheit können wir $V = Q$ annehmen, sodass 
+$S^2 = \Lambda^2$ und damit $S = \Lambda$ bis auf Vorzeichenpermutationen gilt. 
+Wir können nun  @eq-MAB wie folgt lösen:
+\footnotesize
+\begin{equation}
+MA = B
+\Leftrightarrow M = BA^{-1}
+\Leftrightarrow M = USV^T Q\Lambda^{-1}Q^T
+\Leftrightarrow M = USQ^T QS^{-1}V^T
+\Leftrightarrow M = UV^T,
+\end{equation}
+
+\normalsize
+was schließlich den Iterationsschritt (S4) rechtfertigt.
+
+**Anwendungsbeispiel** 
+
+Folgender **R** Code demonstriert die Implemtnation von @def-simultane-faktoren-varimax-loesungsalgorithmus.
+
+\tiny
+```{r, eval = TRUE, cache = FALSE}
+N             = solve(diag(sqrt(diag(L_hat %*% t(L_hat)))))    # Zeilennormalisierende Matrix
+L_hat_N       = N %*% L_hat                                    # zeilennormalisierte Faktorladungsmatrixschätzer
+m             = nrow(L_hat_N)                                  # Zeilenanzahl
+k             = ncol(L_hat_N)                                  # Spaltenanzahl
+Mi            = diag(k)                                        # Transformationsmatrixinitialisierung
+d             = 0                                              # Konvergenzvariableninitialisierung
+eps           = 1e-05                                          # Konvergenzkriterium (change factor)
+for (i in 1L:100L){                                            # Iterationen
+    L_hat_Mi  = L_hat_N %*% Mi                                 # \hat{L}_M^{(i)}
+    Ci        = L_hat_Mi^3                                     # C^{(i)}
+    Di        = diag(drop(rep(1, m) %*% L_hat_Mi^2))           # D^{(i)}
+    Bi        = t(L_hat_N) %*% (Ci - (1/m) * L_hat_Mi %*% Di)  # B^{(i)}
+    UDVi      = svd(Bi)                                        # Singulärwertzerlegung von B^{(i)}
+    Mi        = UDVi$u %*% t(UDVi$v)                           # Transformationsmatrix Update M^{(i)}
+    dd        = sum(UDVi$d)                                    # Konvergenzkriterium Update
+    if (dd < d * (1 + eps)){break}                             # Konvergenztest
+    d         = dd}                                            # Konvergenzvariablen Update
+L_hat_NM      = L_hat_N %*% Mi                                 # Transformierter Faktorladungsmatrixschätzer
+L_hat_M       = solve(N) %*% L_hat_NM                          # Zeilenormalisierungsaufhebung
+```

@@ -1,0 +1,4301 @@
+---
+fontsize: 8pt
+format:
+    beamer:
+      include-in-header: "4-Header.tex"
+      colorlinks: true
+      urlcolor: darkblue
+      linkcolor: darkblue
+      citecolor: darkblue
+bibliography: 4-Referenzen.bib
+csl: https://www.zotero.org/styles/apa
+---
+
+#  {.plain}
+\center
+```{r, echo = FALSE, out.width = "20%"}
+knitr::include_graphics("4-Abbildungen/gdt-4-otto.png")
+```
+
+\vspace{2mm}
+
+\Huge
+Grundlagen der Testtheorie
+\vspace{6mm}
+
+\large
+BSc Psychologie WiSe 2026/27
+
+\normalsize
+\vspace{6mm}
+Prof. Dr. Dirk Ostwald
+
+#  {.plain}
+```{=latex}
+\vfill
+\begin{center}
+\huge
+(4) Exploratorische Faktorenanalyse
+\end{center}
+\vfill
+```
+
+#
+\vfill
+\setstretch{2.2}
+\large
+Grundlagen
+
+Modellformulierung
+
+Modellschätzung
+
+Modellevaluation
+
+Modellinterpretation
+
+Selbstkontrollfragen
+\vfill
+
+#
+\vfill
+\setstretch{2.2}
+\large
+**Grundlagen**
+
+Modellformulierung
+
+Modellschätzung
+
+Modellevaluation
+
+Modellinterpretation
+
+Selbstkontrollfragen
+\vfill
+
+# Grundlagen
+\large
+Motivation
+
+\small
+Faktorielle Validität des BDI-II nach @hautzinger2006
+
+\footnotesize
+"In der Untersuchung von @beck1996 legten *Scree-Tests* aus *explorativen Faktorenanalysen*
+sowohl für die Patientenstichprobe als auch für die Studentenstichprobe die *Extraktion*
+zweier Faktoren nahe. Nach parallel durchgeführten *Hauptachsenanalysen* mit anschließender
+*obliquer (Promax-)Rotation* resultierte für die Patientenstichprobe ein Faktor, den
+die Autoren als "somatisch-affektiven Faktor" bezeichneten, auf einem zweiten
+Faktor *luden* v.a. kognitive Items des BDI II, er wurde demnach als "kognitiver Faktor"
+bezeichnet. Die beiden obliquen Faktoren korrelierten miteinander zu r = 0.66.
+In der Studentenstichprobe repräsentierte dagegen der erste Faktor die "kognitiv-affektive",
+der zweite Faktor die "somatische" Dimension. Hier betrug die Korrelation der beiden
+Faktoren r = 0.62. @beck1996 führen dazu an, das das BDI-II zwei hoch korrelierende
+Faktoren repräsentiert und es daher möglich ist, dass einzelnen affektive Items
+(wie "Traurigkeit" oder "Weinen") in Abhängigkeit der untersuchten Stichprobe
+einmal auf dem einen, ein anderes Mal auf dem anderen Faktor substanzieller laden."
+
+# Grundlagen
+\vspace{2mm}
+Psychologische Datenwissenschaft
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "100%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-modellbasierte-datenwissenschaft.pdf")
+```
+
+# Grundlagen
+\vspace{2mm}
+Psychologische Datenwissenschaft
+\vspace{2mm}
+```{r, echo = FALSE, out.width = "85%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-psychologische-datenwissenschaft.pdf")
+```
+
+# Grundlagen
+\setstretch{1.2}
+\small
+Latente Variablenmodelle mit psychologischer Historie
+\vspace{-1mm}
+
+\footnotesize
+* Faktorenanalyse und Strukturgleichungsmodelle
+* Erklärung von Kovarianzen (vieler) beobachteter Variablen durch (wenige) latente Variablen
+
+\small
+Klassische und aktuelle Anwendungsszenarien
+\vspace{-1mm}
+
+\footnotesize
+* Analyse menschlicher Fähigkeiten (g-Faktor) und Persönlichkeitspsychologie (Big Five)
+* Vielzahl von Phänomenen in der Soziologie, Politikwissenschaft, Biologie, Medizin, Sprachwissenschaft, ...
+
+\small
+Varianten im psychologischen Sprachgebrauch
+
+\footnotesize
+Explorative Faktorenanalyse (EFA)
+\vspace{-1mm}
+
+* Datengetriebenes, eher prinzipienfreies und intuitiv geleitetes Inspirationsverfahren
+* Fokus auf der numerische Behandlung von Stichprobenkovarianzmatrizen
+
+\vspace{-2mm}
+Konfirmative Faktorenanalyse (CFA)
+\vspace{-1mm}
+
+* Moderneres Verfahren mit expliziter probabilistischer Modellspezifikation
+* Fokus auf probabilistischer Modellschätzung und Modellevaluation
+
+\vspace{-2mm}
+Strukturgleichungsmodelle (SEM)
+\vspace{-1mm}
+
+* Generalisierte konfirmative Faktorenanalyse mit Faktoreninteraktion
+* Linearer Spezialfall genereller probabilistischer Modelle
+
+
+# Grundlagen
+Historie
+\small
+
+Entwicklung der exploratorischen Faktorenanalyse (1900 - 1950)
+\vspace{-1mm}
+
+\footnotesize
+* @pearson1901 beschreibt erste Anklänge der Faktorenanalyse
+* @spearman1904 beginnt die Einfaktorenanalyse im Rahmen der Intelligenzforschung
+* @hotelling1933 entwickelt die eng verwandte Hauptkomponentenanalyse
+* @thurstone1947 beginnt die Mehrfaktorenanalyse im Bereich der Psychometrie
+
+\small
+Weiterentwicklung statistischer Modelle (ab Mitte des 20. Jahrhunderts)
+\vspace{-1mm}
+
+\footnotesize
+* @lawley1962 machen den modellbasierten Charakter der Faktorenanalyse explizit.
+* @joreskog1970 initiiert die Generalisierung zu Strukturgleichungsmodelle (vgl. @bollen1989)
+* Weitere Generalisierungen (vgl. z.B. @mulaik2010 oder @bartholomew2011)
+
+Software Periode (1970 - heute)
+\vspace{-1mm}
+
+* [\textcolor{blue}{lisrel}](https://ssicentral.com/index.php/products/lisrel/) (kommerziell, proprietär) nach @joreskog1970
+* [\textcolor{blue}{mPlus}](https://www.statmodel.com/) (kommerziell, proprietär) nach @muthen1998
+* [\textcolor{blue}{lavaan}](https://lavaan.ugent.be/) (gratis, quelloffen) nach @rosseel2012
+* $\Rightarrow$ Faktorenanalyse jeweils als Spezialfall von Strukturgleichungsmodellen
+
+
+# Grundlagen
+\small
+Datenanalyseansätze in der angewandten Faktorenanalyseliteratur
+
+Explorativer Ansatz ("Exploratorische Faktorenanalyse")
+\footnotesize
+
+* Annahme eines normalverteilungsfreien Faktorenanalysemodells
+* Hauptkomponentenschätzung bzw. Hauptachsenfaktorisierung
+* Eigenwertbasierte Faktorenanzahlwahl durch z.B. Scree-Test oder Kaiser-Guttman-Kriterium
+* Verbale Interpretation der faktorbasierten Itemcluster (vgl. @groh2025)
+
+\small
+Konfirmatorischer Ansatz ("Konfirmatorische Faktorenanalyse")
+\footnotesize
+
+* Annahme des Normalverteilungsmodells der Faktorenanalyse
+* Nach Möglichkeit Sicherstellung der Modellidentifizierbarkeit
+* Maximum-Likelihood-Schätzung bzw. Diskrepanzfunktionsminimierung
+* Parameterinferenz und Modellvergleiche zur Identifikation einer plausiblen Datenerklärung
+* Enge Verbindung zur Strukturgleichungsmodellierung (vgl. @rosseel2025, @bollen1989)
+
+Bemerkungen
+
+* In der Anwendung wird allerdings auch oft bunt gemischt und recht wild möglichst viele Maße berichtet.
+* Es ist dann meist nicht ganz klar, warum dieses oder jenes nun genau gemacht wurde.
+* Typische Beispiele in diesem Sinne sind @stefana2025 oder viele anwendungsorientierte Skalenanalysen.
+
+
+# Grundlagen
+Anwendungsbeispiel
+\footnotesize
+
+```{r, echo=FALSE}
+Y <- t(as.matrix(read.csv("4-Daten/4-fa-keller.csv",
+                          check.names = FALSE, encoding = "UTF-8")))
+colnames(Y) <- seq_len(ncol(Y))
+items <- rownames(Y)
+m <- nrow(Y)
+n <- ncol(Y)
+C <- cov(t(Y))
+R <- cor(t(Y))
+```
+
+Simulierter Datensatz basierend auf @keller2008
+
+* Alle 21 Items, erste zwölf von 266 simulierten Beobachtungen
+
+\vspace{-2mm}
+\tiny
+\setstretch{1}
+```{r, echo = F, message = F}
+knitr::kable(Y[,1:12], digits = 2, "pipe")
+```
+
+# Grundlagen
+Anwendungsbeispiel
+\footnotesize
+
+Simulierter Datensatz basierend auf @keller2008
+
+* Gesamter Datensatz mit 21 Items und 266 simulierten Beobachtungen
+
+```{r, eval = F, echo = F}
+# Beobachteter Datensatz (n = 266)
+library(plot.matrix)
+library(RColorBrewer)
+library(latex2exp)
+pdf(
+file         = "4-Abbildungen/gdt-4-bdi-Y.pdf",
+width        = 18,
+height       = 8)
+par(
+family       = "sans",
+mfcol        = c(1,1),
+pty          = "m",
+bty          = "l",
+lwd          = 1,
+las          = 1,
+mgp          = c(3,1,0),
+xaxs         = "i",
+yaxs         = "i",
+font.main    = 1,
+cex          = 1.2,
+cex.main     = 1.5,
+mar          = c(2,14,3,4))
+plot(
+Y,
+border       = NA,
+breaks       = seq(0,5,len = 6),
+col          = rev(brewer.pal(n = 5, name = "RdBu")),
+key          = list(side     = 4,
+                    font     = 1,
+                    cex.axis = 1),
+fmt.key      = "%.2f",
+polygon.key  = NULL,
+axis.key     = NULL,
+spacing.key  = c(3,2,2),
+cex          = 1,
+xlab         = "Realisierungen",
+ylab         = "",
+main         = TeX("$Y \\in R^{21 x 266}$"))
+dev.off()
+```
+
+```{r, echo = FALSE, out.width = "100%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-bdi-Y.pdf")
+```
+
+# Grundlagen
+\footnotesize
+\begin{definition}[Kovarianzmatrix und Korrelationsmatrix eines Zufallsvektors]
+\label{def:kovarianzmatrix-eines-zufallsvektors}
+\label{def:korrelationsmatrix-eines-zufallsvektors}
+$\xi$ sei ein $m$-dimensionaler Zufallsvektor mit endlichen zweiten Momenten.
+Die \textit{Kovarianzmatrix} von $\xi$ ist definiert als die $m \times m$-Matrix
+\begin{equation}
+\mathbb{C}(\xi)
+:= \mathbb{E}\left(
+(\xi-\mathbb{E}(\xi))(\xi-\mathbb{E}(\xi))^T
+\right)
+= \left(\mathbb{C}(\xi_i,\xi_j)\right)_{1\leq i,j\leq m}.
+\end{equation}
+
+Falls $\mathbb{V}(\xi_i)>0$ für alle $i=1,\ldots,m$, ist die
+\textit{Korrelationsmatrix} von $\xi$ definiert als die $m \times m$-Matrix
+\begin{equation}
+\mathbb{R}(\xi)
+:= \left(\rho_{ij}\right)_{1\leq i,j\leq m}
+= \left(
+\frac{\mathbb{C}(\xi_i,\xi_j)}
+{\sqrt{\mathbb{V}(\xi_i)}\sqrt{\mathbb{V}(\xi_j)}}
+\right)_{1\leq i,j\leq m}.
+\end{equation}
+\end{definition}
+
+Bemerkungen
+
+* Die Kovarianzmatrix eines Zufallsvektors ist die symmetrische Matrix der
+  Kovarianzen seiner Komponenten.
+* Die Diagonalelemente von $\mathbb{C}(\xi)$ sind die Varianzen der Komponenten
+  von $\xi$, da
+\begin{equation}
+\mathbb{V}(\xi_i)=\mathbb{C}(\xi_i,\xi_i)
+\quad\text{für }i=1,\ldots,m.
+\end{equation}
+* Die Korrelationsmatrix ist in der Kovarianzmatrix implizit.
+* Es gilt, dass
+\begin{equation}
+\rho_{ij}\in[-1,1]
+\quad\text{für }1\leq i,j\leq m
+\qquad\text{und}\qquad
+\rho_{ii}=1
+\quad\text{für }1\leq i\leq m.
+\end{equation}
+
+# Grundlagen
+\footnotesize
+\begin{definition}[Stichprobenkovarianzmatrix und -korrelationsmatrix]
+\label{def:stichprobenkovarianzmatrix-und-stichprobenkorrelationsmatrix}
+$y_{ij}$ bezeichne den beobachteten Wert der $i$-ten von $n>1$ Testpersonen im
+$j$-ten von $m$ Items. Mit
+\begin{equation}
+\bar{y}_j:=\frac{1}{n}\sum_{i=1}^{n}y_{ij}
+\end{equation}
+ist die \textit{Stichprobenkovarianzmatrix} (empirische Kovarianzmatrix)
+definiert als die $m\times m$-Matrix
+\begin{equation}
+C:=(c_{jk})_{j,k=1}^{m},
+\qquad
+c_{jk}:=\frac{1}{n-1}\sum_{i=1}^{n}
+(y_{ij}-\bar{y}_j)(y_{ik}-\bar{y}_k).
+\end{equation}
+Für positive Itemstandardabweichungen $s_j:=\sqrt{c_{jj}}>0$ ist die
+\textit{Stichprobenkorrelationsmatrix} (empirische Korrelationsmatrix)
+definiert als die $m\times m$-Matrix
+\begin{equation}
+R:=(r_{jk})_{j,k=1}^{m},
+\qquad
+r_{jk}:=\frac{c_{jk}}{s_js_k}.
+\end{equation}
+\end{definition}
+
+Bemerkungen
+
+* Haben unabhängige $y_1,\ldots,y_n$ die identische Kovarianzmatrix
+  $\mathbb{C}(y)$, so dient $C$ als Schätzer von $\mathbb{C}(y)$.
+* Haben unabhängige $y_1,\ldots,y_n$ die identische Korrelationsmatrix
+  $\mathbb{R}(y)$, so dient $R$ als Schätzer von $\mathbb{R}(y)$.
+* Die Stichprobenkovarianzmatrix $C$ und die Stichprobenkorrelationsmatrix $R$
+  können mit den **R**-Funktionen `cov()` beziehungsweise `cor()` berechnet
+  werden.
+
+# Grundlagen
+\vspace{3mm}
+Anwendungsbeispiel
+\footnotesize
+
+Simulierter Datensatz basierend auf @keller2008
+\vspace{-4mm}
+
+```{r, eval = F, echo = F}
+library(latex2exp)
+library(plot.matrix)
+library(RColorBrewer)
+pdf(
+file        = "4-Abbildungen/gdt-4-bdi-C.pdf",
+width       = 15,
+height      = 15)
+par(
+family      = "sans",
+mfcol       = c(1,1),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 2,
+mgp         = c(3,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 3,
+mar         = c(15,15,10,15))
+plot(
+C,
+breaks      = seq(-1,2,len = 11),
+col         = rev(brewer.pal(n = 11, name = "RdBu")),
+digits      = 1,
+key         = NULL,
+cex         = 1,
+polygon.key = NULL,
+axis.key    = NULL,
+xlab        = "",
+ylab        = "",
+main        = TeX("Stichprobenkovarianzmatrix"))
+dev.off()
+```
+
+```{r, echo = FALSE, out.width = "65%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-bdi-C.pdf")
+```
+
+# Grundlagen
+\vspace{3mm}
+Anwendungsbeispiel
+\footnotesize
+
+Simulierter Datensatz basierend auf @keller2008
+\vspace{-4mm}
+
+```{r, eval = F, echo = F}
+# Stichprobenkorrelationsmatrix
+library(plot.matrix)
+library(RColorBrewer)
+rownames(R) = row.names(C)
+colnames(R) = row.names(C)
+pdf(
+file        = "4-Abbildungen/gdt-4-bdi-R.pdf",
+width       = 15,
+height      = 15)
+par(
+family      = "sans",
+mfcol       = c(1,1),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 2,
+mgp         = c(3,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 3,
+mar         = c(15,15,10,15))
+plot(
+R,
+breaks      = seq(-.5,1.1,len = 11),
+col         = rev(brewer.pal(n = 11, name = "RdBu")),
+digits      = 1,
+key         = NULL,
+cex         = 1,
+polygon.key = NULL,
+axis.key    = NULL,
+xlab        = "",
+ylab        = "",
+main        = TeX("Stichprobenkorrelationsmatrix"))
+dev.off()
+```
+
+```{r, echo = FALSE, out.width = "65%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-bdi-R.pdf")
+```
+
+#
+\vfill
+\setstretch{2.2}
+\large
+Grundlagen
+
+**Modellformulierung**
+
+Modellschätzung
+
+Modellevaluation
+
+Modellinterpretation
+
+Selbstkontrollfragen
+\vfill
+
+# Modellformulierung
+\footnotesize
+\begin{definition}[Faktorenanalysemodell in struktureller Form]\label{def:Faktorenanalysemodelle-in-struktureller-form}
+\justifying
+Es sei
+\begin{equation}
+y = \mu + Lx + \eps
+\label{eq:fam}
+\end{equation}
+wobei für $m > p$
+
+\begin{itemize}
+\item $y$ ein $m$-dimensionaler beobachtbarer Zufallsvektor ist, der \textit{Daten} genannt wird,
+\item $\mu \in \mathbb{R}^m$ ein fester, unbekannter Vektor ist, der \textit{Datenerwartungswert} genannt wird,
+\item $L = (l_{jk})\in \mathbb{R}^{m \times p}$ eine feste, unbekannte Matrix ist, die \textit{Faktorladungsmatrix} genannt wird,
+\item $x$ ein $p$-dimensionaler nicht-beobachtbarer Zufallsvektor ist, dessen Komponenten \textit{Faktoren} genannt werden und für den gilt, dass
+\begin{equation}
+\mathbb{E}(x)=0_p \mbox{ und }\mathbb{C}(x) = I_p,
+\end{equation}
+\item $\eps$ ein $m$-dimensionaler nicht-beobachtbarer und von $x$ unabhängiger Zufallsvektor ist,
+der \textit{Beobachtungsfehler} genannt wird und für den gilt, dass
+\begin{equation}
+\mathbb{E}(\eps) = 0_m
+\mbox{ und }
+\mathbb{C}(\eps) = \mbox{diag}\left(\psi_1,..., \psi_m\right) =: \Psi \mbox{ mit } \psi_j > 0 \mbox{ für } j = 1,...,m.
+\end{equation}
+\end{itemize}
+Dann heißt \eqref{eq:fam} \textit{Faktorenanalysemodell in struktureller Form}.
+\end{definition}
+
+# Modellformulierung
+\footnotesize
+Bemerkungen
+
+* Die $j = 1,..., m$ Komponenten von $y$ modellieren  *Itemscores* eines psychologischen Tests einer Testperson.
+
+* Die $k = 1,...,p$ Komponenten von $x$ werden manchmal *gemeinsame Faktoren (common factors)* genannt.
+
+* Die $j = 1,..., m$ Komponenten von $\eps$ werden manchmal *spezifische Faktoren (unique factors)* genannt.
+
+* $l_{jk}$ wird die *Faktorladung des $k$ten Faktors auf die $j$te Datenkomponente* genannt.
+
+* Bei $\mu_j=\varepsilon_j=0$ entspricht der Eintrag $l_{jk}$ von $L$ dem Wert
+  $y_j$ für $x=e_k$ ($k$ter kanonischer Basisvektor).
+
+* Für die marginale Kovarianzmatrix von $y$ ist der Wert von $\mu$ unerheblich.
+
+* Zur Modellvereinfachung betrachtet man häufig $y-\mu$ mit Erwartungswert $0_m$.
+
+* Auf Stichprobenebene wird $\mu$ durch den Stichprobenmittelwert $\bar y$
+  geschätzt.
+
+* Zur Zentrierung wird jeder Datenvektor $y_i$ durch $y_i-\bar y$ ersetzt.
+
+* An Schätzwerten von $\mu$ besteht in der Regel kein Interesse.
+
+* Wir schreiben das Faktorenanalysemodell meist in der Kurzform
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+x\sim(0_p,I_p),\quad
+\varepsilon\sim(0_m,\Psi)
+\quad\text{und}\quad x\perp\varepsilon.
+\end{equation}
+
+* $\zeta \sim (\mu,\Sigma)$ soll ausdrücken, dass $\mathbb{E}(\zeta)=\mu$ und $\mathbb{C}(\zeta)=\Sigma$.
+
+
+# Modellformulierung
+\footnotesize
+\begin{theorem}[Populationsmodell der Faktorenanalyse]
+\justifying
+\normalfont
+Gegeben sei das Faktorenanalysemodell in struktureller Form. Dann hat das
+zugehörige Populationsmodell der Faktorenanalyse die Form
+\begin{equation}
+\mathbb{P}(x,y) = \mathbb{P}(x)\mathbb{P}(y|x)
+\mbox{ mit } x \sim (0_p,I_p)
+\mbox{ und } y\,|\,x \sim (\mu + Lx,\Psi).
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+\begin{itemize}
+\item Wir verzichten auf einen formalen Beweis.
+\item Das Populationsmodell der Faktorenanalyse ist analog zum Populationsmodell
+einer Testmessung der klassischen Testtheorie.
+\item Die Bedingtheit der Verteilung von $y$ auf $x$ erschließt sich aus datengenerativer Sicht wie folgt:
+\begin{enumerate}
+\footnotesize
+\setstretch{1}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item[(1)] Es wird ein $p$-dimensionaler Wert von $x$ anhand von $\mathbb{P}(x)$ realisiert
+\item[(2)] $x$ wird durch $L$ transformiert und bildet unter Addition von $\mu$ den Erwartungswert von $\mathbb{P}(y|x)$.
+\item[(3)] Es wird ein $m$-dimensionaler Wert von $\eps$ realisiert
+\item[(4)] Die $m$-dimensionalen Werte von $\mu$, $Lx$ und $\eps$ werden zu einem Wert von $y$ addiert.
+\end{enumerate}
+\end{itemize}
+
+# Modellformulierung
+
+\footnotesize
+Bemerkungen
+
+* Im datenanalytischen Kontext betrachtet man die vorliegenden $m$ Itemscores einer
+Testperson $i = 1,...,n$, die einen psychologischen Fragebogen oder Test bearbeitet hat,
+als Realisierung eines Testperson-spezifischen und anhand der Verteilung des Faktorenanalysemodells
+verteilten Zufallsvektors $y_i$.
+
+* Gleichzeitig unterstellt man (analog zur Annahme eines wahren Werts der klassischen Testtheorie),
+dass dieser Zufallsvektorrealisierung eine Realisierung des nicht-beobachtbaren
+Zufallsvektors $x_i$, also der Testperson-spezifischen Faktorwerte, entspricht.
+
+* Weiterhin nimmt man an, dass die Realisierungen von beobachtbaren Zufallsvektoren
+$y_1,...,y_n$ und ihren entsprechenden nicht-beobachtbaren Zufallsvektoren $x_1,...,x_n$
+über Testpersonen unabhängig und identisch nach einem zugrundeliegenden Testpersonen-übergreifenden
+Faktorenanalysemodell verteilt sind.
+
+* Entscheidend ist, dass man bei entsprechendem Vorliegen einer Datenmatrix
+$Y \in \mathbb{R}^{m \times n}$, unterstellt, dass (analog zum wahren Wert der klassischen Testtheorie)
+zu jeder Spalte ein "virtueller", nicht-beobachteter, Testpersonen-spezifischer,
+Faktorenvektorwert korrespondiert.
+
+# Modellformulierung
+
+\footnotesize
+Bemerkungen
+
+* Für $p := 3$ Faktoren, $m := 9$ Testitems und $n := 10$ Testpersonen z.B.
+
+\setstretch{1.2}
+\begin{center}
+\begin{tabular}{c|cccccccccc}
+            & $i = 1$  & $i = 2$  & $i = 3$ & $i = 4$ & $i = 5$ & $i = 6$ & $i = 7$ &  $i = 8$ & $i = 9$ & $i = 10$ \\\hline
+$x_{i1}$    &  2       &  5       &  1      &  0      &  4      &  3      &  2      &  1       &  5       &  0      \\
+$x_{i2}$    &  4       &  0       &  2      &  5      &  3      &  4      &  1      &  2       &  0       &  5      \\
+$x_{i3}$    &  1       &  2       &  4      &  3      &  0      &  5      &  3      &  4       &  1       &  2      \\
+$y_{i1}$    &  1       &  3       &  2      &  5      &  0      &  4      &  2      &  5       &  3       &  1      \\
+$y_{i2}$    &  0       &  2       &  5      &  3      &  4      &  1      &  5      &  0       &  2       &  3      \\
+$y_{i3}$    &  3       &  1       &  4      &  2      &  5      &  0      &  4      &  1       &  3       &  2      \\
+$y_{i4}$    &  5       &  4       &  0      &  3      &  1      &  2      &  0      &  4       &  5       &  3      \\
+$y_{i5}$    &  2       &  5       &  3      &  1      &  4      &  0      &  2      &  3       &  1       &  5      \\
+$y_{i6}$    &  4       &  3       &  1      &  0      &  2      &  5      &  1      &  4       &  2       &  0      \\
+$y_{i7}$    &  0       &  1       &  3      &  4      &  5      &  2      &  3      &  0       &  4       &  1      \\
+$y_{i8}$    &  3       &  0       &  5      &  2      &  1      &  4      &  5      &  2       &  0       &  3      \\
+$y_{i9}$    &  1       &  4       &  0      &  5      &  3      &  1      &  4      &  5       &  2       &  0      \\
+\end{tabular}
+\end{center}
+\setstretch{1.4}
+
+* Die Schätzung testpersonenspezifischer Faktorwerte heißt *Evaluation von
+  Factorscores*.
+* Sie basiert auf den beobachteten Itemwerten und geschätzten Modellparametern.
+* Die Evaluation von Factorscores steht in der Anwendung allerdings meist nicht
+  im Vordergrund.
+
+
+# Modellformulierung
+\footnotesize
+\begin{definition}[Stichprobenmodell der Faktorenanalyse]
+\justifying
+Es sei $\mathbb{P}(x,y)$ das Populationsmodell der Faktorenanalyse. Dann hat
+das entsprechende Stichprobenmodell für $n$ Testpersonen die Form
+\begin{equation}
+\mathbb{P}(x_1,y_1,...,x_n,y_n) = \prod_{i=1}^n \mathbb{P}(x_i,y_i) 
+\mbox{ mit } \mathbb{P}(x_i,y_i) = \mathbb{P}(x_{i'},y_{i'}) \mbox{ für } 1 \le i,i' \le n
+\end{equation}
+oder in Kurzform
+\begin{equation}
+(x_1,y_1), ..., (x_n,y_n) \sim \mathbb{P}(x,y)
+\end{equation}
+Die entsprechende spaltenweise Konkatenation der Daten,
+\begin{equation}
+Y = \left(y_1,...,y_n\right)
+\end{equation}
+nennen wir einen \textit{Datensatz}.
+\end{definition}
+
+Bemerkungen
+
+* Jede Spalte von $Y$ enthält die $m$ beobachteten Itemwerte einer Testperson.
+* Zu jeder Spalte gehört ein nicht beobachteter Faktorvektor $x_i$.
+* Unabhängigkeit bezieht sich hier auf verschiedene Testpersonen.
+* Die Items innerhalb einer Testperson können durch die gemeinsamen Faktoren korrelieren.
+* Auch für das Stichprobenmodell wird keine bestimmte Verteilungsfamilie
+festgelegt.
+
+# Modellformulierung
+\small
+Beispiel (1) Spearmans g-Faktor Modell
+
+\footnotesize
+Grundlage von Spearmans Intelligenzmodell ist die Korrelationsstruktur von
+Leistungswerten in $m = 6$ Themenbereichen (Classics, French, English, Mathematics,
+Pitch discrimination, Musical talent) in einer Stichprobe von ungefähr 30 Kindern
+im Alter von 9 und 13 Jahren (@yanai2007).
+
+@spearman1904 erklärt die entsprechenden Leistungswerte $y_j$ mithilfe eines Faktorenanalysemodells der Form
+\begin{equation}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3 \\
+y_4 \\
+y_5 \\
+y_6 \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\mu_1 \\
+\mu_2 \\
+\mu_3 \\
+\mu_4 \\
+\mu_5 \\
+\mu_6 \\
+\end{pmatrix}
++
+\begin{pmatrix}
+l_1 \\
+l_2 \\
+l_3 \\
+l_4 \\
+l_5 \\
+l_6 \\
+\end{pmatrix}
+x +
+\begin{pmatrix}
+\eps_1 \\
+\eps_2 \\
+\eps_3 \\
+\eps_4 \\
+\eps_5 \\
+\eps_6 \\
+\end{pmatrix}
+\Leftrightarrow
+y_j = \mu_j + l_jx + \eps_j \mbox{ für } j = 1,...,6.
+\end{equation}
+Dabei bezeichnet die latente Zufallsvariable $x$ den *Allgemeinen Faktor der Intelligenz*
+und wird traditionell als *g-Faktor* bezeichnet. Die Komponenten $\eps_j$ werden
+im Kontext von @spearman1904 als (Themenbereichs-)*spezifische Faktoren*
+bezeichnet.
+
+Entsprechend wird auch oft von *Spearmans Zweifaktorenmodell* gesprochen, wobei
+es im Sinne der modernen Faktorenanalyse allerdings nur einen Faktor und einen
+Vektor von Zufallsfehlern in diesem Modell gibt.
+
+# Modellformulierung
+\small
+
+Beispiel (2) Thurstones Multifaktorenmodell
+
+\footnotesize
+
+@thurstone1947 schlägt mit dem Multifaktorenmodell ein generelles Modell von $p$
+Faktoren vor, um die Kovarianzstruktur eines $m$-dimensionalen Zufallsvektors,
+der $m$ Leistungstestwerte einer Gruppe von Testpersonen modelliert, zu erklären.
+Dabei soll $p < m$ gelten.
+
+In struktureller Form hat dieses Modell die Form
+\begin{equation}
+y_j = \mu_j + l_{j1}x_1 + l_{j2}x_2 + \cdots + l_{jp}x_p + \eps_j \mbox{ für } j = 1,...,m
+\end{equation}
+und entspricht damit der allgemeinen Form eines Faktorenanalysemodells, wobei hier
+die Faktoren $x_1,...,x_p$ als *gemeinsame Faktoren (common factors)* und die Zufallsfehler
+$\eps_1,...,\eps_m$ als *spezifische Faktoren (unique factors)* bezeichnet werden.
+
+In @thurstone1936 beispielsweise wird versucht zu zeigen, dass zur Erklärung der
+beobachteten Kovarianzstruktur von Leistungstestdaten von 240 Testpersonen die sieben Faktoren
+*Memory*, *Word fluency*, *Verbal relation*, *Number*, *Perceptual Speed*, *Visualization*
+und *Reasoning*, benötigt werden.
+
+# Modellformulierung
+\small
+
+Beispiel (3) Das Modell paralleler Testmessungen
+
+\footnotesize
+$y_1,\ldots,y_m$ seien die beobachtbaren Itemwerte eines psychologischen Tests
+und $\tau$ der gemeinsame wahre Wert mit
+\begin{equation}
+\mathbb{E}(\tau)=\mu_\tau
+\quad\text{und}\quad
+\mathbb{V}(\tau)=\sigma_\tau^2>0.
+\end{equation}
+Wir betrachten das Modell paralleler Testmessungen
+\begin{equation}
+y_j=\tau+\varepsilon_j
+\quad\text{für }j=1,\ldots,m,
+\end{equation}
+wobei die Messfehler $\varepsilon_1,\ldots,\varepsilon_m$ untereinander und der
+Messfehlervektor $\varepsilon$ von $\tau$ unabhängig seien. Außerdem gelte
+\begin{equation}
+\mathbb{E}(\varepsilon_j)=0
+\quad\text{und}\quad
+\mathbb{V}(\varepsilon_j)=\psi>0
+\quad\text{für }j=1,\ldots,m.
+\end{equation}
+
+Definieren wir den standardisierten wahren Wert
+\begin{equation}
+x:=\frac{\tau-\mu_\tau}{\sigma_\tau},
+\end{equation}
+so gilt $\mathbb{E}(x)=0$ und $\mathbb{V}(x)=1$. Damit entspricht dieses Modell
+dem Faktorenanalysemodell
+\begin{equation}
+\begin{pmatrix}
+y_1\\
+\vdots\\
+y_m
+\end{pmatrix}
+=
+\begin{pmatrix}
+\mu_\tau\\
+\vdots\\
+\mu_\tau
+\end{pmatrix}
++
+\begin{pmatrix}
+\sigma_\tau\\
+\vdots\\
+\sigma_\tau
+\end{pmatrix}
+x+
+\begin{pmatrix}
+\varepsilon_1\\
+\vdots\\
+\varepsilon_m
+\end{pmatrix}
+\end{equation}
+mit $\mu=\mu_\tau 1_m$, $L=\sigma_\tau 1_m$ und $\Psi=\psi I_m$. Insbesondere 
+entspricht der Faktor $x$ der Faktorenanalyse hier dem
+standardisierten wahren Wert der klassischen Testtheorie. Die Faktorladungen
+sind für alle Testmessungen gleich und entsprechen der Standardabweichung
+$\sigma_\tau$ des wahren Werts.
+
+# Modellformulierung
+\footnotesize
+\begin{theorem}[Marginale Datenkovarianzmatrix des Faktorenanalysemodells]\label{thm:marginale-datenkovarianzmatrix-des-faktorenanalysemodells}
+\justifying
+\normalfont
+Gegeben sei ein Faktorenanalysemodell in struktureller Form
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+x\sim(0_p,I_p),
+\quad
+\varepsilon\sim(0_m,\Psi)
+\quad\text{und}\quad
+x\perp\varepsilon.
+\end{equation}
+Dann gilt für die marginale Kovarianzmatrix des Datenvektors $y$
+\begin{equation}
+\mathbb{C}(y)=LL^T+\Psi.
+\end{equation}
+\end{theorem}
+
+\underline{Beweis}
+
+Mit \thmref{thm:eigenschaften-der-kovarianzmatrix} gilt aufgrund der
+Unabhängigkeit von $x$ und $\varepsilon$ und da $\mu$ ein fester Vektor ist
+\begin{equation}
+\mathbb{C}(y)=\mathbb{C}(\mu+Lx+\varepsilon)=L\mathbb{C}(x)L^T+\mathbb{C}(\varepsilon)=LI_pL^T+\Psi=LL^T+\Psi.
+\end{equation}
+
+$\hfill\Box$
+
+Bemerkungen
+
+* Das Theorem ist die zentrale Eigenschaft des Faktorenanalysemodells
+* Für diese Kovarianzzerlegung genügen die angenommenen zweiten Momente und die Unabhängigkeit.
+
+# Modellformulierung
+\footnotesize
+\begin{theorem}[Varianzzerlegung der faktoranalytischen Datenkomponenten]
+\justifying
+\normalfont
+Gegeben sei ein Faktorenanalysemodell in struktureller Form
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+x\sim(0_p,I_p),
+\quad
+\varepsilon\sim(0_m,\Psi)
+\quad\text{und}\quad
+x\perp\varepsilon.
+\end{equation}
+Dann ist für $j = 1,...,m$ die Varianz der $j$ten Komponente von $y$ gegeben
+durch
+\begin{equation}
+\mathbb{V}(y_j) = \sum_{k=1}^p l_{jk}^2 + \psi_j.
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Es gilt bekanntlich $\mathbb{V}(y_j) = \mathbb{C}(y_j,y_j)$.
+
+# Modellformulierung
+\footnotesize
+\setstretch{1.1}
+\underline{Beweis}
+
+Mit \thmref{thm:marginale-datenkovarianzmatrix-des-faktorenanalysemodells} gilt
+\begin{equation}
+\renewcommand{\arraystretch}{1.3}
+\begin{split}
+\mathbb{C}(y)
+& = LL^T + \Psi
+\\
+& =
+\begin{pmatrix}
+l_{11} & \cdots & l_{1p} \\
+l_{21} & \cdots & l_{2p} \\
+\vdots & \ddots & \vdots \\
+l_{m1} & \cdots & l_{mp} \\
+\end{pmatrix}
+\begin{pmatrix}
+l_{11} & \cdots & l_{m1} \\
+l_{12} & \cdots & l_{m2} \\
+\vdots & \ddots & \vdots \\
+l_{1p} & \cdots & l_{mp} \\
+\end{pmatrix}
++
+\begin{pmatrix}
+\psi_1        & 0          & \cdots &          0 \\
+0             & \psi_2     & \cdots &          0 \\
+\vdots        & \vdots     & \ddots & \vdots     \\
+0             & \cdots     & \cdots & \psi_m \\
+\end{pmatrix}
+\\
+& =
+\begin{pmatrix}
+\sum_{k=1}^p l_{1k}l_{1k}  & \sum_{k=1}^p l_{1k}l_{2k} & \cdots & \sum_{k=1}^p l_{1k}l_{mk} \\
+\sum_{k=1}^p l_{2k}l_{1k}  & \sum_{k=1}^p l_{2k}l_{2k} & \cdots & \sum_{k=1}^p l_{2k}l_{mk} \\
+\vdots                     & \cdots                    & \ddots & \vdots                    \\
+\sum_{k=1}^p l_{mk}l_{1k}  & \sum_{k=1}^p l_{mk}l_{2k} & \cdots & \sum_{k=1}^p l_{mk}l_{mk} \\
+\end{pmatrix} +
+\begin{pmatrix}
+\psi_1        & 0          & \cdots &  0 \\
+0             & \psi_2     & \cdots & 0 \\
+\vdots        & \vdots     & \ddots & \vdots     \\
+0             & \cdots     & \cdots & \psi_m \\
+\end{pmatrix}
+\\
+& =
+\begin{pmatrix}
+\sum_{k=1}^p l_{1k}^2 + \psi_1  & \sum_{k=1}^p l_{1k}l_{2k}       & \cdots & \sum_{k=1}^p l_{1k}l_{mk}       \\
+\sum_{k=1}^p l_{2k}l_{1k}       & \sum_{k=1}^p l_{2k}^2 + \psi_2  & \cdots & \sum_{k=1}^p l_{2k}l_{mk}       \\
+\vdots                          & \cdots                          & \ddots  & \vdots                         \\
+\sum_{k=1}^p l_{mk}l_{1k}       & \sum_{k=1}^p l_{mk}l_{2k}       & \cdots  & \sum_{k=1}^p l_{mk}^2 + \psi_m \\
+\end{pmatrix}.
+\end{split}
+\end{equation}
+Für den $j$ten Diagonaleintrag von $\mathbb{C}(y)$ aber gilt dann bekanntlich
+$\mathbb{C}(y_j,y_j) = \mathbb{V}(y_j)$.
+
+
+# Modellformulierung
+\footnotesize
+
+\begin{definition}[Kommunalität und Spezifität]
+Gegeben sei ein Faktorenanalysemodell in struktureller Form
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+x\sim(0_p,I_p),
+\quad
+\varepsilon\sim(0_m,\Psi)
+\quad\text{und}\quad
+x\perp\varepsilon.
+\end{equation}
+Dann werden in
+\begin{equation}
+\mathbb{V}(y_j) = \sum_{k=1}^p l_{jk}^2 + \psi_j
+\end{equation}
+\begin{itemize}
+\item $h_j^2 := \sum_{k=1}^p l_{jk}^2$ die \textit{Kommunalität von $y_j$} und
+\item $\psi_j$ die \textit{Spezifität von $y_j$}
+\end{itemize}
+genannt.
+\end{definition}
+
+Bemerkungen
+
+* Die Kommunalität von $y_j$ ist die durch die gemeinsamen Faktoren erklärte
+  Varianzkomponente von $y_j$.
+* Die Spezifität von $y_j$ ist die verbleibende, itemspezifische Varianzkomponente
+  von $y_j$.
+* Die Spezifität ist also für jede Datenkomponente *spezifisch*.
+* Für jede Datenkomponente eines Faktorenanalysemodells gilt
+\begin{equation}
+\mbox{ Varianz } = \mbox{ Kommunalität } + \mbox{ Spezifität}.
+\end{equation}
+
+# Modellformulierung
+\footnotesize
+\begin{definition}[Gesamtvarianz]
+Gegeben sei ein Faktorenanalysemodell in struktureller Form
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+x\sim(0_p,I_p),
+\quad
+\varepsilon\sim(0_m,\Psi)
+\quad\text{und}\quad
+x\perp\varepsilon.
+\end{equation}
+Dann wird
+\begin{equation}
+\mathbb{G} := \sum_{j=1}^m \mathbb{V}(y_j) = \sum_{j=1}^m \sum_{k=1}^p l_{jk}^2 + \sum_{j=1}^m \psi_j
+\end{equation}
+die \textit{Gesamtvarianz von $y$} genannt.
+\end{definition}
+
+Bemerkungen
+
+* Die Gesamtvarianz des Datenvektors ist definiert als die Summe der Varianzen
+der Datenkomponenten
+* Die Gesamtvarianz entspricht damit der *Spur (trace)* der marginalen
+Datenkovarianzmatrix.
+* Für die Gesamtvarianz gilt mnemonisch also
+\begin{equation}
+\mbox{ Gesamtvarianz } = \mbox{ Summe der Kommunalitäten } + \mbox{ Summe der Spezifitäten. }
+\end{equation}
+
+# Modellformulierung
+\footnotesize
+\begin{definition}[Orthogonale Matrix]
+Eine Matrix $Q \in \mathbb{R}^{m \times m}$ heißt \textit{orthogonal}, wenn
+\begin{equation}
+Q^TQ = I_m.
+\end{equation}
+\end{definition}
+Bemerkung
+
+* Die Spalten einer orthogonalen Matrix sind also paarweise orthogonal, es gilt
+für
+\begin{equation}
+Q = \begin{pmatrix} q_1 & \cdots & q_m \end{pmatrix} \mbox{ mit } q_i \in \mathbb{R}^m \mbox{ für } 1 \le i \le m,
+\end{equation}
+dass
+\begin{equation}
+q_i^Tq_j = 0 \mbox{ für } i \neq j \mbox{ und }  q_i^Tq_j = 1 \mbox{ für } i = j \mbox{ mit } 1 \le i,j \le m.
+\end{equation}
+* Die Spalten einer orthogonalen $m \times m$ Matrix sind also $m$ orthonormale
+Vektoren.
+
+# Modellformulierung
+\vspace{1mm}
+\setstretch{1.3}
+\footnotesize
+\begin{theorem}[Eigenschaften orthogonaler Matrizen]\label{thm:eigenschaften-orthogonaler-matrizen}
+\justifying
+\normalfont
+$Q \in \mathbb{R}^{m \times m}$ sei eine orthogonale Matrix. Dann gelten:
+\begin{itemize}
+\item[(1)] (Inverse) Die Inverse von $Q$ ist $Q^T$, es gilt
+\begin{equation}
+Q^{-1} = Q^T.
+\end{equation}
+\item[(2)] (Transposition) Die Zeilen von $Q$ sind orthonormal, es gilt
+\begin{equation}
+QQ^T = I_m.
+\end{equation}
+\item[(3)](Determinante) Es gilt
+\begin{equation}
+|Q| = 1 \mbox{ oder } |Q| = -1.
+\end{equation}
+\end{itemize}
+\end{theorem}
+\vspace{-2mm}
+\underline{Beweis}
+
+\noindent(1) Weil $Q^TQ = I_m$ gilt, ist $Q$ injektiv und als quadratische
+Matrix invertierbar. Damit gilt
+\begin{equation}
+Q^TQ = I_m \Leftrightarrow Q^TQQ^{-1} = I_mQ^{-1} \Leftrightarrow  Q^{-1} = Q^T.
+\end{equation}
+\noindent(2) Mit Eigenschaft (1) gilt
+\begin{equation}
+QQ^T = QQ^{-1} = I_m.
+\end{equation}
+\noindent(3) Mit dem Multiplikationssatz und der Transpositionseigenschaft
+von Determinanten gilt
+\begin{equation}
+|Q|^2 = |Q||Q| = |Q||Q^T| = |QQ^T| = |I_m| =  1.
+\end{equation}
+Aus $|Q|^2 = 1$ folgt dann aber, dass $|Q|=1$ oder $|Q|=-1$ sein muss.
+$\hfill\Box$
+
+
+# Modellformulierung
+\footnotesize
+\begin{definition}[Orthogonale Transformation eines Faktorenanalysemodells]
+Gegeben sei ein Faktorenanalysemodell in struktureller Form
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+x\sim(0_p,I_p),
+\quad
+\varepsilon\sim(0_m,\Psi)
+\quad\text{und}\quad
+x\perp\varepsilon.
+\end{equation}
+Es sei $Q\in\mathbb{R}^{p\times p}$ eine orthogonale Matrix. Dann nennen wir
+\begin{equation}
+\tilde y=\mu+\tilde L\tilde x+\varepsilon
+\quad\text{mit}\quad
+\tilde L:=LQ
+\quad\text{und}\quad
+\tilde x:=Q^Tx
+\end{equation}
+eine \textit{orthogonale Transformation des Faktorenanalysemodells}.
+\end{definition}
+
+Bemerkungen
+
+* Orthogonale Transformationen erhalten die durch das Modell erklärte Kovarianzstruktur.
+* Orthogonale Transformationen sind eine Grundlage der exploratorischen
+  Faktorenanalyse.
+* Die exploratorische Faktorenanalyse nutzt orthogonale Transformationen zur
+  Interpretationsmaximierung.
+
+
+# Modellformulierung
+\footnotesize
+\setstretch{1.1}
+\begin{theorem}[Rotationsindeterminiertheit und Kovarianzinvarianz]\label{thm:nichtidentifizierbarkeit-und-kovarianzinvarianz}
+\justifying
+\normalfont
+Gegeben sei ein Faktorenanalysemodell in struktureller Form
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+x\sim(0_p,I_p),
+\quad
+\varepsilon\sim(0_m,\Psi)
+\quad\text{und}\quad
+x\perp\varepsilon,
+\end{equation}
+sowie eine seiner orthogonalen Transformationen
+\begin{equation}
+\tilde y=\mu+\tilde L\tilde x+\varepsilon
+\quad\text{mit}\quad
+\tilde L:=LQ
+\quad\text{und}\quad
+\tilde x:=Q^Tx
+\end{equation}
+für eine orthogonale Matrix $Q\in\mathbb{R}^{p\times p}$. Dann gelten
+\begin{equation}
+y=\tilde y
+\quad\text{und}\quad
+\mathbb{C}(\tilde y)=\mathbb{C}(y).
+\end{equation}
+\end{theorem}
+\underline{Beweis}
+
+Zunächst gilt
+\begin{equation}
+\mathbb{E}(\tilde x)=Q^T\mathbb{E}(x)=0_p
+\quad\text{und}\quad
+\mathbb{C}(\tilde x)=Q^TI_pQ=I_p.
+\end{equation}
+Außerdem sind $\tilde x=Q^Tx$ und $\varepsilon$ unabhängig. Damit erfüllt auch
+die transformierte Darstellung die Voraussetzungen eines Faktorenanalysemodells.
+
+Mit \thmref{thm:eigenschaften-orthogonaler-matrizen} gilt zum einen
+\begin{equation}
+\tilde y=\mu+\tilde L\tilde x+\varepsilon
+=\mu+LQQ^Tx+\varepsilon
+=\mu+Lx+\varepsilon
+=y.
+\end{equation}
+Mit \thmref{thm:marginale-datenkovarianzmatrix-des-faktorenanalysemodells}
+gilt zum anderen
+\begin{equation}
+\mathbb{C}(\tilde y)
+=\tilde L\tilde L^T+\Psi
+=LQQ^TL^T+\Psi
+=LL^T+\Psi
+=\mathbb{C}(y).
+\end{equation}
+$\hfill\Box$
+
+
+# Modellformulierung
+\footnotesize
+
+Bemerkungen
+
+* Orthogonale Transformationen lassen den Datenvektor und damit seine
+Verteilung und Kovarianzmatrix unverändert.
+
+* Aus
+\begin{equation}
+y=\mu+Lx+\varepsilon
+=\mu+\tilde L\tilde x+\varepsilon
+\end{equation}
+folgt, dass verschiedene Faktorladungsmatrizen und Faktorwerte die gleichen
+Daten erklären können. Aus einer gegebenen Stichprobenkovarianzmatrix kann
+daher im Allgemeinen nicht eindeutig auf $L$ und die Werte von $x$ geschlossen
+werden.
+
+* Hintergrund dieser Unbestimmtheit ist, dass nach Modellannahme weder die
+Faktorladungsmatrix noch die Faktorwerte noch die Beobachtungsfehler bekannt
+sind. Die gemeinsame Transformation von $L$ und $x$ lässt ihren Beitrag $Lx$
+zum Datenvektor unverändert.
+
+* Aus
+\begin{equation}
+\mathbb{C}(y)=LL^T+\Psi
+=\tilde L\tilde L^T+\Psi
+\end{equation}
+folgt außerdem, dass sich Gesamtvarianz, Kommunalitäten und Spezifitäten bei
+orthogonaler Transformation nicht ändern.
+
+
+<!-- #
+\vfill
+\setstretch{2.2}
+\large
+Grundlagen
+
+Modellformulierung
+
+**Modellschätzung**
+
+Modellevaluation
+
+Modellinterpretation
+
+Selbstkontrollfragen
+\vfill
+
+
+# Modellschätzung
+\footnotesize
+\small
+Überblick
+\footnotesize
+
+* Geschätzt werden $L$ und $\Psi$ bei einer vorgegebenen Faktorenanzahl $p$.
+* Beide Verfahren nutzen die Stichprobenkovarianz- oder Stichprobenkorrelationsmatrix.
+* Maximum-Likelihood-Schätzug erfordert bekanntlich Verteilungsannahmen und entfällt hier.
+
+\vspace{1mm}
+\small
+Hauptkomponentenschätzung
+\footnotesize
+\vspace{-1mm}
+
+* Basaler Schätzansatz nach @hotelling1933 und @thurstone1935.
+* Ausgangspunkt ist die Eigenwertzerlegung der vollständigen Kovarianz- oder Korrelationsmatrix.
+* Die ersten $p$ Eigenkomponenten liefern Ladungen, die Diagonalresiduen Spezifitäten.
+* *Hauptkomponentenanalyse* zielt im Allgemeinen nicht auf die Schätzung von $L$ und $\Psi$.
+* **R:** \texttt{psych::principal()}.
+
+\vspace{1mm}
+\small
+Iterierte Hauptachsenfaktorisierung
+\footnotesize
+\vspace{-1mm}
+
+* Iterativer, basaler Schätzansatz nach @horst1941 und @horst1965.
+* Auch *Principal factor analysis* oder *Principal axis analysis* (Hauptachsenanalyse).
+* Kommunalitätsschätzer ersetzen iterativ die Diagonale der Korrelationsmatrix.
+* Wiederholte Eigenwertzerlegungen aktualisieren die Ladungsschätzer.
+* **R:** \texttt{psych::fa()} mit \texttt{fm = "pa"}.
+
+
+# Modellschätzung
+\footnotesize
+
+\small
+Mittelwertzentrierung
+
+\footnotesize
+
+* Auf Populationsebene gilt das Faktorenanalysemodell
+\begin{equation}
+y=\mu+Lx+\varepsilon
+\quad\text{mit}\quad
+\mathbb{E}(y)=\mu.
+\end{equation}
+Der um seinen Erwartungswert zentrierte Datenvektor ist daher
+\begin{equation}
+y-\mu=Lx+\varepsilon.
+\end{equation}
+* In einer Stichprobe wird der unbekannte Erwartungswert $\mu$ durch das
+Stichprobenmittel geschätzt. Für die Datenmatrix $Y=(y_1,\ldots,y_n)$
+definieren wir
+\begin{equation}
+\bar y:=\frac1n\sum_{i=1}^n y_i
+\quad\text{und}\quad
+Y_c:=Y-\bar y1_n^T.
+\end{equation}
+Die Spalten von $Y_c$ sind die am Stichprobenmittel zentrierten Beobachtungen
+$y_i-\bar y$. Diese sind von den am Populationserwartungswert zentrierten
+Beobachtungen $y_i-\mu$ zu unterscheiden.
+* Die Berechnung der Stichprobenkovarianzmatrix beinhaltet bereits diese
+Mittelwertzentrierung:
+\begin{equation}
+C=\frac1{n-1}\sum_{i=1}^n(y_i-\bar y)(y_i-\bar y)^T
+=\frac1{n-1}Y_cY_c^T.
+\end{equation}
+* Da $\mathbb{C}(y)=LL^T+\Psi$ nicht von $\mu$ abhängt, kann die kovarianzbasierte
+Schätzung von $L$ und $\Psi$ getrennt von der Schätzung des Erwartungswerts
+erfolgen.
+
+# Modellschätzung
+
+\footnotesize
+\begin{theorem}[Orthonormalzerlegung einer symmetrischen Matrix]
+\normalfont
+$S \in \mathbb{R}^{m \times m}$ sei eine symmetrische Matrix. Dann kann $S$
+geschrieben werden als
+\begin{equation}
+S = Q\Lambda Q^T,
+\end{equation}
+wobei $Q \in \mathbb{R}^{m \times m}$ eine orthogonale Matrix ist und
+$\Lambda \in \mathbb{R}^{m \times m}$ eine Diagonalmatrix ist. Die
+Diagonaleinträge von $\Lambda$ sind die Eigenwerte von $S$, die Spalten von
+$Q$ sind zugehörige orthonormale Eigenvektoren.
+\end{theorem}
+
+Bemerkungen
+
+* Die Orthonormalzerlegung der Stichprobenkovarianzmatrix ist für die Modellschätzung grundlegend.
+* Die Spalten von $Q$ heißen *Eigenvektoren* von $S$, die Diagonaleinträge von $\Lambda$ sind die *Eigenwerte* von $S$.
+* Die Matrizen $Q$ und $\Lambda$ können mithilfe einer *Eigenanalyse* von $S$ bestimmt werden (`eigen(S)` in R).
+* Die Theorie der Eigenanalyse ist ein weites Feld, wir geben einige
+Erläuterungen im [Anhang](#sec-ergaenzungen-lineare-algebra).
+* Die Eigenwerte und ihre zugehörigen Eigenvektoren sind absteigend sortiert.
+* Für einen Beweis, siehe \thmref{thm:orthonormalzerlegung-einer-symmetrischen-matrix}
+
+# Modellschätzung
+\vspace{2mm}
+Beispiel einer Orthonormalzerlegung
+
+\footnotesize
+Es sei
+\begin{equation}
+S :=
+\begin{pmatrix*}[r]
+2 & 1 \\
+1 & 2
+\end{pmatrix*}.
+\end{equation}
+Dann gilt mit
+\begin{equation}
+Q :=
+\begin{pmatrix*}[r]
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}} &  \frac{1}{\sqrt{2}}
+\end{pmatrix*}
+\mbox{ und }
+\Lambda :=
+\begin{pmatrix*}[r]
+3 & 0 \\
+0 & 1
+\end{pmatrix*},
+\end{equation}
+dass
+\begingroup
+\setlength{\jot}{0pt}
+\begin{align*}
+S
+& =
+Q\Lambda Q^T \\
+& =
+\begin{pmatrix*}[r]
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}} &  \frac{1}{\sqrt{2}}
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+3 & 0 \\
+0 & 1
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+\frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}\\
+\frac{1}{\sqrt{2}} &  \frac{1}{\sqrt{2}}
+\end{pmatrix*}^T
+\\
+& =
+\left(
+\frac{1}{\sqrt{2}}
+\begin{pmatrix*}[r]
+1 & -1\\
+1 &  1
+\end{pmatrix*}
+\begin{pmatrix*}[r]
+3 & 0 \\
+0 & 1
+\end{pmatrix*}
+\right)
+\left(
+\frac{1}{\sqrt{2}}
+\begin{pmatrix*}[r]
+ 1 &  1 \\
+-1 &  1
+\end{pmatrix*}
+\right)
+\\
+& =
+\left(
+\frac{1}{\sqrt{2}}
+\begin{pmatrix*}[r]
+3 & -1 \\
+3 &  1
+\end{pmatrix*}
+\right)
+\left(
+\frac{1}{\sqrt{2}}
+\begin{pmatrix*}[r]
+ 1 &  1 \\
+-1 &  1
+\end{pmatrix*}
+\right)
+\\
+& =
+\frac{1}{2}
+\begin{pmatrix*}[r]
+4 & 2 \\
+2 & 4
+\end{pmatrix*} \\
+& =
+\begin{pmatrix*}[r]
+2 & 1 \\
+1 & 2
+\end{pmatrix*} \\
+\end{align*}
+\endgroup
+
+
+# Modellschätzung
+
+\small
+Motivation der Hauptkomponentenschätzung
+
+\footnotesize
+
+* Ziel der Hauptkomponentenschätzung ist die Approximation der
+Stichprobenkovarianzmatrix in der Form
+\begin{equation}
+C \approx \hat{L}\hat{L}^T + \hat{\Psi}.
+\end{equation}
+* Die Hauptkomponentenschätzung vernachlässigt dabei zunächst $\hat{\Psi}$ und
+nutzt die Orthonormalzerlegung
+\begin{equation}
+C = Q\Lambda Q^T = Q\Lambda^{1/2}\Lambda^{1/2}Q^T = \left(Q\Lambda^{1/2}\right)\left(Q\Lambda^{1/2}\right)^T
+\end{equation}
+* Die Hauptkomponentenschätzung vernachlässigt dann die $p + 1,...,m$ Spalten
+von $Q$ und die $p + 1,...,m$ Zeilen und Spalten von $\Lambda$ und setzt
+\begin{equation}
+\hat{L}\hat{L}^T = Q_p\Lambda_p^{1/2}\left(Q_p\Lambda_p^{1/2}\right)^T \mbox{ mit } \hat{L} \in \mathbb{R}^{m \times p}.
+\end{equation}
+* Die Spezifitätsschätzer werden so gewählt, dass die Diagonaleinträge von
+$\hat{L}\hat{L}^T+\hat{\Psi}$ mit denen von $C$ übereinstimmen. Für
+$j=1,\ldots,m$ soll also gelten:
+\begin{equation}
+c_{jj}=\sum_{k=1}^p\hat{l}_{jk}^{\,2}+\hat{\psi}_j.
+\end{equation}
+Dementsprechend definieren wir
+\begin{equation}
+\hat{\psi}_j:=c_{jj}-\sum_{k=1}^p\hat{l}_{jk}^{\,2}.
+\end{equation}
+
+
+# Modellschätzung
+\footnotesize
+\setbeamerfont{block title}{size=\small}
+\begin{definition}[Hauptkomponentenschätzer $p$-ter Ordnung von $L$ und $\Psi$]
+\justifying
+\normalfont
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{2pt}
+\setlength{\belowdisplayshortskip}{2pt}
+Gegeben sei ein Datensatz $Y \in \mathbb{R}^{m \times n}$ von $n \geq 2$
+unabhängigen Beobachtungen eines Faktorenanalysemodells
+\begin{equation}
+y = \mu + Lx + \varepsilon \mbox{ mit } x \sim (0_p,I_p) \mbox{ und } \varepsilon \sim (0_m,\Psi),
+\end{equation}
+wobei $x$ und $\varepsilon$ unabhängig sind. Die Faktorenanzahl $p$ sei mit
+$1 \leq p < m$ fest vorgegeben. $C \in \mathbb{R}^{m \times m}$ sei die
+Stichprobenkovarianzmatrix von $Y$ und
+\begin{equation}
+C = Q\Lambda Q^T
+\end{equation}
+ihre Orthonormalzerlegung. Die Diagonaleinträge von $\Lambda$ seien gemäß
+$\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0$ geordnet. Die
+Spalten von $Q$ enthalten die entsprechend angeordneten zugehörigen
+Eigenvektoren. Dann sind die \textit{Hauptkomponentenschätzer $p$-ter Ordnung von $L$
+und $\Psi$} definiert als
+\begin{equation}
+\hat{L} := Q_p\Lambda_p^{1/2} \in \mathbb{R}^{m\times p} \mbox{ und } \hat{\Psi} := \mbox{diag}\left(\hat{\psi}_1, ...,\hat{\psi}_m\right),
+\end{equation}
+wobei $Q_p \in \mathbb{R}^{m\times p}$ aus den ersten $p$ Spalten von $Q$ und
+$\Lambda_p \in \mathbb{R}^{p \times p}$ aus den ersten $p$ Zeilen und Spalten
+von $\Lambda$ besteht. Für $j = 1,...,m$ ist
+\begin{equation}
+\hat{\psi}_j := c_{jj} - \sum_{k=1}^p \hat{l}_{jk}^2
+\end{equation}
+mit den Diagonaleinträgen $c_{jj}$ von $C$.
+\end{definition}
+Bemerkungen
+
+* Die Wahl der ersten $p$ Spalten von $Q$ und der ersten $p$ Zeilen und $p$
+Spalten von $\Lambda$ impliziert $p$ Faktoren.
+
+# Modellschätzung
+\footnotesize
+\begingroup
+\setbeamerfont{block title}{size=\small}
+\begin{definition}[Itemvarianz-, Kommunalitäts-, Spezifitäts- und Gesamtvarianzschätzer]
+Für einen Datensatz $Y \in \mathbb{R}^{m \times n}$ von $n$ unabhängigen
+Beobachtungen
+und ein festes $p < m$ seien
+\begin{itemize}
+\item $\hat{L} = (\hat{l}_{jk})_{1 \le j \le m, 1 \le k \le p} \in \mathbb{R}^{m \times p}$ und
+\item $\hat{\Psi} = \mbox{diag}(\hat{\psi}_1,...,\hat{\psi}_m) \in \mathbb{R}^{m \times m}$
+\end{itemize}
+die auf der Stichprobenkovarianzmatrix $C = (c_{jk})_{1\le j,k\le m}$
+basierenden
+Hauptkomponentenschätzer $p$-ter Ordnung.
+
+Dann ergeben sich für $j = 1,...,m$
+\begin{itemize}
+\item $c_{jj}$ als Schätzer von $\mathbb{V}(y_j)$ (\textit{Itemvarianzschätzer}),
+\item $\hat{h}_j^2 := \sum_{k=1}^p \hat{l}_{jk}^2$ als Schätzer von $h_j^2$ (\textit{Kommunalitätsschätzer}),
+\item $\hat{\psi}_j$ als Schätzer von $\psi_j$ (\textit{Spezifitätsschätzer}),
+\item $G := \mbox{tr}(C)$ als Schätzer von $\mathbb{G}$ (\textit{Gesamtvarianzschätzer}).
+\end{itemize}
+\end{definition}
+\endgroup
+
+Bemerkungen
+
+* Die Kommunalitäts- und Spezifitätsschätzer beruhen dabei auf den Hauptkomponentenschätzern $p$-ter Ordnung.
+
+# Modellschätzung
+Anwendungsbeispiel
+\setstretch{1.6}
+\vspace{4mm}
+\tiny
+```{r, echo = T}
+YT        = as.matrix(read.csv("4-Daten/4-fa-keller.csv"))              # Transponierte Datenmatrix YT (n x m)
+m         = ncol(YT)                                                    # Datendimension
+n         = nrow(YT)                                                    # Datenpunktanzahl
+p         = 2                                                           # Faktoranzahl
+C         = cov(YT)                                                     # Stichprobenkovarianzmatrix
+EA        = eigen(C)                                                    # Eigenanalyse von C
+lambda_p  = EA$values[1:p]                                              # p größte Eigenwerte von C
+Q_p       = EA$vectors[,1:p]                                            # p zugehörige Eigenvektoren von C
+L_hat     = Q_p %*% diag(sqrt(lambda_p))                                # Faktorladungsmatrixschätzer
+Psi_hat   = diag(diag(C) - diag(L_hat %*% t(L_hat)))                    # Spezifitätenmatrixschätzer
+V_j_hat   = diag(C)                                                     # Itemvarianzschätzer
+h2_j_hat  = rowSums(L_hat^2)                                            # Kommunalitätsschätzer
+psi_j_hat = diag(Psi_hat)                                               # Spezifitätsschätzer
+```
+\normalsize
+
+```{r, echo = F}
+L_hat_hks       = L_hat
+L_hat_hks[,1]   = -L_hat_hks[,1]
+```
+
+# Modellschätzung
+Anwendungsbeispiel
+
+\footnotesize
+
+```{r, echo = F, eval = F}
+library(latex2exp)
+library(plot.matrix)
+library(RColorBrewer)
+pdf(
+file        = "4-Abbildungen/gdt-4-bdi-L-hat-Psi-hat.pdf",
+width       = 11,
+height      = 7)
+par(
+family      = "sans",
+pty         = "m",
+bty         = "l",
+lwd         = 1,
+las         = 2,
+mgp         = c(3,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 2,
+mar         = c(1,13,5,1))
+items       = c(  "Traurigkeit",
+                  "Pessimismus",
+                  "Versagensgefühle",
+                  "VerlustAnFreude",
+                  "Schuldgefühle",
+                  "Bestrafungsgefühle",
+                  "Selbstablehnung",
+                  "Selbstkritik",
+                  "Suizidgedanken",
+                  "Weinen",
+                  "Unruhe",
+                  "Interessenverlust",
+                  "Entschlusslosigkeit",
+                  "Wertlosigkeit",
+                  "Energieverlust",
+                  "Schlaf",
+                  "Reizbarkeit",
+                  "Appetitveränderung",
+                  "Konzentrationsschwierigkeiten",
+                  "Ermüdung",
+                  "VerlustAnSexuellemInteresse")
+layout(matrix(c(1, 2, 2), nrow = 1, byrow = TRUE))
+
+# Faktorladungsmatrixschätzer
+rownames(L_hat)  = items
+plot(
+L_hat,
+breaks      = seq(-1.5,1.5,len = 11),
+col         = rev(brewer.pal(n = 11, name = "RdBu")),
+digits      = 1,
+key         = NULL,
+cex         = 1,
+polygon.key = NULL,
+axis.key    = NULL,
+xlab        = "",
+ylab        = "",
+main        = TeX("\\hat{L}"))
+
+# Spezifitätsschätzer
+rownames(Psi_hat)  = items
+colnames(Psi_hat)  = items
+plot(
+Psi_hat,
+breaks      = seq(-.1,.2,len = 11),
+col         = rev(brewer.pal(n = 11, name = "RdBu")),
+digits      = 1,
+key         = NULL,
+cex         = 1,
+polygon.key = NULL,
+axis.key    = NULL,
+xlab        = "",
+ylab        = "",
+main        = TeX("\\hat{\\Psi}"))
+dev.off()
+```
+
+```{r, echo = FALSE, out.width = "85%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-bdi-L-hat-Psi-hat.pdf")
+``` 
+-->
+
+<!--
+IHAF vorläufig auskommentiert. Zur Reaktivierung auch eval/include der
+R-Chunks wiederherstellen.
+
+# Modellschätzung
+\setstretch{1.6}
+Motivation der iterierten Hauptachsenfaktorisierung
+\footnotesize
+
+* Ziel der iterierten Hauptachsenfaktorisierung ist wie bei der Hauptkomponentenschätzung die Approximation
+\begin{equation}
+C \approx \hat{L}\hat{L}^T + \hat{\Psi}
+\end{equation}
+* Die Hauptkomponentenschätzung ignoriert $\hat{\Psi}$ zunächst vollständig
+* Die Hauptkomponentenschätzung von $L$ basiert sowohl auf Kommunalitäten und Spezifitäten
+* Für die Diagonalelemente $c_{ii}$ von $C$ gilt nach dem Faktoranalysemodell aber
+\begin{equation}
+c_{ii} = \hat{\mathbb{V}}(y_i) = \sum_{j=1}^k \hat{l}_{ij}^2 + \hat{\psi}_i \mbox{ für } i = 1,...,m
+\end{equation}
+* Es wäre also wünschenswert, die Schätzung von $L$ nur auf Basis der Kommunalitäten vorzunehmen.
+* Die iterierte Hauptachsenfaktorisierung nutzt eine initiale Schätzung von $\hat{\Psi}$ und approximiert dann iterativ
+ \begin{equation}
+C - \hat{\Psi} \approx \hat{L}\hat{L}^T
+\end{equation}
+* Die iterierte Hauptachsenfaktorisierung favorisiert die Modellschätzung mit der Korrelationsmatrix
+
+# Modellschätzung
+\footnotesize
+\begin{definition}[Iterierte Hauptachsenfaktorisierung]
+Gegeben seien eine Stichprobenkorrelationsmatrix $R\in\mathbb R^{m\times m}$,
+eine Faktoranzahl $k<m$, eine Toleranz $\varepsilon_{\min}>0$ und $i_{\max}\geq1$.
+
+\underline{Initialisierung}
+\begin{equation}
+R^{(0)}:=R,\qquad h^{(0)}:=\operatorname{tr}(R^{(0)}).
+\end{equation}
+
+\underline{Iterationen}
+
+Für $i=1,\ldots,i_{\max}$:
+\begin{itemize}
+\item[(S1)] Zerlege $R^{(i-1)}=Q^{(i)}\Lambda^{(i)}Q^{(i)^T}$ mit absteigenden Eigenwerten
+und setze $\hat L^{(i)}:=Q_k^{(i)}(\Lambda_k^{(i)})^{1/2}$.
+\item[(S2)] Übernimm die Nebendiagonale von $R$ und setze
+$R^{(i)}_{jj}:=\sum_{a=1}^k(\hat l^{(i)}_{ja})^2$ für $j=1,\ldots,m$.
+\item[(S3)] Setze $h^{(i)}:=\operatorname{tr}(R^{(i)})$.
+Beende die Iteration, wenn $|h^{(i)}-h^{(i-1)}|\leq\varepsilon_{\min}$.
+\end{itemize}
+
+\underline{Finalisierung}
+
+Für den letzten berechneten Index $t$ setze
+\begin{equation}
+\hat L:=\hat L^{(t)}D,\qquad
+D:=\operatorname{diag}(d_1,\ldots,d_k),\qquad
+d_a=\begin{cases}-1,&\sum_j\hat l^{(t)}_{ja}<0,\\1,&\text{sonst.}\end{cases}
+\end{equation}
+Die Vorzeichenwahl ändert $\hat L\hat L^T$ nicht.
+\end{definition}
+
+# Modellschätzung
+\footnotesize
+Hauptachsenfaktorisierung: Startwerte und Gültigkeit
+
+* Die dargestellte Variante startet mit Einsen auf der Diagonale. Der erste Schritt entspricht damit der Hauptkomponentenschätzung auf $R$.
+* Alternativ kann man mit quadrierten multiplen Korrelationen (SMC) starten. Für invertierbares $R$ gilt
+\begin{equation}
+R^{(0)}_{jj}=1-\frac{1}{(R^{-1})_{jj}}.
+\end{equation}
+* Das spätere Beispiel mit `psych::fa(..., fm="pa", SMC=TRUE)` verwendet diese SMC-Startwerte; die selbst programmierte Variante beginnt mit Einsen.
+* Für reelle Ladungen müssen die $k$ verwendeten Eigenwerte in jedem Schritt nichtnegativ sein. Die reduzierte Matrix muss insgesamt nicht positiv-semidefinit bleiben.
+* Kommunalitäten über eins ergeben negative Spezifitätsschätzer und sind als unzulässige Lösungen zu prüfen.
+* Ein Iterationslimit garantiert keine Konvergenz. Zusätzlich zur Änderung der Kommunalitätssumme sollte man die einzelnen Kommunalitäten kontrollieren.
+* Das Verfahren beruht auf der Korrelationsstruktur; eine bestimmte Verteilungsfamilie wird nicht vorausgesetzt.
+
+\scriptsize
+Zur Implementierung und zu Startwerten siehe @revelle2024.
+
+# Modellschätzung
+Anwendungsbeispiel
+\vspace{3mm}
+
+\tiny
+```{r, echo = TRUE, eval = FALSE, include = FALSE}
+Y             = as.matrix(read.csv("4-Daten/4-fa-keller.csv"))          # Y \in \mathbb{R}^{n x m}
+R             = cor(Y)                                                  # m x m Korrelationsmatrix
+k             = 2                                                       # Faktorenzahl
+eps_min       = 0.01                                                    # Konvergenzkriterium
+i_max         = 25                                                      # Maximale Anzahl an IPAF Iterationen
+i             = 0                                                       # Iterationszähler
+R_i           = R                                                       # Initiale Korrelationsmatrix R^{(0)}
+h_i           = sum(diag(R_i))                                          # Summe der Kommunalitätsschätzer
+eps_i         = h_i                                                     # Fehlerinitialisierung
+while(eps_i > eps_min && i < i_max){                                   # Iterationen
+    QLQ_i       = eigen(R_i)                                            # Eigenanalyse
+    L_hat_i     = QLQ_i$vectors[,1:k] %*% diag(sqrt(QLQ_i$values[1:k])) # Hauptkomponentenschätzer kter Ordnung
+    diag(R_i)   = diag(L_hat_i %*% t(L_hat_i) )                         # Kommunalitätsschätzer Update
+    h_ii        = sum(diag(R_i))                                        # Kommunalitätschätzersummen Update
+    eps_i       = abs(h_ii - h_i)                                       # Fehlerkonvergenkriterium
+    h_i         = h_ii                                                  # Kommunalitätsschätzersummen Update
+    i           = i + 1}                                                # Iterationszähler Update
+D             = diag(ifelse(colSums(L_hat_i) < 0, -1, 1))                            # Vorzeichenfinalisierung
+L_hat         = L_hat_i %*% D                                           # IHAF Faktorladungsmatrixschätzer
+```
+\normalsize
+
+```{r, echo = FALSE, eval = FALSE, include = FALSE}
+L_hat_ihaf = L_hat
+```
+
+# Modellschätzung
+\footnotesize
+Vergleich auf derselben Korrelationsmatrix
+
+Für einen inhaltlich sinnvollen Vergleich werden beide Verfahren auf dieselbe
+Stichprobenkorrelationsmatrix $R$ und dieselbe Faktoranzahl $k=2$ angewendet.
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE, eval = FALSE, include = FALSE}
+Y_cmp <- as.matrix(read.csv("4-Daten/4-fa-keller.csv"))
+R_cmp <- cor(Y_cmp)
+E_cmp <- eigen(R_cmp, symmetric=TRUE)
+L_pc  <- E_cmp$vectors[,1:2] %*% diag(sqrt(E_cmp$values[1:2]))
+L_pa  <- L_hat_ihaf
+comparison <- data.frame(
+  Verfahren=c("Hauptkomponenten", "Hauptachsen"),
+  Summe_Kommunalitaeten=c(sum(L_pc^2),sum(L_pa^2)),
+  Summe_Spezifitaeten=c(sum(diag(R_cmp)-rowSums(L_pc^2)),
+                       sum(diag(R_cmp)-rowSums(L_pa^2))))
+```
+
+```{r, echo=FALSE, eval = FALSE, include = FALSE}
+knitr::kable(comparison, digits=3, row.names=FALSE)
+```
+
+* Bei der Hauptkomponentenschätzung werden die Diagonaleinträge zunächst vollständig mitzerlegt.
+* Bei der Hauptachsenfaktorisierung stehen geschätzte gemeinsame Varianzanteile auf der Diagonale.
+
+-->
+
+
+<!-- #
+\vfill
+\setstretch{2.2}
+\large
+Grundlagen
+
+Modellformulierung
+
+Modellschätzung
+
+**Modellevaluation**
+
+Modellinterpretation
+
+Selbstkontrollfragen
+\vfill
+
+# Modellevaluation
+\small
+Wahl der Faktorenanzahl
+
+Erklärter Varianzanteil
+
+* Die größten Eigenwerte bestimmen den kumulierten erklärten Varianzanteil.
+* Gewählt wird die kleinste Faktorenanzahl, die einen vorgegebenen Anteil erreicht.
+
+Kaiser-Guttman-Kriterium
+
+* Beibehalten werden Faktoren mit zugehörigen Eigenwerten größer als eins.
+* Das Kriterium bezieht sich auf die Eigenwerte der Stichprobenkorrelationsmatrix.
+
+Scree-Test
+
+* Die Eigenwerte werden in absteigender Reihenfolge grafisch dargestellt.
+* Die Faktorenanzahl wird anhand des Knicks zwischen steilem und flachem Verlauf gewählt.
+
+
+
+# Modellevaluation | Erklärter Varianzanteil
+\footnotesize
+\begin{definition}[Stichprobenvarianzzerlegung der Faktorenanalyse]
+\justifying
+$Y \in \mathbb{R}^{m \times n}$ sei ein Datensatz von $n \geq 2$ unabhängigen
+Beobachtungen eines Faktorenanalysemodells, $C \in \mathbb{R}^{m \times m}$ sei
+seine Stichprobenkovarianzmatrix und $\hat{L}\in \mathbb{R}^{m \times p}$ und
+$\hat{\Psi}\in \mathbb{R}^{m \times m}$ seien bei festem $1 \leq p < m$ die
+Hauptkomponentenschätzer $p$-ter Ordnung. Dann werden die Summe der
+Diagonalelemente von $C$ als \textit{Gesamtstichprobenvarianz}, die Summe der
+Diagonalelemente von $\hat{L}\hat{L}^T$ als \textit{faktorbasierte
+Stichprobenvarianz} und die Summe der Diagonalelemente von $\hat{\Psi}$ als
+\textit{fehlerbasierte Stichprobenvarianz} bezeichnet.
+\end{definition}
+
+# Modellevaluation | Erklärter Varianzanteil
+\footnotesize
+
+\begin{theorem}[Stichprobenvarianzzerlegung der Faktorenanalyse]
+\justifying
+\normalfont
+Basierend auf $n \geq 2$ unabhängigen Beobachtungen eines Faktorenanalysemodells
+seien für ein festes $p$ mit $1 \leq p < m$
+\vspace{-1mm}
+\begin{itemize}
+\item $C = (c_{jk})_{1 \le j,k \le m} \in \mathbb{R}^{m \times m}$ die Stichprobenkovarianzmatrix,
+\item $\hat{L} = (\hat{l}_{jk})_{1 \le j \le m, 1 \le k \le p} \in \mathbb{R}^{m \times p}$ der Hauptkomponentenschätzer $p$-ter Ordnung von $L$,
+\item $\hat{\Psi} = \mbox{diag}(\hat{\psi}_1,..., \hat{\psi}_m) \in \mathbb{R}^{m \times m}$ der Hauptkomponentenschätzer $p$-ter Ordnung von $\Psi$,
+\end{itemize}
+sowie
+\begin{itemize}
+\item $G := \sum_{j=1}^m c_{jj}$ die Gesamtstichprobenvarianz,
+\item $F := \sum_{j=1}^m \sum_{k=1}^p \hat{l}_{jk}^2$ die faktorbasierte Stichprobenvarianz,
+\item $E := \sum_{j=1}^m \hat{\psi}_j$ die fehlerbasierte Stichprobenvarianz.
+\end{itemize}
+Dann gilt
+\begin{equation}
+G = F + E.
+\end{equation}
+Außerdem gilt mit den $p$ größten, absteigend geordneten Eigenwerten
+$\lambda_1,...,\lambda_p$ von $C$, dass
+\begin{equation}
+F = \sum_{k=1}^p \lambda_k \mbox{, wobei } \lambda_k = \sum_{j=1}^m \hat{l}_{jk}^2
+\end{equation}
+für $k = 1,...,p$ der absolute Varianzbeitrag des $k$-ten Faktors zu $F$ ist.
+\end{theorem}
+
+# Modellevaluation | Erklärter Varianzanteil
+\scriptsize
+\underline{Beweis}
+
+Wir erinnern zunächst daran, dass die Diagonalelemente von $\hat{L}\hat{L}^T$
+durch
+\begin{equation}
+\sum_{k=1}^p \hat{l}_{jk}^2
+\end{equation}
+gegeben sind, wovon man sich durch Betrachtung der Einträge von
+$\hat{L}\hat{L}^T$ überzeugt:
+\begin{equation}
+\begin{split}
+\hat{L}\hat{L}^T
+=
+\begin{pmatrix}
+\hat{l}_{11} & \cdots & \hat{l}_{1p} \\
+\hat{l}_{21} & \cdots & \hat{l}_{2p} \\
+\vdots & \ddots & \vdots \\
+\hat{l}_{m1} & \cdots & \hat{l}_{mp} \\
+\end{pmatrix}
+\begin{pmatrix}
+\hat{l}_{11} & \cdots & \hat{l}_{m1} \\
+\hat{l}_{12} & \cdots & \hat{l}_{m2} \\
+\vdots & \ddots & \vdots \\
+\hat{l}_{1p} & \cdots & \hat{l}_{mp} \\
+\end{pmatrix} 
+=
+\begin{pmatrix}
+\sum_{k=1}^p \hat{l}_{1k}^2             & \sum_{k=1}^p \hat{l}_{1k}\hat{l}_{2k}     & \cdots    & \sum_{k=1}^p \hat{l}_{1k}\hat{l}_{mk}     \\
+\sum_{k=1}^p \hat{l}_{2k}\hat{l}_{1k}   & \sum_{k=1}^p \hat{l}_{2k}^2               & \cdots    & \sum_{k=1}^p \hat{l}_{2k}\hat{l}_{mk}     \\
+\vdots                                  & \cdots                                    &  \ddots   & \vdots                                    \\
+\sum_{k=1}^p \hat{l}_{mk}\hat{l}_{1k}   & \sum_{k=1}^p \hat{l}_{mk}\hat{l}_{2k}     & \cdots    & \sum_{k=1}^p \hat{l}_{mk}^2               \\
+\end{pmatrix}
+\end{split}
+\end{equation}
+Die Identität $G=F+E$ folgt aus der Übereinstimmung der Diagonalelemente von $C$
+und $\hat{L}\hat{L}^T+\hat{\Psi}$, die durch die Definition der
+Spezifitätsschätzer
+\begin{equation}
+\hat{\psi}_j := c_{jj} - \sum_{k = 1}^p \hat{l}_{jk}^2 \mbox{ für } j = 1,...,m
+\end{equation}
+hergestellt wird. Um als Nächstes
+\begin{equation}
+F = \sum_{k=1}^p \lambda_k
+\end{equation}
+zu zeigen, halten wir zunächst fest, dass mit der Definition des
+Hauptkomponentenschätzers $\hat{L}$ die Summe der quadrierten Einträge in der
+$k$-ten Spalte von $\hat{L}$ gleich der Summe der quadrierten Einträge in der
+$k$-ten Spalte von $Q_p\Lambda_p^{1/2}$ ist.
+
+# Modellevaluation | Erklärter Varianzanteil
+\scriptsize
+\underline{Beweis (fortgeführt)}
+
+Dies mag man sich zum Beispiel für $m = 5$ und $p = 2$ verdeutlichen:
+\begin{equation}
+\begin{split}
+\hat{L} = Q_p\Lambda_p^{1/2} \Leftrightarrow
+\begin{pmatrix}
+\hat{l}_{11} & \hat{l}_{12} \\
+\hat{l}_{21} & \hat{l}_{22} \\
+\hat{l}_{31} & \hat{l}_{32} \\
+\hat{l}_{41} & \hat{l}_{42} \\
+\hat{l}_{51} & \hat{l}_{52} \\
+\end{pmatrix}
+& =
+\begin{pmatrix}
+q_{11} & q_{12} \\
+q_{21} & q_{22} \\
+q_{31} & q_{32} \\
+q_{41} & q_{42} \\
+q_{51} & q_{52} \\
+\end{pmatrix}
+\begin{pmatrix}
+\sqrt{\lambda_{1}} & 0                  \\
+0                  & \sqrt{\lambda_{2}} \\
+\end{pmatrix} =
+\begin{pmatrix}
+\sqrt{\lambda_{1}}q_{11} & \sqrt{\lambda_{2}}q_{12} \\
+\sqrt{\lambda_{1}}q_{21} & \sqrt{\lambda_{2}}q_{22} \\
+\sqrt{\lambda_{1}}q_{31} & \sqrt{\lambda_{2}}q_{32} \\
+\sqrt{\lambda_{1}}q_{41} & \sqrt{\lambda_{2}}q_{42} \\
+\sqrt{\lambda_{1}}q_{51} & \sqrt{\lambda_{2}}q_{52} \\
+\end{pmatrix}
+\end{split}
+\end{equation}
+Weiterhin halten wir fest, dass, wenn $q_k$ für $k = 1,\ldots,p$ die $k$-te
+Spalte von $Q_p$ bezeichnet, aufgrund der Orthonormalität von $Q$ folgt, dass
+\begin{equation}
+q_k^Tq_k = \sum_{j = 1}^m q_{jk}^2 = 1.
+\end{equation}
+Dann ergibt sich für die Summe der Diagonalelemente von $\hat{L}\hat{L}^T$ aber
+\begin{equation}
+F
+= \sum_{j=1}^m \sum_{k=1}^p \hat{l}_{jk}^2
+= \sum_{k=1}^p \sum_{j=1}^m \hat{l}_{jk}^2
+= \sum_{k=1}^p \sum_{j=1}^m \left(\sqrt{\lambda_k}q_{jk}\right)^2
+= \sum_{k=1}^p \lambda_k\sum_{j=1}^m q_{jk}^2
+= \sum_{k=1}^p \lambda_k
+\end{equation}
+Die Tatsache, dass der $k$-te Eigenwert $\lambda_k$ von $C$ dabei der absolute
+Beitrag zur durch den $k$-ten Faktor erklärten Gesamtstichprobenvarianz ist,
+ergibt sich dabei durch die Einsicht, dass der Beitrag des $k$-ten Faktors in der
+$k$-ten Spalte von $\hat{L}$ enkodiert ist und obige Gleichungskette impliziert,
+dass
+\begin{equation}
+\sum_{j=1}^m \hat{l}_{jk}^2 = \lambda_k \mbox{ für } k = 1,...,p.
+\end{equation}
+
+ 
+
+
+# Modellevaluation | Erklärter Varianzanteil
+Anwendungsbeispiel
+\vspace{2mm}
+\tiny
+
+```{r, echo = T}
+# Daten und Faktorenanzahl
+YT        = as.matrix(read.csv("4-Daten/4-fa-keller.csv"))              # Transponierte Datenmatrix (n x m)
+m         = ncol(YT)                                                    # Datendimension
+n         = nrow(YT)                                                    # Beobachtungsanzahl
+p         = 2                                                           # Faktorenanzahl
+
+# Modellschätzung
+C         = cov(YT)                                                     # Stichprobenkovarianzmatrix
+EA        = eigen(C)                                                    # Eigenanalyse von C
+lambda_p  = EA$values[1:p]                                              # p größte Eigenwerte von C
+Q_p       = EA$vectors[,1:p]                                            # p zugehörige Eigenvektoren von C
+L_hat     = Q_p %*% diag(sqrt(lambda_p))                                # Faktorladungsmatrixschätzer
+Psi_hat   = diag(diag(C) - diag(L_hat %*% t(L_hat)))                    # Spezifitätenmatrixschätzer
+
+# Varianzkomponenten
+GG        = sum(diag(C))                                                # Gesamtstichprobenvarianz
+FF        = sum(diag(L_hat %*% t(L_hat)))                               # Faktorbasierte Stichprobenvarianz
+EE        = sum(diag(Psi_hat))                                          # Fehlerbasierte Stichprobenvarianz
+FF_lambda = sum(lambda_p)                                               # Summe der p größten Eigenwerte
+```
+
+```{r, echo = F}
+cat("G   ="  , round(GG,2),
+    "\nF   =", round(FF,2),
+    "\nE   =", round(EE,2),
+    "\nF+E =", round(FF + EE,2),
+    "\n")
+```
+```{r, echo = F}
+cat("Faktorbasierte Stichprobenvarianz F        ="  , round(FF,2),
+    "\nSumme der Eigenwerte lambda_1,...,lambda_p =", round(FF_lambda,2))
+```
+
+# Modellevaluation | Erklärter Varianzanteil
+Anwendungsbeispiel
+\footnotesize
+\tiny
+\vspace{2mm}
+
+```{r, echo = T, eval = T}
+# Daten und Faktorenanzahl
+YT        = as.matrix(read.csv("4-Daten/4-fa-keller.csv"))              # Transponierte Datenmatrix (n x m)
+m         = ncol(YT)                                                    # Datendimension
+n         = nrow(YT)                                                    # Beobachtungsanzahl
+p         = 5                                                           # Faktorenanzahl
+
+# Modellschätzung
+C         = cov(YT)                                                     # Stichprobenkovarianzmatrix
+EA        = eigen(C)                                                    # Eigenanalyse von C
+lambda_p  = EA$values[1:p]                                              # p größte Eigenwerte von C
+Q_p       = EA$vectors[,1:p]                                            # p zugehörige Eigenvektoren von C
+L_hat     = Q_p %*% diag(sqrt(lambda_p))                                # Faktorladungsmatrixschätzer
+Psi_hat   = diag(diag(C) - diag(L_hat %*% t(L_hat)))                    # Spezifitätenmatrixschätzer
+
+# Varianzkomponenten
+G         = sum(diag(C))                                                # Gesamtstichprobenvarianz
+```
+
+```{r, eval = FALSE, echo = FALSE, include = FALSE}
+library(latex2exp)
+cairo_pdf("4-Abbildungen/gdt-4-scree.pdf", width = 10, height = 4)
+par(family = "sans", mfcol = c(1,3), pty = "s", bty = "l",
+    lwd = 1, las = 1, mgp = c(3,1,0), xaxs = "i", yaxs = "i",
+    font.main = 1, cex = 1, cex.main = 1.2, mar = c(5,4,3,2))
+plot(1:p, lambda_p, type = "b", ylim = c(0,17), xlim = c(.5,5.5),
+     ylab = "", xlab = "k", main = TeX("$\\lambda_k$"))
+plot(1:p, lambda_p/G, type = "b", ylim = c(0,.6), xlim = c(.5,5.5),
+     ylab = "", xlab = "k", main = TeX("$\\lambda_k/G$"))
+plot(1:p, cumsum(lambda_p)/G, type = "b", ylim = c(0,1),
+     xlim = c(.5,5.5), ylab = "", xlab = "p",
+     main = TeX("$\\sum_{k=1}^p \\lambda_k/G$"))
+invisible(dev.off())
+```
+
+# Modellevaluation | Erklärter Varianzanteil
+\small
+Anwendungsbeispiel
+\footnotesize
+\setstretch{1.0}
+
+* Man visualisiert $\lambda_1,...\lambda_p$ als eigentlichen *Scree-Plot*.
+* Für $G>0$ betrachtet man $\lambda_1/G,...,\lambda_p/G$ als relative Maße mit
+Bezug zur Gesamtstichprobenvarianz.
+* Man betrachtet $\sum_{k=1}^p\lambda_k/G$ als Maß der kumulativ erklärten
+Gesamtstichprobenvarianz bei $p$ Faktoren.
+
+```{r, echo = FALSE, out.width = "80%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-scree.pdf")
+```
+
+Im Sinne des Scree-Tests liest man hier ab:
+
+* Mit $p = 1$ können 60 % der Gesamtstichprobenvarianz erklärt werden.
+* Mit $p = 2$ können 86 % der Gesamtstichprobenvarianz erklärt werden.
+* Mit $p = 3$ können 87 % der Gesamtstichprobenvarianz erklärt werden.
+
+Im Sinne des Scree-Tests schließt man hier:
+
+* Durch Hinzunahme des dritten Faktors steigt der erklärte Anteil der
+Gesamtstichprobenvarianz nur um rund einen Prozentpunkt.
+* Im Sinne der Modellparsimonität scheint die Wahl von $p = 2$ Faktoren
+sinnvoll.
+
+# Modellevaluation | Kaiser-Guttmann-Kriterium
+
+Kriterium und Begründung
+
+Anwendung im vorliegenden Fall
+
+
+# Modellevaluation | Scree-Test
+
+Kriterium und Begründung
+
+Disentanglement aus Modellevaluation | Erklärter Varianzanteil 
+
+Anwendung im vorliegenden Fall
+
+# Modellevaluation | Scree-Test
+
+\footnotesize
+Bemerkungen
+
+* Der Scree-Test basiert auf der Varianzzerlegung
+\begin{equation}
+\mbox{Gesamtstichprobenvarianz = faktorbasierte Stichprobenvarianz + Fehlerbasierte Stichprobenvarianz}
+\end{equation}
+* Der Scree-"Test" ist ein von @cattell1966 vorgeschlagenes grafisches
+Verfahren.
+* Im Kern geht es dem Scree-Test um Modellakkuratheits- und
+Modellkomplexitätsabwägung.
+* Ziel ist es, möglichst viel Gesamtstichprobenvarianz mit möglichst wenigen
+Faktoren zu erklären.
+* Für die weitere Ausarbeitung zu nicht-grafischen Verfahren vgl. @raiche2013.
+* *Scree* heißt auf Deutsch Schutthalde, die Wahl des Begriffes wird im
+Folgenden klar.
+* Unklarheit bei Cattell, warum das sinnvoll sein sollte
+* Auch die Theorie stochastischer Matrizen begründet Scree-TEst nicht wikrlich.
+* Unklar ist außerdem - Faktor am Knick mit rein (Cattell, ...) oder nicht (Goretzko,...)
+
+
+# Modellevaluation | Scree-Test 
+\center
+Scree (Skriða, Talus, Schutthalde)
+\vspace{2mm}
+
+```{r, echo = FALSE, out.width = "75%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/scree-aquarell-v1.png")
+```
+
+
+
+
+#
+\vfill
+\setstretch{2.2}
+\large
+Grundlagen
+
+Modellformulierung
+
+Modellschätzung
+
+Modellevaluation
+
+**Modellinterpretation**
+
+Selbstkontrollfragen
+\vfill
+
+
+# Modellinterpretation
+Überblick
+\footnotesize
+
+\small
+Mechanistisch-deduktiver Wissenschaftsansatz
+\footnotesize
+\vspace{-1mm}
+
+* Sinnvollerweise überlegt man sich die Bedeutung eines Modells bei seiner
+  Formulierung.
+* Modellparameterschätzer entsprechen dann per se bedeutungsvollen
+  Datenzusammenfassungen.
+* Evaluationsansätze erlauben es dann, die Modellplausibilität im Vergleich zu
+  anderen Modellen zu beurteilen.
+* Im Kontext der Faktorenanalyse entspricht dies dem "konfirmatorischen" Ansatz.
+
+\small
+Semiformal-induktiver Wissenschaftsansatz
+\footnotesize
+\vspace{-1mm}
+
+* Man hofft darauf, dass empirische Daten einem die Theorie ihrer Generation
+  selbst mitteilen.
+* Informell ist dies natürlich auch die Grundlage des mechanistisch-deduktiven
+  Ansatzes.
+* Semiformal wird daraus ein Vorgehen zum Finden einer
+  Modellinterpretationsinspiration.
+* Im Kontext der Faktorenanalyse entspricht dies dem "exploratorischen" Ansatz.
+
+\small
+Faktorenrotation als semiformal-induktiver Ansatz der Faktorenanalyse
+\footnotesize
+\vspace{-1mm}
+
+* *Faktorenrotation* bezeichnet verschiedene Verfahren zur Modifikation von
+  Faktorladungsmatrixschätzern.
+* Ziel ist es, bei fester Faktorenanzahl einen "interpretierbaren"
+  Faktorladungsmatrixschätzer zu erhalten.
+* "Interpretierbar" meint hier die einfache Identifikation faktorspezifischer
+  Itemcluster.
+* Um die Ziele der Faktorenrotation zu erreichen, könnte man auch einfach eine
+  Clusteranalyse durchführen.
+
+
+# Modellinterpretation
+Motivation
+
+\footnotesize
+* Grundlegendes Problem des (normalverteilungsfreien) Faktorenanalysemodells
+\begin{equation}
+y = \mu + Lx + \varepsilon
+\end{equation}
+ist die Wahl einer interpretierbaren Orientierung der Faktoren.
+
+* Nach \thmref{thm:nichtidentifizierbarkeit-und-kovarianzinvarianz} gilt für
+\begin{equation}
+\tilde{y} = \mu + \tilde{L}\tilde{x} + \varepsilon \mbox{ mit } \tilde{L} := LQ \mbox{ und } \tilde{x} := Q^Tx
+\end{equation}
+mit einer beliebigen orthogonalen Matrix $Q \in \mathbb{R}^{p \times p}$, dass
+\begin{equation}
+y = \tilde{y} \mbox{ und } \mathbb{C}(\tilde{y}) = \mathbb{C}(y).
+\end{equation}
+
+* Sowohl $Lx$ als auch $\tilde{L}\tilde{x}$ können also zur Erklärung von $y$
+  genutzt werden.
+
+* Hat man einen Schätzer $\hat{L}$ vorliegen, so ist also auch jedes $\hat{L}Q$
+  ein möglicher Schätzer.
+
+* Es stellt sich also die Frage, welche Form ein "guter"
+  Faktorladungsmatrixschätzer haben soll.
+
+* @thurstone1947 beantwortet diese Frage im Sinne einer "Einfachstruktur"
+  (simple structure).
+
+# Modellinterpretation
+\vspace{2mm}
+Einfachstruktur nach @thurstone1947 (S. 335)
+\vspace{2mm}
+```{r, echo = FALSE, out.width = "65%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-thurstone-simple-structure.png")
+```
+
+
+# Modellinterpretation
+\vspace{1mm}
+Moderne Interpretation der Einfachstruktur nach @thurstone1947
+\vspace{-1mm}
+\footnotesize
+
+* Per Datenkomponente sind Faktorladungen gewünscht, die eine möglichst
+  eindeutige Faktorzuordnung erlauben.
+* Die folgenden Matrizen illustrieren schematisch ein schwerer und ein leichter
+  interpretierbares Ladungsmuster.
+\begin{equation}
+\hat{L}
+=
+\begin{pmatrix*}[r]
+3.81 &  0.16 \\
+2.54 &  1.35 \\
+3.89 &  0.11 \\
+0.53 & -1.22 \\
+1.66 & -2.32
+\end{pmatrix*}
+\qquad\qquad
+\hat{L}^*
+=
+\begin{pmatrix}
+1.00 & 0.00 \\
+1.00 & 0.00 \\
+1.00 & 0.00 \\
+0.00 & 1.00 \\
+0.00 & 1.00
+\end{pmatrix}
+\end{equation}
+* Erste Mathematisierungsversuche finden sich
+  bei @carroll1953, @kaiser1958, @crawford1970.
+* Matrizen mit vielen Nulleinträgen und wenigen von null verschiedenen Einträgen
+  nennt man *dünn besetzte Matrizen (sparse matrices)*.
+* @rohe2023 schreiben entsprechend *"Varimax estimates a sparse basis"*
+* @goretzko2025 schlagen die direkte Einfachstrukturschätzung durch Regularisierung vor.
+* Eindeutige Zuordnungen von Items zu Faktoren induzieren dann Cluster von
+  Items.
+* Die Items eines Clusters laden jeweils hoch auf einen Faktor.
+* Durch Inspektion der Clusteritems hofft man auf Inspiration zu einer
+  inhaltlichen Faktorinterpretation.
+* Man hätte also auch einfach eine Clusteranalyse durchführen können.
+* $Q^Tx$ beschreibt denselben Faktorvektor bezüglich einer anderen
+  Orthonormalbasis.
+* Es geht um das Muster der Projektionen der itemspezifischen Faktorladungen auf
+  (nicht) orthogonale Basen.
+\vspace{-2mm}
+
+Faktorenrotationsansätze sind ein weites Feld. Wir fokussieren im Folgenden auf
+\vspace{-2mm}
+
+(1) den Begriff einer Vektorraumorthonormalbasis am Beispiel von $\mathbb{R}^2$,
+(2) den Begriff der Orthonormalbasisprojektion,
+(3) Orthomaxverfahren ("orthogonale Rotationen") zur Auswahl einer
+Einfachstruktur.
+
+# Modellinterpretation
+\vspace{2mm}
+Intuition zu "orthogonalen und obliquen Rotationen"
+
+```{r, eval = FALSE}
+set.seed(3)
+library(latex2exp)
+pdf(
+file      = "4-Abbildungen/gdt-4-orthogonale-und-oblique-rotationen.pdf",
+width     = 11,
+height    = 4)
+par(
+family    = "sans",
+mfcol     = c(1,3),
+pty       = "s",
+bty       = "l",
+lwd       = 1,
+las       = 1,
+mgp       = c(1,1,1),
+xaxs      = "i",
+yaxs      = "i",
+font.main = 1,
+cex       = 1,
+cex.main  = 1,
+mar       = c(3,3,2,2))
+
+# Faktorladungsmatrix mit Einfachstruktur bezüglich der Standardbasis des R^2
+m_1       = 4
+m_2       = 4
+m         = m_1 + m_2
+L         =
+matrix(c(
+rep(c(1,0),m_1),
+rep(c(0,1),m_2)),
+ncol      = 2,
+byrow     = TRUE) +
+matrix(rnorm(2*m,0,.12), m, 2)
+Bs        = list()
+Bs[[1]]   = diag(2)
+Bs[[2]]   = matrix(c(cos(pi/4), -sin(pi/4), sin(pi/4), cos(pi/4)), nrow = 2)
+Bs[[3]]   = matrix(c(1,0.6,0.4,1), 2)
+tlab      = c('Einfachstruktur', '"Orthogonale Rotation"', '"Oblique Rotation"')
+for(i in 1:length(Bs)){
+
+  # Basis
+  B         = Bs[[i]]
+  title     = tlab[i]
+
+  # Faktorladungsmatrix
+  print(round(L %*% B,2))
+
+  # Ladungsmatrixvisualisierung
+  plot(
+  (L %*% B)[,1],
+  (L %*% B)[,2],
+  main      = title,
+  xlab      = TeX("$\\hat{l}_{j1}$"),
+  ylab      = TeX("$\\hat{l}_{j2}$"),
+  pch       = 21,
+  col       = "white",
+  bg        = "black",
+  cex       = 1.2,
+  xlim      = c(-1.5, 1.5),
+  ylim      = c(-1.5, 1.5),
+  asp       = 1 ,
+  axes      = FALSE)
+  grid()
+  axis(
+  1,
+  pos       = 0,
+  cex.axis  = 0.7,
+  tcl       = -0.25)
+  axis(
+  2,
+  pos       = 0,
+  cex.axis  = 0.7,
+  tcl       = -0.25)
+
+  # Basisvektoren
+  arrows(
+  x0        = 0,
+  y0        = 0,
+  x1        = B[1,1],
+  y1        = B[1,2],
+  lw        = 2,
+  angle     = 30,
+  length    = .1,
+  col       = "gray")
+  arrows(
+  x0        = 0,
+  y0        = 0,
+  x1        = B[2,1],
+  y1        = B[2,2],
+  lw        = 2,
+  angle     = 30,
+  length    = .1,
+  col       = "gray")
+}
+dev.off()
+```
+
+\tiny
+\begin{equation*}
+\hat{L} =
+\begin{pmatrix*}[r]
+0.88 & -0.15\\
+0.96 & 0.15\\
+1.03 & -0.09\\
+0.86 & -0.14\\
+0.02 & 0.91\\
+0.00 & 1.03\\
+0.01 & 1.02\\
+0.13 & 0.96
+\end{pmatrix*}
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\hat{L}_{\mathrm{o}} =
+\begin{pmatrix*}[r]
+0.73 & 0.52\\
+0.57 & 0.79\\
+0.79 & 0.67\\
+0.71 & 0.51\\
+-0.63 & 0.66\\
+-0.73 & 0.73\\
+-0.71 & 0.73\\
+-0.59 & 0.78
+\end{pmatrix*}
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\hat{L}_{\mathrm{q}} =
+\begin{pmatrix*}[r]
+0.80 & 0.21\\
+1.06 & 0.54\\
+0.98 & 0.32\\
+0.78 & 0.21\\
+0.57 & 0.92\\
+0.62 & 1.03\\
+0.62 & 1.02\\
+0.71 & 1.02
+\end{pmatrix*}
+\end{equation*}
+\vspace{-1mm}
+```{r, echo = FALSE, out.width = "100%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-orthogonale-und-oblique-rotationen.pdf")
+```
+
+# Modellinterpretation
+\footnotesize
+\vspace{2mm}
+\begin{definition}[Orthonormalbasis]
+\justifying
+\normalfont
+Eine Menge $B = \{b_1,\dots,b_k\}$ von $k$ Vektoren in $\mathbb{R}^k$ heißt
+\textit{Orthonormalbasis von $\mathbb{R}^k$}, wenn mit dem Skalarprodukt
+\begin{equation}
+\langle x,y \rangle := x^Ty
+\end{equation}
+für $x,y \in \mathbb{R}^k$ folgende, zum Teil äquivalente, Bedingungen gelten:
+\begin{itemize}
+\item[(1)] Die Vektoren $b_1,\dots,b_k \in \mathbb{R}^k$ bilden eine Basis von $\mathbb{R}^k$,
+das heißt, sie sind linear unabhängig und jeder Vektor $x\in\mathbb{R}^k$ lässt
+sich als Linearkombination $x = \sum_{i=1}^k c_ib_i$ mit eindeutigen Koordinaten $c_1,...,c_k \in \mathbb{R}$ schreiben.
+\item[(2)] Die Vektoren $b_1,\dots,b_k\in \mathbb{R}^k$ sind orthonormal, das heißt
+$\langle b_i, b_j \rangle =
+\begin{cases}
+0 & i \neq j \\
+1 & i = j
+\end{cases}
+\mbox{ für }
+1 \le i,j \le k$.
+\item[(3)] Die Koordinaten $c_1,...,c_k \in \mathbb{R}$ eines $x \in \mathbb{R}^k$ bezüglich $B$ ergeben sich durch die Orthogonalprojektionen
+\begin{equation}
+c_i = \langle x, b_i \rangle = x^Tb_i \mbox{ für } i = 1,\ldots,k,
+\end{equation}
+es gilt also
+\begin{equation}
+x
+= \sum_{i=1}^k c_ib_i
+= \sum_{i=1}^k \langle x, b_i \rangle b_i
+= \sum_{i=1}^k \left(x^Tb_i \right) b_i
+\end{equation}
+\end{itemize}
+\end{definition}
+Bemerkungen
+\vspace{-1mm}
+
+* Bei Bedarf wird empfohlen, sich der [\textcolor{darkblue}{Grundlagen der Vektorrechnung}](https://youtu.be/vhQqZgZzdao?si=qFesQnvxTfQ57GwN) zu vergewissern.
+* Siehe dazu auch [\textcolor{darkblue}{Probabilistische Datenwissenschaft für die Psychologie}, Kapitel 8](https://dirk-ostwald.github.io/_part_1/108-Vektoren.html)
+
+# Modellinterpretation
+\small
+\vspace{2mm}
+Beispiel (1)
+\setstretch{1.2}
+
+\footnotesize
+Ein Beispiel für eine Orthonormalbasis von $\mathbb{R}^2$ ist die *Standardbasis*
+\begin{equation}
+\mbox{B}_1
+:= \{b_1,b_2\}
+:= \left\{ \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \end{pmatrix} \right\}
+\end{equation}
+Offenbar gelten
+\begin{equation}
+b_1^Tb_1
+=
+\begin{pmatrix*}[r] 1 & 0 \end{pmatrix*}
+\begin{pmatrix*}[r] 1\\ 0 \end{pmatrix*}
+= 1 + 0
+= 1, \quad
+b_2^Tb_2
+= \begin{pmatrix*}[r] 0 &  1 \end{pmatrix*}
+  \begin{pmatrix*}[r] 0 \\ 1 \end{pmatrix*}
+= 0 + 1
+= 1
+\end{equation}
+und
+\begin{equation}
+b_1^Tb_2
+= \begin{pmatrix*}[r] 1 &  0 \end{pmatrix*}
+ \begin{pmatrix*}[r]  0 \\ 1 \end{pmatrix*}
+= 0 + 0
+= 0.
+\end{equation}
+Sei nun beispielsweise
+\begin{equation}
+x := \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix} \in \mathbb{R}^2.
+\end{equation}
+Die Koordinaten $c_1$ und $c_2$ von $x$ bezüglich $\mbox{B}_1$ ergeben sich durch die Orthogonalprojektionen
+\begin{equation}
+c_1 = x^Tb_1 = \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{1}{3}
+\mbox{ und }
+c_2 = x^Tb_2 = \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \frac{2}{3}
+\end{equation}
+Offenbar lässt sich $x \in \mathbb{R}^2$ also schreiben als
+\begin{equation*}
+x
+= \sum_{i=1}^2 c_i b_i
+= c_1b_1 + c_2b_2
+= \frac{1}{3} \begin{pmatrix} 1 \\ 0 \end{pmatrix} +  \frac{2}{3} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+= \begin{pmatrix} \frac{1}{3} \\ 0 \end{pmatrix} +   \begin{pmatrix} 0 \\ \frac{2}{3} \end{pmatrix}
+= \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix}
+\end{equation*}
+
+
+# Modellinterpretation
+\small
+\vspace{2mm}
+Beispiel (2)
+\setstretch{1.2}
+
+\footnotesize
+Ein weiteres Beispiel für eine Orthonormalbasis von $\mathbb{R}^2$ ist
+\begin{equation}
+\mbox{B}_2 :=
+\{b_1,b_2\} :=
+\left\{
+\begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*},
+\begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}\end{pmatrix*}
+\right\}.
+\end{equation}
+Auch hier gelten
+\begin{equation}
+b_1^Tb_1
+=
+\begin{pmatrix*}[r] \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix*}
+\begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{2} + \frac{1}{2}
+= 1, \quad
+b_2^Tb_2
+= \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix*}
+  \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{2} + \frac{1}{2}
+= 1
+\end{equation}
+und
+\begin{equation}
+b_1^Tb_2
+= \begin{pmatrix*}[r] \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} \end{pmatrix*}
+ \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= -\frac{1}{2} + \frac{1}{2}
+= 0.
+\end{equation}
+Sei nun wiederum
+\begin{equation}
+x := \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix} \in \mathbb{R}^2.
+\end{equation}
+Die Koordinaten $c_1$ und $c_2$ von $x$ bezüglich $\mbox{B}_2$ ergeben sich durch die Orthogonalprojektionen
+\begin{equation}
+c_1
+= x^Tb_1
+= \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{\sqrt{2}} \approx 0.71
+\mbox{ und }
+c_2
+= x^Tb_2
+= \begin{pmatrix} \frac{1}{3} & \frac{2}{3} \end{pmatrix} \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+= \frac{1}{3\sqrt{2}} \approx 0.24
+\end{equation}
+Offenbar lässt sich $x \in \mathbb{R}^2$ also auch schreiben als
+\begin{equation*}
+x
+= \sum_{i=1}^2 c_i b_i
+= c_1b_1 + c_2b_2
+= \frac{1}{\sqrt{2}}  \begin{pmatrix*}[r] \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*} +
+  \frac{1}{3\sqrt{2}} \begin{pmatrix*}[r] -\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix*}
+=  \begin{pmatrix*}[r]  \frac{1}{2} \\ \frac{1}{2} \end{pmatrix*} +
+   \begin{pmatrix*}[r] -\frac{1}{6} \\ \frac{1}{6} \end{pmatrix*}
+= \begin{pmatrix} \frac{3}{6} - \frac{1}{6} \\ \frac{3}{6} + \frac{1}{6} \end{pmatrix}
+= \begin{pmatrix} \frac{2}{6} \\ \frac{4}{6} \end{pmatrix}
+= \begin{pmatrix} \frac{1}{3} \\ \frac{2}{3} \end{pmatrix}
+\end{equation*}
+
+# Modellinterpretation
+\vspace{2mm}
+Visualisierung von Beispiel (1) und Beispiel (2)
+
+```{r, echo = FALSE, out.width = "95%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-orthonormalbasenprojektion.pdf")
+```
+
+
+# Modellinterpretation
+
+Motivation und technische Umsetzung von Orthomaxverfahren
+
+\small
+Grundidee
+\footnotesize
+
+* Grundidee ist es, eine Faktorraumbasis zu identifizieren, für die $\hat{L}$
+  eine Einfachstruktur hat.
+* Dazu interpretiert man zunächst die Zeilen von $\hat{L}$ als (transponierte)
+  Vektoren in $\mathbb{R}^k$ .
+* Man betrachtet also die Faktorladungen jedes Items als Koordinaten bezüglich
+  der Standardbasis von $\mathbb{R}^k$ .
+* Man möchte einen alternativen Koordinatensatz erhalten, so dass das
+  entsprechende $\hat{L}_M$ Einfachstruktur hat.
+* Dazu probiert man verschiedene Orthonormalbasen aus und inspiziert die sich
+  ergebenden Formen von $\hat{L}_M$ .
+* Wenn ein solches $\hat{L}_M$ die bestmögliche Einfachstruktur hat, stoppt man
+  die Orthonormalbasensuche.
+
+\small
+Technische Umsetzung
+\footnotesize
+
+* Sei $\hat{l}_j^T \in \mathbb{R}^{1\times k}$ eine Zeile von $\hat{L}$ , also
+  $\hat{l}_j \in \mathbb{R}^{k}$ mit Einträgen als Koordinaten bezüglich der
+  Standardbasis
+* Sei $M \in \mathbb{R}^{k \times k}$ nun eine Matrix, deren Spalten
+  $m_1,...,m_k$ eine Orthonormalbasis von $\mathbb{R}^k$ bilden.
+* Nach Definition ist $M$ dann eine Orthogonalmatrix, es gilt also $M^TM = I_k$.
+* Weiterhin ergeben sich die Koordinaten $c_1,...,c_k$ von $\hat{l}_j$ bezüglich
+  der von $M$ repräsentierten Basis als
+\begin{equation}
+(\hat{l}_{j,M})^T
+= \begin{pmatrix} c_1 & \cdots & c_k \end{pmatrix}
+= \begin{pmatrix} \hat{l}_j^T m_1 & \cdots &  \hat{l}_j^Tm_k \end{pmatrix}
+= \hat{l}_j^T \begin{pmatrix} m_1 & \cdots & m_k \end{pmatrix}
+= \hat{l}_j^T M
+\end{equation}
+* Für alle Zeilen von $\hat{L}$ simultan, also alle itemspezifischen
+  Faktorladungen, ergibt sich $\hat{L}_M = \hat{L}M$ .
+* Man sucht also ein $M \in \mathbb{R}^{k\times k}$ mit $M^TM = I_k$ , so dass
+  $\hat{L}_M$ für festes $\hat{L}$ Einfachstruktur hat.
+* Man misst den Grad der Einfachstruktur von $\hat{L}_M$ als Funktion von $M$
+  dabei mit einer *Orthomaxzielfunktion*
+
+# Modellinterpretation
+\footnotesize
+\begin{definition}[Orthomaxverfahren]
+\justifying
+Es sei $\hat{L} \in \mathbb{R}^{m \times k}$ ein Faktorladungsmatrixschätzer und
+$\phi$ eine Funktion, die für eine Matrix $M \in \mathbb{R}^{k \times k}$ den
+Grad der
+Einfachstruktur von $\hat{L}M$ misst. Dann entspricht das
+\textit{Orthomaxverfahren}
+dem restringierten nichtlinearen Optimierungsproblem
+\begin{equation}
+\mbox{max}\, \phi(M) \mbox { unter der Nebenbedingung } M^TM = I_k.
+\end{equation}
+\end{definition}
+
+Bemerkungen
+
+* Die Nebenbedingung $M^TM = I_k$ stellt sicher, dass $M$ eine Orthonormalbasis
+  repräsentiert.
+* Es gibt verschiedene Zielfunktionen, die den Einfachstrukturgrad von
+  $\hat{L}M$ mehr oder weniger gut messen.
+* Wir listen diese Zielfunktionen im Folgenden, betrachten aber nur die
+  Varimaxvariante genauer.
+
+# Modellinterpretation
+\footnotesize
+\begin{definition}[Orthomaxzielfunktion]
+Für einen Faktorladungsmatrixschätzer $\hat{L} \in \mathbb{R}^{m \times k}$ und
+eine Matrix $M \in \mathbb{R}^{k\times k}$ mit $M^TM = I_k$ sei
+\begin{equation}
+\hat{L}_M := \hat{L}M =: \left(\ell_{ij}\right)_{1 \le i \le m, 1 \le j \le k} \in \mathbb{R}^{m \times k}
+\end{equation}
+die \textit{transformierte Faktorladungsmatrix}. Dann ist die
+\textit{Orthomaxzielfunktion} definiert als
+\begin{equation}
+\phi : \mathbb{R}^{k \times k} \to \mathbb{R},
+M \mapsto \phi(M)
+ = \sum_{j=1}^k \left(\sum_{i=1}^m \frac{1}{m} \ell^4_{ij} - \frac{w}{m^2}\left(\sum_{i=1}^m \ell_{ij}^2 \right)^2\right)
+\end{equation}
+Weiterhin wird $\phi$ für
+\begin{itemize}
+\item $w := 0$ \textit{Quartimaxzielfunktion},
+\item $w := m$ \textit{Faktorparsimonitätszielfunktion},
+\item $w := k/2$ \textit{Equamaxzielfunktion},
+\item $w := 1$ \textit{Varimaxzielfunktion}.
+\end{itemize}
+genannt.
+\end{definition}
+\vspace{-1mm}
+Bemerkungen
+
+* Die Einträge $\ell_{ij}$ von $\hat{L}_M$ sind von $M$ abhängig, zur
+  Vereinfachung der Notation bleibt dies implizit.
+* Es stellt sich die Frage, inwieweit die funktionalen Formen von $\phi$ die
+  Sparseness von $\hat{L}_M$ messen.
+* Zumindest der Varimaxfall kann einigermaßen sinnvoll begründet werden, wie
+  folgendes Theorem zeigt.
+
+# Modellinterpretation
+\footnotesize
+\begin{theorem}[Varimaxzielfunktion]
+\justifying
+\normalfont
+Für $j = 1,...,k$ sei
+\begin{equation}
+\mbox{SQL}_j = \sum_{i=1}^m \left(\ell_{ij}^2 - \frac{1}{m}\sum_{i=1}^m \ell_{ij}^2 \right)^2
+\end{equation}
+die Summe der quadrierten Abweichungen der quadrierten Faktorladungen vom
+Mittelwert
+der quadrierten Faktorladungen von Faktor $j$. Die Maximierung der
+Varimaxzielfunktion ist äquivalent zur Maximierung der Summenfunktion
+\begin{equation}
+\varphi : \mathbb{R}^{k \times k } \to \mathbb{R}, M \mapsto \varphi(M) := \sum_{j = 1}^k \mbox{SQL}_j
+\end{equation}
+unter der Nebenbedingung $M^TM = I_k$, also zur Lösung des restringierten
+nichtlinearen Optimierungsproblems
+\begin{equation}
+\mbox{max}\, \varphi(M) \mbox { unter der Nebenbedingung } M^TM = I_k.
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Die Einträge $\ell_{ij}$ der transformierten Faktorladungsmatrix $\hat{L}_M$
+  sind von $M$ abhängig, zur Vereinfachung der Notation bleibt dies implizit.
+* $\mbox{SQL}_j/m$ ist die mit $1/m$ normierte Varianz der quadrierten Ladungen
+  von Faktor $j$ über Items.
+* Hier werden quadrierte Ladungen über Items verglichen. Die Streuung der
+  Faktorwerte über Testpersonen ist davon zu unterscheiden.
+* Intuitiv präferiert die Varimaxzielfunktion also Lösungen "hoher Varianz der
+  quadrierten Faktorladungen".
+
+
+
+# Modellinterpretation
+
+\footnotesize
+\underline{Beweis}
+
+Für $i = 1,...,m$ und $j = 1,...,k$ sei zur Vereinfachung der Notation
+\begin{equation}
+s_{ij} := \ell_{ij}^2
+\end{equation}
+die quadrierte Ladung des $j$ten Faktors auf das $i$te Item. Weiterhin sei
+\begin{equation}
+\bar{s}_j := \frac{1}{m}\sum_{i=1}^m s_{ij}
+\end{equation}
+der Mittelwert der quadrierten Faktorladungen des $j$ten Faktors über Items,
+also der Mittelwert der quadrierten Einträge der $j$ten *Spalte* der
+transformierten Faktorladungsmatrix.
+Für jeden Faktor $j = 1,...,k$ kann dann die Summe der quadrierten
+Mittelwertsabweichungen
+der quadrierten Faktorladungen geschrieben werden als
+\begin{equation}\label{eq:sql_j}
+\mbox{SQL}_j
+= \sum_{i=1}^m \left(s_{ij} - \bar{s}_j \right)^2
+= \sum_{i=1}^m \ell_{ij}^4 - \frac{1}{m}\left(\sum_{i=1}^m \ell_{ij}^2\right)^2.
+\end{equation}
+Dann gilt aber
+\begin{equation}
+\varphi(M)
+= \sum_{j=1}^k \mbox{SQL}_j
+= \sum_{j=1}^k \left(\sum_{i=1}^m \ell_{ij}^4 - \frac{1}{m}\left(\sum_{i=1}^m \ell_{ij}^2\right)^2\right)
+= m\phi(M).
+\end{equation}
+Dabei ist $\phi$ die Orthomaxzielfunktion mit $w := 1$. Da $m > 0$ gilt,
+besitzen $\varphi$ und $\phi$ unter der Nebenbedingung $M^TM = I_k$ dieselben
+Maximierer.
+
+
+# Modellinterpretation
+\footnotesize
+\vspace{2mm}
+\underline{Beweis}
+
+Gleichung \eqref{eq:sql_j} ergibt sich dabei schließlich durch
+\begingroup
+\setlength{\jot}{0pt}
+\begin{align}
+\begin{split}
+\mbox{SQL}_j
+& = \sum_{i=1}^m \left(s_{ij} - \bar{s}_j \right)^2 \\
+& = \sum_{i=1}^m \left(s_{ij}^2 - 2s_{ij}\bar{s}_j + \bar{s}_j^2 \right) \\
+& = \sum_{i=1}^m s_{ij}^2 - 2\bar{s}_j\sum_{i=1}^ms_{ij} + \sum_{i=1}^m\bar{s}_j^2 \\
+& = \sum_{i=1}^m s_{ij}^2 - 2\bar{s}_jm\bar{s}_j + m\bar{s}_j^2 \\
+& = \sum_{i=1}^m s_{ij}^2 - 2m\bar{s}_j^2 + m\bar{s}_j^2 \\
+& = \sum_{i=1}^m s_{ij}^2 - m\bar{s}_j^2 \\
+& = \sum_{i=1}^m s_{ij}^2 - m\left( \frac{1}{m}\sum_{i=1}^m s_{ij}\right)^2 \\
+& = \sum_{i=1}^m s_{ij}^2 - \frac{m}{m^2}\left(\sum_{i=1}^m s_{ij}\right)^2 \\
+& = \sum_{i=1}^m \ell_{ij}^4 - \frac{1}{m}\left(\sum_{i=1}^m \ell_{ij}^2\right)^2 \\
+\end{split}
+\end{align}
+\endgroup
+
+
+# Modellinterpretation
+\small
+Beispiel zur Varimaxzielfunktion -->
+
+<!-- Für $m=3$, $k=2$ betrachten wir die bereits zeilenweise normierte Ladungsmatrix
+und eine Rotation um den Winkel $\theta$:
+\begin{equation}
+\hat L=\begin{pmatrix}1&0\\1&0\\0&1\end{pmatrix},\qquad
+M_\theta=\begin{pmatrix}c&-s\\s&c\end{pmatrix},\qquad
+c=\cos\theta,\quad s=\sin\theta.
+\end{equation}
+Die rotierte Ladungsmatrix ist
+\begin{equation}
+\hat{L}_{M_\theta}=\hat L M_\theta=\begin{pmatrix}c&-s\\c&-s\\s&c\end{pmatrix}.
+\end{equation}
+Einsetzen in die Varimaxzielfunktion ergibt
+\begin{equation}
+\begin{aligned}
+\phi(M_\theta)
+&=c^4+s^4-\frac19\big((2c^2+s^2)^2+(2s^2+c^2)^2\big)\\
+&=\frac49-\frac{16}{9}c^2s^2=\frac49\cos^2(2\theta).
+\end{aligned}
+\end{equation}
+
+* Maxima liegen bei $\theta=r\pi/2$ , $r\in\mathbb Z$ : Jedes Item lädt auf
+  genau einen Faktor.
+* Bei $\theta=\pi/4$ sind die quadrierten Ladungen jeder Spalte gleich. Die
+  Zielfunktion ist null.
+* Das Beispiel veranschaulicht die Präferenz für Einfachstruktur. Varimax
+  garantiert keine Nullladungen für beliebige Daten.
+* Die **R**-Funktion `varimax()` optimiert das Kriterium numerisch. -->
+
+<!--
+# Modellinterpretation
+\footnotesize
+Varimax als Optimierungsproblem mit Nebenbedingungen
+
+Für eine gegebene Ladungsmatrix $\hat L$ und $Z:=\hat LM$ lautet das
+Optimierungsproblem
+\begin{equation}\label{eq:max}
+\max_{M^TM=I_k}\phi(M),\qquad
+\phi(M)=\sum_{j=1}^k\left(\sum_{i=1}^m z_{ij}^4-
+\frac1m\left(\sum_{i=1}^m z_{ij}^2\right)^2\right).
+\end{equation}
+Mit elementweisem Potenzieren und
+\begin{equation}
+D_M=\operatorname{diag}\left(\sum_i z_{i1}^2,\ldots,\sum_i z_{ik}^2\right)
+\end{equation}
+ergibt Differenzieren nach $M$
+\begin{equation}
+\nabla_M\phi(M)=4\hat L^T\left(Z^{\circ3}-\frac1mZD_M\right)=:4B_M.
+\end{equation}
+Die notwendige Stationaritätsbedingung mit orthogonaler Nebenbedingung ist
+\begin{equation}\label{eq:MAB}
+B_M=MA_M\quad\text{für eine symmetrische Multiplikatormatrix }A_M.
+\end{equation}
+Diese Bedingung allein garantiert kein globales Maximum.
+
+# Modellinterpretation
+\footnotesize
+Der SVD-Schritt des Varimax-Algorithmus
+
+Für eine im aktuellen Iterationsschritt festgehaltene Matrix $B$ betrachtet
+man das orthogonale Teilproblem
+\begin{equation}
+\max_{M^TM=I_k}\operatorname{tr}(M^TB).
+\end{equation}
+Sei $B=UDV^T$ eine Singulärwertzerlegung mit $d_j\geq0$.
+Dann ist
+\begin{equation}
+M_*=UV^T
+\end{equation}
+eine Lösung des Teilproblems. Diese Lösung gilt auch, wenn $B$ singulär ist.
+
+Bemerkungen
+
+* Der Algorithmus berechnet $B$ aus den aktuellen Ladungen und wiederholt diesen Schritt.
+* Im Verfahren mit Kaiser-Normalisierung wird zunächst $\hat L_N=N\hat L$ verwendet.
+* Die SVD löst das angegebene Teilproblem; sie beweist kein globales Maximum der Varimax-Zielfunktion.
+* Die Theorie der SVD steht in
+\defref{def:singulaerwertzerlegung} und \thmref{thm:svd-eigenanalyse}.
+
+# Modellinterpretation
+\footnotesize
+\underline{Beweis des SVD-Schritts}
+
+Für orthogonales $M$ ist auch $W:=V^TM^TU$ orthogonal. Mit der zyklischen
+Invarianz der Spur gilt
+\begin{align}
+\operatorname{tr}(M^TB)
+&=\operatorname{tr}(M^TUDV^T)\\
+&=\operatorname{tr}(V^TM^TUD)\\
+&=\operatorname{tr}(WD)\\
+&=\sum_{j=1}^k w_{jj}d_j\\
+&\leq\sum_{j=1}^k d_j.
+\end{align}
+Die Ungleichung folgt aus $w_{jj}\leq1$ und $d_j\geq0$.
+Für $M_*=UV^T$ ist $W=I_k$; die obere Schranke wird also erreicht.
+$\hfill\Box$
+
+Die gleiche Lösung minimiert auch
+\begin{equation}
+\|M-B\|_F^2=k+\|B\|_F^2-2\operatorname{tr}(M^TB)
+\end{equation}
+unter $M^TM=I_k$.
+
+# Modellinterpretation
+\footnotesize
+\begin{definition}[\texttt{varimax()}-Algorithmus]\label{def:varimax-algorithmus}
+Gegeben sei $\hat L\in\mathbb R^{m\times k}$ mit von null verschiedenen Zeilen.
+
+\underline{Initialisierung (Kaiser-Normalisierung)}
+\begin{equation}
+N:=\operatorname{diag}\left(\|\hat L_{1,:}\|^{-1},\ldots,\|\hat L_{m,:}\|^{-1}\right),
+\qquad \hat L_N:=N\hat L,\qquad M^{(0)}:=I_k,\quad d^{(0)}:=0.
+\end{equation}
+Wähle $\varepsilon>0$. Für $i=1,\ldots,1000$:
+\begin{itemize}
+\item[(S1)] Setze $Z^{(i)}:=\hat L_N M^{(i-1)}$ und
+$D^{(i)}:=\operatorname{diag}\big(\sum_j(z^{(i)}_{j1})^2,\ldots,\sum_j(z^{(i)}_{jk})^2\big)$.
+\item[(S2)] Setze $B^{(i)}:=\hat L_N^T\big((Z^{(i)})^{\circ3}-\frac1m Z^{(i)}D^{(i)}\big)$.
+\item[(S3)] Berechne $B^{(i)}=U^{(i)}\Delta^{(i)}V^{(i)^T}$ mittels SVD.
+\item[(S4)] Setze $M^{(i)}:=U^{(i)}V^{(i)^T}$ und $d^{(i)}:=\operatorname{tr}(\Delta^{(i)})$.
+\item[(S5)] Beende die Iteration, wenn $d^{(i)}<d^{(i-1)}(1+\varepsilon)$.
+\end{itemize}
+
+\underline{Finalisierung}
+
+Für den letzten berechneten Index $t$ erhält man
+\begin{equation}
+\hat L_{NM}:=\hat L_N M^{(t)},\qquad
+\hat L_M:=N^{-1}\hat L_{NM}=\hat L M^{(t)}.
+\end{equation}
+\end{definition}
+
+# Modellinterpretation
+\footnotesize
+Erläuterung des Varimax-Algorithmus
+
+\textit{Normalisierung.}
+Kaiser-Normalisierung bringt jede Zeile von $\hat L$ auf die euklidische Einheitslänge.
+Die Zielfunktion wird so für zeilenweise normierte Ladungen optimiert.
+Ohne Normalisierung setzt man $N=I_m$. Nullzeilen müssen vor einer Normalisierung
+gesondert behandelt werden.
+
+\vspace{2mm}
+\textit{Iterationsschritt.}
+Aus der aktuellen rotierten Matrix $Z^{(i)}$ wird die Matrix $B^{(i)}$ berechnet.
+Die SVD liefert mit $M^{(i)}=U^{(i)}V^{(i)^T}$ eine orthogonale Matrix, die das
+Teilproblem $\max_{M^TM=I_k}\operatorname{tr}(M^TB^{(i)})$ löst.
+Die elementweise dritte Potenz und die Spaltensummen in $D^{(i)}$ stammen
+aus dem Gradienten der Varimaxzielfunktion. Der Beweis des SVD-Schritts steht auf den vorangehenden Folien.
+
+\vspace{2mm}
+\textit{Abbruch und Rücktransformation.}
+Die Summe der Singulärwerte $d^{(i)}$ dient als Konvergenzkriterium.
+Nach der letzten Iteration wird die Normalisierung rückgängig gemacht.
+Die endgültige Lösung ist deshalb eine orthogonale Rotation der ursprünglichen
+Ladungsmatrix. Konvergenz des Algorithmus allein beweist kein globales Maximum.
+
+\vspace{2mm}
+\scriptsize
+Zur Normalisierung und ihrer Diskussion siehe @kaiser1958, @kaiser1970, @kaiser1974 und @rohe2023.
+
+-->
+
+<!-- # Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+\vspace{1mm}
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+
+$\Rightarrow$ Hauptkomponentenschätzung
+\fontsize{4.5}{5.4}\selectfont
+\vspace{1mm}
+```{r, echo = TRUE, eval = TRUE}
+YT                = as.matrix(read.csv("4-Daten/4-fa-keller.csv"))    # Transponierte Datenmatrix (n x m)
+m                 = ncol(YT)                                          # Datendimension
+n                 = nrow(YT)                                          # Beobachtungsanzahl
+k                 = 2                                                 # Faktoranzahl
+C                 = cov(YT)                                           # Stichprobenkovarianzmatrix
+EA                = eigen(C)                                          # Eigenanalyse von C
+lambda_k          = EA$values[1:k]                                    # k größte Eigenwerte von C
+Q_k               = EA$vectors[,1:k]                                  # Zugehörige Eigenvektoren
+L_hat             = Q_k %*% diag(sqrt(lambda_k))                      # Hauptkomponentenschätzer
+D                 = diag(ifelse(colSums(L_hat) < 0, -1, 1))           # Einheitliche Vorzeichen
+L_hat             = L_hat %*% D                                       # Vorzeichenfinalisierung
+```
+
+
+```{r, eval = F, echo = F}
+library(latex2exp)
+cluster     = list(c(2:4,11:13,15:21), c(5:9,14), c(1,10))
+cols        = c("Red", "Blue", "Black")
+pdf(
+file        = "4-Abbildungen/gdt-4-L-hat.pdf",
+width       = 5,
+height      = 5)
+par(
+family      = "sans",
+mfcol       = c(1,1),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(3,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 1,
+mar         = c(5,5,1,1))
+plot(
+NaN,
+NaN,
+xlim        = c(-1.5,1.5),
+ylim        = c(-1.5,1.5),
+xlab        = TeX("$\\hat{L}_{i,1}$"),
+ylab        = TeX("$\\hat{L}_{i,2}$"),
+main        = "",
+axes        = F)
+for(c in 1:length(cluster)){
+  points(
+  L_hat[cluster[[c]],1],
+  L_hat[cluster[[c]],2],
+  type        = "p",
+  pch         = 21,
+  col         = "white",
+  bg          = cols[c],
+  cex         = 1.5)
+}
+grid()
+axis(1, pos=0)
+axis(2, pos=0)
+dev.off()
+```
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+\vspace{-1mm}
+
+$\Rightarrow$ Visualisierung der geschätzten Faktorladungen zu jedem Item
+
+```{r, echo = FALSE, out.width = "55%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-L-hat.pdf")
+```
+
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+$\Rightarrow$ Visualisierung der geschätzten Faktorladungen zu jedem Item
+\vspace{2mm}
+
+\textcolor{red}{Zeilen von $\hat{L}$ mit $\bullet$ ("Affektiver Faktor")}
+```{r}
+items             = colnames(YT)
+cluster           = list(c(2:4,11:13,15:21), c(5:9,14), c(1,10))
+items[cluster[[1]]]
+```
+\footnotesize
+\textcolor{blue}{Zeilen von $\hat{L}$ mit $\bullet$ ("Kognitiver Faktor")}
+```{r}
+cluster           = list(c(2:4,11:13,15:21), c(5:9,14), c(1,10))
+items[cluster[[2]]]
+```
+\textcolor{black}{Zeilen von $\hat{L}$ mit $\bullet$}
+```{r}
+cluster           = list(c(2:4,11:13,15:21), c(5:9,14), c(1,10))
+items[cluster[[3]]]
+```
+
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+$\Rightarrow$ Implementierung des `varimax()`-Algorithmus für $\hat{L}$
+
+Die Varimaxrotation erfolgt mit Kaiser-Normalisierung, also nach Normierung
+der Ladungszeilen auf Einheitslänge.
+
+\fontsize{4.5}{5.4}\selectfont
+\vspace{2mm}
+```{r, echo = T,  eval = TRUE}
+N                 = solve(diag(sqrt(diag(L_hat %*% t(L_hat)))))      # Zeilennormalisierende Matrix
+L_hat_N           = N %*% L_hat                                      # Zeilennormalisierter Faktorladungsmatrixschätzer
+m                 = nrow(L_hat_N)                                    # Zeilenanzahl
+k                 = ncol(L_hat_N)                                    # Spaltenanzahl
+Mi                = diag(k)                                          # Orthonormalbasismatrixinitialisierung
+d                 = 0                                                # Konvergenzvariableninitialisierung
+eps               = 1e-05                                            # Konvergenzkriterium (change factor)
+for (i in 1L:1000L){                                                 # Iterationen
+    L_hat_Mi      = L_hat_N %*% Mi                                   # Rotierte, normalisierte Faktorladungen
+    Ci            = L_hat_Mi^3                                       # C^{(i)}
+    Di            = diag(drop(rep(1, m) %*% L_hat_Mi^2))             # D^{(i)}
+    Bi            = t(L_hat_N) %*% (Ci - (1/m) * L_hat_Mi %*% Di)    # B^{(i)}
+    UDVi          = svd(Bi)                                          # Singulärwertzerlegung von B^{(i)}
+    Mi            = UDVi$u %*% t(UDVi$v)                             # Orthonormalbasismatrix Update M^{(i)}
+    dd            = sum(UDVi$d)                                      # Konvergenzkriterium Update
+    if (dd < d * (1 + eps)){break}                                   # Konvergenztest
+    d             = dd}                                              # Konvergenzvariablen Update
+L_hat_NM          = L_hat_N %*% Mi                                   # Transformierter Faktorladungsmatrixschätzer
+L_hat_M           = solve(N) %*% L_hat_NM                            # Aufhebung der Zeilennormalisierung
+```
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+$\Rightarrow$  Faktorladungen bezüglich der kanonischen Basis und Varimaxbasis (\textcolor{gray}{$\rightarrow$})
+\footnotesize
+
+```{r, eval = F, echo = F}
+library(latex2exp)
+pdf(
+file        = "4-Abbildungen/gdt-4-L-hat-varimax-basis.pdf",
+width       = 5,
+height      = 5)
+par(
+family      = "sans",
+mfcol       = c(1,1),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(3,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 1.5,
+mar         = c(5,5,3,1))
+M           = Mi
+plot(
+NaN,
+NaN,
+xlim        = c(-1.5,1.5),
+ylim        = c(-1.5,1.5),
+xlab        = TeX("$\\hat{L}_{i,1}$"),
+ylab        = TeX("$\\hat{L}_{i,2}$"),
+main        = "",
+axes        = F)
+for(c in 1:length(cluster)){
+  points(
+  L_hat[cluster[[c]],1],
+  L_hat[cluster[[c]],2],
+  type        = "p",
+  pch         = 21,
+  col         = "white",
+  bg          = cols[c],
+  cex         = 1.5)
+}
+grid()
+axis(1, pos=0)
+axis(2, pos=0)
+arrows(
+x0          = 0,
+y0          = 0,
+x1          = M[1,1],
+y1          = M[2,1],
+lwd          = 2,
+angle       = 30,
+length      = .1,
+col         = "gray")
+arrows(
+x0          = 0,
+y0          = 0,
+x1          = M[1,2],
+y1          = M[2,2],
+lwd          = 2,
+angle       = 30,
+length      = .1,
+col         = "gray")
+dev.off()
+```
+```{r, echo = FALSE, out.width = "55%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-L-hat-varimax-basis.pdf")
+```
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+$\Rightarrow$ Faktorladungen bezüglich der Varimax-Basisvektoren (\textcolor{gray}{$\rightarrow$})
+
+```{r, eval = F, echo = F}
+library(latex2exp)
+pdf(
+file        = "4-Abbildungen/gdt-4-L-hat-varimax-system.pdf",
+width       = 5,
+height      = 5)
+par(
+family      = "sans",
+mfcol       = c(1,1),
+pty         = "s",
+bty         = "l",
+lwd         = 1,
+las         = 1,
+mgp         = c(3,1,0),
+xaxs        = "i",
+yaxs        = "i",
+font.main   = 1,
+cex         = 1,
+cex.main    = 1.5,
+mar         = c(5,5,3,1))
+M           = Mi
+plot(
+NaN,
+NaN,
+xlim        = c(-1.5,1.5),
+ylim        = c(-1.5,1.5),
+xlab        = TeX("$(\\hat{L}_M)_{i,1}$"),
+ylab        = TeX("$(\\hat{L}_M)_{i,2}$"),
+main        = "",
+axes        = F)
+for(c in 1:length(cluster)){
+  points(
+  L_hat_M[cluster[[c]],1],
+  L_hat_M[cluster[[c]],2],
+  type        = "p",
+  pch         = 21,
+  col         = "white",
+  bg          = cols[c],
+  cex         = 1.5)
+}
+grid()
+axis(1, pos=0)
+axis(2, pos=0)
+M           = diag(2)
+arrows(
+x0          = 0,
+y0          = 0,
+x1          = M[1,1],
+y1          = M[2,1],
+lwd          = 2,
+angle       = 30,
+length      = .1,
+col         = "gray")
+arrows(
+x0          = 0,
+y0          = 0,
+x1          = M[1,2],
+y1          = M[2,2],
+lwd          = 2,
+angle       = 30,
+length      = .1,
+col         = "gray")
+dev.off()
+```
+```{r, echo = FALSE, out.width = "55%", fig.align = "center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-L-hat-varimax-system.pdf")
+```
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+$\Rightarrow$ Durchführung mithilfe des `psych`-Pakets (@revelle2024)
+
+\tiny
+\vspace{1mm}
+\setstretch{1.6}
+
+```{r, echo = TRUE, eval = TRUE}
+library(psych)
+YT                = as.matrix(read.csv("4-Daten/4-fa-keller.csv"))    # Transponierte Datenmatrix (n x m)
+C                 = cov(YT)                                           # Stichprobenkovarianzmatrix
+res               = principal(                                        # Hauptkomponentenschätzung
+    C,                                                                # Kovarianzmatrix der Items
+    nfactors      = 2,                                                # Anzahl an Faktoren
+    rotate        = "varimax",                                        # Anschließende Varimaxrotation
+    covar         = TRUE)                                             # Kovarianzmatrix verwenden
+L_hat_psych       = res$loadings                                      # Rotierter Faktorladungsmatrixschätzer
+```
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+$\Rightarrow$ Durchführung mit Standardcode
+\setstretch{1}
+\vspace{1mm}
+\tiny
+
+```{r, echo = F}
+rownames(L_hat_M) = items
+```
+
+```{r, echo = TRUE}
+round(L_hat_M,2)
+```
+
+# Modellinterpretation
+\vspace{2mm}
+Anwendungsbeispiel
+
+\footnotesize
+"Hauptkomponentenschätzung mit anschließender Varimaxrotation"
+
+$\Rightarrow$ Durchführung mit `psych`
+\setstretch{1}
+\vspace{1mm}
+\tiny
+
+```{r, echo = TRUE}
+round(L_hat_psych[,1:2],2)
+```
+
+
+#
+\vfill
+\setstretch{2.2}
+\large
+Grundlagen
+
+Modellformulierung
+
+Modellschätzung
+
+Modellevaluation
+
+Modellinterpretation
+
+**Selbstkontrollfragen**
+\vfill
+
+# Selbstkontrollfragen {.allowframebreaks}
+\footnotesize
+
+1. Erläutern Sie die Begriffe der latenten und observierbaren Variablen.
+1. Erläutern Sie die Begriffe der explorativen und der konfirmatorischen Faktorenanalyse.
+1. Geben Sie die Definitionen der Kovarianzmatrix und der Korrelationsmatrix eines Zufallsvektors wieder.
+1. Geben Sie die Definition von Stichprobenkovarianzmatrix und Stichprobenkorrelationsmatrix wieder.
+1. Geben Sie die Definition der Faktorenanalysemodelle in struktureller Form wieder.
+1. Geben Sie das Theorem zum Populationsmodell der Faktorenanalyse wieder.
+1. Erläutern Sie die datengenerative Sicht eines Faktorenanalysemodells.
+1. Geben Sie die Definition des Stichprobenmodells der Faktorenanalyse wieder.
+1. Geben Sie Spearman's g-Faktor Modell in struktureller Form wieder und erläutern Sie es.
+1. Geben Sie Thurstones's Multifaktorenmodell in struktureller Form wieder und erläutern Sie es.
+1. Geben Sie das Modell paralleler Testmessungen in struktureller Faktorenanalysemodellform wieder.
+1. Geben Sie das Theorem zur marginalen Datenkovarianzmatrix des Faktorenanalysemodells wieder.
+1. Geben Sie das Theorem zur Varianzzerlegung der faktoranalytischen Datenkomponenten wieder.
+1. Geben Sie die Definitionen von Kommunalität, Spezifität und Gesamtvarianz wieder.
+1. Geben Sie die Definition einer orthogonalen Matrix wieder.
+1. Geben Sie die Definition der Orthogonalen Transformation eines Faktorenanalysemodells wieder.
+1. Geben Sie das Theorem zur Kovarianzinvarianz unter orthogonaler Transformation des Faktorenanalysemodells wieder.
+1. Geben Sie das Theorem zur Orthonormalzerlegung einer symmetrischen Matrix wieder.
+1. Erläutern Sie die Begriffe Eigenvektor und Eigenwert bei Orthonormalzerlegung einer symmetrischen Matrix.
+1. Erläutern Sie die Motivation der Hauptkomponentenschätzung der Parameter eines Faktorenanalysemodells.
+1. Geben Sie die Definition der Hauptkomponentenschätzer $p$-ter Ordnung von $L$ und $\Psi$ wieder.
+1. Geben Sie die Definition der Itemvarianz-, Kommunalitäts-, Spezifitäts- und Gesamtvarianzschätzer wieder.
+1. Geben Sie die Definition der Stichprobenvarianzzerlegung der Faktorenanalyse wieder.
+1. Geben Sie das Theorem zur Stichprobenvarianzzerlegung der Faktorenanalyse wieder.
+1. Erläutern Sie die Motivation und das Vorgehen des Scree-Tests zur Bestimmung der Faktoranzahl.
+1. Erläutern Sie die Motivation für Faktorenrotationen im Kontext exploratorischer Faktorenanalysen.
+1. Erläutern Sie den Begriff der Einfachstruktur einer Faktorladungsmatrix.
+1. Geben Sie das Theorem zum Begriff der Orthonormalbasis wieder.
+1. Geben Sie die Definition des Begriffs des Orthomaxverfahrens wieder.
+1. Erläutern Sie die Motivation und die technische Umsetzung von Orthomaxverfahren.
+1. Geben Sie die Definition der Orthomaxzielfunktion wieder.
+1. Geben Sie das Theorem zur Varimaxzielfunktion wieder.
+
+
+1. Erläutern Sie die Idee der iterierten Hauptachsenfaktorisierung und geben Sie ihren Algorithmus an.
+1. Vergleichen Sie die Diagonalbehandlung bei Hauptkomponentenschätzung und Hauptachsenfaktorisierung.
+1. Leiten Sie den SVD-Schritt des Varimax-Algorithmus als Lösung eines orthogonalen Teilproblems her. -->
+
+
+
+
+#  {.plain}
+\vfill
+\center
+\huge
+Ergänzungen aus der Linearen Algebra
+\vfill
+
+
+# Ergänzungen aus der Linearen Algebra {#sec-ergaenzungen-lineare-algebra}
+\footnotesize
+\begin{definition}[Nullmatrizen, Einsmatrizen]
+\begin{itemize}
+\item Wir bezeichnen \textit{Nullmatrizen} mit
+\begin{equation}
+0_{nm} := (0)_{1 \le i \le n, 1 \le j \le m} \in \mathbb{R}^{n \times m}
+\mbox{ und }
+0_{n} := (0)_{1 \le i \le n} \in \mathbb{R}^{n}
+\end{equation}
+\item Wir bezeichnen den \textit{Einsmatrizen} mit
+\begin{equation}
+1_{nm} := (1)_{1 \le i \le n, 1 \le j \le m} \in \mathbb{R}^{n \times m}
+\mbox{ und }
+1_n := (1)_{1 \le i \le n} \in \mathbb{R}^n
+\end{equation}
+\end{itemize}
+\end{definition}
+
+Bemerkungen
+
+* $0_{nm}$ und $0_{n}$ bestehen nur aus Nullen.
+* $1_{nm}$ und $1_{n}$ bestehen nur aus Nullen.
+* Es gelten zum Beispiel
+\begin{equation}
+0_n0_n^T = 0_{nn} \mbox{ und } 1_n1_n^T = 1_{nn}.
+\end{equation}
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{definition}[Einheitsmatrizen und Einheitsvektoren]
+\begin{itemize}
+\item Wir bezeichnen die \textit{Einheitsmatrix} mit
+\begin{equation}
+I_{n} := (i_{jk})_{1 \le i \le n, 1 \le j \le n} \in \mathbb{R}^{n \times n} \mbox{ mit } i_{jk} = 1 \mbox{ für } j = k \mbox{ und } i_{jk} = 0 \mbox{ für } j \neq k
+\end{equation}
+\item Wir bezeichnen die \textit{Einheitsvektoren} $e_i, i = 1,...,n$ mit
+\begin{equation}
+e_{i} := (e_{{i}_j})_{1 \le j \le n} \in \mathbb{R}^{n} \mbox{ mit } e_{{i}_j} = 1 \mbox{ für } i = j \mbox{ und } e_{{i}_j} = 0 \mbox{ für } i \neq j
+\end{equation}
+\end{itemize}
+\end{definition}
+
+Bemerkungen
+
+* $I_n$ besteht nur aus Nullen und Diagonalelementen gleich Eins.
+* $e_i, i = 1,....,n$ besteht nur aus Nullen und einer Eins in der $i$ten Komponente.
+* Es gilt
+\begin{equation}
+I_n = \begin{pmatrix} e_1 & \cdots & e_n \end{pmatrix}
+\end{equation}
+* Es gelten weiterhin zum Beispiel für $1 \le i,j \le n$
+\begin{equation}
+e^T_ie_j = 0 \mbox{ für } i \neq j,  e^T_ie_i = 1 \mbox{ und } e^T_iv = v^Te_i = v_i \mbox{ für } v \in \mathbb{R}^n.
+\end{equation}
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{definition}[Diagonalmatrix]
+Eine Matrix $D \in \mathbb{R}^{n \times m}$ heißt \textit{Diagonalmatrix}, wenn $d_{ij} = 0$ für $1 \le i \le n, 1 \le j \le m$ mit $i \neq j$.
+\end{definition}
+Bemerkungen
+
+* \justifying Eine Diagonalmatrix $D\in \mathbb{R}^{n \times n}$ mit Diagonalelementen $d_1,...,d_n$ schreibt man auch als
+\begin{equation}
+D = \mbox{diag}(d_1,...,d_n).
+\end{equation}
+* Diagonalmatrizen haben viele "gute" Eigenschaften.
+* Zum Beispiel überzeugt man sich leicht davon, dass Multiplikation einer Matrix $A$
+von links mit einer Diagonalmatrix $D$ der Multiplikation der Zeilen der Matrix $A$
+mit den entsprechenden Diagonaleinträgen von $D$ entspricht. Die entsprechende
+Multiplikation von rechts entspricht der Multiplikation der Spalten von $A$ mit
+entsprechenden Diagonaleinträgen von $D$.
+* Eine weitere wichtige Eigenschaft ist
+\begin{equation}
+D := \mbox{diag}(d_1,...,d_n) \Rightarrow |D| = \prod_{i=1}^n d_i
+\end{equation}
+* Für Beweise dieser Eigenschaften wird auf die weiterführende Literatur, z.B. @searle1982 verwiesen.
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{definition}[Symmetrische Matrix]
+Eine Matrix $S \in \mathbb{R}^{n \times n}$ heißt \textit{symmetrisch}, wenn gilt dass $S^T = S$.
+\end{definition}
+
+Bemerkungen
+
+* Symmetrische Matrizen sind spezielle quadratische Matrizen.
+* Symmetrische  Matrizen haben viele "gute" Eigenschaften.
+* Beispielweise gilt für die Summe zweier symmetrischer Matrizen, dass auch diese wieder symmetrisch ist
+\begin{equation}
+A = A^T \mbox{ und } B = B^T \Rightarrow A + B = (A + B)^T
+\end{equation}
+und das die Inverse einer symmetrischen Matrix, sofern sie existiert, auch symmetrisch ist,
+\begin{equation}
+S^T = S \Rightarrow \left(S^{-1}\right)^T = S^{-1}.
+\end{equation}
+* Für Beweise dieser Eigenschaften wird auf die weiterführende Literatur, z.B. @searle1982, verwiesen.
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{definition}[Positiv-definite Matrizen und positiv-semidefinite Matrizen]
+\justifying
+Eine quadratische Matrix $C \in \mathbb{R}^{n \times n}$ heißt \textit{positiv-definit},
+wenn $C$ symmetrisch ist und gilt, dass
+\begin{equation}
+x^TCx > 0 \mbox{ für alle } x \in \mathbb{R}^n \mbox{ mit } x \neq 0_n.
+\end{equation}
+Wenn $C \in \mathbb{R}^{n \times n}$ positiv-definit ist, so schreiben wir $C \in \mathbb{R}^{n \times n} \mbox{ pd}$.
+\vspace{1mm}
+
+Eine quadratische Matrix $C \in \mathbb{R}^{n \times n}$ heißt \textit{positiv-semidefinit},
+wenn $C$ symmetrisch ist und gilt, dass
+\begin{equation}
+x^TCx \ge 0 \mbox{ für alle } x \in \mathbb{R}^n \mbox{ mit } x \neq 0_n.
+\end{equation}
+Wenn $C \in \mathbb{R}^{n \times n}$ positiv-definit ist, so schreiben wir $C \in \mathbb{R}^{n \times n} \mbox{ psd}$.
+\end{definition}
+
+Bemerkungen
+
+* Positive-definite und positiv-semidefinite Matrizen sind spezielle symmetrische Matrizen.
+* Nichtsinguläre Kovarianzmatrizen sind positiv-definit.
+* Kovarianzmatrizen von Zufallsvektoren sind positiv-semidefinite Matrizen.
+* Positiv-definite Matrizen haben viele "gute" Eigenschaften.
+* Beispielsweise existiert die Inverse $C^{-1}$ einer positiv-definiten Matrix und ist selbst positiv-definit,
+  für einen Beweis dieser Eigenschaft verweisen wir auf die weiterführende Literatur, z.B. @searle1982.
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{definition}[Eigenvektor, Eigenwert]
+$A \in \mathbb{R}^{m \times m}$ sei eine quadratische Matrix. Dann heißt jeder
+Vektor $v \in \mathbb{R}^m, v \neq 0_m$, für den gilt, dass
+\begin{equation}
+Av  = \lambda v
+\end{equation}
+mit $\lambda \in \mathbb{R}$ ein \textit{Eigenvektor} von $A$. $\lambda$
+heißt zugehöriger \textit{Eigenwert} von $A$.
+\end{definition}
+Bemerkungen
+
+* Ein Eigenvektor $v$ von $A$ wird durch $A$ mit einem Faktor $\lambda$ verlängert.
+* Jeder Eigenvektor hat einen zugehörigen Eigenwert.
+* Die Eigenwerte verschiedener Eigenvektoren können identisch sein.
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{theorem}[Multiplikativität von Eigenvektoren]
+\justifying
+\normalfont
+$A \in \mathbb{R}^{m \times m}$ sei eine quadratische Matrix. Wenn $v \in \mathbb{R}^m$
+Eigenvektor von $A$ mit Eigenwert $\lambda \in \mathbb{R}$ ist, dann ist für $c \in \mathbb{R}\setminus\{0\}$
+auch $cv \in \mathbb{R}^m $ Eigenvektor von $A$ und zwar wiederum mit Eigenwert $\lambda \in \mathbb{R}$.
+\end{theorem}
+
+\footnotesize
+\underline{Beweis}
+
+Es gilt
+\begin{equation}
+Av = \lambda v   \Leftrightarrow
+cAv = c\lambda v \Leftrightarrow
+A(cv) = \lambda(cv)
+\end{equation}
+Also ist $cv$ ein Eigenvektor von $A$ mit Eigenwert $\lambda$.
+
+$\hfill\Box$
+
+\normalsize
+**Konvention**
+
+Wir betrachten nur Eigenvektoren mit $\Vert v \Vert = 1$.
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+Eigenvektoren: geometrisches Beispiel
+
+Für
+\begin{equation}
+A=\begin{pmatrix}2&1\\1&2\end{pmatrix},\qquad
+v=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix},\qquad
+w=\begin{pmatrix}1\\0\end{pmatrix}
+\end{equation}
+gilt $Av=3v$, während $Aw=(2,1)^T$ kein Vielfaches von $w$ ist.
+
+```{r, echo=FALSE, out.width="40%", fig.align="center"}
+knitr::include_graphics("4-Abbildungen/gdt-4-eigenvektor-visualisierung.pdf")
+```
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{theorem}[Bestimmung von Eigenwerten und Eigenvektoren]\label{thm:eigenwerte-bestimmen}
+Für $A\in\mathbb{R}^{m\times m}$ ist eine reelle Zahl $\lambda$ genau dann
+ein Eigenwert, wenn sie eine Nullstelle des \textit{charakteristischen Polynoms}
+\begin{equation}
+\chi_A(\lambda):=\det(A-\lambda I_m)
+\end{equation}
+ist. Die zugehörigen Eigenvektoren sind die von null verschiedenen Lösungen von
+\begin{equation}
+(A-\lambda I_m)v=0_m.
+\end{equation}
+\end{theorem}
+
+Bemerkungen
+
+* Allgemeine reelle Matrizen können auch komplexe Eigenwerte haben.
+* Für reelle symmetrische Matrizen sind alle Eigenwerte reell.
+* Bei kleinen Matrizen lassen sich Eigenwerte und Eigenvektoren von Hand bestimmen.
+* In **R** berechnet `eigen(A)` die Eigenwerte und zugehörigen Eigenvektoren.
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\underline{Beweis}
+
+Für $v\neq0_m$ gilt
+\begin{equation}
+Av=\lambda v\quad\Longleftrightarrow\quad(A-\lambda I_m)v=0_m.
+\end{equation}
+Ein solches $v$ existiert genau dann, wenn die lineare Abbildung mit Matrix
+$A-\lambda I_m$ einen nichttrivialen Kern hat. Für eine quadratische Matrix
+ist dies äquivalent zu Nichtinvertierbarkeit und damit zu
+\begin{equation}
+\det(A-\lambda I_m)=0.
+\end{equation}
+Ist $\lambda$ auf diese Weise bestimmt, liefert jede von null verschiedene
+Lösung des homogenen Gleichungssystems
+\begin{equation}
+(A-\lambda I_m)v=0_m
+\end{equation}
+einen zugehörigen Eigenvektor. Seine Länge kann anschließend auf eins normiert
+werden. $\hfill\Box$
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+Beispiel: Berechnung der Eigenwerte
+
+Für
+\begin{equation}
+A=\begin{pmatrix}2&1\\1&2\end{pmatrix}
+\end{equation}
+ergibt sich
+\begin{align}
+\chi_A(\lambda)
+&=\det\begin{pmatrix}2-\lambda&1\\1&2-\lambda\end{pmatrix}\\
+&=(2-\lambda)^2-1\\
+&=\lambda^2-4\lambda+3\\
+&=(\lambda-3)(\lambda-1).
+\end{align}
+Die Nullstellen und damit die Eigenwerte sind
+\begin{equation}
+\lambda_1=3,\qquad\lambda_2=1.
+\end{equation}
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+Beispiel: Berechnung der Eigenvektoren
+
+Für $\lambda_1=3$ gilt
+\begin{equation}
+(A-3I_2)v_1=0_2
+\quad\Longleftrightarrow\quad
+\begin{pmatrix}-1&1\\1&-1\end{pmatrix}v_1=0_2.
+\end{equation}
+Ein normierter Eigenvektor ist daher
+\begin{equation}
+v_1=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}.
+\end{equation}
+Für $\lambda_2=1$ erhält man entsprechend
+\begin{equation}
+\begin{pmatrix}1&1\\1&1\end{pmatrix}v_2=0_2,
+\qquad v_2=\frac1{\sqrt2}\begin{pmatrix}-1\\1\end{pmatrix}.
+\end{equation}
+Damit gelten $v_1^Tv_2=0$ und $\|v_1\|=\|v_2\|=1$.
+Für $Q=(v_1,v_2)$ und $\Lambda=\operatorname{diag}(3,1)$ folgt $A=Q\Lambda Q^T$.
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{theorem}[Eigenwerte positiv-(semi)definiter Matrizen]
+Alle Eigenwerte einer reellen symmetrischen positiv-definiten Matrix sind positiv.
+Alle Eigenwerte einer reellen symmetrischen positiv-semidefiniten Matrix sind nichtnegativ.
+\end{theorem}
+
+\underline{Beweis}
+
+Seien $Sv=\lambda v$ und $v\neq0_m$. Dann gilt
+\begin{equation}
+v^TSv=\lambda v^Tv,\qquad
+\lambda=\frac{v^TSv}{v^Tv}.
+\end{equation}
+Wegen $v^Tv>0$ bestimmt der Zähler das Vorzeichen von $\lambda$.
+Positive Definitheit ergibt $\lambda>0$, positive Semidefinitheit $\lambda\geq0$.
+$\hfill\Box$
+
+Folgerung für die Hauptkomponentenschätzung
+
+Stichprobenkovarianz- und Korrelationsmatrizen sind positiv-semidefinit.
+Die zur Bildung von $Q_k\Lambda_k^{1/2}$ benötigten Quadratwurzeln sind daher reell.
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{theorem}[Eigenwerte und Eigenvektoren symmetrischer Matrizen]
+\justifying
+\normalfont
+$S \in \mathbb{R}^{m \times m}$ sei eine symmetrische Matrix. Dann gelten
+\begin{itemize}
+\item[(1)] Die Eigenwerte von $S$ sind reell.
+\item[(2)] Die Eigenvektoren zu je zwei verschiedenen Eigenwerten von $S$ sind orthogonal.
+\end{itemize}
+\end{theorem}
+\footnotesize
+
+Bemerkung
+
+* \justifying In nachfolgendem Beweis setzen wir die Tatsache dass eine symmetrische $m$
+  reelle Eigenwerte hat als gegeben voraus und zeigen lediglich, dass die
+  Eigenvektoren zu je zwei verschiedenen Eigenwerten einer symmetrischen Matrix
+  orthogonal sind. Ein vollständiger Beweis des Theorems findet sich in @strang2009, Kapitel 6.4.
+* Da wir als Eigenvektoren nur Eigenvektoren der Länge 1 betrachten, sind die hier angesprochenen
+  orthogonalen Eigenvektoren insbesondere auch orthonormal.
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\underline{Beweis}
+
+Ohne Beschränkung der Allgemeinheit seien  $\lambda_i$ und $\lambda_j$ mit
+$1 \le i,j \le m$ und $\lambda_i \neq \lambda_j$ zwei verschiedenen Eigenwerte
+von $S$ mit zugehörigen Eigenvektoren $q_i$ und $q_j$, respektive. Dann ergibt sich
+wie unten gezeigt, dass
+\begin{equation}
+\lambda_i q_i^Tq_j = \lambda_j q_i^Tq_j.
+\end{equation}
+Mit $q_i \neq 0_m, q_j \neq 0_m$  und $\lambda_i \neq \lambda_j$ folgt damit $q_i^Tq_j = 0$, weil
+weil es keine andere Zahl $c$ als die Null gibt, für die bei $a,b\in \mathbb{R}$ und $a \neq b$ gilt,
+dass
+\begin{equation}
+ac = bc.
+\end{equation}
+Um
+\begin{equation}
+\lambda_i q_i^Tq_j = \lambda_j q_i^Tq_j.
+\end{equation}
+zu zeigen, halten wir zunächst fest, dass
+\begin{equation}
+                 Sq_i       = \lambda_i q_i
+\Leftrightarrow (Sq_i)^T    = (\lambda_i q_i)^T
+\Leftrightarrow q_i^TS^T    = q_i^T \lambda_i^T
+\Leftrightarrow q_i^T S     = q_i^T \lambda_i
+\Leftrightarrow q_i^T Sq_j  = \lambda_i q_i^Tq_j
+\end{equation}
+und
+\begin{equation}
+                     Sq_j = \lambda_j q_j
+\Leftrightarrow q_i^TSq_j = \lambda_j q_i^Tq_j
+\end{equation}
+gelten. Sowohl $\lambda_i q_i^Tq_j$ als auch $\lambda_j q_i^Tq_j$ sind also
+mit $q_i^T Sq_j$ und damit auch miteinander identisch.
+
+$\hfill \Box$
+
+# Ergänzungen aus der Linearen Algebra
+\setstretch{1.0}
+\footnotesize
+\begin{theorem}[Orthonormalzerlegung einer symmetrischen Matrix]\label{thm:orthonormalzerlegung-einer-symmetrischen-matrix}
+\normalfont
+$S \in \mathbb{R}^{m \times m}$ sei eine symmetrische Matrix. Dann kann $S$
+geschrieben werden als
+\begin{equation}
+S = Q\Lambda Q^T,
+\end{equation}
+wobei $Q \in \mathbb{R}^{m \times m}$ eine orthogonale Matrix ist und
+$\Lambda \in \mathbb{R}^{m \times m}$ eine Diagonalmatrix ist. Die
+Diagonaleinträge von $\Lambda$ sind die Eigenwerte von $S$, die Spalten von
+$Q$ sind zugehörige orthonormale Eigenvektoren.
+\end{theorem}
+\vspace{-1mm}
+\footnotesize
+\underline{Beweis}
+
+Wir verwenden ohne Beweis das Resultat, dass jede reelle symmetrische Matrix
+eine Orthonormalbasis aus Eigenvektoren besitzt. Dies gilt auch bei mehrfachen
+Eigenwerten.
+
+Es seien $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m$ die der Größe
+nach geordneten Eigenwerte von $S$ und $q_1,\ldots,q_m$ zugehörige
+orthonormale Eigenvektoren. Mit
+\begin{equation}
+Q := (q_1,\ldots,q_m)
+\quad\text{und}\quad
+\Lambda := \operatorname{diag}(\lambda_1,\ldots,\lambda_m)
+\end{equation}
+folgt aus den Definitionen von Eigenwerten und Eigenvektoren
+\begin{equation}
+Sq_i = \lambda_i q_i
+\quad\text{für }i=1,\ldots,m
+\quad\Longleftrightarrow\quad
+SQ = Q\Lambda.
+\end{equation}
+Rechtsseitige Multiplikation mit $Q^T$ ergibt mit $QQ^T=I_m$
+\begin{equation}
+S = SQQ^T = Q\Lambda Q^T.
+\end{equation}
+$\hfill \Box$
+
+\vspace{-1mm}
+Bemerkungen
+
+* $S = Q \Lambda Q^T$ heißt auch *Diagonalisierung* von $S$.
+* Man wählt als Diagonalelemente von $\Lambda$ die der Größe nach geordneten Eigenwerte von $S$.
+* Man wählt als Spalten von $Q$ die zugehörigen orthonormalen Eigenvektoren von $S$.
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\setstretch{1}
+\begin{theorem}[Spur und Determinante einer symmetrischen Matrix]
+\justifying
+\normalfont
+$S \in \mathbb{R}^{m \times m}$ sei eine symmetrische Matrix mit verschiedenden
+Eigenwerten $\lambda_1,...,\lambda_m$.
+Dann gelten
+\begin{equation}
+|S| =\prod_{i=1}^m \lambda_i \mbox{ und } \tr(S) =\sum_{i=1}^m \lambda_i
+\end{equation}
+\end{theorem}
+\vspace{-2mm}
+\underline{Beweis}
+
+Mit
+\thmref{thm:orthonormalzerlegung-einer-symmetrischen-matrix}
+gilt, dass
+\begin{equation}
+|S| = |Q\Lambda Q^T|
+\end{equation}
+wobei $Q\in\mathbb{R}^{m\times m}$ eine orthogonale Matrix und  $\Lambda \in\mathbb{R}^{m\times m}$
+die Diagonalmatrix der $m$ verschiedenen Eigenwerte von $S$ ist. Mit dem
+Determinantenmultiplikationssatz, der Determinanteneigenschaft von orthogonalen
+Matrizen und der Tatsache, dass die Determinante einer Diagonalmatrix dem Produkt
+ihrer Diagonalelemente entspricht, gilt dann weiterhin
+\begin{equation}
+|S| = |Q\Lambda Q^T| = |Q| |\Lambda| |Q^T| = |\Lambda| = \prod_{i=1}^m \lambda_i.
+\end{equation}
+Wiederum mit
+\thmref{thm:orthonormalzerlegung-einer-symmetrischen-matrix}
+gilt, dass
+\begin{equation}
+\tr(S) = \tr\left(Q\Lambda Q^T\right).
+\end{equation}
+Mit der zyklischen Permutationsinvarianz der Spur, der Inversionseigenschaft orthogonaler Matrizen
+und der Definition der Spur gilt dann weiterhin
+\begin{equation}
+\tr(S) = \tr\left(Q\Lambda Q^T\right) = \tr\left(Q^TQ\Lambda\right) = \tr(\Lambda) = \sum_{i=1}^m \lambda_i.
+\end{equation}
+$\hfill\Box$
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+Orthonormalzerlegung bei mehrfachen Eigenwerten
+
+Die Orthonormalzerlegung gilt auch dann, wenn Eigenwerte mehrfach auftreten.
+In jedem Eigenraum kann eine Orthonormalbasis gewählt werden.
+
+\underline{Begründung}
+
+Für eine reelle symmetrische Matrix $S$ erreicht die stetige Funktion
+$q\mapsto q^TSq$ auf der kompakten Einheitssphäre ein Maximum.
+Die Lagrange-Bedingung für $q^Tq=1$ liefert
+\begin{equation}
+2Sq-2\lambda q=0_m,\qquad Sq=\lambda q.
+\end{equation}
+Es existiert somit ein reeller normierter Eigenvektor $q_1$.
+Sein orthogonales Komplement ist unter $S$ invariant: Für $q_1^Tv=0$ gilt
+\begin{equation}
+q_1^TSv=(Sq_1)^Tv=\lambda_1q_1^Tv=0.
+\end{equation}
+Die Einschränkung von $S$ auf diesen Unterraum ist wiederum symmetrisch.
+Induktion über die Dimension liefert eine vollständige Orthonormalbasis
+aus Eigenvektoren und damit $S=Q\Lambda Q^T$. $\hfill\Box$
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{definition}[Singulärwertzerlegung]\label{def:singulaerwertzerlegung}
+Für eine Matrix $A\in\mathbb{R}^{r\times s}$ heißt eine Darstellung
+\begin{equation}
+A=UDV^T
+\end{equation}
+mit orthogonalen Matrizen $U\in\mathbb{R}^{r\times r}$,
+$V\in\mathbb{R}^{s\times s}$ und einer rechteckigen Diagonalmatrix
+$D\in\mathbb{R}^{r\times s}$ mit nichtnegativen Diagonaleinträgen
+\textit{Singulärwertzerlegung} (SVD).
+Die Diagonaleinträge $d_1\geq\ldots\geq d_{\min(r,s)}\geq0$ heißen
+\textit{Singulärwerte}.
+\end{definition}
+
+Bemerkungen
+
+* Jede reelle Matrix besitzt eine Singulärwertzerlegung.
+* Die Matrix muss weder quadratisch noch symmetrisch sein.
+* Die Anzahl positiver Singulärwerte ist der Rang von $A$.
+* `svd(A)` liefert in **R** die Singulärwerte und die zugehörigen Singulärvektoren.
+* Der Varimax-Algorithmus verwendet diese Zerlegung in jedem Iterationsschritt.
+
+\scriptsize
+Siehe auch @strang2009.
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\begin{theorem}[Singulärwertzerlegung und Eigenanalyse]\label{thm:svd-eigenanalyse}
+Für $A=UDV^T$ gelten
+\begin{equation}
+AA^T=U(DD^T)U^T,\qquad A^TA=V(D^TD)V^T.
+\end{equation}
+Die Spalten von $U$ sind Eigenvektoren von $AA^T$, die Spalten von $V$
+sind Eigenvektoren von $A^TA$. Die positiven Eigenwerte beider Matrizen
+sind die Quadrate der positiven Singulärwerte von $A$.
+\end{theorem}
+
+Bemerkungen
+
+* $AA^T$ und $A^TA$ sind symmetrisch und positiv-semidefinit.
+* Ihre positiven Eigenwerte stimmen einschließlich der Vielfachheiten überein.
+* Bei rechteckigem $A$ können sich die Anzahlen der Null-Eigenwerte unterscheiden.
+* Singulärwerte sind somit die nichtnegativen Quadratwurzeln der entsprechenden Eigenwerte.
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+\underline{Beweis}
+
+Aus $A=UDV^T$ und der Orthogonalität von $U$ und $V$ folgt
+\begin{align}
+AA^T&=(UDV^T)(UDV^T)^T\\
+&=UDV^TVD^TU^T\\
+&=U(DD^T)U^T,\\[2mm]
+A^TA&=(UDV^T)^T(UDV^T)\\
+&=VD^TU^TUDV^T\\
+&=V(D^TD)V^T.
+\end{align}
+$DD^T$ und $D^TD$ sind Diagonalmatrizen. Ihre positiven Diagonaleinträge
+sind die quadrierten positiven Singulärwerte von $A$.
+Damit sind beide Darstellungen Orthonormalzerlegungen und die Aussagen folgen.
+$\hfill\Box$
+
+
+# Ergänzungen aus der Linearen Algebra
+\footnotesize
+Bezug zur Stichprobenkovarianzmatrix
+
+Sei $Y_c\in\mathbb{R}^{m\times n}$ eine zeilenweise mittelwertzentrierte
+Datenmatrix und $Y_c=UDV^T$ ihre Singulärwertzerlegung. Dann gilt
+\begin{equation}
+C=\frac1{n-1}Y_cY_c^T
+=U\left(\frac{DD^T}{n-1}\right)U^T.
+\end{equation}
+Die Eigenwerte von $C$ ergeben sich also aus den quadrierten Singulärwerten
+von $Y_c$, geteilt durch $n-1$.
+Für die ersten $k$ Singulärwerte ist der Hauptkomponentenschätzer
+\begin{equation}
+\hat L=\frac1{\sqrt{n-1}}U_k\operatorname{diag}(d_1,\ldots,d_k).
+\end{equation}
+
+Bemerkungen
+
+* Eigenanalyse der Kovarianzmatrix und SVD der zentrierten Daten liefern dieselbe Lösung.
+* Die maximale Anzahl positiver Eigenwerte ist $\min(m,n-1)$.
+* Die gesamte Herleitung ist eine algebraische Aussage über den Datensatz.
+
+
+#  {.plain}
+\vfill
+\center
+\huge
+Ergänzungen aus der Wahrscheinlichkeitstheorie
+\vfill
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+
+\begin{theorem}[Eigenschaften der Kovarianzmatrix]\label{thm:eigenschaften-der-kovarianzmatrix}
+\justifying
+\normalfont
+
+$\xi$ sei ein $m$-dimensionaler Zufallsvektor und $\mathbb{C}(\xi)$ sei seine Kovarianzmatrix.
+Dann gelten
+
+\noindent (1) (Elemente) Die Elemente von $\mathbb{C}(\xi)$ sind die Kovarianzen der Komponenten von $\xi$,
+\begin{equation}
+\mathbb{C}(\xi) = \left(\mathbb{C}(\xi_i,\xi_j)\right)_{1 \le i,j \le m}.
+\end{equation}
+\noindent (2) (Kovarianzmatrixverschiebungssatz) Es gilt
+\begin{equation}
+\mathbb{C}(\xi) = \mathbb{E}\left(\xi\xi^T\right) -  \mathbb{E}(\xi)\mathbb{E}(\xi)^T.
+\end{equation}
+\noindent (3) (Linear-affine Transformation) Für $A \in \mathbb{R}^{n \times m}$ und $b \in \mathbb{R}^n$ gilt
+\begin{equation}
+\mathbb{C}(A\xi +b) = A\mathbb{C}(\xi)A^T.
+\end{equation}
+\noindent (4) (Matrixeigenschaften) $\mathbb{C}(\xi)$ ist symmetrisch und positiv-semidefinit.
+\end{theorem}
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\underline{Beweis}
+
+\noindent (1) Es gilt
+\begin{align}
+\begin{split}
+\mathbb{C}(\xi)
+& := \mathbb{E}\left((\xi - \mathbb{E}(\xi))(\xi - \mathbb{E}(\xi))^T \right) \\
+& =
+\mathbb{E}
+\left(
+\left(
+\begin{pmatrix}
+\xi_1 \\
+\vdots \\
+\xi_n
+\end{pmatrix}
+-
+\begin{pmatrix}
+\mathbb{E}(\xi_1) \\
+\vdots \\
+\mathbb{E}(\xi_n)
+\end{pmatrix}
+\right)
+\left(
+\begin{pmatrix}
+\xi_1 \\
+\vdots \\
+\xi_n
+\end{pmatrix}
+-
+\begin{pmatrix}
+\mathbb{E}(\xi_1) \\
+\vdots \\
+\mathbb{E}(\xi_n)
+\end{pmatrix}
+\right)^T
+\right)
+\\
+& =
+\mathbb{E}
+\left(
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1) \\
+\vdots \\
+\xi_n - \mathbb{E}(\xi_n)
+\end{pmatrix}
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1)\\
+\vdots \\
+\xi_n - \mathbb{E}(\xi_n)
+\end{pmatrix}^T
+\right)
+\\
+& =
+\mathbb{E}
+\left(
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1) \\
+\vdots \\
+\xi_n - \mathbb{E}(\xi_n)
+\end{pmatrix}
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1)
+& \dots
+& \xi_n - \mathbb{E}(\xi_n)
+\end{pmatrix}
+\right) \\
+& =
+\mathbb{E}
+\begin{pmatrix}
+  (\xi_1 - \mathbb{E}(\xi_1))(\xi_1 - \mathbb{E}(\xi_1))
+& \dots
+& (\xi_1 - \mathbb{E}(\xi_1))(\xi_n - \mathbb{E}(\xi_n)
+\\
+\vdots
+& \ddots
+& \vdots
+\\
+  (\xi_n - \mathbb{E}(\xi_n))(\xi_1 - \mathbb{E}(\xi_1))
+& \dots
+& (\xi_n - \mathbb{E}(\xi_n))(\xi_n - \mathbb{E}(\xi_n))
+\\
+\end{pmatrix}
+\\
+& =
+\left(\mathbb{E}\left((\xi_i - \mathbb{E}(\xi_i))(\xi_j - \mathbb{E}(\xi_j)) \right) \right)_{1 \le i,j \le n} \\
+& =
+\left(\mathbb{C}(\xi_i,\xi_j)\right)_{1 \le i,j \le n}. \\
+\end{split}
+\end{align}
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (2) Mit den Eigenschaften von Erwartungswerten  gilt
+\begin{align}
+\begin{split}
+\mathbb{C}(\xi)
+& = \mathbb{E}\left((\xi - \mathbb{E}(\xi))(\xi - \mathbb{E}(\xi))^T \right)                                          \\
+& = \mathbb{E}\left(\xi\xi^T - \xi\mathbb{E}(\xi)^T - \mathbb{E}(\xi)\xi^T + \mathbb{E}(\xi)\mathbb{E}(\xi)^T  \right) \\
+& = \mathbb{E}\left(\xi\xi^T\right) - \mathbb{E}(\xi)\mathbb{E}(\xi)^T - \mathbb{E}(\xi)\mathbb{E}(\xi)^T + \mathbb{E}(\xi)\mathbb{E}(\xi)^T  \\
+& = \mathbb{E}\left(\xi\xi^T\right) - \mathbb{E}(\xi)\mathbb{E}(\xi)^T.  \\
+\end{split}
+\end{align}
+
+\noindent (3) Mit den Eigenschaften von Erwartungswerten gilt
+\begin{align}
+\begin{split}
+\mathbb{C}(A\xi+b)
+& = \mathbb{E}\left((A\xi+b-\mathbb{E}(A\xi+b))(A\xi+b-\mathbb{E}(A\xi+b))^T \right)  \\
+& = \mathbb{E}\left((A\xi+b-A\mathbb{E}(\xi)-b)(A\xi+b-A\mathbb{E}(\xi)-b)^T \right)  \\
+& = \mathbb{E}\left((A(\xi-\mathbb{E}(\xi)))(A(\xi-\mathbb{E}(\xi)))^T \right)        \\
+& = \mathbb{E}\left(A(\xi-\mathbb{E}(\xi))(\xi-\mathbb{E}(\xi))^T A^T\right)          \\
+& = A\mathbb{E}\left((\xi-\mathbb{E}(\xi))(\xi-\mathbb{E}(\xi))^T\right)A^T           \\
+& = A\mathbb{C}(\xi)A^T.                                                               \\
+\end{split}
+\end{align}
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+\noindent (4) Die Symmetrie von $\mathbb{C}(\xi)$ folgt aus der Symmetrie der Kovarianz einer Zufallsvariable mit
+\begin{equation}
+\mathbb{C}(\xi_i,\xi_j) = \mathbb{C}(\xi_j, \xi_i) \mbox{ für alle } i = 1,...,m, j = 1,...,m.
+\end{equation}
+Um die positive Semidefinitheit von $\mathbb{C}(\xi)$ nachzuweisen, ist zu zeigen, dass
+$a^T\mathbb{C}(\xi)a \ge 0$ für alle $a\in \mathbb{R}^m$ mit $a \neq 0_m$. Sei also
+$a \in \mathbb{R}^m$ mit $a\neq 0$. Dann gilt mit Aussage (3) für $A := a^T \in \mathbb{R}^{1\times m}$,
+dass
+\begin{equation}
+a^T\mathbb{C}(\xi)a = \mathbb{C}(a^T\xi).
+\end{equation}
+Weiterhin gilt mit der Definition der Kovarianzmatrix aber, dass
+\begin{equation}
+\mathbb{C}(a^T\xi)
+= \mathbb{E}\left(\left(a^T\xi-\mathbb{E}(a^T\xi)\right)^2\right)
+= \mathbb{V}\left(a^T\xi\right).
+\end{equation}
+Da mit den Eigenschaften der Varianz die Varianz der Zufallsvariable $a^T\xi$ aber immer nichtnegativ ist, folgt
+\begin{equation}
+a^T\mathbb{C}(\xi)a = \mathbb{V}(a^T\xi)\ge 0
+\end{equation}
+und damit die positive Semidefinitheit von $\mathbb{C}(\xi)$.
+
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\begin{theorem}[Datenmatrix und Stichprobenstatistiken]\label{thm:datenmatrix-und-stichprobenstatistiken}
+\justifying
+\normalfont
+Es sei
+\begin{equation}
+y :=
+\begin{pmatrix}
+y_1 & \cdots & y_n
+\end{pmatrix}
+\end{equation}
+eine $m \times n$ \textit{Datenmatrix}, die durch die spaltenweise Konkatenation
+von $n$ $m$-dimensionalen Zufallvektoren $y_1, ...,y_n$ gegeben sei.
+Dann ergeben sich
+\begin{itemize}
+\item für das Stichprobenmittel
+\begin{equation}
+\bar{y} =  \frac{1}{n}y 1_{n},
+\end{equation}
+\item für die Stichprobenkovarianzmatrix
+\begin{equation}
+C = \frac{1}{n-1}\left(y\left(I_n - \frac{1}{n}1_{nn}\right)y^T\right),
+\end{equation}
+\item und für Stichprobenkorrelationsmatrix mit
+\begin{equation}
+D := \mbox{diag}\left(\sqrt{C_{y_{ii}}}^{-1}, i = 1,...,m\right),
+\end{equation}
+dass
+\begin{equation}
+R = DCD.
+\end{equation}
+\end{itemize}
+\end{theorem}
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\underline{Beweis}
+
+Die Darstellung des Stichprobenmittels ergibt sich aus
+\begin{align}
+\begin{split}
+\bar{y}
+& := \frac{1}{n} \sum_{i=1}^ny_i \\
+&  = \frac{1}{n}\begin{pmatrix} \sum_{i=1}^ny_{i1} \\ \vdots \\ \sum_{i=1}^ny_{im} \end{pmatrix} \\
+&  = \frac{1}{n}\left(\begin{pmatrix}y_{11}    & \cdots   & y_{n1} \\
+                                      \vdots    & \ddots  & \vdots     \\
+                                     y_{1m}    & \cdots   & y_{nm} \\
+                   \end{pmatrix}
+                   \begin{pmatrix} 1 \\ \vdots \\ 1 \end{pmatrix}
+              \right) \\
+& = \frac{1}{n}y 1_{n}.
+\end{split}
+\end{align}
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+Hinsichtlich der Darstellung der Stichprobenkovarianzmatrix halten wir zunächst fest, dass
+nach Definition gilt, dass
+\begin{align}
+\begin{split}
+C
+& := \frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})(y_i - \bar{y})^T \\
+&  = \frac{1}{n-1}\sum_{i=1}^n \left(y_iy_i^T-y_i\bar{y}^T - \bar{y}y_i^T+ \bar{y}\bar{y}^T\right) \\
+&  = \frac{1}{n-1}\left(\sum_{i=1}^ny_iy_i^T- \sum_{i=1}^ny_i\bar{y}^T - \sum_{i=1}^n \bar{y}y_i^T+ \sum_{i=1}^n \bar{y}\bar{y}^T\right) \\
+&  = \frac{1}{n-1}\left(\sum_{i=1}^ny_iy_i^T- n\bar{y}\bar{y}^T - n\bar{y}\bar{y}^T + n\bar{y}\bar{y}^T\right) \\
+&  = \frac{1}{n-1}\left(\sum_{i=1}^ny_iy_i^T- n\bar{y}\bar{y}^T\right).
+\end{split}
+\end{align}
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\underline{Beweis}
+
+Mit $1_{n}1_{n}^T = 1_{nn}$ ergibt sich dann weiterhin
+\begin{align}
+\begin{split}
+y\left(I_n - \frac{1}{n}1_{nn}\right)y^T
+& = \left(y I_n - \frac{1}{n}y 1_{nn}\right)y^T                                         \\
+& = yy^T - \frac{1}{n}y 1_{nn}y^T                                                      \\
+& = \begin{pmatrix} y_1 & \cdots & y_n\end{pmatrix} \begin{pmatrix} y_1^T \\ \vdots \\ y_n^T\end{pmatrix} - \frac{1}{n}y 1_n 1_n^Ty^T    \\
+& = \sum_{i=1}^ny_iy_i^T- n\left(\frac{1}{n}y 1_n\right)\left(\frac{1}{n}1_n^Ty^T\right)              \\
+& = \sum_{i=1}^ny_iy_i^T- n\bar{y}\bar{y}^T                                                          \\
+& = \frac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})(y_i - \bar{y})^T \\
+& = C.
+\end{split}
+\end{align}
+
+# Ergänzungen aus der Wahrscheinlichkeitstheorie
+\footnotesize
+\underline{Beweis (fortgeführt)}
+
+Hinsichtlich der Korrelationsmatrix ergibt sich nach Definition und für ein
+ beliebiges Indexpaar $i,j$ mit $1 \le i,j \le m$ schließlich, dass
+\begin{align}
+\begin{split}
+R_{{y}_{ij}}
+& = \frac{(C)_{ij}}{\sqrt{ (C)_{ii}}\sqrt{ (C)_{jj}}}             \\
+& = \frac{1}{\sqrt{(C)_{ii}}}(C)_{ij}\frac{1}{\sqrt{(C)_{jj}}}    \\
+& = (DCD)_{ij}.
+\end{split}
+\end{align}
+
+# Referenzen {.allowframebreaks}
+\footnotesize

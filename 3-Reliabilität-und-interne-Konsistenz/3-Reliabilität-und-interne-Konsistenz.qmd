@@ -103,13 +103,13 @@ Testgütekriterium Reliabilität
 
 * Die Reliabilität ist definiert als die quadrierte Korrelation von beobachtetem
   und wahrem Wert.
-* Anhand der Eigenschaften des Modells multipler Testmessungen ergeben sich
+* Die Eigenschaften des Stichprobenmodells multipler Testmessungen erlauben
   verschiedene Interpretationen.
 * Die Interpretation nach @moosbrugger2012 findet sich auch.
 * Messfehlerfreie Testmessungen sind allerdings sicherlich nur ein nicht zu
   erreichendes Ideal.
-* Wir betrachten zunächst die Reliabilität von Testmessungen im Modell multipler
-  Testmessungen.
+* Wir betrachten zunächst die Reliabilität von Testmessungen im
+  Stichprobenmodell multipler Testmessungen.
 * Allerdings ergibt sich dabei keine Möglichkeit, die Reliabilität von
   Testmessungen empirisch zu messen.
 * Zentral ist dann die Definition der *Paralleltestreliabilität*. Diese ist
@@ -123,7 +123,8 @@ Testgütekriterium Reliabilität
 # Reliabilität
 \footnotesize
 \begin{definition}[Reliabilität einer Testmessung]
-Gegeben sei das Modell multipler Testmessungen für eine beliebige Testmessung
+Gegeben sei das Stichprobenmodell multipler Testmessungen für eine beliebige
+Testmessung
 $j$ mit $1 \le j \le m$,
 \begin{equation}
 \mbb{P}(\tau_{1j},y_{1j}, ..., \tau_{nj}, y_{nj})
@@ -142,7 +143,7 @@ Die \textit{Reliabilität der Testmessung $j$} ist dann definiert als
 
 Bemerkungen
 
-* Vor dem Hintergrund des vereinfachten Modells der Klassischen Testtheorie
+* Vor dem Hintergrund des Populationsmodells einer Testmessung
   schreibt man auch $\mbox{R} = \rho(y,\tau)^2$
 
 # Reliabilität
@@ -172,7 +173,8 @@ Bemerkungen (fortgesetzt)
 \begin{theorem}[Eigenschaften der Reliabilität einer Testmessung]
 \justifying
 \normalfont
-Gegeben sei das Modell multipler Testmessungen für eine beliebige Testmessung
+Gegeben sei das Stichprobenmodell multipler Testmessungen für eine beliebige
+Testmessung
 $j$ mit $1 \le j \le m$,
 \begin{equation}
 \mbb{P}(\tau_{1j},y_{1j}, ..., \tau_{nj}, y_{nj})
@@ -236,7 +238,8 @@ Bemerkungen
 \setstretch{1.2}
 \vspace{2mm}
 \begin{definition}[Reliabilität einer Paralleltestmessung]
-Gegeben sei das Modell paralleler Testmessungen für eine beliebige Testmessung
+Gegeben sei das Stichprobenmodell paralleler Testmessungen für eine beliebige
+Testmessung
 $j$ mit $1 \le j \le m$,
 \begin{equation}
 \mbb{P}(\tau_{1},y_{1j}, ..., \tau_{n},y_{nj})
@@ -255,7 +258,7 @@ Die \textit{Reliabilität der Paralleltestmessung $j$} ist dann definiert als
 
 Bemerkungen
 
-* In Bezug auf das vereinfachte Modell der Klassischen Testtheorie schreibt man
+* In Bezug auf das Populationsmodell einer Testmessung schreibt man
   auch hier $\mbox{R}=\rho(y,\tau)^2$
 
 
@@ -264,7 +267,7 @@ Bemerkungen
 \begin{theorem}[Paralleltestreliabilität]\label{thm:paralleltestreliabilitaet}
 \justifying
 \normalfont
-Gegeben sei das Modell paralleler Testmessungen. Dann gelten
+Gegeben sei das Stichprobenmodell paralleler Testmessungen. Dann gelten
 \begin{itemize}
 \item[(1)] $\mbox{R}_j = \frac{\mbb{V}(\tau_{i})}{\mbb{V}(y_{ij})}$ für alle $1 \le j \le m$.
 \item[(2)] $\mbox{R}_j = 1 - \frac{\mbb{V}(\eps_{ij})}{\mbb{V}(y_{ij})}$ für alle $1 \le j \le m$.
@@ -310,7 +313,7 @@ Bemerkungen
 \end{equation}
 \vspace{1mm}
 
-\noindent (3) Mit Aussagen (2) und (5) von \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)} gilt
+\noindent (3) Mit Aussagen (2) und (5) von \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem zum Stichprobenmodell paralleler Testmessungen (Foliensatz~2)} gilt
 \begin{equation}
 \mbox{R}_j
 = \frac{\mbb{V}(\tau_{i})}{\mbb{V}(y_{ij})}
@@ -335,8 +338,8 @@ Normalverteilungsbeispiel
 \setstretch{1.2}
 
 \footnotesize
-Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Modell paralleler
-Testmessungen. Für  alle $i = 1,...,n$
+Wir betrachten den Fall zweier Testmessungen $j = 1,2$ im Stichprobenmodell
+paralleler Testmessungen. Für  alle $i = 1,...,n$
 seien in Wahrscheinlichkeitsdichteform, wobei wir der notationellen Einfachheit
 halber auf das $i$ Subskript verzichten wollen,
 \begin{equation}
@@ -467,7 +470,8 @@ Derselbe Test wird an derselben Stichprobe zweimal durchgeführt.
 Die Korrelation der Messwerte über beide Darbietungen wird berechnet und als
 $r_{tt}$ bezeichnet.
 
-Es wird vorausgesetzt, dass die Annahmen des Modells paralleler Testmessungen
+Es wird vorausgesetzt, dass die Annahmen des Stichprobenmodells paralleler
+Testmessungen
 gelten.
 
 * Der wahre Wert einer Testperson bleibt über die Testmessungen hinweg konstant
@@ -485,8 +489,9 @@ Kurze
 Test-Retest-Intervalle minimieren dabei unsystematische Merkmalsveränderungen,
 aber maximieren Erinnerungseffekte und vice versa.
 * Systematische Veränderungen oder situative Faktoren, die alle Testpersonen
-gleich betreffen, ändern die Retestreliabilität nicht. Im Modell der multiplen
-Testmessungen entspricht dies den hier nicht weiter vertieften wesentlich
+gleich betreffen, ändern die Retestreliabilität nicht. Im Stichprobenmodell
+multipler Testmessungen entspricht dies den hier nicht weiter vertieften
+wesentlich
 $\tau$-äquivalenten Testmessungen.
 
 \flushright @moosbrugger2012, Kapitel 6, @pospeschill2022, Kapitel 6
@@ -585,7 +590,8 @@ Nach @pospeschill2022, Kapitel 6
 # Praxis der Reliabilitätsschätzung
 \footnotesize
 \begin{definition}[Reliabilitätsschätzer bei parallelen Testmessungen]
-Gegeben sei das Modell paralleler Testmessungen für $n$ Testpersonen und zwei
+Gegeben sei das Stichprobenmodell paralleler Testmessungen für $n$ Testpersonen
+und zwei
 Testmessungen $j = 1,2$,
 \begin{equation}
 \mbb{P}(\tau_1,y_{11},y_{12},...,\tau_n,y_{n1},y_{n2}) =
@@ -844,7 +850,8 @@ Wir fassen diese Vorüberlegungen in der Definition des
 \footnotesize
 \begin{definition}[$m$-Komponententestmodell]
 \justifying
-Gegeben sei das Modell multipler Testmessungen für $i = 1,...,n$ Testpersonen
+Gegeben sei das Stichprobenmodell multipler Testmessungen für $i = 1,...,n$
+Testpersonen
 und
 $j = 1,...,m$ Testmessungen. Für $i = 1,...,n$ seien
 \begin{itemize}
@@ -988,7 +995,8 @@ Bemerkungen
 Bemerkungen (fortgesetzt)
 \vspace{-1mm}
 
-* Da nach Annahme des Modells multipler Testmessungen die Verteilungen der
+* Da nach Annahme des Stichprobenmodells multipler Testmessungen die
+  Verteilungen der
   beobachteten Werte über Personen identisch sind,
 wird Cronbach's $\alpha$ häufig auch geschrieben als
 \begin{equation}
@@ -1102,9 +1110,7 @@ Anstelle eines Beweises betrachten wir den Fall $m := 4$. Dann gilt
 \footnotesize
 \underline{Beweis (fortgeführt)}
 
-\noindent (2) (*Kovarianzungleichung für den wahren Wert*) Wir leiten nun im Modell multipler
-Testmessungen eine Ungleichung her. Dazu betrachten wir im Modell multipler
-Testmessungen
+\noindent (2) (*Kovarianzungleichung für den wahren Wert*) Wir leiten nun im Stichprobenmodell multipler Testmessungen eine Ungleichung her. Dazu betrachten wir im Stichprobenmodell multipler Testmessungen
 die Varianz der Differenz zweier wahrer Werte $\tau_j$ und $\tau_k$. Mit
 \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf\#page=95}{Theorem
 Nichtnegativität der Varianz
@@ -1236,7 +1242,7 @@ Bemerkung
 
 # Interne Konsistenz | Cronbach's $\alpha$
 \small
-Simulation im Modell paralleler Testmessungen
+Simulation im Stichprobenmodell paralleler Testmessungen
 \begin{equation}
 n := 30, m := 21
 \mbox{ mit } \mbb{P}(\tau_{i}) := N(1,1), \mbb{P}(y_{ij}|\tau_{i}) := N(\tau_{i},4)
@@ -1319,8 +1325,8 @@ paralleler Testmessungen gilt, dass
 
 \noindent (1) *(Summe der Varianzen der beobachteten Werte bei Parallelität)*
 Nach
-\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
-Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)} sind die
+\href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem zum Stichprobenmodell paralleler Testmessungen (Foliensatz~2)}
+sind die
 Varianzen aller
 beobachteten Werte über Testmessungen bei parallelen Testmessungen identisch.
 Es gilt also
@@ -1368,8 +1374,8 @@ y_2)\sqrt{\mbb{V}(y_1)}\sqrt{\mbb{V}(y_1)} \\
 Dabei gilt
 
 * $\stackrel{(a)}{=}$ mit Aussage (5) von
-  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
-  Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)}, dass
+  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem zum Stichprobenmodell paralleler Testmessungen (Foliensatz~2)},
+  dass
 \begin{equation}
 \mbb{C}(y_j, y_k) = \mbb{V}(\tau_1) \mbox{ für } 1 \le j,k \le m \mbox{ mit } j \neq k
 \end{equation}
@@ -1381,8 +1387,7 @@ sind,
 \sum_{j=1}^{m-1}\sum_{k=j+1}^m 1 = \frac{m(m-1)}{2}
 \end{equation}
 * $\stackrel{(c)}{=}$  mit Aussage (2) von
-  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem
-  Eigenschaften des Modells paralleler Testmessungen (Foliensatz 2)},
+  \href{../2-Modelle-der-klassischen-Testtheorie/2-Modelle-der-klassischen-Testtheorie.pdf}{Theorem zum Stichprobenmodell paralleler Testmessungen (Foliensatz~2)},
 * $\stackrel{(d)}{=}$  mit Aussage (3) von
   \thmref{thm:paralleltestreliabilitaet}
 
@@ -1520,8 +1525,8 @@ Gesamtreliabilität
 := \frac{\mbb{V}(\tau)}{\mbb{V}(y)}
 = \frac{\mbb{V}\left(\sum_{j=1}^m \tau_j\right)}{\mbb{V}\left(\sum_{j=1}^m y_j \right)}
 \end{equation}
-Für den Zähler halten wir fest, dass mit der Identität der wahren Werte im
-Modell paralleler Testmessungen gilt
+Für den Zähler folgt mit identischen wahren Werten im Stichprobenmodell
+paralleler Testmessungen
 \begin{equation}
 \mbb{V}\left(\sum_{j=1}^m \tau_j\right)
 = \mbb{V}\left(\sum_{j=1}^m \tau_1\right)
@@ -1921,8 +1926,8 @@ Interne Konsistenz
 1. Geben Sie die Definition der Reliabilität einer Testmessung wieder.
 1. Geben Sie das Theorem zu den Eigenschaften der Reliabilität einer Testmessung
    wieder.
-1. Erläutern Sie die drei äquivalenten Formen der Reliabilität einer Testmessung
-   im Modell multipler Testmessungen.
+1. Erläutern Sie die drei äquivalenten Reliabilitätsdarstellungen im
+   Stichprobenmodell multipler Testmessungen.
 1. Geben Sie die Definition der Reliabilität einer Paralleltestmessung wieder.
 1. Geben Sie das Theorem zur Paralleltestreliabilität wieder.
 1. Warum ist die Annahme paralleler Testmessungen für die empirische Messung der
@@ -1936,10 +1941,10 @@ Interne Konsistenz
 1. Diskutieren Sie mögliche Probleme der Validität einer
    Retestreliabilitätsschätzung.
 1. Geben Sie die Definition eines $m$-Komponententestmodells wieder.
-1. Erläutern Sie die Gemeinsamkeiten des Modells multipler Testmessungen und des
-   $m$-Komponententestmodells.
-1. Erläutern Sie die Unterschiede des Modells multipler Testmessungen und des
-   $m$-Komponententestmodells.
+1. Erläutern Sie Gemeinsamkeiten von Stichprobenmodell multipler
+   Testmessungen und $m$-Komponententestmodell.
+1. Erläutern Sie Unterschiede zwischen Stichprobenmodell multipler
+   Testmessungen und $m$-Komponententestmodell.
 1. Geben Sie die Definition der Reliabilitäten von $m$-Komponententestmodellen
    wieder.
 1. Skizzieren Sie den intuitiven Zusammenhang zwischen einer

@@ -2,16 +2,9 @@ _book/*
 !_book/Grundlagen-der-Testtheorie-2027.pdf
 _src/
 .quarto/
-*.tex
-!_titelseite.tex
-!_abbildungen.tex
-**/*.quarto_ipynb
-*.log
-tmp/
-inspect.json
+/index.tex
+/Grundlagen-der-Testtheorie-2027.tex
+/Grundlagen-der-Testtheorie-2027.pdf
 
 /.quarto/
-
-_build_src/
-_render_figures/
-!_texheader.tex
+**/*.quarto_ipynb

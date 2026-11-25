@@ -109,13 +109,17 @@ und Ergebnisraum $\mathcal{X} := \mathcal{X}_1 \times \cdots \times \mathcal{X}_
 Die Komponenten besitzen endliche erste absolute Momente, also
 $\mathbb{E}(|\xi_i|) < \infty$ für $i = 1,...,n$.
 Weiterhin sei
+
 \begin{equation}
 f : \mathcal{X} \to \mathcal{Z}, x \mapsto f(x) := a_0 + \sum_{i=1}^n a_ix_i \mbox{ für }  a_0,...,a_n \in \mathbb{R}.
 \end{equation}
+
 eine linear-affine Kombination der Komponenten von $\xi$. Dann gilt
+
 \begin{equation}
 \mathbb{E}(f(\xi)) = \mathbb{E}\left(a_0 +\sum_{i=1}^n a_i\xi_i \right) = a_0 + \sum_{i = 1}^n a_i \mathbb{E}(\xi_i).
 \end{equation}
+
 :::
 
 ```{=latex}
@@ -162,9 +166,11 @@ auch als *Satz vom totalen Erwartungswert* bezeichnet.
 ## Satz vom iterierten Erwartungswert
 Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$, wobei
 $\mathbb{E}(|\xi_1|) < \infty$ gilt. Dann gilt
+
 \begin{equation}
 \mathbb{E}(\xi_1) = \mathbb{E}\left(\mathbb{E}\left(\xi_1|\xi_2\right)\right).
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -192,15 +198,19 @@ Es gilt
 \vspace{1mm}
 
 \noindent (1) (Varianz bei Addition zweier Zufallsvariablen). Gegeben seien zwei Zufallsvariablen $\xi$ und $\zeta$. Dann gilt
+
 \begin{equation}
 \mathbb{V}(\xi + \zeta)
 = \mathbb{V}(\xi) + \mathbb{V}(\zeta) + 2\mathbb{C}(\xi,\zeta)
 \end{equation}
+
 \noindent (2) (Varianz bei Subtraktion zweier Zufallsvariablen). Gegeben seien  zwei Zufallsvariablen $\xi$ und $\zeta$. Dann gilt
+
 \begin{equation}
 \mathbb{V}(\xi - \zeta)
 = \mathbb{V}(\xi) + \mathbb{V}(\zeta) - 2\mathbb{C}(\xi,\zeta)
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -262,9 +272,11 @@ Die Spezialfälle folgen dann direkt mit $a := b := 1$ und $a := 1, b := -1$, re
 ## Kovarianzverschiebungssatz
 $\xi_1$ und $\xi_2$ seien Zufallsvariablen mit endlichen zweiten Momenten.
 Dann gilt
+
 \begin{equation}
 \mathbb{C}(\xi_1,\xi_2) = \mathbb{E}(\xi_1\xi_2) - \mathbb{E}(\xi_1)\mathbb{E}(\xi_2).
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -291,6 +303,7 @@ $\mathbb{E}(\xi_1^2|\xi_3 = x_3) < \infty$ und
 $\mathbb{E}(\xi_2^2|\xi_3 = x_3) < \infty$.
 Dann ist die bedingte Kovarianz von $\xi_1$ und $\xi_2$ gegeben $\xi_3 = x_3$
 definiert als
+
 \begin{equation}
 \mathbb{C}(\xi_1,\xi_2|\xi_3 = x_3)
 := \mathbb{E}
@@ -299,6 +312,7 @@ definiert als
   \left(\xi_2 - \mathbb{E}\left(\xi_2|\xi_3 = x_3\right)\right)|\xi_3 = x_3
   \right)
 \end{equation}
+
 :::
 
 Die bedingte Kovarianz ist der Erwartungswert des Produkts der bedingt
@@ -312,10 +326,12 @@ Verschiebungssatz.
 ## Verschiebungssatz der bedingten Kovarianz
 Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2,\xi_3)$, wobei $\xi_1$ und
 $\xi_2$ endliche zweite Momente besitzen. Dann gilt fast sicher
+
 \begin{equation}
 \mathbb{C}(\xi_1, \xi_2|\xi_3)
 = \mathbb{E}\left(\xi_1\xi_2|\xi_3\right) - \mathbb{E}\left(\xi_1|\xi_3\right)\mathbb{E}\left(\xi_2|\xi_3\right).
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -328,10 +344,12 @@ Erwartungswerte.
 ## Kovarianz bei paarweiser Addition von Zufallsvariablen
 $\xi_1,\xi_2,\zeta_1,\zeta_2$ seien vier Zufallsvariablen mit endlichen zweiten
 Momenten. Dann gilt
+
 \begin{equation}
 \mathbb{C}(\xi_1 + \xi_2, \zeta_1 + \zeta_2)
 = \mathbb{C}(\xi_1,\zeta_1) + \mathbb{C}(\xi_1,\zeta_2) + \mathbb{C}(\xi_2,\zeta_1) + \mathbb{C}(\xi_2,\zeta_2).
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -352,10 +370,12 @@ Dann gilt mit @thm-kovarianz-von-linearkombinationen-von-zufallsvariablen
 ## Satz von der iterierten Varianz
 Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$, wobei $\xi_1$ ein endliches
 zweites Moment besitzt. Dann gilt
+
 \begin{equation}
 \mathbb{V}(\xi_1) =
 \mathbb{E}(\mathbb{V}(\xi_1|\xi_2)) + \mathbb{V}(\mathbb{E}(\xi_1|\xi_2))
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -388,16 +408,20 @@ mit $p(x_2) > 0$.
 ## Kovarianz und Korrelation zweier Zufallsvariablen
 $\xi_1$ und $\xi_2$ seien Zufallsvariablen mit endlichen zweiten Momenten.
 Ihre *Kovarianz* ist definiert als
+
 \begin{equation}
 \mathbb{C}(\xi_1,\xi_2) :=
 \mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right).
 \end{equation}
+
 Die *Korrelation* zweier Zufallsvariablen $\xi_1$ und $\xi_2$ mit $\mathbb{S}(\xi_1) > 0$
 und $\mathbb{S}(\xi_2) > 0$ ist definiert als
+
 \begin{equation}
 \rho(\xi_1,\xi_2)
 := \frac{\mathbb{C}(\xi_1,\xi_2)}{\mathbb{S}(\xi_1)\mathbb{S}(\xi_2)}.
 \end{equation}
+
 :::
 
 ```{=latex}
@@ -410,10 +434,12 @@ Gegeben seien $n$ Zufallsvariablen  $\xi_1,...,\xi_n$  und $n+1$ reelle Konstant
 $a_0,a_1,...,a_n$ sowie $m$ Zufallsvariablen $\zeta_1,...,\zeta_m$ und $m + 1$ reelle
 Konstanten $b_0,b_1,...,b_m$.
 Alle genannten Zufallsvariablen besitzen endliche zweite Momente. Dann gilt
+
 \begin{equation}
 \mathbb{C}\left(a_0 + \sum_{i=1}^n a_i \xi_i, b_0 + \sum_{j=1}^m b_j \zeta_j\right)
 = \sum_{i=1}^n \sum_{j=1}^m a_ib_j\mathbb{C}(\xi_i, \zeta_j).
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -469,10 +495,12 @@ Alle genannten Zufallsvariablen besitzen endliche zweite Momente. Dann gilt
 Gegeben seien $n$ Zufallsvariablen $\xi_1,...,\xi_n$ und $n+1$ reelle Konstanten
 $a_0,a_1,...,a_n$.
 Dann gilt
+
 \begin{equation}
 \mathbb{V}\left(a_0 + \sum_{i=1}^n a_i \xi_i \right)
 = \sum_{i=1}^n a_i^2 \mathbb{V}(\xi_i) + 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^n a_ia_j\mathbb{C}(\xi_i,\xi_j).
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -492,14 +520,18 @@ gilt zunächst
 \end{align}
 Dabei wurde in der vierten Gleichung die Doppelsumme in solche Terme aufgespalten
 für die $i = j$ und für die $i \neq j$ und in der siebten Gleichung ausgenutzt, dass
+
 \begin{equation}
 a_ia_j\mathbb{C}(\xi_i,\xi_j) = a_ja_i\mathbb{C}(\xi_j,\xi_i).
 \end{equation}
+
 Wir verdeutlichen die daraus folgende Identität
+
 \begin{equation}
 \sum_{i=1}^n \sum_{\substack{j=1 \\ j \neq i}}^n a_ia_j \mathbb{C}(\xi_i,\xi_j)
 = 2 \sum_{i=1}^{n-1}\sum_{j=i+1}^na_ia_j \mathbb{C}(\xi_i,\xi_j),
 \end{equation}
+
 \nopagebreak[4]
 \begingroup\interlinepenalty=10000
 am Beispiel $n = 3$ untenstehend. Analog mag man sich vorstellen, über alle
@@ -544,13 +576,17 @@ Für einen Bedingungswert $x_2$ mit positiver marginaler WMF bzw. WDF existiere
 die entsprechende bedingte Verteilung, und es gelte
 $\mathbb{E}(\xi_1^2|\xi_2 = x_2) < \infty$.
 Dann ist die *bedingte Varianz von $\xi_1$ gegeben $\xi_2 = x_2$* definiert als
+
 \begin{equation}
 \mathbb{V}(\xi_1|\xi_2 = x_2) := \mathbb{E}\left(\left(\xi_1 - \mathbb{E}(\xi_1|\xi_2 = x_2)\right)^2|\xi_2 = x_2\right)
 \end{equation}
+
 und die \textit{bedingte Standardabweichung von $\xi_1$ gegeben $\xi_2 = x_2$} ist definiert als
+
 \begin{equation}
 \mathbb{S}(\xi_1|\xi_2 = x_2) := \sqrt{\mathbb{V}(\xi_1|\xi_2 = x_2)}.
 \end{equation}
+
 :::
 
 Für einen festen Bedingungswert $x_2$ sind die bedingte Varianz und die
@@ -569,9 +605,11 @@ Verschiebungssatz.
 Gegeben sei ein Zufallsvektor $\xi := (\xi_1,\xi_2)$, wobei $\xi_1$ ein endliches
 zweites Moment besitzt. Für alle Bedingungswerte $x_2$ mit positiver marginaler
 WMF bzw. WDF und endlichem bedingtem zweiten Moment gilt
+
 \begin{equation}
 \mathbb{V}(\xi_1|\xi_2 = x_2) = \mathbb{E}\left(\xi_1^2|\xi_2 = x_2\right) - \mathbb{E}(\xi_1|\xi_2 = x_2)^2
 \end{equation}
+
 :::
 
 :::{.proof}
@@ -604,28 +642,38 @@ bedingten Erwartungswerts (@def-bedingter-erwartungswert) gilt
 :::{#thm-nichtnegativitaet-der-varianz}
 ## Nichtnegativität der Varianz
 $\xi$ sei eine Zufallsvariable mit endlichem zweiten Moment. Dann gilt
+
 \begin{equation}
 \mathbb{V}(\xi) \ge 0.
 \end{equation}
+
 :::
 
 :::{.proof}
 Wir betrachten den Fall einer diskreten Zufallsvariablen. Dann gilt zunächst
+
 \begin{equation}
 (x - \mathbb{E}(\xi))^2 \ge 0 \mbox{ für alle } x \in \mathcal{X}.
 \end{equation}
+
 Weiterhin gilt für die WMF $p$ von $\xi$, dass
+
 \begin{equation}
 p(x) \ge 0 \mbox{ für alle } x \in \mathcal{X}.
 \end{equation}
+
 Also folgt
+
 \begin{equation}
 p(x)(x - \mathbb{E}(\xi))^2 \ge 0 \mbox{ für alle } x \in \mathcal{X}.
 \end{equation}
+
 Damit gilt dann aber
+
 \begin{equation}
 \mathbb{V}(\xi) = \sum_{x \in \mathcal{X}} p(x)(x - \mathbb{E}(\xi))^2 \ge 0.
 \end{equation}
+
 Analog zeigt man die Nichtnegativität der Varianz bei kontinuierlichen Zufallsvariablen.
 :::
 
@@ -638,28 +686,219 @@ Analog zeigt man die Nichtnegativität der Varianz bei kontinuierlichen Zufallsv
 $\xi_1$ und $\xi_2$ seien zwei Zufallsvariablen mit endlichen zweiten Momenten.
 Für die Aussage zur Korrelation seien zudem $\mathbb{S}(\xi_1) > 0$ und
 $\mathbb{S}(\xi_2) > 0$ vorausgesetzt. Dann gelten
+
 \begin{equation}
 \mathbb{C}(\xi_1,\xi_2) = \mathbb{C}(\xi_2,\xi_1)
 \mbox{ und }
 \rho(\xi_1,\xi_2) = \rho(\xi_2,\xi_1).
 \end{equation}
+
 :::
 
 :::{.proof}
 Mit der Kommutativität der Multiplikation gilt zunächst
+
 \begin{equation}
 \mathbb{C}(\xi_1,\xi_2)
 = \mathbb{E}\left((\xi_1-\mathbb{E}(\xi_1))(\xi_2-\mathbb{E}(\xi_2))\right)
 = \mathbb{E}\left((\xi_2-\mathbb{E}(\xi_2))(\xi_1-\mathbb{E}(\xi_1))\right)
 = \mathbb{C}(\xi_2,\xi_1)
 \end{equation}
+
 Weiterhin gilt dann
+
 \begin{equation}
 \rho(\xi_1,\xi_2)
 = \frac{\mathbb{C}(\xi_1,\xi_2)}{\mathbb{S}(\xi_1)\mathbb{S}(\xi_2)}
 = \frac{\mathbb{C}(\xi_2,\xi_1)}{\mathbb{S}(\xi_2)\mathbb{S}(\xi_1)}
 = \rho(\xi_2,\xi_1)
 \end{equation}
+
+:::
+
+## Kovarianzmatrizen {#sec-anhang-kovarianzmatrizen}
+
+:::{#thm-eigenschaften-der-kovarianzmatrix}
+## Eigenschaften der Kovarianzmatrix
+
+$\xi$ sei ein $m$-dimensionaler Zufallsvektor und $\mathbb{C}(\xi)$ sei seine
+Kovarianzmatrix. Dann gelten
+
+\noindent (1) (Elemente) Die Elemente von $\mathbb{C}(\xi)$ sind die Kovarianzen der
+Komponenten von $\xi$,
+
+\begin{equation}
+\mathbb{C}(\xi) = \left(\mathbb{C}(\xi_i,\xi_j)\right)_{1 \le i,j \le m}.
+\end{equation}
+
+\noindent (2) (Kovarianzmatrixverschiebungssatz) Es gilt
+
+\begin{equation}
+\mathbb{C}(\xi) = \mathbb{E}\left(\xi\xi^T\right) -  \mathbb{E}(\xi)\mathbb{E}(\xi)^T.
+\end{equation}
+
+\noindent (3) (Linear-affine Transformation) Für $A \in \mathbb{R}^{n \times m}$ und $b
+\in \mathbb{R}^n$ gilt
+
+\begin{equation}
+\mathbb{C}(A\xi +b) = A\mathbb{C}(\xi)A^T.
+\end{equation}
+
+\noindent (4) (Matrixeigenschaften) $\mathbb{C}(\xi)$ ist symmetrisch und
+positiv-semidefinit.
+:::
+
+:::{.proof}
+
+\noindent (1) Es gilt
+
+\begin{equation}
+\begin{split}
+\mathbb{C}(\xi)
+& := \mathbb{E}\left((\xi - \mathbb{E}(\xi))(\xi - \mathbb{E}(\xi))^T \right) \\
+& =
+\mathbb{E}
+\left(
+\left(
+\begin{pmatrix}
+\xi_1 \\
+\vdots \\
+\xi_m
+\end{pmatrix}
+-
+\begin{pmatrix}
+\mathbb{E}(\xi_1) \\
+\vdots \\
+\mathbb{E}(\xi_m)
+\end{pmatrix}
+\right)
+\left(
+\begin{pmatrix}
+\xi_1 \\
+\vdots \\
+\xi_m
+\end{pmatrix}
+-
+\begin{pmatrix}
+\mathbb{E}(\xi_1) \\
+\vdots \\
+\mathbb{E}(\xi_m)
+\end{pmatrix}
+\right)^T
+\right)
+\\
+& =
+\mathbb{E}
+\left(
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1) \\
+\vdots \\
+\xi_m - \mathbb{E}(\xi_m)
+\end{pmatrix}
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1)\\
+\vdots \\
+\xi_m - \mathbb{E}(\xi_m)
+\end{pmatrix}^T
+\right)
+\\
+& =
+\mathbb{E}
+\left(
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1) \\
+\vdots \\
+\xi_m - \mathbb{E}(\xi_m)
+\end{pmatrix}
+\begin{pmatrix}
+\xi_1 - \mathbb{E}(\xi_1)
+& \dots
+& \xi_m - \mathbb{E}(\xi_m)
+\end{pmatrix}
+\right) \\
+& =
+\mathbb{E}
+\begin{pmatrix}
+  (\xi_1 - \mathbb{E}(\xi_1))(\xi_1 - \mathbb{E}(\xi_1))
+& \dots
+& (\xi_1 - \mathbb{E}(\xi_1))(\xi_m - \mathbb{E}(\xi_m))
+\\
+\vdots
+& \ddots
+& \vdots
+\\
+  (\xi_m - \mathbb{E}(\xi_m))(\xi_1 - \mathbb{E}(\xi_1))
+& \dots
+& (\xi_m - \mathbb{E}(\xi_m))(\xi_m - \mathbb{E}(\xi_m))
+\\
+\end{pmatrix}
+\\
+& =
+\left(\mathbb{E}\left((\xi_i - \mathbb{E}(\xi_i))(\xi_j - \mathbb{E}(\xi_j)) \right) \right)_{1 \le i,j \le m} \\
+& =
+\left(\mathbb{C}(\xi_i,\xi_j)\right)_{1 \le i,j \le m}. \\
+\end{split}
+\end{equation}
+
+\noindent (2) Mit den Eigenschaften von Erwartungswerten gilt
+
+\begin{equation}
+\begin{split}
+\mathbb{C}(\xi)
+& = \mathbb{E}\left((\xi - \mathbb{E}(\xi))(\xi - \mathbb{E}(\xi))^T \right)                                          \\
+& = \mathbb{E}\left(\xi\xi^T - \xi\mathbb{E}(\xi)^T - \mathbb{E}(\xi)\xi^T + \mathbb{E}(\xi)\mathbb{E}(\xi)^T  \right) \\
+& = \mathbb{E}\left(\xi\xi^T\right) - \mathbb{E}(\xi)\mathbb{E}(\xi)^T - \mathbb{E}(\xi)\mathbb{E}(\xi)^T + \mathbb{E}(\xi)\mathbb{E}(\xi)^T  \\
+& = \mathbb{E}\left(\xi\xi^T\right) - \mathbb{E}(\xi)\mathbb{E}(\xi)^T.  \\
+\end{split}
+\end{equation}
+
+\noindent (3) Mit den Eigenschaften von Erwartungswerten gilt
+
+\begin{equation}
+\begin{split}
+\mathbb{C}(A\xi+b)
+& = \mathbb{E}\left((A\xi+b-\mathbb{E}(A\xi+b))(A\xi+b-\mathbb{E}(A\xi+b))^T \right)  \\
+& = \mathbb{E}\left((A\xi+b-A\mathbb{E}(\xi)-b)(A\xi+b-A\mathbb{E}(\xi)-b)^T \right)  \\
+& = \mathbb{E}\left((A(\xi-\mathbb{E}(\xi)))(A(\xi-\mathbb{E}(\xi)))^T \right)        \\
+& = \mathbb{E}\left(A(\xi-\mathbb{E}(\xi))(\xi-\mathbb{E}(\xi))^T A^T\right)          \\
+& = A\mathbb{E}\left((\xi-\mathbb{E}(\xi))(\xi-\mathbb{E}(\xi))^T\right)A^T           \\
+& = A\mathbb{C}(\xi)A^T.                                                               \\
+\end{split}
+\end{equation}
+
+\noindent (4) Die Symmetrie von $\mathbb{C}(\xi)$ folgt aus der Symmetrie der Kovarianz
+einer Zufallsvariable mit
+
+\begin{equation}
+\mathbb{C}(\xi_i,\xi_j) = \mathbb{C}(\xi_j, \xi_i) \mbox{ für alle } i = 1,...,m, j = 1,...,m.
+\end{equation}
+
+Um die positive Semidefinitheit von $\mathbb{C}(\xi)$ nachzuweisen, ist zu
+zeigen, dass $a^T\mathbb{C}(\xi)a \ge 0$ für alle $a\in \mathbb{R}^m$ mit $a
+\neq 0_m$. Sei also $a \in \mathbb{R}^m$ mit $a\neq 0$. Dann gilt mit Aussage
+\noindent (3) für $A := a^T \in \mathbb{R}^{1\times m}$, dass
+
+\begin{equation}
+a^T\mathbb{C}(\xi)a = \mathbb{C}(a^T\xi).
+\end{equation}
+
+Weiterhin gilt mit der Definition der Kovarianzmatrix aber, dass
+
+\begin{equation}
+\mathbb{C}(a^T\xi)
+= \mathbb{E}\left(\left(a^T\xi-\mathbb{E}(a^T\xi)\right)^2\right)
+= \mathbb{V}\left(a^T\xi\right).
+\end{equation}
+
+Da mit den Eigenschaften der Varianz die Varianz der Zufallsvariable $a^T\xi$
+aber immer nichtnegativ ist, folgt
+
+\begin{equation}
+a^T\mathbb{C}(\xi)a = \mathbb{V}(a^T\xi)\ge 0
+\end{equation}
+
+und damit die positive Semidefinitheit von $\mathbb{C}(\xi)$.
+
 :::
 
 ## Normalverteilungen {#sec-anhang-normalverteilungen}
@@ -667,35 +906,43 @@ Weiterhin gilt dann
 :::{#thm-gemeinsame-normalverteilungen}
 ## Gemeinsame Normalverteilungen
 $\xi$ sei ein $m$-dimensionaler normalverteilter Zufallsvektor mit WDF
+
 \begin{equation}
 p_\xi : \mathbb{R}^m \to \mathbb{R}_{>0},\,x\mapsto
 p_\xi(x) := N(x;\mu_\xi,\Sigma_{\xi\xi}) \mbox{ mit }
 \mu_\xi \in \mathbb{R}^m,
 \Sigma_{\xi\xi} \in \mathbb{R}^{m\times m},
 \end{equation}
+
 $A\in\mathbb{R}^{n\times m}$ sei eine Matrix, $b\in\mathbb{R}^n$ sei ein Vektor
 und $\upsilon$ sei ein $n$-dimensionaler bedingt normalverteilter Zufallsvektor mit
 bedingter WDF
+
 \begin{equation}
 p_{\upsilon|\xi}(\cdot|x) : \mathbb{R}^n \to \mathbb{R}_{>0},\, y\mapsto
 p_{\upsilon|\xi}(y|x) := N(y;Ax+b,\Sigma_{\upsilon\upsilon}) \mbox{ mit }
 \Sigma_{\upsilon\upsilon} \in \mathbb{R}^{n\times n}.
 \end{equation}
+
 Die Matrizen $\Sigma_{\xi\xi}$ und $\Sigma_{\upsilon\upsilon}$ seien symmetrisch
 und positiv definit. Die bedingte Kovarianzmatrix $\Sigma_{\upsilon\upsilon}$
 sei unabhängig von $x$.
 Dann ist der $m+n$-dimensionale Zufallsvektor $(\xi,\upsilon)^T$ normalverteilt mit (gemeinsamer) WDF
+
 \begin{equation}\label{eq:gauss_joint}
 p_{\xi,\upsilon} : \mathbb{R}^{m+n} \to \mathbb{R}_{>0},\, \begin{pmatrix} x \\ y \end{pmatrix} \mapsto
 p_{\xi,\upsilon}\left(\begin{pmatrix} x \\ y \end{pmatrix}\right) = N\left(\begin{pmatrix} x \\ y \end{pmatrix};
 \mu_{\xi,\upsilon}, \Sigma_{\xi,\upsilon} \right),
 \end{equation}
+
 mit $\mu_{\xi,\upsilon} \in \mathbb{R}^{m+n}$ und $\Sigma_{\xi,\upsilon} \in \mathbb{R}^{(m+n) \times (m+n)}$ und insbesondere
+
 \begin{equation}
 \mu_{\xi,\upsilon} = \left( \begin{matrix} \mu_\xi \\ A\mu_\xi + b \end{matrix} \right)
 \mbox{ und }
 \Sigma_{\xi,\upsilon} = \left(\begin{matrix} \Sigma_{\xi\xi} & \Sigma_{\xi\xi}A^T \\ A\Sigma_{\xi\xi} & \Sigma_{\upsilon\upsilon} + A\Sigma_{\xi\xi}A^T \end{matrix} \right).
 \end{equation}
+
 :::
 
 ```{=latex}
@@ -706,6 +953,7 @@ mit $\mu_{\xi,\upsilon} \in \mathbb{R}^{m+n}$ und $\Sigma_{\xi,\upsilon} \in \ma
 ## Marginale Normalverteilungen
 Es sei $n := k + l$ und $\xi = (\xi_1,...,\xi_n)^T$ sei ein $n$-dimensionaler
 normalverteilter Zufallsvektor mit Erwartungswertparameter
+
 \begin{equation}
 \mu =
 \left(\begin{matrix}
@@ -713,7 +961,9 @@ normalverteilter Zufallsvektor mit Erwartungswertparameter
 \mu_\zeta
 \end{matrix}\right) \in \mathbb{R}^n,
 \end{equation}
+
 mit $\mu_\upsilon \in \mathbb{R}^k$ und $\mu_\zeta \in \mathbb{R}^l$ und Kovarianzmatrixparameter
+
 \begin{equation}
 \Sigma =
 \left(\begin{matrix}
@@ -721,15 +971,18 @@ mit $\mu_\upsilon \in \mathbb{R}^k$ und $\mu_\zeta \in \mathbb{R}^l$ und Kovaria
 \Sigma_{\zeta\upsilon} 	& \Sigma_{\zeta\zeta}
 \end{matrix}\right) \in \mathbb{R}^{n \times n},
 \end{equation}
+
 mit $\Sigma_{\upsilon\upsilon}  \in \mathbb{R}^{k \times k}$,
     $\Sigma_{\upsilon\zeta}     \in \mathbb{R}^{k \times l}$,
     $\Sigma_{\zeta\upsilon}     \in \mathbb{R}^{l \times k}$,
 und $\Sigma_{\zeta\zeta}        \in \mathbb{R}^{l \times l}$.
 Dann sind $\upsilon := (\xi_1,...,\xi_k)^T$ und $\zeta := (\xi_{k+1}, ...,\xi_n)^T$
 normalverteilte Zufallsvektoren der Dimension $k$ bzw. $l$, und es gilt
+
 \begin{equation}
 \upsilon \sim N(\mu_\upsilon,\Sigma_{\upsilon\upsilon}) \mbox{ und } \zeta \sim N(\mu_\zeta,\Sigma_{\zeta\zeta}).
 \end{equation}
+
 :::
 
 Die Marginalverteilungen einer multivariaten Normalverteilung sind also auch Normalverteilungen
@@ -740,16 +993,20 @@ Für Beweise dieses Theorems verweisen wir auf @mardia1979 und @anderson2003.
 ## Linear-affine Transformation eines normalverteilten Zufallsvektors
 $\xi \sim N(\mu_\xi,\Sigma_\xi)$ sei ein normalverteilter $n$-dimensionaler Zufallsvektor
 und es sei
+
 \begin{equation}
 \zeta := A\xi + b \mbox{ mit } A \in \mathbb{R}^{m \times n} \mbox{ und } b \in \mathbb{R}^m.
 \end{equation}
+
 Dann gilt
+
 \begin{equation}
 \zeta \sim N(\mu_\zeta, \Sigma_\zeta)
 \mbox{ mit }
 \mu_\zeta    = A\mu_\xi + b \in \mathbb{R}^m \mbox{ und }
 \Sigma_\zeta = A\Sigma_\xi A^T \in \mathbb{R}^{m \times m}.
 \end{equation}
+
 :::
 
 Die resultierende Normalverteilung kann degeneriert sein. Ist

@@ -1675,46 +1675,46 @@ Selbstkontrollfragen
 \footnotesize
 \vspace{2mm}
 \setstretch{1.2}
-Bisher haben wir im Stichprobenmodell multipler Testmessungen keine Aussage zu
-den Verhältnissen der True-Scores über verschiedene Testmessungen hinweg
-gemacht. Für die wahren Werte einer Person $i$ setzen wir keine
-Unabhängigkeit voraus. Die Gleichheit
+Bisher haben wir die Beziehungen zwischen den wahren Werten verschiedener
+Testmessungen einer Person offengelassen. Insbesondere setzen wir für die
+wahren Werte einer Person $i$ keine Unabhängigkeit voraus. Die Gleichheit
 \begin{equation}
-\mbb{P}(\tau_{i1},...,\tau_{im}) = \prod_{j=1}^m\mbb{P}(\tau_{ij})
+\mathbb{P}(\tau_{i1},\ldots,\tau_{im})
+= \prod_{j=1}^{m}\mathbb{P}(\tau_{ij})
 \end{equation}
-wird für $i = 1,...,n$ also nicht gefordert, aber auch nicht ausgeschlossen.
-Andererseits haben wir die Form möglicher Abhängigkeiten zwischen den
-True-Scores $\tau_{i1}, ..., \tau_{im}$ bislang nicht genauer spezifiziert.
+wird für $i=1,\ldots,n$ also nicht gefordert, aber auch nicht ausgeschlossen.
+Die Form möglicher Abhängigkeiten zwischen den wahren Werten
+$\tau_{i1},\ldots,\tau_{im}$ haben wir bislang nicht genauer spezifiziert.
 
 Die klassische Testtheorie betrachtet in dieser Hinsicht einige Spezialfälle,
-die
-sich im Allgemeinen durch funktionale Abhängigkeiten zwischen $\tau_{i1}$ und
-$\tau_{i2},...,\tau_{im}$ der Form
+die sich durch funktionale Abhängigkeiten zwischen $\tau_{i1}$ und
+$\tau_{i2},\ldots,\tau_{im}$ der Form
 \begin{equation}
-\tau_{ij} = f_j(\tau_{i1})
-\mbox{ für } f_j : \mbb{R} \to \mbb{R}
-\mbox{ und } j = 2,...,m.
+\tau_{ij}=f_j(\tau_{i1})
+\quad\text{für }f_j:\mathbb{R}\to\mathbb{R}
+\text{ und }j=2,\ldots,m
 \end{equation}
 auszeichnen. Wir betrachten im Folgenden den Fall, dass
-$f_j := \mbox{id}_{\mbb{R}}$ für alle $j = 2,...,m$ gilt,
-dass also insbesondere für Realisierungen $t_{ij}$ von $\tau_{ij}$ gilt, dass
+$f_j:=\operatorname{id}_{\mathbb{R}}$ für alle $j=2,\ldots,m$ gilt.
+Für Realisierungen $t_{ij}$ von $\tau_{ij}$ gilt dann
 \begin{equation}
-t_{ij} = \mbox{id}_{\mbb{R}}\left(t_{i1}\right) = t_{i1}   \mbox{ für  }  j = 2,...,m,
+t_{ij}=\operatorname{id}_{\mathbb{R}}(t_{i1})=t_{i1}
+\quad\text{für }j=2,\ldots,m.
 \end{equation}
-dass also die wahren Werte einer Person über die Testmessungen hinweg identisch
-sind. Diese Eigenschaft kennzeichnet $\tau$-äquivalente Testmessungen. Stimmen
-zusätzlich die Messfehlervarianzen überein, spricht man von parallelen
+Die wahren Werte einer Person sind also über die Testmessungen hinweg
+identisch. Diese Eigenschaft kennzeichnet $\tau$-äquivalente Testmessungen.
+Stimmen zusätzlich die Messfehlervarianzen überein, spricht man von parallelen
 Testmessungen. Im nachfolgend definierten Modell fordern wir hierfür die
-Gleichheit der bedingten Varianzen der beobachteten Werte bei jedem festen
-wahren Wert.
+Gleichheit der bedingten Varianzen der beobachteten Werte gegeben den
+gemeinsamen wahren Wert.
 
 Eine weitere Form der funktionalen Abhängigkeit liegt vor, wenn die wahren
 Werte durch testmessungsspezifische linear-affine Funktionen miteinander
 verbunden sind,
 \begin{equation}
-\tau_{ij} = f_j(\tau_{i1}) = a_j + b_j\tau_{i1}
-\mbox{ mit } a_j \in \mbb{R},\ b_j \neq 0
-\mbox{ für } j = 2,...,m.
+\tau_{ij}=f_j(\tau_{i1})=a_j+b_j\tau_{i1}
+\quad\text{mit }a_j\in\mathbb{R},\ b_j\neq0
+\text{ für }j=2,\ldots,m.
 \end{equation}
 Diese Beziehung charakterisiert die später behandelten essentiell
 kongenerischen Testmodelle.
@@ -1723,28 +1723,43 @@ kongenerischen Testmodelle.
 \footnotesize
 \vspace{3mm}
 \begin{definition}[Stichprobenmodell paralleler Testmessungen]
-Für $i = 1,...,n$ und $j = 1,...,m$ sei
+Für $i=1,\ldots,n$ und $j=1,\ldots,m$ seien
 \begin{itemize}
-\item $\tau_{i}$ eine Zufallsvariable, die den wahren Wert der $i$ten Testperson in jeder Testmessung $j = 1,...,m$ modelliere,
-\item $y_{ij}$ eine Zufallsvariable, die den beobachteten Wert der $i$ten Testperson in der $j$ten Testmessung modelliere,
-\item $\eps_{ij} := y_{ij} -\tau_{i}$ die Zufallsvariable, die den Messfehler der $i$ten Testperson in der $j$ten Testmessung modelliere.
+\item $\tau_i$ eine Zufallsvariable, die den wahren Wert der $i$ten Testperson
+in jeder Testmessung modelliere,
+\item $y_{ij}$ eine Zufallsvariable, die den beobachteten Wert der $i$ten
+Testperson in der $j$ten Testmessung modelliere,
+\item $\varepsilon_{ij}:=y_{ij}-\tau_i$ die Zufallsvariable, die den Messfehler
+der $i$ten Testperson in der $j$ten Testmessung modelliere.
 \end{itemize}
-Dann heißt die gemeinsame Verteilung der $\tau_{i}$ und $y_{ij}$ mit den
-Faktorisierungseigenschaften
+Es gelte
 \begin{equation}
-\mbb{P}\left(\tau_{1},y_{11},...y_{1m}, ...,\tau_{n},y_{n1},...,y_{nm}\right)
-:= \prod_{i=1}^n \left(
-\mbb{P}(\tau_{i})
-\prod_{j=1}^m \mbb{P}(y_{ij}|\tau_{i})
+\mathbb{E}(y_{ij}\mid\tau_i)=\tau_i
+\quad\text{für alle }i=1,\ldots,n,\ j=1,\ldots,m.
+\end{equation}
+Dann heißt die gemeinsame Verteilung der $\tau_i$ und $y_{ij}$ mit der
+Faktorisierungseigenschaft
+\begin{equation}
+\mathbb{P}(\tau_1,y_{11},\ldots,y_{1m},\ldots,\tau_n,y_{n1},\ldots,y_{nm})
+= \prod_{i=1}^{n}\left(
+\mathbb{P}(\tau_i)\prod_{j=1}^{m}\mathbb{P}(y_{ij}\mid\tau_i)
 \right)
 \end{equation}
-das \textit{Stichprobenmodell paralleler Testmessungen}, wenn gilt, dass
+das \textit{Stichprobenmodell paralleler Testmessungen}, wenn außerdem gilt:
 \begin{itemize}
-\item[(1)] $\mbb{P}(\tau_{1}) = \cdots = \mbb{P}(\tau_{n})$,
-\item[(2)] $\mbb{P}(y_{1j}|\tau_{1}) = \cdots = \mbb{P}(y_{nj}|\tau_{n})$ für alle  $1 \le j \le m$,
-\item[(3)] $\mbb{E}(y_{ij}\vert \tau_i = t_i) = \mbb{E}(y_{ik}\vert \tau_i = t_i) := t_i$  für alle  $1 \le i \le n, 1 \le j,k \le m$,
-\item[(4)] $\mbb{V}(y_{ij}\vert \tau_i = t_i) = \mbb{V}(y_{ik}\vert \tau_i = t_i)$  für alle  $1 \le i \le n, 1 \le j,k \le m$.
+\item[(1)] $\mathbb{P}(\tau_1)=\cdots=\mathbb{P}(\tau_n)$.
+\item[(2)] $\mathbb{P}(y_{1j}\mid\tau_1)=\cdots=\mathbb{P}(y_{nj}\mid\tau_n)$
+für alle $j=1,\ldots,m$.
+\item[(3)] $\mathbb{V}(y_{ij}\mid\tau_i)=\mathbb{V}(y_{ik}\mid\tau_i)$
+für alle $i=1,\ldots,n$ und $j,k=1,\ldots,m$.
 \end{itemize}
+Insbesondere folgt aus der vorausgesetzten Erwartungswertbedingung für einen
+festen wahren Wert $t_i$, dass
+\begin{equation}
+\mathbb{E}(y_{ij}\mid\tau_i=t_i)
+= \mathbb{E}(y_{ik}\mid\tau_i=t_i)
+= t_i.
+\end{equation}
 \end{definition}
 
 
@@ -1761,8 +1776,7 @@ Bemerkungen
   identisch angenommen.
 * Die Varianz der beobachteten Werte einer Testperson zwischen Messungen geht
   nur auf die Propensität zurück.
-* Bei \underline{einer} Testmessung entspricht das Stichprobenmodell paralleler
-  Testmessungen dem Stichprobenmodell multipler Testmessungen.
+* Bei einer Testmessung stimmen die Modelle multipler und paralleler Testmessungen überein.
 * Das \thmref{thm:eigenschaften-einer-Testmessung} gilt also analog.
 
 
@@ -1791,8 +1805,7 @@ Bemerkungen
   einer Person identisch.
 * Bei Paralleltestmessungen sind alle Varianzen der beobachteten Werte einer
   Person identisch.
-* Aussagen (3) und (4) gelten analog im Stichprobenmodell multipler
-  Testmessungen bezüglich zweier Testmessungen.
+* Aussagen (3) und (4) gelten auch im Stichprobenmodell multipler Testmessungen.
 * Aussage (5) besagt insbesondere, dass die Kovarianz der beobachteten Werte
   zweier verschiedener Testmessungen stets der Varianz des gemeinsamen wahren
   Werts entspricht, also $\mbb{C}(y_{ij},y_{ik}) = \mbb{V}(\tau_i)$ für alle $j
@@ -1979,11 +1992,11 @@ for(i in 1:n){                                        # Personeniterationen
     for(j in 1:m){                                    # Testmessungsiterationen
         Y[i,j] = rnorm(1,Tau[i],1)                    # Beobachteter Wert Realisierung
         E[i,j] = Y[i,j] - Tau[i]}}                    # Messfehler Realisierung
-e_hat_o1_o2    = apply(Y, 2, mean)                    # Erwartungswertschätzung Beobachteter Wert 1, Beobachteter Wert 2
-v_hat_o1_o2    = apply(Y, 2, var)                     # Varianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
+e_hat_o1_o2    = apply(Y, 2, mean)                    # Erwartungswertschätzungen beobachteter Werte
+v_hat_o1_o2    = apply(Y, 2, var)                     # Varianzschätzungen beobachteter Werte
 c_hat_e1_e2    = cov(E[,1],E[,2])                     # Kovarianzschätzung Messfehler 1, Messfehler 2
 c_hat_t_e2     = cov(Tau    ,E[,2])                   # Kovarianzschätzung Wahrer Wert 1, Messfehler 2
-c_hat_y1_y2    = cov(Y[,1],Y[,2])                     # Kovarianzschätzung Beobachteter Wert 1, Beobachteter Wert 2
+c_hat_y1_y2    = cov(Y[,1],Y[,2])                     # Kovarianzschätzung beobachteter Werte 1 und 2
 v_hat_t        = var(Tau)                             # Varianzschätzung Wahrer Wert
 ```
 

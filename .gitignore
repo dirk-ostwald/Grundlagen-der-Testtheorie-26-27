@@ -42,9 +42,10 @@ inspect.json
 
 # Kein Bestandteil der veröffentlichten Lehrmaterialien
 /1-Naturwissenschaft/
+/Zusatzmaterial/
+
 
 /.quarto/
 **/*.quarto_ipynb
 
-# Lokale Zwischenfassung der Layoutprüfung
-/A-Wahrscheinlichkeitstheoretische-Ergänzungen/A-Ergaenzungen-Layout.pdf
+

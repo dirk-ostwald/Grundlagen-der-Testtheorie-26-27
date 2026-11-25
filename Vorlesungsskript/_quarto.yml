@@ -24,25 +24,34 @@ book:
     - _src/_part_9/901-Psychologische-Tests.qmd
     - _src/_part_9/903-Modelle-der-klassischen-Testtheorie.qmd
     - _src/_part_9/904-Reliabilität-und-interne-Konsistenz.qmd
+    - _src/_part_9/905-Exploratorische-Faktorenanalyse.qmd
     - Referenzen.qmd
   appendices:
     - _anhang/A-Wahrscheinlichkeitstheoretische-Ergaenzungen.qmd
+    - _anhang/B-Ergaenzungen-aus-der-Linearen-Algebra.qmd
 
 
 format:
   pdf:
+    colorlinks: true
+    linkcolor: darkblue
+    urlcolor: darkblue
+    citecolor: darkblue
     pdf-engine: xelatex
     documentclass: scrreprt
     toc-depth: 2
     papersize: a4
-    template-partials:
-      - _templates/fonts.latex
-    # TEX bis zum Post-Render-Schritt erhalten, dort gezielt entfernen.
+    # keep-tex verhindert Quarto-Cleanup im externen Quellprojekt.
     keep-tex: true
-    latex-clean: false
+    latex-clean: true
     code-line-numbers: false
     latex-tinytex: false
     include-in-header:
       - _texheader.tex
       - _titelseite.tex
       - _abbildungen.tex
+
+knitr:
+  opts_chunk:
+    crop: false
+    cache: false
